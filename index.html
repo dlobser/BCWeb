@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Candy</title>
+    <title>Brain Candy for Meta Quest</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .hero {
-            background-color: #4A90E2;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 150px 20px;
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         .features {
             padding: 50px 20px;
+        }
+        .feature-img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
         }
         .download {
             background-color: #333;
@@ -30,11 +51,10 @@
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="path_to_your_logo.png" alt="Brain Candy Logo" height="50">
+            <img src="/api/placeholder/200/50" alt="Brain Candy Logo" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,39 +76,39 @@
             </ul>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Unlock Your Mind with Brain Candy</h1>
-        <p>Enhance relaxation, focus, and awareness with strobe light brainwave entrainment.</p>
-        <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+        <div class="hero-content">
+            <h1>Unlock Your Mind with Brain Candy</h1>
+            <p>Enhance relaxation, focus, and awareness with strobe light brainwave entrainment on Meta Quest.</p>
+            <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
     </div>
-
     <!-- Features Section -->
     <div class="features container">
         <div class="row">
             <div class="col-md-4">
+                <img src="/api/placeholder/300/200" alt="Tailored Experiences" class="feature-img">
                 <h3>Tailored Experiences</h3>
                 <p>Select the mode that suits your mood.</p>
             </div>
             <div class="col-md-4">
+                <img src="/api/placeholder/300/200" alt="Easy to Use" class="feature-img">
                 <h3>Easy to Use</h3>
                 <p>Simple, intuitive interface.</p>
             </div>
             <div class="col-md-4">
+                <img src="/api/placeholder/300/200" alt="Scientifically Inspired" class="feature-img">
                 <h3>Scientifically Inspired</h3>
                 <p>Based on brainwave entrainment research.</p>
             </div>
         </div>
     </div>
-
     <!-- Download Section -->
     <div class="download">
-        <h2>Download the App</h2>
-        <a href="#" class="btn btn-outline-light btn-lg">Download for iOS</a>
-        <a href="#" class="btn btn-outline-light btn-lg">Download for Android</a>
+        <h2>Download Brain Candy for Meta Quest</h2>
+        <a href="#" class="btn btn-outline-light btn-lg">Get it on Meta Quest Store</a>
     </div>
-
     <!-- Footer -->
     <div class="footer">
         <p>&copy; 2024 Brain Candy. All rights reserved.</p>
@@ -98,7 +118,6 @@
             <li class="list-inline-item"><a href="#" style="color:white;">Contact Us</a></li>
         </ul>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
