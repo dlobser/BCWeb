@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Brain Candy</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section {
+            padding: 50px 20px;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>About Brain Candy</h1>
+            <p>Discover the science and inspiration behind the sweet journey of Brain Candy.</p>
+        </div>
+    </div>
+    <!-- Content Section -->
+    <div class="content-section container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="src/images/about_image1.jpg" alt="Image 1" class="content-image">
+                <h3>The Science of Light</h3>
+                <p>Brain Candy uses wide-spectrum, flickering light to guide your brain into deep states of relaxation, focus, and energy. Inspired by research on brainwave entrainment, it brings science and fun together for an unforgettable experience.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="src/images/about_image2.jpg" alt="Image 2" class="content-image">
+                <h3>How It Works</h3>
+                <p>Through closed eyes, the light enters your body, reaching the central brain and sparking neural rhythms. The pineal gland and thalamus work together to help you sync, energize, and breathe your way into a harmonious state.</p>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <img src="src/images/about_image3.jpg" alt="Image 3" class="content-image">
+                <h3>Designed for Everyone</h3>
+                <p>Whether you're looking to melt away stress, boost your focus, or unlock your creativity, Brain Candy is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="src/images/about_image4.jpg" alt="Image 4" class="content-image">
+                <h3>Sweet States of Mind</h3>
+                <p>From calming relaxation to bursts of mental energy, Brain Candy helps you discover flow states more regularly. Let our light pulses guide you to a place of wonder, awe, and inner balance.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Brain Candy. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="#" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="#" style="color:white;">Contact Us</a></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
