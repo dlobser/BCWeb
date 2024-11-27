@@ -41,6 +41,19 @@
             position: relative;
             z-index: 1;
         }
+        
+        /* Updated button styles with more padding */
+        .hero-content .btn {
+            margin: 10px;
+            padding: 15px 30px;
+        }
+
+        /* New button styles for hero2 section */
+        .hero2 .btn {
+            margin: 20px;
+            padding: 15px 30px;
+            display: inline-block;
+        }
 
         .content-section {
             padding: 50px 20px;
@@ -58,6 +71,26 @@
             text-align: center;
             padding: 20px;
         }
+
+        /* Additional padding for button containers */
+        .button-container {
+            padding: 20px 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            max-height: 405px;
+            margin: 0 auto;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+        }
     </style>
 </head>
 
@@ -67,8 +100,9 @@
         <div class="hero-content">
             <h1>About Brain Candy</h1>
             <p>Discover the science and inspiration behind the sweet journey of Brain Candy.</p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/f_o-0yKFMd8?si=7s8jQidN0fABt-hV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/f_o-0yKFMd8?si=7s8jQidN0fABt-hV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
     <!-- Content Section -->
@@ -76,16 +110,18 @@
         <div class="hero2">
             <div class="row">
                 <div class="col-md-6">
-                    <p>Help us improve Brain Candy,<br> take this survey after using the app.</p><br>
-            <a href="https://forms.gle/GfFYdGP8Z3ZYUrms7" class="btn btn-primary btn-lg">Survey</a>
+                    <p>Help us improve Brain Candy,<br> take this survey after using the app.</p>
+                    <div class="button-container">
+                        <a href="https://forms.gle/GfFYdGP8Z3ZYUrms7" class="btn btn-primary btn-lg">Survey</a>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <p>Listen to an interview with Jose Montemayor Alba of the <br><a href="https://www.cyberdelic.nexus/">Cyberdelic Society</a> at the Games Ground conference.</p><br>
-            <a href="https://www.rte.ie/radio/lyricfm/clips/22463090/" class="btn btn-primary btn-lg">Listen</a>
+                    <p>Listen to an interview with Jose Montemayor Alba of the <br><a href="https://www.cyberdelic.nexus/">Cyberdelic Society</a> at the Games Ground conference.</p>
+                    <div class="button-container">
+                        <a href="https://www.rte.ie/radio/lyricfm/clips/22463090/" class="btn btn-primary btn-lg">Listen</a>
+                    </div>
                 </div>
             </div>
-        
-            
         </div>
         <div class="row">
             <div class="col-md-6">

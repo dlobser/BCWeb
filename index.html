@@ -9,7 +9,7 @@
     <style>
         .hero {
             background-image: url('src/images/BC_BG.jpg');
-            background-size: 512px; /* Adjust size as needed */
+            background-size: 512px;
             background-position: center;
             background-repeat: repeat;
             color: white;
@@ -26,12 +26,17 @@
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
-            /* This adds a dark overlay to ensure text readability */
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+        }
+
+        /* New styles for button spacing */
+        .hero-content .btn {
+            margin: 10px;
+            padding: 12px 24px;
         }
 
         .features {
@@ -58,15 +63,10 @@
             padding: 20px;
         }
 
-        .features {
-            padding: 50px 20px;
-        }
-
         .feature-video-wrapper {
             position: relative;
             width: 100%;
             padding-top: 56.25%;
-            /* 16:9 Aspect Ratio */
             margin-bottom: 20px;
         }
 
@@ -82,106 +82,66 @@
 </head>
 
 <body>
-    <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
             <h1>Unlock Your Brain, with Candy!</h1>
             <h2 style="font-size: 6em;">BRAIN CANDY!</h2>
             <p>Enhance relaxation, focus, and awareness with strobe light brainwave entrainment.</p>
-            <a href="app/index.html" class="btn btn-primary btn-lg">Live Preview</a>
-            <a href="about.html" class="btn btn-primary btn-lg">About</a> <!-- Added About button -->
-            <a href="https://forms.gle/CYPekjMAkU2oCv2E8" class="btn btn-outline-light btn-lg">Sign Up For the Beta</a>
-        </div>
-    </div>
-    <!-- Features Section -->
-    <!DOCTYPE html>
-    <html lang="en">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Brain Candy for Meta Quest</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            /* ... (previous styles remain the same) ... */
-
-            .features {
-                padding: 50px 20px;
-            }
-
-            .feature-video-wrapper {
-                position: relative;
-                width: 100%;
-                padding-top: 56.25%;
-                /* 16:9 Aspect Ratio */
-                margin-bottom: 20px;
-            }
-
-            .feature-video {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            /* ... (rest of the styles remain the same) ... */
-        </style>
-    </head>
-
-    <body>
-        <!-- ... (previous content remains the same) ... -->
-
-        <!-- Features Section -->
-        <div class="features container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="feature-video-wrapper">
-                        <video class="feature-video" autoplay loop muted playsinline>
-                            <source src="src/images/bc_001.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <h3>Tailored Experiences</h3>
-                    <p>Select the mode that suits your mood.</p>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-video-wrapper">
-                        <video class="feature-video" autoplay loop muted playsinline>
-                            <source src="src/images/bc_002.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <h3>Easy to Use</h3>
-                    <p>Simple, intuitive interface.</p>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-video-wrapper">
-                        <video class="feature-video" autoplay loop muted playsinline>
-                            <source src="src/images/bc_003.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <h3>Scientifically Inspired</h3>
-                    <p>Based on brainwave entrainment research.</p>
-                </div>
+            <div class="button-group">
+                <a href="app/index.html" class="btn btn-primary btn-lg">Live Preview</a>
+                <a href="about.html" class="btn btn-primary btn-lg">About</a>
+                <a href="https://www.youtube.com/@BrainCandyApp" class="btn btn-primary btn-lg">YouTube</a>
+                <a href="https://forms.gle/CYPekjMAkU2oCv2E8" class="btn btn-primary btn-lg">Sign Up For the Beta</a>
             </div>
         </div>
-        <!-- Download Section -->
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>&copy; 2024 Brain Candy. All rights reserved.</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
-                <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
-                <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
-            </ul>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+    </div>
 
-    </html>
+    <div class="features container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-video-wrapper">
+                    <video class="feature-video" autoplay loop muted playsinline>
+                        <source src="src/images/bc_001.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h3>Tailored Experiences</h3>
+                <p>Select the mode that suits your mood.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-video-wrapper">
+                    <video class="feature-video" autoplay loop muted playsinline>
+                        <source src="src/images/bc_002.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h3>Easy to Use</h3>
+                <p>Simple, intuitive interface.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-video-wrapper">
+                    <video class="feature-video" autoplay loop muted playsinline>
+                        <source src="src/images/bc_003.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h3>Scientifically Inspired</h3>
+                <p>Based on brainwave entrainment research.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Brain Candy. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
