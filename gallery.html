@@ -15,7 +15,7 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
             grid-gap: 10px;
             max-width: 1600px;
             margin: 0 auto;
@@ -60,10 +60,10 @@
     <div class="gallery">
         <script>
             // Generate gallery items for GIFs from output_0.gif to output_29.gif
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 80; i++) {
                 document.write(`
                     <div class="gallery-item">
-                        <img src="src/gifs/output_${i}.gif" alt="Brain Candy GIF ${i}" loading="lazy">
+                        <img src="src/gifs/bcgif_${i}.gif" alt="Brain Candy GIF ${i}" loading="lazy">
                     </div>
                 `);
             }
