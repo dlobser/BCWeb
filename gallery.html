@@ -4,29 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Candy GIF Gallery</title>
+    <title>Brain Candy Gallery - Original Flavors</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/CarbonBlock.ttf') format('truetype');
+        }
+
         body {
-            margin: 0;
-            padding: 20px;
-            background: #000;
-            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+        }
+
+        .gallery-header {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .gallery-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.0);
+        }
+
+        .gallery-header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Carbon Block', sans-serif;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(512px, 1fr));
-            grid-gap: 10px;
-            max-width: 1600px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 20px;
+            padding: 40px 20px;
         }
 
         .gallery-item {
             position: relative;
             padding-bottom: 100%;
-            /* Creates a square aspect ratio */
             background: #111;
             overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
         }
 
         .gallery-item img {
@@ -36,38 +79,73 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        p {
+            font-size: 1.2rem;
+            color: white;
+            max-width: 800px;
+            margin: 20px auto;
         }
 
-        @media (max-width: 600px) {
+        .gallery-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+        }
+
+        @media (max-width: 768px) {
             .gallery {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                grid-gap: 5px;
-            }
-
-            body {
-                padding: 10px;
+                grid-gap: 10px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="gallery">
-        <script>
-            // Generate gallery items for GIFs from output_0.gif to output_29.gif
-            for (let i = 0; i < 80; i++) {
-                document.write(`
-                    <div class="gallery-item">
-                        <img src="src/gifs/bcgif_${i}.gif" alt="Brain Candy GIF ${i}" loading="lazy">
-                    </div>
-                `);
-            }
-        </script>
+    <div class="gallery-header" style="background-image: url('src/images/BC_BG.jpg');">
+        <div class="gallery-header-content">
+            <h2 style="font-size:8em">DLC</h2>
+            <p>Content on Brain Candy will be updated continuously, with packs that can be downloaded individually.
+                Upcoming packs: ASMR, EMDR, breathwork, guided meditation, optical illusions, and more!</p>
+        </div>
+    </div>
+    <div class="gallery-header" style="background-image: url('src/images/BCBG_02.jpg');">
+        <div class="gallery-header-content">
+            <h1 style="font-size:6em;color:black">Original Flavors</h1>
+            <p style="color:black">Our first offering, covering a range of different experience types: relax, focus,
+                energize, breathing,
+                and intense strobing. Each pattern is carefully crafted to guide you into specific states of
+                consciousness.</p>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery">
+            <script>
+                // Generate gallery items for GIFs from output_0.gif to output_29.gif
+                for (let i = 1; i < 24; i++) {
+                    document.write(`
+                        <div class="gallery-item">
+                            <img src="src/gifs/output_${i}.gif" alt="Brain Candy Pattern ${i}" loading="lazy">
+                        </div>
+                    `);
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="footer" style="background-color: #222; color: white; text-align: center; padding: 20px;">
+        <p>&copy; 2024 Brain Candy. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me"
+                    style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
     </div>
 </body>
 
