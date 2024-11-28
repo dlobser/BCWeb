@@ -40,6 +40,8 @@
         }
 
         .features {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
             padding: 50px 20px;
         }
 
@@ -78,6 +80,61 @@
             height: 100%;
             object-fit: cover;
         }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .rainbow-text span:nth-child(1) {
+            color: #FFB3BA;
+        }
+
+        /* Pastel Red */
+        .rainbow-text span:nth-child(2) {
+            color: #BAFFC9;
+        }
+
+        /* Pastel Green */
+        .rainbow-text span:nth-child(3) {
+            color: #BAE1FF;
+        }
+
+        /* Pastel Blue */
+        .rainbow-text span:nth-child(4) {
+            color: #FFFFBA;
+        }
+
+        /* Pastel Yellow */
+        .rainbow-text span:nth-child(5) {
+            color: #FFB3F7;
+        }
+
+        /* Pastel Pink */
+        .rainbow-text span:nth-child(6) {
+            color: #B3FFF7;
+        }
+
+        /* Pastel Cyan */
+        .rainbow-text span:nth-child(7) {
+            color: #FFC9BA;
+        }
+
+        /* Pastel Orange */
+        .rainbow-text span:nth-child(8) {
+            color: #E1BAFF;
+        }
+
+        /* Pastel Purple */
+        .rainbow-text span:nth-child(9) {
+            color: #BAF7FF;
+        }
+
+        /* Pastel Light Blue */
+        .rainbow-text span:nth-child(10) {
+            color: #FFBAE1;
+        }
+
+        /* Pastel Rose */
     </style>
 </head>
 
@@ -85,8 +142,10 @@
     <div class="hero">
         <div class="hero-content">
             <h1>Unlock Your Brain, with Candy!</h1>
-            <h2 style="font-size: 6em;">BRAIN CANDY!</h2>
-            <p>Enhance relaxation, focus, and awareness with strobe light brainwave entrainment.</p>
+            <h2 style="font-size: 6em;" class="rainbow-text">
+                <span>B</span><span>R</span><span>A</span><span>I</span><span>N</span>
+                <span>C</span><span>A</span><span>N</span><span>D</span><span>Y</span>!
+            </h2>
             <div class="button-group">
                 <a href="app/index.html" class="btn btn-primary btn-lg">Live Preview</a>
                 <a href="about.html" class="btn btn-primary btn-lg">About</a>
@@ -96,37 +155,39 @@
         </div>
     </div>
 
-    <div class="features container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="feature-video-wrapper">
-                    <video class="feature-video" autoplay loop muted playsinline>
-                        <source src="src/images/bc_001.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+    <div class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-video-wrapper">
+                        <video class="feature-video" autoplay loop muted playsinline>
+                            <source src="src/images/bc_001.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Tailored Experiences</h3>
+                    <p>Select the mode that suits your mood.</p>
                 </div>
-                <h3>Tailored Experiences</h3>
-                <p>Select the mode that suits your mood.</p>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-video-wrapper">
-                    <video class="feature-video" autoplay loop muted playsinline>
-                        <source src="src/images/bc_002.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="col-md-4">
+                    <div class="feature-video-wrapper">
+                        <video class="feature-video" autoplay loop muted playsinline>
+                            <source src="src/images/bc_002.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Easy to Use</h3>
+                    <p>Simple, intuitive interface.</p>
                 </div>
-                <h3>Easy to Use</h3>
-                <p>Simple, intuitive interface.</p>
-            </div>
-            <div class="col-md-4">
-                <div class="feature-video-wrapper">
-                    <video class="feature-video" autoplay loop muted playsinline>
-                        <source src="src/images/bc_003.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <div class="col-md-4">
+                    <div class="feature-video-wrapper">
+                        <video class="feature-video" autoplay loop muted playsinline>
+                            <source src="src/images/bc_003.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Scientifically Inspired</h3>
+                    <p>Based on brainwave entrainment research.</p>
                 </div>
-                <h3>Scientifically Inspired</h3>
-                <p>Based on brainwave entrainment research.</p>
             </div>
         </div>
     </div>
@@ -136,7 +197,8 @@
         <ul class="list-inline">
             <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
             <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
-            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me"
+                    style="color:white;">braincandyapp@proton.me</a></li>
         </ul>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
