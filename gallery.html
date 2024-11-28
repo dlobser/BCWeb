@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy GIF Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            min-height: 100vh;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-gap: 10px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            padding-bottom: 100%;
+            /* Creates a square aspect ratio */
+            background: #111;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-gap: 5px;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <script>
+            // Generate gallery items for GIFs from output_0.gif to output_29.gif
+            for (let i = 0; i < 30; i++) {
+                document.write(`
+                    <div class="gallery-item">
+                        <img src="src/gifs/output_${i}.gif" alt="Brain Candy GIF ${i}" loading="lazy">
+                    </div>
+                `);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
