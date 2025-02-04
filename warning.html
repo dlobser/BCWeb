@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy - Seizure Warning</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        .warning-header {
+            background-color: #ff0000;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .warning-content {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .warning-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(255, 0, 0, 0.1);
+            border-left: 5px solid #ff0000;
+        }
+
+        .continue-button {
+            background-color: #FF3366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .continue-button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .symptom-list {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="warning-header">
+        <h1>⚠️ IMPORTANT SAFETY WARNING ⚠️</h1>
+    </div>
+
+    <div class="container">
+        <div class="warning-content">
+            <div class="warning-section">
+                <h2>Photosensitivity and Seizure Warning</h2>
+                <p class="lead">Brain Candy contains intense strobing lights, flashing patterns, and visual effects that may trigger seizures or other adverse reactions in photosensitive individuals.</p>
+            </div>
+
+            <div class="warning-section">
+                <h3>Who Is At Risk?</h3>
+                <p>You should NOT use Brain Candy if you:</p>
+                <ul>
+                    <li>Have a history of epilepsy or seizures</li>
+                    <li>Are sensitive to flashing lights or patterns</li>
+                    <li>Have been diagnosed with photosensitive epilepsy</li>
+                    <li>Have any form of neurological condition</li>
+                    <li>Are pregnant</li>
+                    <li>Are under the influence of alcohol or drugs</li>
+                    <li>Are experiencing fatigue or sleep deprivation</li>
+                </ul>
+            </div>
+
+            <div class="warning-section">
+                <h3>Warning Signs and Symptoms</h3>
+                <div class="symptom-list">
+                    <p>Stop using Brain Candy immediately and seek medical attention if you experience any of these symptoms:</p>
+                    <ul>
+                        <li>Lightheadedness or dizziness</li>
+                        <li>Altered vision or visual disturbances</li>
+                        <li>Eye or muscle twitching</li>
+                        <li>Confusion or disorientation</li>
+                        <li>Nausea</li>
+                        <li>Loss of awareness</li>
+                        <li>Involuntary movements</li>
+                        <li>Convulsions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-section">
+                <h3>Safety Precautions</h3>
+                <ul>
+                    <li>Use Brain Candy when seated or laying down</li>
+                    <li>Stop immediately if you feel uncomfortable</li>
+                    <li>Do not use when tired or sleep-deprived</li>
+                    <li>Consider having someone nearby during first use</li>
+                </ul>
+            </div>
+
+            <div class="text-center">
+                <p class="lead">By using Brain Candy, you acknowledge that you have read and understood these warnings and accept all associated risks.</p>
+                <a href="main.html" class="continue-button">I Understand - Continue to Brain Candy</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

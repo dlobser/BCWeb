@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brain candy!</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        .hero {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .hero2 {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: black;
+            text-align: center;
+            padding: 25px 0px;
+            position: relative;
+        }
+
+        .hero3 {
+            background-image: url('src/images/BCBG.gif');
+            background-size: 512px;
+            /* Adjust size as needed */
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content .btn {
+            margin: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            /* Makes them very round */
+            border: none;
+            transition: transform 0.2s, opacity 0.2s;
+            font-weight: 600;
+        }
+
+        .hero-content .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Individual button colors */
+        .hero-content .btn:nth-child(1) {
+            background-color: #FF00FF;
+            /* Magenta */
+        }
+
+        .hero-content .btn:nth-child(2) {
+            background-color: #00FFFF;
+            /* Cyan */
+            color: #000;
+            /* Black text for better contrast */
+        }
+
+        .hero-content .btn:nth-child(3) {
+            background-color: #FF3366;
+            /* Hot Pink */
+        }
+
+        .hero-content .btn:nth-child(4) {
+            background-color: #33CCFF;
+            /* Bright Blue */
+        }
+
+        .hero-content .btn:nth-child(4) {
+            background-color: #8ebb05;
+            /* Bright Blue */
+        }
+
+        .hero-content .btn:nth-child(6) {
+            background-color: #ff0000;
+            /* Bright Blue */
+        }
+
+        .features {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 50px 20px;
+        }
+
+        .feature-img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .download {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            margin-bottom: 20px;
+        }
+
+        .feature-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .rainbow-text {
+            font-size: 12em;
+            line-height: 1;
+            /* Tighter line spacing */
+            /* Add some bottom margin to compensate for reduced line height */
+            margin-bottom: 10px;
+        }
+
+        /* For mobile screens */
+        @media (max-width: 768px) {
+            .rainbow-text {
+                font-size: 8em;
+                /* Slightly smaller on mobile */
+                line-height: 0.8;
+                /* Even tighter spacing on mobile */
+            }
+        }
+
+        /* More saturated rainbow colors */
+        .rainbow-text span:nth-child(1) {
+            color: #f42335;
+        }
+
+        /* Brighter Red */
+        .rainbow-text span:nth-child(2) {
+            color: #2ef366;
+        }
+
+        /* Brighter Green */
+        .rainbow-text span:nth-child(3) {
+            color: #32a4f1;
+        }
+
+        /* Brighter Blue */
+        .rainbow-text span:nth-child(4) {
+            color: #f5f50d;
+        }
+
+        /* Brighter Yellow */
+        .rainbow-text span:nth-child(5) {
+            color: #f727f7;
+        }
+
+        /* Brighter Pink */
+        .rainbow-text span:nth-child(6) {
+            color: #1eeaea;
+        }
+
+        /* Brighter Cyan */
+        .rainbow-text span:nth-child(7) {
+            color: #f45e2b;
+        }
+
+        /* Brighter Orange */
+        .rainbow-text span:nth-child(8) {
+            color: #a529f8;
+        }
+
+        /* Brighter Purple */
+        .rainbow-text span:nth-child(9) {
+            color: #22e9e9;
+        }
+
+        /* Brighter Light Blue */
+        .rainbow-text span:nth-child(10) {
+            color: #ee2ea1;
+        }
+
+        /* Brighter Rose */
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            max-height: 405px;
+            margin: 0 auto;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .content-section {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 50px 20px;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            width: 100%;
+            /* ensures full width containment */
+            margin-bottom: 20px;
+            object-fit: contain;
+            /* maintains aspect ratio */
+        }
+
+        /* Pastel Rose */
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Feed Your Brain, with Candy! In <span style="color: #ee2ea1">Virtual</span> <span
+                    style="color: #0bbbf6">Reality!</span></h1>
+            <h2 class="rainbow-text">
+                <span>b</span><span>r</span><span>a</span><span>i</span><span>n</span>
+                <span>c</span><span>a</span><span>n</span><span>d</span><span>y</span>!
+            </h2>
+            <p style="font-size:2em">Now available in early access!</p>
+            <div class="button-group">
+                <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/"
+                    class="btn btn-primary btn-lg">Store Page</a>
+            </div>
+            <p style="font-size:2em">Warning! Strobing Visuals!</p>
+            <div class="button-group">
+                <a href="app/index.html" class="btn btn-primary btn-lg">Live Preview</a>
+                <a href="science.html" class="btn btn-primary btn-lg">Science</a>
+                <a href="gallery.html" class="btn btn-primary btn-lg">DLC Gallery</a>
+                <a href="https://www.youtube.com/@BrainCandyApp" class="btn btn-primary btn-lg">YouTube</a>
+                <a href="https://forms.gle/N71oX1C5PP5tpJh49" class="btn btn-primary btn-lg">Request A Key</a>
+                <a href="warning.html" class="btn btn-primary btn-lg">Seizure Warning</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-video-wrapper">
+                        <video class="feature-video" autoplay loop muted playsinline>
+                            <source src="src/images/bc_001.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Tailored Experiences</h3>
+                    <p>Select the mode that suits your mood.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-video-wrapper">
+                        <video class="feature-video" autoplay loop muted playsinline>
+                            <source src="src/images/bc_002.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Easy to Use</h3>
+                    <p>Simple, intuitive interface.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-video-wrapper">
+                        <video class="feature-video" autoplay loop muted playsinline>
+                            <source src="src/images/bc_003.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h3>Scientifically Inspired</h3>
+                    <p>Based on brainwave entrainment research.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero3">
+        <div class="hero-content">
+            <h5 style="line-height: 1">
+                <span style="font-size: 300%"><strong>B</strong></span>ioelectric
+                <span style="font-size: 300%"><strong>R</strong></span>esponse of
+                <span style="font-size: 300%"><strong>A</strong></span>ctivated
+                <span style="font-size: 300%"><strong>I</strong></span>nterconnected
+                <span style="font-size: 300%"><strong>N</strong></span>odes &<br>
+                <span style="font-size: 300%"><strong>C</strong></span>ognitive
+                <span style="font-size: 300%"><strong>A</strong></span>mplification through
+                <span style="font-size: 300%"><strong>N</strong></span>eural
+                <span style="font-size: 300%"><strong>D</strong></span><span
+                    style="font-size: 300%"><strong>Y</strong></span>namics.
+            </h5>
+            <br>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/jjqDQZ5Uha0?si=wli2imSpVT4C2IdN" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Content Section -->
+    <div class="content-section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="src/images/CandyGif_A.gif" alt="Image 1" class="content-image">
+                    <h3>The Science of Light</h3>
+                    <p>Brain Candy uses flickering lights and visual patterns guided by research into altered states by
+                        <a href="https://en.wikipedia.org/wiki/Heinrich_Kl%C3%BCver">Heinrich Kluver</a> to guide your
+                        brain into deep states of relaxation, focus, and energy. We bring science, art, and <a
+                            href="https://youtu.be/0OMdNJ9WDBU?si=t9aDd4tJS3tHy3hE"><strong>fun</strong></a> together
+                        for an
+                        unforgettable experience.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="src/images/CandyGif_B.gif" alt="Image 2" class="content-image">
+                    <h3>How It Works</h3>
+                    <p>The flickering light enters your body through your open eyes, reaching the central brain and
+                        sparking neural rhythms and hyperconnectivity which can help you sync, energize, and breathe your way into a harmonious state.</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <img src="src/images/CandyGif_C.gif" alt="Image 3" class="content-image">
+                    <h3>Designed for Everyone</h3>
+                    <p>Whether you're looking to melt away stress, boost your focus, or unlock your creativity, Brain
+                        Candy
+                        is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="src/images/CandyGif_D.gif" alt="Image 4" class="content-image">
+                    <h3>Sweet States of Mind</h3>
+                    <p>From calming relaxation to bursts of mental energy, Brain Candy helps you discover elusive,
+                        ephemeral, <a
+                            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10089352/#:~:text=First%2C%20we%20tested%20how%20the,at%2010%20Hz%20rhythmic%20FLS.">altered
+                            states</a>. Let our light pulses guide you to a place of wonder, awe, and inner balance.</p>
+                </div>
+            </div>
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="button-group">
+                                <a href="https://forms.gle/GfFYdGP8Z3ZYUrms7" class="btn btn-primary btn-lg">Survey</a>
+                            </div>
+                            <p>Help us improve Brain Candy, take this survey after using the app, receive discounts on
+                                future Brain Candy DLC.</p>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="button-group">
+                                <a href="https://www.rte.ie/radio/lyricfm/clips/22463090/"
+                                    class="btn btn-primary btn-lg">Listen</a>
+                            </div>
+                            <p>Listen to an interview with Jose Montemayor Alba of the <a
+                                    href="https://www.cyberdelic.nexus/">Cyberdelic Society</a> at the Games Ground
+                                conference. Brain Candy was part of their lineup.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me"
+                    style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
