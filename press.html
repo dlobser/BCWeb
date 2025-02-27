@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Brain Candy VR Press Kit - Official press resources" />
+        <meta name="author" content="Brain Candy LLC" />
+        <title>Brain Candy | Press Kit</title>
+        <!-- Font Awesome icons -->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        
+        <style>
+            @font-face {
+                font-family: 'Carbon Block';
+                src: url('src/fonts/Alba_modified.ttf') format('truetype');
+            }
+            
+            body {
+                font-family: 'Montserrat', sans-serif;
+                background-color: black;
+                color: white;
+                line-height: 1.6;
+            }
+            
+            h1, h2, h3, h4, h5 {
+                font-family: 'Carbon Block', 'Montserrat', sans-serif;
+                color: white;
+            }
+            
+            .rainbow-text span:nth-child(1) { color: #f42335; }
+            .rainbow-text span:nth-child(2) { color: #2ef366; }
+            .rainbow-text span:nth-child(3) { color: #32a4f1; }
+            .rainbow-text span:nth-child(4) { color: #f5f50d; }
+            .rainbow-text span:nth-child(5) { color: #f727f7; }
+            .rainbow-text span:nth-child(6) { color: #1eeaea; }
+            .rainbow-text span:nth-child(7) { color: #f45e2b; }
+            .rainbow-text span:nth-child(8) { color: #a529f8; }
+            .rainbow-text span:nth-child(9) { color: #22e9e9; }
+            .rainbow-text span:nth-child(10) { color: #ee2ea1; }
+            
+            .header {
+                background-image: url('src/images/BC_BG.jpg');
+                background-size: 512px;
+                background-position: center;
+                background-repeat: repeat;
+                padding: 60px 20px;
+                text-align: center;
+                position: relative;
+            }
+            
+            .header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.7);
+            }
+            
+            .header-content {
+                position: relative;
+                z-index: 1;
+            }
+            
+            .section {
+                background-image: url('src/images/BCBG_02.jpg');
+                background-size: 512px;
+                padding: 40px 20px;
+            }
+            
+            .content-section {
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 30px;
+                border-radius: 8px;
+                margin-bottom: 30px;
+            }
+            
+            .nav-section {
+                background-color: #222;
+                padding: 15px;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+            
+            .nav-pills .nav-link {
+                color: white;
+                margin: 0 5px;
+                border-radius: 30px;
+            }
+            
+            .nav-pills .nav-link.active {
+                background-color: #FF00FF;
+            }
+            
+            .nav-pills .nav-link:hover:not(.active) {
+                background-color: rgba(255, 0, 255, 0.3);
+            }
+            
+            .image-gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-gap: 15px;
+            }
+            
+            .gallery-image {
+                width: 100%;
+                height: auto;
+                border-radius: 5px;
+                transition: transform 0.3s ease;
+            }
+            
+            .gallery-image:hover {
+                transform: scale(1.05);
+            }
+            
+            .download-btn {
+                background-color: #FF00FF;
+                color: white;
+                border: none;
+                border-radius: 30px;
+                padding: 10px 20px;
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+            
+            .download-btn:hover {
+                background-color: #CC00CC;
+                transform: scale(1.05);
+            }
+            
+            pre {
+                background-color: rgba(50, 50, 50, 0.7);
+                color: #1eeaea;
+                padding: 15px;
+                border-radius: 5px;
+            }
+            
+            .footer {
+                background-color: #222;
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .contact-info {
+                background-color: rgba(50, 50, 50, 0.7);
+                padding: 20px;
+                border-radius: 5px;
+                margin-top: 20px;
+            }
+            
+            .branded-title {
+                font-size: 4em;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            @media (max-width: 768px) {
+                .branded-title {
+                    font-size: 2.5em;
+                }
+                
+                .image-gallery {
+                    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                }
+            }
+        </style>
+    </head>
+    
+    <body id="page-top">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>Feed Your Brain, with Candy! In <span style="color: #ee2ea1">Virtual</span> <span style="color: #0bbbf6">Reality!</span></h1>
+                <h2 class="rainbow-text branded-title">
+                    <span>b</span><span>r</span><span>a</span><span>i</span><span>n</span>
+                    <span>c</span><span>a</span><span>n</span><span>d</span><span>y</span>!
+                </h2>
+                <h3>Press Kit & Media Resources</h3>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="nav-section">
+            <div class="container">
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#description">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#science">Science</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#media">Media</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#download">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="section">
+            <div class="container">
+                <!-- Overview Section -->
+                <section id="overview" class="content-section">
+                    <h2>Overview</h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p><strong>Title:</strong> Brain Candy</p>
+                            <p><strong>Developer:</strong> Brain Candy LLC</p>
+                            <p><strong>Based in:</strong> USA</p>
+                            <p><strong>Release Status:</strong> Early Access</p>
+                            <p><strong>Platform:</strong> Meta Quest (VR)</p>
+                            <p><strong>Price:</strong> Free (Base App) with DLC options</p>
+                            <p><strong>Website:</strong> <a href="#" style="color: #FF00FF;">braincandy.app</a></p>
+                            <p><strong>Social:</strong> 
+                                <a href="https://www.youtube.com/@BrainCandyApp" style="color: #FF00FF;">YouTube</a>
+                            </p>
+                            <p><strong>Email:</strong> <a href="mailto:braincandyapp@proton.me" style="color: #FF00FF;">braincandyapp@proton.me</a></p>
+                        </div>
+                        <div class="col-md-4">
+                            <div style="position: relative; padding-bottom: 100%; height: 0;">
+                                <img src="/src/images/screenshots/BCLogo.png" alt="Brain Candy Logo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Description Section -->
+                <section id="description" class="content-section">
+                    <h2>Description</h2>
+                    <p>Brain Candy is a VR experience that uses flickering lights and visual patterns to guide your brain into various states of consciousness. Drawing on both scientific research and ancient practices, it offers a collection of audio-visual experiences designed to promote relaxation, focus, and creative states of mind.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h4>Short Description (50 words)</h4>
+                            <p>Brain Candy uses strobing lights and dynamic visuals in VR to alter your brain state, helping you relax, focus, or energize based on scientific research into neural resonance and brainwave entrainment.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Medium Description (100 words)</h4>
+                            <p>Brain Candy is a VR experience that uses flickering lights and visual patterns to guide your brain into altered states. Based on research into neural rhythms and sensory processing, each "candy" represents a unique combination of audio-visual stimulation designed to promote specific mental states - from deep relaxation to heightened focus and creativity. The app combines scientific principles with artistic expression to create an immersive journey into consciousness exploration.</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="mt-4">Full Description</h4>
+                    <p>Brain Candy uses flickering lights and visual patterns guided by research into altered states by Heinrich Kluver to guide your brain into deep states of relaxation, focus, and energy. We bring science, art, and fun together for an unforgettable experience.</p>
+                    
+                    <p>The flickering light enters your body through your open eyes, reaching the central brain and sparking neural rhythms and hyperconnectivity which can help you sync, energize, and breathe your way into a harmonious state.</p>
+                    
+                    <p>Whether you're looking to melt away stress, boost your focus, or unlock your creativity, Brain Candy is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.</p>
+                    
+                    <p>From calming relaxation to bursts of mental energy, Brain Candy helps you discover elusive, ephemeral, altered states. Let our light pulses guide you to a place of wonder, awe, and inner balance.</p>
+                    
+                    <h4 class="mt-4">Who Is This For?</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Perfect For:</h5>
+                            <ul>
+                                <li>Meditation enthusiasts looking for new tools to deepen their practice</li>
+                                <li>People interested in consciousness exploration and altered states</li>
+                                <li>VR users seeking relaxation and stress relief experiences</li>
+                                <li>Creative individuals looking for inspiration or flow states</li>
+                                <li>Those curious about the intersection of neuroscience and experience design</li>
+                                <li>Mindfulness practitioners wanting to enhance their focus</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Not Recommended For:</h5>
+                            <ul>
+                                <li>Individuals with photosensitive epilepsy or similar conditions</li>
+                                <li>Children under 13 (following standard VR age recommendations)</li>
+                                <li>Those uncomfortable with intense visual experiences</li>
+                                <li>People seeking traditional gaming experiences with objectives and challenges</li>
+                                <li>Users who experience significant VR motion sickness</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-danger mt-4">
+                        <h5><i class="fas fa-exclamation-triangle"></i> Important Safety Notice</h5>
+                        <p>Brain Candy features strobing visuals that may not be suitable for individuals with photosensitive epilepsy or similar conditions. Please consult the warnings page for full details.</p>
+                    </div>
+                </section>
+                
+                <!-- Science Section -->
+                <section id="science" class="content-section">
+                    <h2>Scientific Background</h2>
+                    <p>Brain Candy is built on a foundation of neuroscience research and traditional practices that recognize the power of rhythmic stimulation on consciousness. Here's a brief overview of the science behind the experience:</p>
+                    
+                    <h4>Neural Symphony</h4>
+                    <p>Inside your head, billions of neurons are performing an intricate dance - not random, but orchestrated in rhythmic patterns that scientists can measure and map. Like a vast neural symphony, these patterns shift and flow as you move between different states of consciousness - from intense focus to deep relaxation and boundless bliss.</p>
+                    
+                    <h4>B.R.A.I.N. C.A.N.D.Y.</h4>
+                    <p>Our name represents our scientific approach:</p>
+                    <ul>
+                        <li><strong>B</strong>ioelectric</li>
+                        <li><strong>R</strong>esponse of</li>
+                        <li><strong>A</strong>ctivated</li>
+                        <li><strong>I</strong>nterconnected</li>
+                        <li><strong>N</strong>odes &</li>
+                        <li><strong>C</strong>ognitive</li>
+                        <li><strong>A</strong>mplification through</li>
+                        <li><strong>N</strong>eural</li>
+                        <li><strong>DY</strong>namics</li>
+                    </ul>
+                    
+                    <h4>Key Scientific Concepts</h4>
+                    <ul>
+                        <li>Brainwave entrainment through rhythmic visual stimulation</li>
+                        <li>Flicker light stimulation inducing thalamocortical hyperconnectivity</li>
+                        <li>Form constants and psychophysical research by Heinrich Kluver</li>
+                        <li>Natural fractal patterns and their effect on neural processing</li>
+                    </ul>
+                    
+                    <p>For more detailed information about the scientific background of Brain Candy, please visit our <a href="#" style="color: #FF00FF;">Science Page</a> which includes full references to research papers and further reading.</p>
+                </section>
+                
+                <!-- Features Section -->
+                <section id="features" class="content-section">
+                    <h2>Features</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Tailored Experiences</h4>
+                            <p>Select the mode that suits your mood, from deep relaxation to energizing focus.</p>
+                            
+                            <h4>Easy to Use</h4>
+                            <p>Simple, intuitive interface designed for accessibility and immersion.</p>
+                            
+                            <h4>Scientifically Inspired</h4>
+                            <p>Based on brainwave entrainment research and neural resonance principles.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Individual Variations</h4>
+                            <p>Each person's nervous system responds uniquely to different patterns of stimulation, creating a personalized experience.</p>
+                            
+                            <h4>Consciousness Laboratory</h4>
+                            <p>Become an active participant in exploring how different patterns affect your unique nervous system.</p>
+                            
+                            <h4>Expanding DLC Gallery</h4>
+                            <p>New experiences continually being developed to explore different states of consciousness.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Gallery Section -->
+                <section id="gallery" class="content-section">
+                    <h2>Gallery</h2>
+                    <p>Below are high-resolution screenshots and promotional images for media use. Click on images to download full resolution versions.</p>
+                    
+                    <div class="image-gallery">
+                        <img src="/src/images/screenshots/screenshot1.png" alt="Brain Candy Screenshot 1" class="gallery-image">
+                        <img src="/src/images/screenshots/screenshot2.png" alt="Brain Candy Screenshot 2" class="gallery-image">
+                        <img src="/src/images/screenshots/screenshot3.png" alt="Brain Candy Screenshot 3" class="gallery-image">
+                        <img src="/src/images/screenshots/screenshot4.png" alt="Brain Candy Screenshot 4" class="gallery-image">
+                        <img src="/src/images/screenshots/screenshot5.png" alt="Brain Candy Screenshot 5" class="gallery-image">
+                        <img src="/src/images/screenshots/BCCapture22560x1440.png" alt="Brain Candy Screenshot 3" class="gallery-image">
+                        <img src="/src/images/screenshots/BCCapture21440x1440.png" alt="Brain Candy Screenshot 4" class="gallery-image">
+                        <img src="/src/images/screenshots/BCCapture21008x1440.png" alt="Brain Candy Screenshot 5" class="gallery-image">
+                        <img src="/src/images/screenshots/BCLogo.png" alt="Brain Candy Screenshot 4" class="gallery-image">
+                        <img src="/src/images/screenshots/BCIcon.png" alt="Brain Candy Screenshot 5" class="gallery-image">
+
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="/src/images/screenshots/brain-candy-screenshots.zip" download class="download-btn">Download All Images (ZIP)</a>
+                    </div>
+                </section>
+                
+                <!-- Media Section -->
+                <section id="media" class="content-section">
+                    <h2>Media & Coverage</h2>
+                    
+                    <h4>Videos</h4>
+                    <div class="row">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7Z0o1Ltpz5M?si=68sdp0qgjFbftP_H" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://youtube.com/embed/60R4GwQweJo?si=ZQRseT_Nfjh2YQNe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/jjqDQZ5Uha0?si=lOqZ3B7aOwymiM25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    
+                    <h4 class="mt-4">Interviews & Articles</h4>
+                    <ul>
+                        <li><a href="https://www.rte.ie/radio/lyricfm/clips/22463090/" style="color: #FF00FF;">RTE Interview with Jose Montemayor Alba of the Cyberdelic Society at Games Ground conference</a></li>
+                    </ul>
+                    
+                    <h4 class="mt-4">Awards & Recognition</h4>
+                    <p>Part of the Cyberdelic Society lineup at Games Ground conference</p>
+                </section>
+                
+                <!-- Download Section -->
+                <section id="download" class="content-section">
+                    <h2>Download & Availability</h2>
+                    
+                    <h4>Platforms</h4>
+                    <p><a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/" style="color: #FF00FF;">Meta Quest Store</a></p>
+                    
+                    <h4>Pricing</h4>
+                    <p>Base Application: $6.99</p>
+                    <p>DLC Packs: Various prices</p>
+                    
+                    <h4>Review Copies</h4>
+                    <p>Journalists and content creators interested in covering Brain Candy can request a review copy through our <a href="https://forms.gle/N71oX1C5PP5tpJh49" style="color: #FF00FF;">Request A Key</a> form.</p>
+                </section>
+                
+                <!-- About Section -->
+                <section id="about" class="content-section">
+                    <h2>About Brain Candy LLC</h2>
+                    <p>Brain Candy LLC is dedicated to creating experiences that alter and uplift people's minds through the immersive medium of VR. We see our work as a contribution to the language and understanding of how to use new media technologies to positively influence consciousness.</p>
+                    
+                    <p>Drawing inspiration from avant-garde artistic movements and ancient ceremonial practices, our team combines scientific research with creative expression to craft immersive experiences that can directly affect the physiological and psychological state of the user.</p>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h4>Lead Contributors</h4>
+                            <p><strong>David Lobser</strong> - Lead Creative Developer</p>
+                            <p><strong>Till Holzapfel</strong> - Scientific Content</p>
+                            <p><strong>Aysu Unal</strong> - Event Production</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Contact Section -->
+                <section id="contact" class="content-section">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="contact-info">
+                        <p><strong>Press Contact:</strong> <a href="mailto:braincandyapp@proton.me" style="color: #FF00FF;">braincandyapp@proton.me</a></p>
+                        
+                        <p><strong>Social Media:</strong></p>
+                        <ul>
+                            <li>YouTube: <a href="https://www.youtube.com/@BrainCandyApp" style="color: #FF00FF;">@BrainCandyApp</a></li>
+                        </ul>
+                        
+                        <p><strong>Website:</strong> <a href="#" style="color: #FF00FF;">braincandy.app</a></p>
+                    </div>
+                </section>
+                
+                <!-- Press Assets Section -->
+                <section id="assets" class="content-section">
+                    <h2>Press Assets</h2>
+                    
+                    <h4>Brand Guidelines</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Correct Usage</h5>
+                            <p>The Brain Candy name should always be written with a space between "Brain" and "Candy". The preferred styling is "Brain Candy" with normal capitalization.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Color Palette</h5>
+                            <div class="d-flex flex-wrap">
+                                <div style="width: 60px; height: 60px; background-color: #FF00FF; margin: 5px; border-radius: 5px;"></div>
+                                <div style="width: 60px; height: 60px; background-color: #00FFFF; margin: 5px; border-radius: 5px;"></div>
+                                <div style="width: 60px; height: 60px; background-color: #FF3366; margin: 5px; border-radius: 5px;"></div>
+                                <div style="width: 60px; height: 60px; background-color: #33CCFF; margin: 5px; border-radius: 5px;"></div>
+                                <div style="width: 60px; height: 60px; background-color: #8ebb05; margin: 5px; border-radius: 5px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button class="download-btn">Download Press Kit (ZIP)</button>
+                        <button class="download-btn">Download Logo Pack (ZIP)</button>
+                        <button class="download-btn">Download Fact Sheet (PDF)</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="container">
+                <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#" style="color: white;">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="#" style="color: white;">Terms of Service</a></li>
+                    <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color: white;">braincandyapp@proton.me</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Bootstrap core JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <!-- Core theme JS -->
+        <script>
+            // Smooth scrolling for nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active link
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            // Update active nav link on scroll
+            window.addEventListener('scroll', function() {
+                let currentSection = '';
+                const sections = document.querySelectorAll('section');
+                const navHeight = 80;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - navHeight) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                    if (navLink.getAttribute('href') === currentSection) {
+                        navLink.classList.add('active');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
