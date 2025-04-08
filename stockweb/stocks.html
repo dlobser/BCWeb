@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Market Sonification</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f8;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .data-display {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .data-card {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+        .positive { background-color: #e6f7e9; }
+        .negative { background-color: #fce8e8; }
+        .neutral { background-color: #f0f0f0; }
+        button {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+        }
+        h1 {
+            color: #333;
+        }
+        .loading {
+            margin-top: 20px;
+            color: #666;
+        }
+        #visualizer {
+            width: 100%;
+            height: 100px;
+            margin-top: 20px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+        .notes-container {
+            margin-top: 10px;
+            color: #666;
+        }
+        .notes-container a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .notes-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Market Sonification</h1>
+        <p>This app creates sounds based on SPY ETF market data. The pitch, volume, and effects change based on market performance.</p>
+        
+        <button id="startButton">Start Audio</button>
+        <button id="fetchData">Fetch Market Data</button>
+        <button id="stopButton" disabled>Stop Audio</button>
+        
+        <div id="loading" class="loading" style="display: none;">Fetching market data...</div>
+        
+        <div class="notes-container">
+            <p><small>Note: Free API keys are limited to 25 requests per day and 5 requests per minute. If you hit these limits, the app will use simulated data.</small></p>
+        </div>
+        
+        <div id="dataDisplay" class="data-display"></div>
+        
+        <div id="visualizer"></div>
+    </div>
+
+    <script>
+        // Variables to store stock data and audio elements
+        let stockData = [];
+        let synth = null;
+        let loop = null;
+        let isPlaying = false;
+        
+        // Alpha Vantage API key
+        const API_KEY = 'V9Z6R0076WWY2UHU';
+
+        // DOM elements
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const fetchButton = document.getElementById('fetchData');
+        const loadingIndicator = document.getElementById('loading');
+        const dataDisplay = document.getElementById('dataDisplay');
+        
+        // Event listeners
+        startButton.addEventListener('click', startAudio);
+        stopButton.addEventListener('click', stopAudio);
+        fetchButton.addEventListener('click', fetchStockData);
+
+        // Initialize audio context on user interaction (required by browsers)
+        startButton.addEventListener('click', async () => {
+            await Tone.start();
+            console.log('Audio is ready');
+        });
+
+        // Fetch stock data from Alpha Vantage or use mock data if API fails
+        async function fetchStockData() {
+            loadingIndicator.style.display = 'block';
+            dataDisplay.innerHTML = '';
+            
+            try {
+                // First try to get daily data which is more reliable with the free tier
+                const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=SPY&apikey=${API_KEY}`;
+                console.log("Fetching daily data from:", url);
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                // Check for API limit message
+                if (data.Note) {
+                    console.warn('API limit reached:', data.Note);
+                    dataDisplay.innerHTML = `<div class="data-card neutral">API limit reached: ${data.Note}</div>`;
+                    useMockData('API limit reached');
+                    return;
+                }
+                
+                // Check for API error
+                if (data["Error Message"]) {
+                    console.warn('API error:', data["Error Message"]);
+                    dataDisplay.innerHTML = `<div class="data-card neutral">API error: ${data["Error Message"]}</div>`;
+                    useMockData('API error');
+                    return;
+                }
+                
+                // Check if we got valid data
+                if (data['Time Series (Daily)']) {
+                    const timeSeriesData = data['Time Series (Daily)'];
+                    const timeKeys = Object.keys(timeSeriesData);
+                    
+                    console.log(`Found ${timeKeys.length} daily data points`);
+                    
+                    if (timeKeys.length === 0) {
+                        console.warn('No data points found');
+                        useMockData('No data points');
+                        return;
+                    }
+                    
+                    stockData = [];
+                    
+                    // Process the data and sort by time (most recent first for daily data)
+                    timeKeys.sort().reverse().slice(0, 20).forEach(timestamp => {
+                        const dataPoint = timeSeriesData[timestamp];
+                        stockData.push({
+                            time: timestamp,
+                            open: parseFloat(dataPoint['1. open']),
+                            high: parseFloat(dataPoint['2. high']),
+                            low: parseFloat(dataPoint['3. low']),
+                            close: parseFloat(dataPoint['4. close']),
+                            volume: parseInt(dataPoint['5. volume'])
+                        });
+                    });
+                    
+                    // Reverse back to chronological order for display and sonification
+                    stockData.reverse();
+                    
+                    // Display real data notification
+                    dataDisplay.innerHTML = `<div class="data-card positive">Using real SPY daily data from Alpha Vantage API</div>`;
+                    
+                    // Display the data
+                    displayStockData();
+                } else {
+                    // If daily data failed, try the global quote as a last resort
+                    const quoteUrl = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=SPY&apikey=${API_KEY}`;
+                    console.log("Trying Global Quote fallback:", quoteUrl);
+                    
+                    const quoteResponse = await fetch(quoteUrl);
+                    const quoteData = await quoteResponse.json();
+                    
+                    if (quoteData['Global Quote'] && Object.keys(quoteData['Global Quote']).length > 0) {
+                        console.log("Using Global Quote data");
+                        const quote = quoteData['Global Quote'];
+                        
+                        // Create a single data point from the quote
+                        const now = new Date().toISOString().split('T')[0];
+                        stockData = [{
+                            time: now,
+                            open: parseFloat(quote['02. open']),
+                            high: parseFloat(quote['03. high']),
+                            low: parseFloat(quote['04. low']),
+                            close: parseFloat(quote['05. price']),
+                            volume: parseInt(quote['06. volume'])
+                        }];
+                        
+                        // Generate more data points based on the single quote
+                        const baseData = stockData[0];
+                        for (let i = 1; i < 10; i++) {
+                            const prevDay = new Date();
+                            prevDay.setDate(prevDay.getDate() - i);
+                            const dateStr = prevDay.toISOString().split('T')[0];
+                            
+                            // Create slightly varied historical data
+                            const variance = (Math.random() - 0.5) * 2;
+                            stockData.unshift({
+                                time: dateStr,
+                                open: baseData.open * (1 + (variance - 0.5) / 100),
+                                high: baseData.high * (1 + (variance + 0.2) / 100),
+                                low: baseData.low * (1 + (variance - 0.7) / 100),
+                                close: baseData.close * (1 + variance / 100),
+                                volume: baseData.volume * (0.95 + Math.random() * 0.1)
+                            });
+                        }
+                        
+                        dataDisplay.innerHTML = `<div class="data-card positive">Using SPY quote data with generated history</div>`;
+                        displayStockData();
+                    } else {
+                        console.warn('All API methods failed');
+                        useMockData('All API methods failed');
+                    }
+                }
+            } catch (error) {
+                // Network or other error - use mock data
+                console.error('Error fetching data:', error);
+                dataDisplay.innerHTML = `<div class="data-card negative">Error fetching data: ${error.message}</div>`;
+                useMockData('Network error');
+            }
+            
+            loadingIndicator.style.display = 'none';
+        }
+        
+        // Generate and use mock data when API fails
+        function useMockData(reason) {
+            console.log(`Using mock data (reason: ${reason})`);
+            const now = new Date();
+            stockData = [];
+            
+            // Create mock data for the last 10 days (daily intervals)
+            for (let i = 0; i < 10; i++) {
+                const date = new Date(now);
+                date.setDate(date.getDate() - i);
+                const dateString = date.toISOString().split('T')[0]; // YYYY-MM-DD format
+                
+                // Generate slightly random but realistic-looking data
+                const basePrice = 450 + Math.sin(i / 3) * 5;
+                const noise = (Math.random() - 0.5) * 2;
+                const open = basePrice + noise;
+                const high = open + Math.random() * 1.5;
+                const low = open - Math.random() * 1.5;
+                const close = (open + high + low) / 3 + (Math.random() - 0.5) * 1.0;
+                const volume = Math.floor(10000000 + Math.random() * 5000000);
+                
+                stockData.unshift({
+                    time: dateString,
+                    open: parseFloat(open.toFixed(2)),
+                    high: parseFloat(high.toFixed(2)),
+                    low: parseFloat(low.toFixed(2)),
+                    close: parseFloat(close.toFixed(2)),
+                    volume: volume
+                });
+            }
+            
+            // Add a notification if not already added
+            if (!dataDisplay.innerHTML.includes('simulated')) {
+                dataDisplay.innerHTML += `<div class="data-card neutral">Using simulated SPY data (${reason}). API key may be rate limited.</div>`;
+            }
+            
+            // Display the mock data
+            displayStockData();
+        }
+
+        // Display the stock data on the page
+        function displayStockData() {
+            if (stockData.length === 0) {
+                dataDisplay.innerHTML = `<div class="data-card neutral">No data available. Fetch data first.</div>`;
+                return;
+            }
+            
+            // Take up to 5 of the most recent data points
+            const recentData = stockData.slice(-5);
+            
+            // Create cards for each data point
+            recentData.forEach(data => {
+                const priceChange = data.close - data.open;
+                const percentChange = (priceChange / data.open) * 100;
+                const isPositive = priceChange >= 0;
+                
+                const card = document.createElement('div');
+                card.className = `data-card ${isPositive ? 'positive' : 'negative'}`;
+                
+                // Format the time/date
+                let timeDisplay = data.time;
+                if (data.time.includes('T')) {
+                    // It's an ISO date-time string
+                    timeDisplay = new Date(data.time).toLocaleTimeString();
+                } else {
+                    // It's just a date string (YYYY-MM-DD)
+                    timeDisplay = new Date(data.time).toLocaleDateString();
+                }
+                
+                card.innerHTML = `
+                    <strong>${timeDisplay}</strong><br>
+                    Close: ${data.close.toFixed(2)}<br>
+                    Change: ${isPositive ? '+' : ''}${priceChange.toFixed(2)} (${isPositive ? '+' : ''}${percentChange.toFixed(2)}%)<br>
+                    Volume: ${data.volume.toLocaleString()}
+                `;
+                
+                dataDisplay.appendChild(card);
+            });
+            
+            // Enable start button if we have data
+            startButton.disabled = false;
+        }
+
+        // Start the audio generation
+        function startAudio() {
+            if (stockData.length === 0) {
+                alert('Please fetch stock data first!');
+                return;
+            }
+            
+            // Initialize audio components
+            initializeAudio();
+            
+            // Start the loop
+            loop.start(0);
+            
+            // Update button states
+            startButton.disabled = true;
+            stopButton.disabled = false;
+            isPlaying = true;
+        }
+
+        // Stop the audio
+        function stopAudio() {
+            if (loop) {
+                loop.stop();
+            }
+            
+            if (synth) {
+                synth.dispose();
+            }
+            
+            // Update button states
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            isPlaying = false;
+        }
+
+        // Initialize Tone.js audio components
+        function initializeAudio() {
+            // Create a polyphonic synth for chords
+            synth = new Tone.PolySynth().toDestination();
+            
+            // Add some effects
+            const reverb = new Tone.Reverb(2).toDestination();
+            const delay = new Tone.FeedbackDelay(0.3, 0.5).toDestination();
+            synth.connect(reverb);
+            synth.connect(delay);
+            
+            // Calculate the market performance metrics for sonification
+            const marketMetrics = calculateMarketMetrics();
+            
+            // Create a repeating pattern
+            let index = 0;
+            loop = new Tone.Loop(time => {
+                // Use the stock data to generate notes
+                playNotesBasedOnMarket(marketMetrics, index, time);
+                index = (index + 1) % 4; // Cycle through 4 patterns
+            }, '8n').start(0);
+            
+            // Set the tempo based on market volatility
+            Tone.Transport.bpm.value = 60 + marketMetrics.volatility * 60;
+            
+            // Start the audio
+            Tone.Transport.start();
+        }
+
+        // Calculate market metrics for sonification
+        function calculateMarketMetrics() {
+            // Use the last 10 data points or all if less
+            const dataPoints = Math.min(stockData.length, 10);
+            const recentData = stockData.slice(-dataPoints);
+            
+            // Calculate overall trend
+            const firstClose = recentData[0].close;
+            const lastClose = recentData[recentData.length - 1].close;
+            const overallChange = (lastClose - firstClose) / firstClose;
+            
+            // Calculate volatility
+            let volatility = 0;
+            for (let i = 1; i < recentData.length; i++) {
+                const prevClose = recentData[i-1].close;
+                const currentClose = recentData[i].close;
+                volatility += Math.abs((currentClose - prevClose) / prevClose);
+            }
+            volatility = volatility / (recentData.length - 1);
+            
+            // Calculate volume intensity
+            const volumes = recentData.map(data => data.volume);
+            const maxVolume = Math.max(...volumes);
+            const minVolume = Math.min(...volumes);
+            const avgVolume = volumes.reduce((sum, vol) => sum + vol, 0) / volumes.length;
+            const volumeIntensity = (avgVolume - minVolume) / (maxVolume - minVolume || 1);
+            
+            return {
+                trend: overallChange,
+                volatility: volatility * 10, // Scale up for better audibility
+                volumeIntensity: volumeIntensity
+            };
+        }
+
+        // Generate notes based on market data
+        function playNotesBasedOnMarket(metrics, patternIndex, time) {
+            // Base note selection on market trend
+            // Higher notes for positive trend, lower for negative
+            let baseNote = 'C4';
+            if (metrics.trend > 0.01) baseNote = 'E4';
+            else if (metrics.trend > 0.005) baseNote = 'D4';
+            else if (metrics.trend < -0.01) baseNote = 'A3';
+            else if (metrics.trend < -0.005) baseNote = 'B3';
+            
+            // Chord complexity based on volatility
+            let chord = [baseNote];
+            if (metrics.volatility > 0.1) {
+                chord.push(Tone.Frequency(baseNote).transpose(4).toNote());
+            }
+            if (metrics.volatility > 0.2) {
+                chord.push(Tone.Frequency(baseNote).transpose(7).toNote());
+            }
+            
+            // Different patterns based on index
+            switch(patternIndex) {
+                case 0:
+                    synth.triggerAttackRelease(chord, '8n', time);
+                    break;
+                case 1:
+                    if (metrics.trend > 0) {
+                        // Ascending arpeggio for positive trend
+                        chord.forEach((note, i) => {
+                            synth.triggerAttackRelease(note, '16n', time + i * 0.1);
+                        });
+                    } else {
+                        // Descending arpeggio for negative trend
+                        chord.reverse().forEach((note, i) => {
+                            synth.triggerAttackRelease(note, '16n', time + i * 0.1);
+                        });
+                    }
+                    break;
+                case 2:
+                    // Volume affects note length
+                    const duration = 0.1 + metrics.volumeIntensity * 0.5;
+                    synth.triggerAttackRelease(chord, duration, time);
+                    break;
+                case 3:
+                    // Add a higher note for accent
+                    const accentNote = Tone.Frequency(baseNote).transpose(12).toNote();
+                    synth.triggerAttackRelease([...chord, accentNote], '16n', time);
+                    break;
+            }
+        }
+
+        // Initial data display message
+        dataDisplay.innerHTML = `<div class="data-card neutral">Click "Fetch Market Data" to begin</div>`;
+    </script>
+</body>
+</html>
