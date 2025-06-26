@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy - Breathing DLC Pack</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Carbon Block', sans-serif;
+            color: #222;
+        }
+
+        .hero-breathing {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .hero-breathing h1,
+        .hero-breathing p {
+            color: white;
+        }
+
+        .hero-breathing::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rainbow-text {
+            font-size: 4em;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .rainbow-text span:nth-child(1) { color: #f42335; }
+        .rainbow-text span:nth-child(2) { color: #2ef366; }
+        .rainbow-text span:nth-child(3) { color: #32a4f1; }
+        .rainbow-text span:nth-child(4) { color: #f5f50d; }
+        .rainbow-text span:nth-child(5) { color: #f727f7; }
+        .rainbow-text span:nth-child(6) { color: #1eeaea; }
+        .rainbow-text span:nth-child(7) { color: #f45e2b; }
+        .rainbow-text span:nth-child(8) { color: #a529f8; }
+
+        .breathing-section {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 50px 0;
+        }
+
+        .breathing-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pack-category {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .pack-category.box { background: linear-gradient(135deg, #ff6b6b 0%, #ffa8a8 100%); }
+        .pack-category.diaphragm { background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); }
+        .pack-category.mindful { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
+        .pack-category.holotropic { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .pack-category.guided { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; }
+
+        .candy-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .candy-list li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 5px 0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        .btn-breathing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-breathing:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        .science-highlight {
+            background: linear-gradient(135deg, #e3ffe7 0%, #d9e7ff 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            font-style: italic;
+            text-align: center;
+            border-left: 5px solid #e17055;
+        }
+
+        .frequency-box {
+            background: linear-gradient(135deg, #a29bfe 0%, #74b9ff 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ff7675 0%, #fd79a8 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .rainbow-text {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero-breathing">
+        <div class="hero-content">
+            <h1 class="rainbow-text">
+                <span>B</span><span>r</span><span>e</span><span>a</span><span>t</span><span>h</span><span>i</span><span>n</span><span>g</span>
+            </h1>
+            <h2>DLC Pack</h2>
+            <p class="lead">Transform your consciousness through the power of breath</p>
+            <div class="mt-4">
+                <a href="#explore" class="btn btn-breathing btn-lg">Explore the Science</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="breathing-section" id="explore">
+        <div class="container">
+            
+            <!-- Introduction -->
+            <div class="breathing-card">
+                <h2>The Breath: Your Gateway to Altered States</h2>
+                <p>Breathing is the most fundamental rhythm of life, and it's also the most powerful tool you have for changing your state of consciousness. Unlike your heartbeat or digestion, breathing operates in both automatic and conscious modes - making it a unique bridge between your voluntary and involuntary nervous systems.</p>
+                
+                <div class="science-highlight">
+                    <strong>Did you know?</strong> Every breath you take sends information throughout your entire nervous system, directly influencing your brain waves, heart rate variability, stress hormones, and even your gene expression. When you change how you breathe, you literally change who you are at a cellular level.
+                </div>
+
+                <p>The Brain Candy Breathing DLC Pack combines ancient breathing wisdom with cutting-edge neuroscience, creating immersive visual experiences that guide you through transformative breathing practices. Each "candy" in our collection synchronizes your breath with carefully crafted visual patterns, helping you achieve specific states of consciousness.</p>
+            </div>
+
+            <!-- Why Breathing Works -->
+            <div class="breathing-card">
+                <h2>The Science: How Breathing Changes Your Brain</h2>
+                
+                <h3>The Autonomic Nervous System</h3>
+                <p>Your autonomic nervous system has two main branches: the sympathetic (fight-or-flight) and parasympathetic (rest-and-digest). Your breathing pattern is the fastest way to shift between these states:</p>
+                
+                <ul>
+                    <li><strong>Fast, shallow breathing</strong> activates your sympathetic nervous system, increasing alertness and energy</li>
+                    <li><strong>Slow, deep breathing</strong> activates your parasympathetic nervous system, promoting relaxation and healing</li>
+                    <li><strong>Breath holding</strong> creates unique neurochemical states that can lead to profound insights and altered consciousness</li>
+                </ul>
+
+                <h3>Heart Rate Variability (HRV)</h3>
+                <p>Your heart doesn't beat like a metronome - it naturally varies its rhythm in response to your breathing. This heart rate variability is a key indicator of nervous system health and resilience. Specific breathing patterns can dramatically improve your HRV, leading to:</p>
+                
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Enhanced emotional regulation</li>
+                            <li>Improved cognitive performance</li>
+                            <li>Better stress resilience</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Increased creativity and flow states</li>
+                            <li>Deeper sleep quality</li>
+                            <li>Enhanced immune function</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    "Breath is the bridge which connects life to consciousness, which unites your body to your thoughts." - Thích Nhất Hạnh
+                </div>
+
+                <h3>Neuroplasticity and Breathing</h3>
+                <p>Regular breathing practices literally rewire your brain through neuroplasticity. Studies show that consistent breath work can increase gray matter in areas associated with attention, emotional regulation, and self-awareness while reducing activity in the amygdala (your brain's alarm center).</p>
+            </div>
+
+            <!-- Frequency Guide -->
+            <div class="breathing-card">
+                <h2>How Often Should You Practice?</h2>
+                
+                <div class="frequency-box">
+                    <h3>Daily Rhythm Recommendations</h3>
+                    <p><strong>Minimum Effective Dose:</strong> 5-10 minutes daily</p>
+                    <p><strong>Optimal Practice:</strong> 15-20 minutes, 1-2 times daily</p>
+                    <p><strong>Deep Exploration:</strong> 30-60 minutes, 2-3 times weekly</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Morning Practice</h4>
+                        <p>Start your day with energizing breath work to activate your sympathetic nervous system and enhance focus. Try our <strong>Box Breathing</strong> or <strong>Holotropic</strong> patterns.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Evening Practice</h4>
+                        <p>Wind down with calming breath work to activate your parasympathetic nervous system. Our <strong>Diaphragm</strong> and <strong>Mindful</strong> patterns are perfect for this.</p>
+                    </div>
+                </div>
+
+                <div class="science-highlight">
+                    <strong>Pro Tip:</strong> Consistency beats intensity. A daily 10-minute practice will create more lasting change than sporadic hour-long sessions.
+                </div>
+            </div>
+
+            <!-- Breathing Pack Categories -->
+            <div class="breathing-card">
+                <h2>The Brain Candy Breathing Collection</h2>
+                <p>Our breathing pack includes 30+ carefully crafted experiences across five distinct categories, each designed to guide you into specific states of consciousness:</p>
+
+                <div class="pack-category box">
+                    <h3>Box Breathing (Square Breathing)</h3>
+                    <p>Master the art of rhythmic breathing with equal inhale, hold, exhale, and hold phases. Perfect for focus, stress relief, and nervous system regulation.</p>
+                    <ul class="candy-list">
+                        <li>OccipitalOmms</li>
+                        <li>ChocolateBox</li>
+                        <li>Minimal</li>
+                        <li>CircularBox</li>
+                        <li>BoxyLadyIntense</li>
+                        <li>BoxyLadyFingers</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category diaphragm">
+                    <h3>Diaphragmatic Breathing</h3>
+                    <p>Engage your primary breathing muscle for deep relaxation, improved oxygen exchange, and parasympathetic activation.</p>
+                    <ul class="candy-list">
+                        <li>ChocoChakras</li>
+                        <li>UpDown</li>
+                        <li>PursedLips</li>
+                        <li>BellySwirls</li>
+                        <li>ButeykoBubbles</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category mindful">
+                    <h3>Mindful Breathing</h3>
+                    <p>Cultivate present-moment awareness through gentle, contemplative breathing practices that enhance meditation and mindfulness.</p>
+                    <ul class="candy-list">
+                        <li>Beats</li>
+                        <li>ControlledBreathingDonuts</li>
+                        <li>ControlledBreathing</li>
+                        <li>ControlledSpeckles</li>
+                        <li>Minimal</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category holotropic">
+                    <h3>Holotropic Breathing</h3>
+                    <p>Explore non-ordinary states of consciousness through accelerated breathing patterns that can induce profound healing and insight.</p>
+                    <ul class="candy-list">
+                        <li>GrayPulse</li>
+                        <li>HyperVentrical</li>
+                        <li>HoloHemispheres</li>
+                        <li>Dynamic Intensity Waves</li>
+                        <li>DomePiece</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category guided">
+                    <h3>Guided Experiences</h3>
+                    <p>Multi-layered journeys that combine different breathing techniques with immersive storytelling and progressive visualization.</p>
+                    <ul class="candy-list">
+                        <li>CircularBox Journey</li>
+                        <li>Mindful Integration</li>
+                        <li>Diaphragm Deep Dive</li>
+                        <li>Box Mastery</li>
+                        <li>Holotropic Exploration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- The Power of Extremes -->
+            <div class="breathing-card">
+                <h2>The Power of Breathing Extremes</h2>
+                
+                <h3>Hyperventilation: The Holotropic Path</h3>
+                <p>Controlled hyperventilation, as practiced in Holotropic Breathwork, temporarily alters your blood chemistry by reducing CO2 levels. This creates a unique neurochemical state that can lead to:</p>
+                
+                <ul>
+                    <li>Altered states of consciousness and vivid internal experiences</li>
+                    <li>Emotional release and processing of stored trauma</li>
+                    <li>Enhanced creativity and problem-solving abilities</li>
+                    <li>Spiritual and mystical experiences</li>
+                    <li>Increased neuroplasticity and learning capacity</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>Important Safety Note:</strong> Holotropic breathing should be practiced in a safe, supervised environment. Never practice intense breathing techniques while driving, swimming, or in any potentially dangerous situation.
+                </div>
+
+                <h3>Hypoventilation: The CO2 Tolerance Path</h3>
+                <p>Deliberately slowing your breathing and practicing breath holds increases CO2 tolerance, leading to remarkable physiological adaptations:</p>
+                
+                <ul>
+                    <li>Improved oxygen utilization at the cellular level</li>
+                    <li>Enhanced stress resilience and emotional stability</li>
+                    <li>Better sleep quality and reduced anxiety</li>
+                    <li>Increased focus and mental clarity</li>
+                    <li>Strengthened respiratory muscles and efficiency</li>
+                </ul>
+
+                <div class="science-highlight">
+                    <strong>The Bohr Effect:</strong> Higher CO2 levels actually improve oxygen delivery to your cells by changing the affinity of hemoglobin for oxygen. This counterintuitive discovery shows why slow breathing can be more beneficial than rapid breathing for many applications.
+                </div>
+            </div>
+
+            <!-- How Brain Candy Helps -->
+            <div class="breathing-card">
+                <h2>How Brain Candy Enhances Your Practice</h2>
+                
+                <h3>Visual Breathing Guidance</h3>
+                <p>Our immersive visual patterns serve as external breathing pacemakers, helping you maintain consistent rhythms without mental effort. The synchronized visuals:</p>
+                
+                <ul>
+                    <li>Eliminate the need to count or time your breaths</li>
+                    <li>Create entrainment effects that naturally guide your nervous system</li>
+                    <li>Provide feedback loops that deepen your breathing practice</li>
+                    <li>Induce mild altered states that enhance receptivity to breath work</li>
+                </ul>
+
+                <h3>Neuroplasticity Enhancement</h3>
+                <p>The combination of rhythmic breathing with synchronized visual stimulation creates ideal conditions for neuroplasticity - your brain's ability to form new neural connections. This combination:</p>
+                
+                <ul>
+                    <li>Accelerates learning and habit formation</li>
+                    <li>Enhances the brain's reward systems</li>
+                    <li>Creates positive associations with healthy breathing patterns</li>
+                    <li>Builds stronger neural pathways for self-regulation</li>
+                </ul>
+
+                <h3>Flow State Induction</h3>
+                <p>Our breathing experiences are designed to facilitate flow states - those optimal performance zones where action and awareness merge. The carefully crafted visual-breathing synchronization helps you:</p>
+                
+                <ul>
+                    <li>Maintain present-moment focus</li>
+                    <li>Reduce internal mental chatter</li>
+                    <li>Experience effortless concentration</li>
+                    <li>Access enhanced creativity and insight</li>
+                </ul>
+            </div>
+
+            <!-- Additional Resources -->
+            <div class="breathing-card">
+                <h2>Additional Resources for Breath Explorers</h2>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="resource-card">
+                            <h4>Books</h4>
+                            <ul>
+                                <li>"Breath: The New Science of a Lost Art" by James Nestor</li>
+                                <li>"The Oxygen Advantage" by Patrick McKeown</li>
+                                <li>"Conscious Breathing" by Gay Hendricks</li>
+                                <li>"The Breathing Book" by Donna Farhi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="resource-card">
+                            <h4>Apps & Tools</h4>
+                            <ul>
+                                <li>HRV4Training (Heart Rate Variability)</li>
+                                <li>Breathe+ (Simple breathing timer)</li>
+                                <li>Insight Timer (Guided meditations)</li>
+                                <li>Box Breathing apps for daily practice</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="resource-card">
+                            <h4>Research & Science</h4>
+                            <ul>
+                                <li>HeartMath Institute (HRV research)</li>
+                                <li>Wim Hof Method studies</li>
+                                <li>Holotropic Breathwork research</li>
+                                <li>Pranayama and meditation studies</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="resource-card">
+                            <h4>Training & Certification</h4>
+                            <ul>
+                                <li>Holotropic Breathwork facilitator training</li>
+                                <li>Wim Hof Method instructor courses</li>
+                                <li>Pranayama teacher training</li>
+                                <li>Breathwork facilitator programs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="breathing-card text-center">
+                <h2>Ready to Transform Your Breath?</h2>
+                <p class="lead">Experience the power of conscious breathing with our immersive DLC pack.</p>
+                
+                <div class="mt-4">
+                    <a href="app/index.html" class="btn btn-breathing btn-lg mr-3">Try Live Preview</a>
+                    <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/" class="btn btn-breathing btn-lg">Get Breathing DLC</a>
+                </div>
+                
+                <div class="mt-4">
+                    <p><small>The Breathing DLC Pack is available as part of Brain Candy VR. Experience requires VR headset.</small></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
