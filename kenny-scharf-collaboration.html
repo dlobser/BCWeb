@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy x Kenny Scharf - Collaboration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Carbon Block', sans-serif;
+            color: #222;
+        }
+
+        .hero-collab {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .hero-collab h1,
+        .hero-collab p {
+            color: white;
+        }
+
+        .hero-collab::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .collab-section {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 50px 0;
+        }
+
+        .collab-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .artist-name {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 3.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .compatibility-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .kenny-style {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa8a8 100%);
+        }
+
+        .bc-style {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+        }
+
+        .art-placeholder {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            border: 3px dashed #666;
+            border-radius: 15px;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .art-placeholder:hover {
+            background: linear-gradient(45deg, #a8edea 0%, #fed6e3 50%, #fed6e3 100%);
+            transform: scale(1.02);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            max-height: 405px;
+            margin: 30px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .synergy-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 6px solid #e17055;
+        }
+
+        .opportunity-highlight {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .btn-collab {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 1.1em;
+        }
+
+        .btn-collab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            font-style: italic;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 768px) {
+            .compatibility-grid {
+                grid-template-columns: 1fr;
+            }
+            .artist-name {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero-collab">
+        <div class="hero-content">
+            <h1>Brain Candy</h1>
+            <h2>×</h2>
+            <div class="artist-name">Kenny Scharf</div>
+            <p class="lead">Where Street Art Meets Neural Art</p>
+            <p>Bringing underground culture into immersive consciousness</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="collab-section">
+        <div class="container">
+            
+            <!-- Demo Video -->
+            <div class="collab-card text-center">
+                <h2>Brain Candy: Neural Art in Motion</h2>
+                <p>Experience the visual language that Kenny's art would inhabit—immersive consciousness environments where rhythm becomes reality</p>
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/-ls3VW3AMY4" title="Brain Candy Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                
+                <p class="mt-3"><em>This demo shows Brain Candy's neural entrainment technology—the perfect canvas for Kenny's dynamic characters to guide consciousness exploration.</em></p>
+            </div>
+
+            <!-- Introduction -->
+            <div class="collab-card">
+                <h2>A Perfect Fusion of Artistic Vision</h2>
+                <p>Kenny Scharf's explosive, cartoon-inspired street art and Brain Candy's psychedelic neural experiences share a revolutionary DNA: both transform ordinary consciousness through bold visual language that bypasses the rational mind and speaks directly to the soul.</p>
+                
+                <p>For over four decades, Kenny has been painting the streets, galleries, and consciousness of the world with his vibrant, character-driven universe—a playground where cartoon mythology meets urban rebellion. Similarly, Brain Candy uses pulsing lights and mathematical patterns to guide users into altered states of awareness, creating immersive experiences that unlock hidden dimensions of perception.</p>
+
+                <div class="synergy-box">
+                    <strong>The Synergy:</strong> Both Kenny's art and Brain Candy operate on the principle that visual rhythm can alter consciousness. Where Kenny uses bold colors and dynamic characters to jolt viewers out of ordinary perception, Brain Candy uses synchronized light patterns to guide the brain into extraordinary states. Together, they create a new frontier: interactive neural art that lives and breathes.
+                </div>
+            </div>
+
+            <!-- Art Style Compatibility -->
+            <div class="collab-card">
+                <h2>Why Kenny Scharf + Brain Candy = Magic</h2>
+                
+                <div class="compatibility-grid">
+                    <div class="compatibility-item kenny-style">
+                        <h4>Kenny's Visual Language</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>🎨 Bold, high-contrast colors</li>
+                            <li>👾 Dynamic cartoon characters</li>
+                            <li>⚡ Energetic, pulsing compositions</li>
+                            <li>🌈 Playful yet profound messaging</li>
+                            <li>🔥 Street culture authenticity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="compatibility-item bc-style">
+                        <h4>Brain Candy's Neural Framework</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li>🧠 Rhythmic light patterns</li>
+                            <li>🌀 Consciousness-altering visuals</li>
+                            <li>✨ Interactive, responsive environments</li>
+                            <li>🎯 Targeted brainwave entrainment</li>
+                            <li>🚀 VR immersion technology</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>Kenny's characters aren't just drawings—they're consciousness carriers, each one embodying specific energetic signatures that resonate with different parts of the psyche. When these characters are liberated into Brain Candy's interactive neural environment, they become more than art: they become guides, teachers, and companions on journeys into expanded awareness.</p>
+            </div>
+
+            <!-- Artist Showcase Placeholder -->
+            <div class="collab-card">
+                <h2>Kenny Scharf: Underground Legend</h2>
+                
+                <div class="art-placeholder">
+                    [KENNY SCHARF ARTWORK GALLERY - SIGNATURE PIECES]
+                    <br><small>Featuring iconic characters, street murals, and gallery works</small>
+                </div>
+
+                <p>From the grimy subway tunnels of 1980s New York to the white walls of prestigious galleries worldwide, Kenny Scharf has consistently pushed the boundaries between high and low culture. His cartoon-inspired characters—part alien, part animal, part pure creative energy—have become iconic symbols of artistic rebellion and joy.</p>
+
+                <p>Kenny's work operates on multiple levels simultaneously: accessible enough for children to love, sophisticated enough for art critics to analyze, and powerful enough to stop people in their tracks on busy city streets. This multilayered accessibility makes his art perfect for Brain Candy's diverse user base, from curious newcomers to experienced consciousness explorers.</p>
+            </div>
+
+
+
+            <!-- The Collaboration Vision -->
+            <div class="collab-card">
+                <h2>The Vision: Neural Street Art for the Digital Age</h2>
+                
+                <p>Imagine Kenny's most beloved characters—his alien-creature hybrids, his vibrant monsters, his cartoon revolutionaries—not just painted on walls, but living, breathing, and pulsing in synchronization with your brainwaves. In Brain Candy's VR environment, these characters become three-dimensional consciousness guides, each one programmed with specific neural frequencies that correspond to different states of awareness.</p>
+
+                <div class="quote-box">
+                    "Art should be accessible, fun, and transformative. Brain Candy gives Kenny's characters the power to literally change minds—not just metaphorically, but neurologically."
+                </div>
+
+                <h3>The Experience Design</h3>
+                <ul>
+                    <li><strong>Character-Guided Journeys:</strong> Each of Kenny's iconic characters becomes a guide for specific types of consciousness exploration—some leading users into deep relaxation, others into creative flow states, others into pure joy and playfulness.</li>
+                    <li><strong>Interactive Street Art:</strong> Users can "paint" alongside Kenny's characters in virtual space, creating collaborative artworks that respond to their brainwave patterns and emotional states.</li>
+                    <li><strong>Neural Graffiti:</strong> A new art form where Kenny's signature style adapts in real-time to users' consciousness states, creating unique, personalized artworks that exist at the intersection of mind and machine.</li>
+                    <li><strong>Urban Meditation:</strong> Transform Kenny's street art aesthetic into immersive meditation environments that make mindfulness accessible to urban culture and younger generations.</li>
+                </ul>
+            </div>
+
+            <!-- Audience Expansion -->
+            <div class="collab-card">
+                <h2>Bringing Kenny's Art to New Frontiers</h2>
+                
+                <div class="opportunity-highlight">
+                    <h3>The Opportunity</h3>
+                    <p>Brain Candy's global VR audience represents an entirely new frontier for Kenny's artistic reach—a generation of digital natives hungry for authentic cultural experiences and consciousness exploration.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Traditional Kenny Scharf Audience</h4>
+                        <ul>
+                            <li>Street art enthusiasts</li>
+                            <li>Gallery collectors</li>
+                            <li>80s/90s culture fans</li>
+                            <li>Urban art community</li>
+                            <li>Pop culture historians</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Brain Candy's VR Audience</h4>
+                        <ul>
+                            <li>Consciousness explorers</li>
+                            <li>VR early adopters</li>
+                            <li>Meditation practitioners</li>
+                            <li>Digital art collectors</li>
+                            <li>Neurofeedback enthusiasts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>This collaboration introduces Kenny's rebellious, joyful aesthetic to audiences who may never have encountered street art, while simultaneously bringing Brain Candy's consciousness technology to the broader art world. It's a cultural bridge that benefits both communities.</p>
+
+                <div class="synergy-box">
+                    <strong>Cultural Impact:</strong> By merging Kenny's street credibility with Brain Candy's technological innovation, we create something unprecedented: neural art that carries the soul of the underground while pushing the boundaries of what art can do to human consciousness.
+                </div>
+            </div>
+
+            <!-- More Art Placeholders -->
+            <div class="collab-card">
+                <h2>Character Universe Expansion</h2>
+                
+                <div class="art-placeholder">
+                    [KENNY SCHARF CHARACTER STUDIES]
+                    <br><small>Individual character profiles showing neural-state associations</small>
+                </div>
+
+                <p>Each of Kenny's characters embodies different archetypal energies that naturally align with specific brainwave states. The mischievous aliens might guide users into playful creativity (alpha waves), while the more intense creatures could facilitate deep transformative experiences (theta states). This isn't arbitrary—it's based on the emotional and energetic signatures that Kenny has already embedded in these characters through decades of artistic development.</p>
+
+                <div class="art-placeholder">
+                    [BRAIN CANDY INTEGRATION MOCKUPS]
+                    <br><small>Showing Kenny's art integrated into BC's VR environment</small>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="collab-card text-center">
+                <h2>Ready to Paint the Future of Consciousness?</h2>
+                <p class="lead">This collaboration represents more than just another art project—it's a chance to pioneer an entirely new medium where art doesn't just hang on walls or live in galleries, but literally transforms the minds that experience it.</p>
+                
+                <p>Kenny's four decades of artistic rebellion meet Brain Candy's cutting-edge neural technology. The result? Art that doesn't just move people emotionally, but guides them into expanded states of consciousness where creativity, healing, and transformation become possible.</p>
+                
+                <div class="mt-4">
+                    <a href="mailto:braincandyapp@proton.me" class="btn btn-collab btn-lg">Let's Create Neural Magic Together</a>
+                </div>
+                
+                <div class="mt-4">
+                    <p><small>Contact us to explore collaboration opportunities and technical specifications</small></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- Elfsight AI Chatbot | Brain Candy Assistant -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7" data-elfsight-app-lazy></div>
+</body>
+
+</html>

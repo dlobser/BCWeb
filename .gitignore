@@ -1,0 +1,21 @@
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.production
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Server logs
+*.log
+
+# API keys and secrets
+config.json
+secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db

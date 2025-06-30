@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy ChatGPT Assistant</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            padding: 30px 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-messages {
+            height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #33CCFF, #00FFFF);
+            color: #000;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .bot-message {
+            background: linear-gradient(135deg, #FF00FF, #FF3366);
+            color: white;
+        }
+
+        .typing-indicator {
+            background: #333;
+            color: #888;
+            font-style: italic;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: #222;
+            border-top: 1px solid #444;
+        }
+
+        .chat-input {
+            background: #333;
+            border: 1px solid #555;
+            color: white;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        .chat-input:focus {
+            background: #444;
+            border-color: #33CCFF;
+            color: white;
+            box-shadow: 0 0 10px rgba(51, 204, 255, 0.3);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #33CCFF, #00FFFF);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: #000;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            color: #33CCFF !important;
+            font-weight: 600;
+        }
+
+        .nav-link:hover {
+            color: #00FFFF !important;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .video-link {
+            background: linear-gradient(135deg, #FF3366, #FF00FF);
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        .video-link:hover {
+            transform: scale(1.05);
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Brain Candy ChatGPT Assistant</h1>
+            <p>Ask me anything about Brain Candy, brainwave entrainment, or get video recommendations!</p>
+            <nav>
+                <a href="main.html" class="nav-link">← Back to Main</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="chat-container">
+            <!-- Elfsight AI Chatbot | Brain Candy Assistant -->
+            <div class="elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7" data-elfsight-app-lazy></div>
+        </div>
+
+        <!-- Knowledge Base for Training (Hidden from users) -->
+        <div style="display: none;" id="knowledge-base">
+            <h2>Brain Candy Knowledge Base for Chatbot Training</h2>
+            <p>Copy and paste this into your Elfsight chatbot training:</p>
+            
+            <h3>ABOUT BRAIN CANDY:</h3>
+            <ul>
+                <li>Brain Candy is a VR app available in early access on Meta Quest</li>
+                <li>Uses flickering lights and visual patterns based on brainwave entrainment research</li>
+                <li>Designed to guide users into states of relaxation, focus, and energy</li>
+                <li>Based on research by Heinrich Kluver into altered states</li>
+                <li>Developed by Brain Candy LLC</li>
+                <li>Features strobing visuals (comes with seizure warnings)</li>
+            </ul>
+
+            <h3>SCIENCE:</h3>
+            <ul>
+                <li>Uses bioelectric response of activated interconnected nodes</li>
+                <li>Cognitive amplification through neural dynamics (B.R.A.I.N. C.A.N.D.Y.)</li>
+                <li>Flickering light enters through open eyes, reaching central brain</li>
+                <li>Sparks neural rhythms and hyperconnectivity</li>
+                <li>Based on brainwave entrainment research</li>
+                <li>Helps sync, energize, and achieve harmonious states</li>
+            </ul>
+
+            <h3>FEATURES:</h3>
+            <ul>
+                <li>Tailored experiences with different modes</li>
+                <li>Simple, intuitive interface</li>
+                <li>Scientifically inspired design</li>
+                <li>Multiple DLC content including breathing pack</li>
+            </ul>
+
+            <h3>SAFETY:</h3>
+            <ul>
+                <li>Contains strobing visuals - seizure warning required</li>
+                <li>Not recommended for those with photosensitive epilepsy</li>
+                <li>Users should read safety warnings before use</li>
+            </ul>
+
+            <h3>AVAILABILITY:</h3>
+            <ul>
+                <li>Available on Meta Quest store</li>
+                <li>Live preview available on website</li>
+                <li>Early access keys available through request form</li>
+            </ul>
+
+            <h3>KEY VIDEOS:</h3>
+            <ul>
+                <li>Official Trailer: https://www.youtube.com/watch?v=jjqDQZ5Uha0</li>
+                <li>YouTube Channel: @BrainCandyApp</li>
+                <li>Cyberdelic Society Interview: https://www.rte.ie/radio/lyricfm/clips/22463090/</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Elfsight AI Chatbot Script -->
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+</body>
+</html>

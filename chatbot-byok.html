@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy ChatGPT Assistant - User API Key</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Same styling as before */
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            padding: 30px 20px;
+            position: relative;
+            text-align: center;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        .api-key-setup {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #222;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .api-key-input {
+            background: #333;
+            border: 1px solid #555;
+            color: white;
+            border-radius: 25px;
+            padding: 12px 20px;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .btn-setup {
+            background: linear-gradient(135deg, #33CCFF, #00FFFF);
+            border: none;
+            border-radius: 25px;
+            color: #000;
+            font-weight: bold;
+            padding: 12px 30px;
+            margin: 10px;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Brain Candy ChatGPT Assistant</h1>
+            <p>Bring Your Own API Key Version</p>
+            <nav>
+                <a href="main.html" style="color: #33CCFF; font-weight: 600;">← Back to Main</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="api-key-setup">
+            <h3>🔑 Setup Required</h3>
+            <p>To use this ChatGPT assistant, you'll need your own OpenAI API key:</p>
+            
+            <ol style="text-align: left;">
+                <li>Go to <a href="https://platform.openai.com/api-keys" target="_blank" style="color: #33CCFF;">OpenAI API Keys</a></li>
+                <li>Create a new secret key</li>
+                <li>Paste it below (it's stored locally only)</li>
+            </ol>
+
+            <input type="password" class="api-key-input" id="apiKeyInput" 
+                   placeholder="sk-...your OpenAI API key">
+            
+            <div>
+                <button class="btn btn-setup" onclick="setupChatbot()">Start Chatting</button>
+            </div>
+
+            <div style="margin-top: 20px; font-size: 14px; color: #888;">
+                <strong>Privacy:</strong> Your API key is only stored in your browser and never sent to our servers.
+                <br><strong>Cost:</strong> You pay OpenAI directly for usage (typically pennies per conversation).
+            </div>
+        </div>
+
+        <div id="chatInterface" style="display: none;">
+            <!-- Chat interface would go here -->
+            <p style="text-align: center; color: #33CCFF;">Chat interface will appear here once API key is set!</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+    </div>
+
+    <script>
+        function setupChatbot() {
+            const apiKey = document.getElementById('apiKeyInput').value;
+            if (apiKey.startsWith('sk-')) {
+                localStorage.setItem('openai_api_key', apiKey);
+                document.querySelector('.api-key-setup').style.display = 'none';
+                document.getElementById('chatInterface').style.display = 'block';
+                alert('API key saved! Chat interface would load here.');
+            } else {
+                alert('Please enter a valid OpenAI API key (starts with sk-)');
+            }
+        }
+    </script>
+</body>
+</html>
