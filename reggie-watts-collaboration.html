@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brain candy! x reggie watts collaboration</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        .hero {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .rainbow-text {
+            font-size: 8em;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .rainbow-text span:nth-child(1) { color: #f42335; }
+        .rainbow-text span:nth-child(2) { color: #2ef366; }
+        .rainbow-text span:nth-child(3) { color: #32a4f1; }
+        .rainbow-text span:nth-child(4) { color: #f5f50d; }
+        .rainbow-text span:nth-child(5) { color: #f727f7; }
+        .rainbow-text span:nth-child(6) { color: #1eeaea; }
+        .rainbow-text span:nth-child(7) { color: #f45e2b; }
+        .rainbow-text span:nth-child(8) { color: #a529f8; }
+        .rainbow-text span:nth-child(9) { color: #22e9e9; }
+        .rainbow-text span:nth-child(10) { color: #ee2ea1; }
+
+        .collaboration-x {
+            font-size: 6em;
+            color: #ffbe0b;
+            margin: 0 30px;
+        }
+
+        .content-section {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .content-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .content-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .phase-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            border-color: #f727f7;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(247, 39, 247, 0.2);
+        }
+
+        .phase-number {
+            background: linear-gradient(45deg, #f42335, #a529f8);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+
+        .phase-timeline {
+            background: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffbe0b;
+            float: right;
+        }
+
+        .btn {
+            margin: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            transition: transform 0.2s, opacity 0.2s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn:nth-child(1) { background-color: #FF00FF; }
+        .btn:nth-child(2) { background-color: #00FFFF; color: #000; }
+        .btn:nth-child(3) { background-color: #FF3366; }
+        .btn:nth-child(4) { background-color: #33CCFF; }
+        .btn:nth-child(5) { background-color: #8ebb05; }
+        .btn:nth-child(6) { background-color: #ff0000; }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .tech-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        .tech-card h4 {
+            color: #32a4f1;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .rainbow-text {
+                font-size: 4em;
+            }
+            .collaboration-x {
+                font-size: 3em;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>
+                <span class="rainbow-text">
+                    <span>b</span><span>r</span><span>a</span><span>i</span><span>n</span>
+                    <span>c</span><span>a</span><span>n</span><span>d</span><span>y</span>!
+                </span>
+                <span class="collaboration-x">×</span>
+                <span style="color: #1eeaea; font-size: 3em;">reggie watts</span>
+            </h1>
+            <p style="font-size:1.8em; margin-top: 20px;">Immersive Audio-Visual Experiences</p>
+            <p style="font-size:1.3em; color: #f727f7;">Multi-Phase Collaboration Concept</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 style="text-align: center; margin-bottom: 50px; color: #2ef366;">The Vision</h2>
+                    <p style="text-align: center; font-size: 1.4rem; margin-bottom: 60px; color: #ffffff;">
+                        Imagine stepping into a world where Reggie Watts' musical genius meets Brain Candy's neural entrainment technology. Where every beat, every vocal loop, every comedic moment becomes a living, breathing visual symphony that dances behind your eyes and rewires your consciousness. This isn't just entertainment—it's a journey through altered states guided by one of the most innovative artists of our time.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="phase-card">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="phase-number">01</span>
+                    <h3 style="flex: 1; margin: 0;">Berlin Collective Journey</h3>
+                    <span class="phase-timeline">Soon</span>
+                </div>
+                <p><strong style="color: #32a4f1;">40-60 participants</strong> | Synchronized VR + Reactive Projections + Live Audio</p>
+                
+                <p style="margin-top: 20px; color: #ffffff; font-size: 1.1rem;">
+                    Picture this: You slip on a VR headset in a darkened Berlin venue as Reggie's voice begins to weave its magic around you. But you're not alone in this journey—59 other souls are traveling the same psychedelic pathway, their presence felt as ethereal avatars floating through impossible geometries of light and sound.
+                </p>
+                
+                <p style="color: #cccccc;">
+                    As Reggie builds his signature vocal loops live, each layer materializes as cascading candy fractals that pulse and morph in perfect synchronization across every headset. The room's walls come alive with projections that mirror your shared VR experience—creating a bridge between the digital realm and physical space. When Reggie hits a bass note, crystalline candy structures shatter into a million sparkling fragments. When he layers in that ethereal falsetto, geometric mandalas bloom like digital flowers, their petals made of pure frequency and color.
+                </p>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Real-time neural entrainment synchronized to Reggie's live performance
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Shared consciousness experience across all VR participants
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        360° projection mapping creates total environmental immersion
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="phase-card">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="phase-number">02</span>
+                    <h3 style="flex: 1; margin: 0;">LA Interactive Playground</h3>
+                    <span class="phase-timeline">Next</span>
+                </div>
+                <p><strong style="color: #32a4f1;">20 participants</strong> | Collaborative VJ Controls + Live Performance</p>
+                
+                <p style="margin-top: 20px; color: #ffffff; font-size: 1.1rem;">
+                    In this intimate LA setting, you become part of Reggie's creative process. Imagine having a direct neural link to the visual fabric of reality itself—every gesture you make in VR becomes part of the collective candy symphony that surrounds the room.
+                </p>
+                
+                <p style="color: #cccccc;">
+                    As Reggie performs, participants take turns becoming visual conductors, their hand movements in VR sculpting the candy environments that everyone experiences. One person might paint flowing rivers of chromatic sweetness across the virtual sky while another builds towering spires of crystallized rhythm. Reggie responds to these visuals in real-time, his music evolving based on the collaborative artwork being born around him. It's jazz improvisation meets digital synesthesia—a feedback loop between human creativity and AI-generated beauty where the boundaries between performer and audience dissolve completely.
+                </p>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Participants control candy generation through gesture and intention
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Reggie's performance adapts to the collective visual creation
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Low-latency networking enables seamless collaborative dreaming
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase-card">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="phase-number">03</span>
+                    <h3 style="flex: 1; margin: 0;">The Reggie Watts Candy Cosmos</h3>
+                    <span class="phase-timeline">Future</span>
+                </div>
+                <p><strong style="color: #32a4f1;">Location-Based Journey</strong> | Guided Exploration + Ritual Participation</p>
+                
+                <p style="margin-top: 20px; color: #ffffff; font-size: 1.1rem;">
+                    Enter a permanent installation where Reggie Watts has become your shamanic guide through different dimensions of consciousness. Whether he's physically present or appearing as a hyper-realistic avatar, his presence permeates every corner of this multi-room candy cathedral.
+                </p>
+                
+                <p style="color: #cccccc;">
+                    Your journey begins in the "Frequency Forest"—a room where sound-reactive trees made of crystallized candy grow from Reggie's vocal improvisations. Move to the "Beatbox Bazaar" where you must learn to create rhythmic patterns that unlock hidden candy treasures. In the "Comedy Clarity Chamber," Reggie's jokes become geometric puzzles that reorganize your visual field when solved correctly. The final destination: the "Collective Consciousness Cathedral" where all participants gather for a closing ceremony—a group meditation where everyone's brainwaves are visualized as a shared candy mandala that pulses with unified intention.
+                </p>
+
+                <p style="color: #cccccc;">
+                    Each space responds to your biometric data—heart rate, breathing, even micro-expressions—adjusting the intensity and character of the candy visuals to guide you toward specific states of consciousness. Some rooms energize, others deeply relax, and a few are designed to unlock creative insights you never knew you had.
+                </p>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Biometric sensors customize each room's neural entrainment to your state
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Interactive challenges unlock progressively deeper candy dimensions
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Group rituals create shared altered states and lasting connections
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="phase-card">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="phase-number">04</span>
+                    <h3 style="flex: 1; margin: 0;">Personal Reggie Portal</h3>
+                    <span class="phase-timeline">Anytime</span>
+                </div>
+                <p><strong style="color: #32a4f1;">Home Experience</strong> | Your Own Watts-Designed Neural Playground</p>
+                
+                <p style="margin-top: 20px; color: #ffffff; font-size: 1.1rem;">
+                    Imagine having Reggie Watts as your personal consciousness coach, available whenever you need to shift your mental state. This isn't just music—it's a sophisticated neural training system disguised as the most entertaining app you've ever experienced.
+                </p>
+                
+                <p style="color: #cccccc;">
+                    Choose from "Morning Motivation Mode" where Reggie's energetic beatboxing patterns synchronize with candy visuals designed to boost dopamine and focus. Need to unwind? "Chill Crystallization" features his most ethereal vocal loops paired with slowly morphing mandala-candy that guides you into meditative states. For creative work, there's "Innovation Immersion"—chaotic, beautiful candy storms that mirror Reggie's improvisational genius, designed to break you out of linear thinking patterns.
+                </p>
+
+                <p style="color: #cccccc;">
+                    Each session adapts to your usage patterns. The AI learns whether you prefer his silly voices, serious musical moments, or philosophical musings, then crafts personalized candy experiences that feel like having a private concert in your living room. Advanced users can even access "Reggie's Lab"—experimental tracks and unfinished musical ideas paired with cutting-edge candy algorithms that push the boundaries of what's possible.
+                </p>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        AI learns your preferences to create personalized neural journeys
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Exclusive Reggie content ranging from guided meditations to comedy sets
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Access to experimental tracks and behind-the-scenes creative process
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="phase-card">
+                <div class="d-flex align-items-center mb-3">
+                    <span class="phase-number">05</span>
+                    <h3 style="flex: 1; margin: 0;">Cosmic Candy Cathedral</h3>
+                    <span class="phase-timeline">Scalable</span>
+                </div>
+                <p><strong style="color: #32a4f1;">Planetarium Experience</strong> | Interstellar Journey with Reggie</p>
+                
+                <p style="margin-top: 20px; color: #ffffff; font-size: 1.1rem;">
+                    Lie back under a dome of stars as Reggie Watts takes you on the ultimate consciousness journey—a carefully crafted 60-minute experience that uses the entire sky as your canvas for neural exploration.
+                </p>
+                
+                <p style="color: #cccccc;">
+                    The show opens with Reggie's voice emerging from the darkness, as if transmitted from deep space. His first vocal loop triggers the birth of candy constellations above you—geometric patterns that slowly evolve into recognizable forms: a laughing mouth made of twinkling sugar crystals, a guitar neck stretching across the Milky Way, beatbox rhythms that pulse like binary star systems.
+                </p>
+
+                <p style="color: #cccccc;">
+                    As the performance builds, you're no longer in a planetarium—you're floating through Reggie's mind itself. His stream-of-consciousness monologues become guided tours through impossible candy dimensions. Philosophy becomes edible. Music becomes architecture. Comedy becomes the fundamental force that holds this sweet universe together. The dome's surround sound system makes every vocal texture feel like it's being whispered directly into your neural pathways.
+                </p>
+
+                <p style="color: #cccccc;">
+                    The finale is pure transcendence: as hundreds of candy forms swirl around you in perfect synchronization with a 20-voice Reggie Watts choir, the boundaries between self and cosmos dissolve. You're not watching a show—you're experiencing what it feels like to be a single neuron in the mind of an infinitely creative universe.
+                </p>
+
+                <ul style="list-style: none; padding-left: 0; margin-top: 20px;">
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Full-dome 8K projection creates seamless visual immersion
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Ambisonic audio design places you inside Reggie's creative process
+                    </li>
+                    <li style="padding: 8px 0; padding-left: 20px; position: relative; color: #f727f7;">
+                        <span style="position: absolute; left: 0; color: #f42335;">▶</span>
+                        Scalable format works in any dome from 20-foot to full planetarium size
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Technical Requirements -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h2 style="text-align: center; margin-bottom: 40px; color: #f5f50d;">Technical Requirements</h2>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <h4>VR Hardware</h4>
+                            <p>Multiple headset support, wireless streaming capabilities</p>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Audio System</h4>
+                            <p>Real-time reactive processing, spatial audio support</p>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Networking</h4>
+                            <p>Low-latency synchronization, scalable participant handling</p>
+                        </div>
+                        <div class="tech-card">
+                            <h4>Projection</h4>
+                            <p>High-resolution reactive visuals, dome format compatibility</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center mt-5">
+                <h3 style="margin-bottom: 30px; color: #1eeaea;">Ready to Collaborate?</h3>
+                <div class="button-group">
+                    <a href="main.html" class="btn btn-lg">Brain Candy Home</a>
+                    <a href="mailto:braincandyapp@proton.me" class="btn btn-lg">Contact Us</a>
+                    <a href="press.html" class="btn btn-lg">Press Kit</a>
+                    <a href="science.html" class="btn btn-lg">The Science</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
