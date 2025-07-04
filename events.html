@@ -102,22 +102,31 @@
             .event-image {
                 height: 200px;
             }
+            
+            .event-title {
+                margin-top: 40px; /* Add space above title on mobile */
+                font-size: 2em; /* Slightly smaller on mobile */
+            }
+            
+            .event-card .row:first-child {
+                margin-top: 30px; /* Add space to first row containing title */
+            }
         }
 
         /* Individual image positioning controls */
         .ps25-01 { object-position: center center; }
-        .ps25-02 { object-position: center center; }
+        .ps25-02 { object-position: center 25%; }
         .ps25-03 { object-position: center 35%; }
         .awe-01 { object-position: top center; }
         .awe-02 { object-position: center 40%; }
         .creative-01 { object-position: center center; }
         .creative-02 { object-position: center center; }
         .mindxr-01 { object-position: center center; }
-        .mindxr-02 { object-position: center center; }
+        .mindxr-02 { object-position: center 30%; }
         .nyvr-01 { object-position: center center; }
         .nyvr-02 { object-position: center center; }
-        .nyvr-03 { object-position: center center; }
-        .nyvr-04 { object-position: center center; }
+        .nyvr-03 { object-position: center top; }
+        .nyvr-04 { object-position: center top; }
         .qri-01 { object-position: center center; }
         .qri-02 { object-position: center 20%; }
         .qri-03 { object-position: center 20%; }
@@ -248,25 +257,55 @@
     <div class="content-section">
         <div class="container">
 
+            <div class="event-card">
+            <h2 class="event-title" style="text-align: center; margin-bottom: 30px;">Lessons Learned</h2>
+            <p style="font-size: 1.2em; margin-bottom: 25px; text-align: center;">
+                <em>Brain Candy is an ongoing experiment, and user feedback is guiding every step of the process:</em>
+            </p>
             
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 style="color: #FF00FF; margin-bottom: 20px;">Audience Reactions</h4>
+                    <ul style="font-size: 1.1em; line-height: 1.8;">
+                        <li><strong>1/10 people absolutely love it</strong> — it changes their life. Some people are using it as a replacement for much more expensive devices and services</li>
+                        <li><strong>1/10 think it's pretty great</strong> and will try again but aren't effusive</li>
+                        <li><strong>1/10 absolutely hate it</strong> and find it extremely uncomfortable</li>
+                        <li><strong>1/10 find it kind of dull</strong></li>
+                        <li><strong>The broad middle</strong> seem interested and appreciative, but hard to tell if they'll follow up.</li>
+                        <!-- <li><strong>Some people are using it as a replacement for much more expensive devices and services</li> -->
+                    </ul>
+                </div>
+                
+                <div class="col-md-6">
+                    <h4 style="color: #00FFFF; margin-bottom: 20px;">Live Demo Challenges</h4>
+                    <ul style="font-size: 1.1em; line-height: 1.8;">
+                        <li><strong>People are nice</strong> — makes it hard to get pointed feedback</li>
+                        <li><strong>Public VR embarrassment</strong> is still real</li>
+                        <li><strong>Onboarding is brutal</strong> — far more difficult than expected</li>
+                        <li><strong>Tutorial confusion</strong> — people get stuck and think that's the whole experience</li>
+                        <li><strong>Premature gratitude</strong> — some take off the headset and rave about the tutorial, never experiencing the real thing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
             <!-- Psychedelic Science, Denver -->
             <div class="event-card">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="src/images/Events/PS25_01.jpg" alt="Psychedelic Science 2025" class="event-image ps25-01">
+                        <img src="src/images/Events/PS25_02.jpg" alt="Psychedelic Science 2025" class="event-image ps25-01">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <h3 class="event-title">PS25</h3>
                         <p class="event-location">Denver, Colorado</p>
                         <p class="event-description">
-                            The premier conference for psychedelic research, bringing together scientists, clinicians, and advocates. This event showcases the latest research in psychedelic medicine and consciousness studies.
+                            The premier conference for psychedelic research.
                         </p>
-                        <p><em>I was an interloper this year as Deep Space was gone. Two years ago we shared Visitations with over 300 guests. This year we attended a half dozen afterparties with an audience that definitely 'got it'</em></p>
+                        <p><em>No Deep Space this year (two years ago: we shared VR with hundreds in a mini, indoor burning man). Still incredible! Researchers, artists, psychiatrists, community builders who actually understand Brain Candy beyond just VR tech.</em></p>
                     </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6">
-                        <img src="src/images/Events/PS25_02.jpg" alt="Psychedelic Science Conference" class="event-image ps25-02">
+                        <img src="src/images/Events/PS25_01.jpg" alt="Psychedelic Science Conference" class="event-image ps25-02">
                     </div>
                     <div class="col-md-6">
                         <img src="src/images/Events/PS25_03.jpg" alt="Psychedelic Science Booth" class="event-image ps25-03">
@@ -277,14 +316,14 @@
             <!-- Mind XR, Berlin -->
             <div class="event-card">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <img src="src/images/Events/MindXR_01.jpg" alt="Mind XR Berlin" class="event-image mindxr-01">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <h3 class="event-title">Mind XR</h3>
                         <p class="event-location">Berlin, Germany</p>
                         <p class="event-description">
-                            A conference focused on extended reality (XR) technologies and their applications in mental health and consciousness research. Mind XR explores the intersection of immersive technology and psychological well-being.
+                            Mind XR explores the intersection of immersive technology and psychological well-being.
                         </p>
                         <p><em>I was not able to attend this small conference in Berlin, but my science advisor, Till, was there sharing our poster.</em></p>
                     </div>
@@ -303,12 +342,12 @@
                         <img src="src/images/Events/AWE_01.jpg" alt="AWE Long Beach" class="event-image awe-01">
                     </div>
                     <div class="col-md-6">
-                        <h3 class="event-title">AWE (Augmented World Expo)</h3>
+                        <h3 class="event-title">AWE</h3>
                         <p class="event-location">Long Beach, California</p>
                         <p class="event-description">
-                            The world's leading AR/VR conference and expo, featuring the latest in augmented and virtual reality technology. AWE brings together industry leaders, developers, and innovators in immersive technologies.
+                            The world's leading AR/VR conference and expo.
                         </p>
-                        <p><em>I gave a talk on flicker light stimulation in VR, and got in a little plug for Brain Candy as well, a video will be coming soon!</em></p>
+                        <p><em>I gave a talk on flicker light stimulation in VR, Here's the <a href="https://docs.google.com/presentation/d/e/2PACX-1vSUyMSMIvHEI77AjEj1RdCsMy_M1d-Im_qQfRMhqXUc20az5CZvtWr0BqaTog8Nyi9L01QEgrmRvGXa/pub?start=false&loop=false&delayms=3000">deck</a>, and got in a little plug for Brain Candy as well, a video will be coming soon!</em></p>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -321,14 +360,14 @@
             <!-- Creative Tech Week, Brooklyn -->
             <div class="event-card">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <img src="src/images/Events/CreativeTechWeek_01.jpg" alt="Creative Tech Week Brooklyn" class="event-image creative-01">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <h3 class="event-title">Creative Tech Week</h3>
                         <p class="event-location">Brooklyn, New York</p>
                         <p class="event-description">
-                            A week-long celebration of creative technology, featuring workshops, exhibitions, and talks. This event showcases the intersection of art, technology, and innovation in Brooklyn's creative scene.
+                            A week-long celebration of creative technology, featuring workshops, exhibitions, and talks.
                         </p>
                         <p><em>200 people signed up for one of hundreds of tiny events during this fascinating week. I was able to take over the big LED wall at NYU's Tandon. Big screens are a great medium for Brain Candy!</em></p>
                     </div>
@@ -340,13 +379,41 @@
                 </div>
             </div>
 
+            <!-- NYVR, New York -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="src/images/Events/NYVR_01.jpg" alt="NYVR New York" class="event-image nyvr-01">
+                    </div>
+                    <div class="col-md-8">
+                        <h3 class="event-title">NYVR</h3>
+                        <p class="event-location">New York, New York</p>
+                        <p class="event-description">
+                            <a href="https://www.meetup.com/nyvr-virtual-reality-nyc/">NYVR (New York Virtual Reality)</a> is NYC's longest running continuous VR meetup.
+                        </p>
+                        <p><em>NYVR is a staple of NY's VR community and I am always very grateful to DJ Smith for opportunities to share my work!</em></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <img src="src/images/Events/NYVR_02.jpg" alt="NYVR Meetup" class="event-image nyvr-02">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="src/images/Events/NYVR_03.jpg" alt="NYVR Demo" class="event-image nyvr-03">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="src/images/Events/NYVR_04.jpg" alt="NYVR Networking" class="event-image nyvr-04">
+                    </div>
+                </div>
+            </div>
+
             <!-- QRI Meetup, Amsterdam -->
             <div class="event-card">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <img src="src/images/Events/QRI_01.jpg" alt="QRI Meetup Amsterdam" class="event-image qri-01">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <h3 class="event-title">QRI Meetup</h3>
                         <p class="event-location">Amsterdam, Netherlands</p>
                         <p class="event-description">
@@ -372,9 +439,9 @@
                         <h3 class="event-title">ETH Denver</h3>
                         <p class="event-location">Denver, Colorado</p>
                         <p class="event-description">
-                            One of the largest Ethereum and blockchain conferences in the world, featuring developers, entrepreneurs, and blockchain enthusiasts. ETH Denver showcases the latest innovations in decentralized technology and Web3.
+                            One of the largest Ethereum and blockchain conferences in the world, featuring developers, entrepreneurs, and blockchain enthusiasts.
                         </p>
-                        <p><em>Brain Candy was part of a collection of experiences shown on a pop up dome and presented by the <a href="https://www.cyberdelic.nexus/">Cyberdelic Nexus</a>.</em></p>
+                        <p><em>Brain Candy was part of a collection of experiences shown on a pop up dome and presented by the <a href="https://www.cyberdelic.nexus/">Cyberdelic Nexus</a>. There is some corner of the crypto space that is interested in psychedelic technology. I never learned how to engage with this world and I think AI is a much better use of GPU time, but I appreciate the interest!</em></p>
                     </div>
                 </div>
             </div>
@@ -383,12 +450,12 @@
             <div class="event-card">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="event-title">IVRHA (International VR Healthcare Association)</h3>
+                        <h3 class="event-title">IVRHA</h3>
                         <p class="event-location">Sarasota, Florida</p>
                         <p class="event-description">
-                            A conference dedicated to the application of virtual reality in healthcare and medical training. IVRHA brings together healthcare professionals, researchers, and VR developers to explore therapeutic applications of immersive technology.
+                            The International VR Healthcare Association is a conference dedicated to the application of virtual reality in healthcare and medical training.
                         </p>
-                        <p><em>Bob Fine was kind enough to invite us down to present our <a href="https://docs.google.com/presentation/d/e/2PACX-1vSVRXPpNA-I0SI-A98E93wVSfPex0G7y4r8qvx1xviOOzrgUjHDX5T4rvGp9xqpdw/pub?start=false&loop=false&delayms=3000">poster</a> about Brain Candy.</em></p>
+                        <p><em>Bob Fine was kind enough to invite us down to present our <a href="https://docs.google.com/presentation/d/e/2PACX-1vSVRXPpNA-I0SI-A98E93wVSfPex0G7y4r8qvx1xviOOzrgUjHDX5T4rvGp9xqpdw/pub?start=false&loop=false&delayms=3000">poster</a> about Brain Candy. I learned that my sense of the state of healthcare VR was correct, nobody has cracked this nut yet. Institutions are hard to break into, the funding has dried up, and almost everyone presenting was there because of their passion for the space and not because they're riding on any big VC checks.</em></p>
                     </div>
                 </div>
             </div>
