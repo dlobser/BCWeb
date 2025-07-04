@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>brain candy! - Events</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+        }
+
+        .hero {
+            background-image: url('src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 50px 20px;
+        }
+
+        .event-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: #FF00FF;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 280px; /* Fixed height for uniform rows */
+            object-fit: cover;
+            border-radius: 10px;
+            object-position: center center;
+        }
+
+        /* Event content layout */
+        .event-content {
+            margin-bottom: 30px;
+        }
+
+        .event-images {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .event-images .image-col {
+            flex: 1;
+            min-width: 0; /* Allows flex items to shrink below content size */
+        }
+
+        /* Remove old wrapper styles */
+        .image-wrapper {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .event-images {
+                flex-direction: column;
+            }
+            
+            .event-image {
+                height: 200px;
+            }
+        }
+
+        /* Individual image positioning controls */
+        .ps25-01 { object-position: center center; }
+        .ps25-02 { object-position: center center; }
+        .ps25-03 { object-position: center 35%; }
+        .awe-01 { object-position: top center; }
+        .awe-02 { object-position: center 40%; }
+        .creative-01 { object-position: center center; }
+        .creative-02 { object-position: center center; }
+        .mindxr-01 { object-position: center center; }
+        .mindxr-02 { object-position: center center; }
+        .nyvr-01 { object-position: center center; }
+        .nyvr-02 { object-position: center center; }
+        .nyvr-03 { object-position: center center; }
+        .nyvr-04 { object-position: center center; }
+        .qri-01 { object-position: center center; }
+        .qri-02 { object-position: center 20%; }
+        .qri-03 { object-position: center 20%; }
+
+        .event-title {
+            font-family: 'Carbon Block', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #FF00FF;
+        }
+
+        .event-location {
+            font-size: 1.2em;
+            color: #00FFFF;
+            margin-bottom: 20px;
+        }
+
+        .event-description {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .rainbow-text {
+            font-size: 6em;
+            line-height: 1;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .rainbow-text {
+                font-size: 4em;
+            }
+            .event-title {
+                font-size: 2em;
+            }
+        }
+
+        .rainbow-text span:nth-child(1) { color: #f42335; }
+        .rainbow-text span:nth-child(2) { color: #2ef366; }
+        .rainbow-text span:nth-child(3) { color: #32a4f1; }
+        .rainbow-text span:nth-child(4) { color: #f5f50d; }
+        .rainbow-text span:nth-child(5) { color: #f727f7; }
+        .rainbow-text span:nth-child(6) { color: #1eeaea; }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        /* Dynamic layout classes */
+        .image-container {
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .image-container.portrait {
+            max-width: 400px;
+        }
+
+        .image-container.landscape {
+            width: 100%;
+        }
+
+        .image-container.square {
+            max-width: 350px;
+        }
+
+        .dynamic-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .dynamic-grid.two-column {
+            justify-content: space-between;
+        }
+
+        .dynamic-grid.three-column .image-container {
+            flex: 0 1 calc(33.333% - 14px);
+            min-width: 250px;
+        }
+
+        .dynamic-grid.masonry {
+            column-count: 2;
+            column-gap: 20px;
+        }
+
+        .dynamic-grid.masonry .image-container {
+            break-inside: avoid;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dynamic-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .dynamic-grid.masonry {
+                column-count: 1;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Brain Candy on the Road!</h1>
+            <h2 class="rainbow-text">
+                <span>E</span><span>v</span><span>e</span><span>n</span><span>t</span><span>s</span>
+            </h2>
+            <p style="font-size:1.5em">Taking brain candy to conferences and festivals around the world</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="container">
+
+            
+            <!-- Psychedelic Science, Denver -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="src/images/Events/PS25_01.jpg" alt="Psychedelic Science 2025" class="event-image ps25-01">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="event-title">PS25</h3>
+                        <p class="event-location">Denver, Colorado</p>
+                        <p class="event-description">
+                            The premier conference for psychedelic research, bringing together scientists, clinicians, and advocates. This event showcases the latest research in psychedelic medicine and consciousness studies.
+                        </p>
+                        <p><em>I was an interloper this year as Deep Space was gone. Two years ago we shared Visitations with over 300 guests. This year we attended a half dozen afterparties with an audience that definitely 'got it'</em></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <img src="src/images/Events/PS25_02.jpg" alt="Psychedelic Science Conference" class="event-image ps25-02">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="src/images/Events/PS25_03.jpg" alt="Psychedelic Science Booth" class="event-image ps25-03">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mind XR, Berlin -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="src/images/Events/MindXR_01.jpg" alt="Mind XR Berlin" class="event-image mindxr-01">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="event-title">Mind XR</h3>
+                        <p class="event-location">Berlin, Germany</p>
+                        <p class="event-description">
+                            A conference focused on extended reality (XR) technologies and their applications in mental health and consciousness research. Mind XR explores the intersection of immersive technology and psychological well-being.
+                        </p>
+                        <p><em>I was not able to attend this small conference in Berlin, but my science advisor, Till, was there sharing our poster.</em></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <img src="src/images/Events/MindXR_02.jpg" alt="Mind XR Conference" class="event-image mindxr-02">
+                    </div>
+                </div>
+            </div>
+
+            <!-- AWE, Long Beach -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="src/images/Events/AWE_01.jpg" alt="AWE Long Beach" class="event-image awe-01">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="event-title">AWE (Augmented World Expo)</h3>
+                        <p class="event-location">Long Beach, California</p>
+                        <p class="event-description">
+                            The world's leading AR/VR conference and expo, featuring the latest in augmented and virtual reality technology. AWE brings together industry leaders, developers, and innovators in immersive technologies.
+                        </p>
+                        <p><em>I gave a talk on flicker light stimulation in VR, and got in a little plug for Brain Candy as well, a video will be coming soon!</em></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <img src="src/images/Events/AWE_02.jpg" alt="AWE Expo Floor" class="event-image awe-02">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Creative Tech Week, Brooklyn -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="src/images/Events/CreativeTechWeek_01.jpg" alt="Creative Tech Week Brooklyn" class="event-image creative-01">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="event-title">Creative Tech Week</h3>
+                        <p class="event-location">Brooklyn, New York</p>
+                        <p class="event-description">
+                            A week-long celebration of creative technology, featuring workshops, exhibitions, and talks. This event showcases the intersection of art, technology, and innovation in Brooklyn's creative scene.
+                        </p>
+                        <p><em>200 people signed up for one of hundreds of tiny events during this fascinating week. I was able to take over the big LED wall at NYU's Tandon. Big screens are a great medium for Brain Candy!</em></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <img src="src/images/Events/CreativeTechWeek_02.jpg" alt="Creative Tech Week Installation" class="event-image creative-02">
+                    </div>
+                </div>
+            </div>
+
+            <!-- QRI Meetup, Amsterdam -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="src/images/Events/QRI_01.jpg" alt="QRI Meetup Amsterdam" class="event-image qri-01">
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="event-title">QRI Meetup</h3>
+                        <p class="event-location">Amsterdam, Netherlands</p>
+                        <p class="event-description">
+                            A gathering organized by the <a href="https://qri.org/">Qualia Research Institute</a>, focused on consciousness research and the scientific study of subjective experience. This meetup brings together researchers and enthusiasts exploring the nature of consciousness.
+                        </p>
+                        <p><em>My first immersion in this amazing community.</em></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <img src="src/images/Events/QRI_02.jpg" alt="QRI Meetup Discussion" class="event-image qri-02">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="src/images/Events/QRI_03.jpg" alt="QRI Meetup Presentation" class="event-image qri-03">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ETH Denver -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="event-title">ETH Denver</h3>
+                        <p class="event-location">Denver, Colorado</p>
+                        <p class="event-description">
+                            One of the largest Ethereum and blockchain conferences in the world, featuring developers, entrepreneurs, and blockchain enthusiasts. ETH Denver showcases the latest innovations in decentralized technology and Web3.
+                        </p>
+                        <p><em>Brain Candy was part of a collection of experiences shown on a pop up dome and presented by the <a href="https://www.cyberdelic.nexus/">Cyberdelic Nexus</a>.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IVRHA, Sarasota Florida -->
+            <div class="event-card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="event-title">IVRHA (International VR Healthcare Association)</h3>
+                        <p class="event-location">Sarasota, Florida</p>
+                        <p class="event-description">
+                            A conference dedicated to the application of virtual reality in healthcare and medical training. IVRHA brings together healthcare professionals, researchers, and VR developers to explore therapeutic applications of immersive technology.
+                        </p>
+                        <p><em>Bob Fine was kind enough to invite us down to present our <a href="https://docs.google.com/presentation/d/e/2PACX-1vSVRXPpNA-I0SI-A98E93wVSfPex0G7y4r8qvx1xviOOzrgUjHDX5T4rvGp9xqpdw/pub?start=false&loop=false&delayms=3000">poster</a> about Brain Candy.</em></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Simple script to ensure images display properly
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Events page loaded successfully');
+        });
+    </script>
+</body>
+
+</html>
