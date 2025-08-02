@@ -49,12 +49,63 @@
         }
 
         .chat-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
             background: #111;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            min-height: 700px;
+            padding: 30px;
+        }
+
+        .chatbot-wrapper {
+            width: 100%;
+            min-height: 600px;
+            position: relative;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Force Elfsight widget to stay in center and override all positioning */
+        .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7 {
+            position: static !important;
+            width: 100% !important;
+            max-width: 800px !important;
+            height: 600px !important;
+            margin: 0 auto !important;
+            border-radius: 10px !important;
+            overflow: hidden !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            top: auto !important;
+            transform: none !important;
+            z-index: 1 !important;
+        }
+
+        /* Override any iframe positioning inside the widget */
+        .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7 iframe {
+            position: static !important;
+            width: 100% !important;
+            height: 100% !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            top: auto !important;
+        }
+
+        /* Override any nested divs */
+        .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7 > div {
+            position: static !important;
+            width: 100% !important;
+            height: 100% !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            top: auto !important;
         }
 
         .chat-messages {
@@ -176,8 +227,58 @@
 
     <div class="container">
         <div class="chat-container">
-            <!-- Elfsight AI Chatbot | Brain Candy Assistant -->
-            <div class="elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7" data-elfsight-app-lazy></div>
+            <h3 style="text-align: center; margin-bottom: 20px; color: #33CCFF;">Brain Candy Support Assistant</h3>
+            <p style="text-align: center; margin-bottom: 20px; color: #ccc;">Ask me anything about Brain Candy, VR experiences, or technical support!</p>
+            <div id="positioning-note" style="text-align: center; margin-bottom: 20px; padding: 15px; background: rgba(255, 165, 0, 0.1); border: 1px solid #FFA500; border-radius: 10px; color: #FFA500; display: none;">
+                <p style="margin: 0; font-size: 14px;">💡 If the chat appears in the corner, try refreshing the page or scrolling down to see it centered below.</p>
+            </div>
+            
+            <div class="chatbot-wrapper">
+                <!-- Elfsight AI Chatbot | Brain Candy Assistant -->
+                <div class="elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7" data-elfsight-app-lazy>
+                    <div style="text-align: center; padding: 40px; color: #888;">
+                        <p>Loading Brain Candy Support Assistant...</p>
+                        <div style="margin: 20px 0;">
+                            <div style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #33CCFF; margin: 0 4px; animation: pulse 1.5s ease-in-out infinite;"></div>
+                            <div style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #33CCFF; margin: 0 4px; animation: pulse 1.5s ease-in-out 0.1s infinite;"></div>
+                            <div style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #33CCFF; margin: 0 4px; animation: pulse 1.5s ease-in-out 0.2s infinite;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes pulse {
+                    0%, 60%, 100% { transform: scale(1); opacity: 0.5; }
+                    30% { transform: scale(1.2); opacity: 1; }
+                }
+                
+                /* Additional aggressive overrides for Elfsight positioning */
+                .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7[style*="position: fixed"] {
+                    position: static !important;
+                }
+                
+                .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7[style*="bottom:"] {
+                    bottom: auto !important;
+                }
+                
+                .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7[style*="right:"] {
+                    right: auto !important;
+                }
+                
+                /* Override any inline styles */
+                .chatbot-wrapper .elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7[style] {
+                    position: static !important;
+                    left: auto !important;
+                    right: auto !important;
+                    bottom: auto !important;
+                    top: auto !important;
+                    transform: none !important;
+                    width: 100% !important;
+                    max-width: 800px !important;
+                    margin: 0 auto !important;
+                }
+            </style>
         </div>
 
         <!-- Knowledge Base for Training (Hidden from users) -->
@@ -244,5 +345,81 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Elfsight AI Chatbot Script -->
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    
+    <script>
+        // Function to force center the chatbot widget
+        function forceCenterChatbot() {
+            const chatbotElement = document.querySelector('.elfsight-app-6f7a29da-510c-491a-aeae-773c78c2e6b7');
+            if (chatbotElement) {
+                // Check if it's currently positioned fixed
+                const computedStyle = window.getComputedStyle(chatbotElement);
+                const isFixed = computedStyle.position === 'fixed';
+                
+                // Remove any fixed positioning
+                chatbotElement.style.position = 'static';
+                chatbotElement.style.left = 'auto';
+                chatbotElement.style.right = 'auto';
+                chatbotElement.style.bottom = 'auto';
+                chatbotElement.style.top = 'auto';
+                chatbotElement.style.transform = 'none';
+                chatbotElement.style.width = '100%';
+                chatbotElement.style.maxWidth = '800px';
+                chatbotElement.style.margin = '0 auto';
+                chatbotElement.style.zIndex = '1';
+                
+                // Also fix any nested elements
+                const nestedElements = chatbotElement.querySelectorAll('*');
+                nestedElements.forEach(el => {
+                    if (el.style.position === 'fixed') {
+                        el.style.position = 'static';
+                        el.style.left = 'auto';
+                        el.style.right = 'auto';
+                        el.style.bottom = 'auto';
+                        el.style.top = 'auto';
+                    }
+                });
+                
+                // If it was fixed positioned, show the note
+                if (isFixed) {
+                    const note = document.getElementById('positioning-note');
+                    if (note) {
+                        note.style.display = 'block';
+                    }
+                }
+                
+                console.log('Chatbot repositioned to center, was fixed:', isFixed);
+            }
+        }
+        
+        // Run the function after page loads
+        window.addEventListener('load', function() {
+            setTimeout(forceCenterChatbot, 1000);
+            setTimeout(forceCenterChatbot, 3000);
+            setTimeout(forceCenterChatbot, 5000);
+        });
+        
+        // Also run it when the Elfsight platform loads
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'elfsight-app-loaded') {
+                setTimeout(forceCenterChatbot, 500);
+            }
+        });
+        
+        // Observe for DOM changes and reposition if needed
+        if (typeof MutationObserver !== 'undefined') {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        setTimeout(forceCenterChatbot, 100);
+                    }
+                });
+            });
+            
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+    </script>
 </body>
 </html>
