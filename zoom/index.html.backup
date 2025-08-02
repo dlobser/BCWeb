@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Send Data</title>
+</head>
+<body>
+
+	<textarea id="data"></textarea>
+	<br>
+	<button onclick="senddata()">Send Data</button>
+
+	<script>
+      let ws = new WebSocket("wss://refrain-api-staging.j38.workers.dev/namespace/visitations/case-farm-honor-dance");//"wss://refrain-staging.j38.workers.dev/namespace/visitations");
+  
+    ws.onopen = () => {
+      console.log("OPEN");
+    }
+  
+		function senddata() {
+			// Get the value of the text area
+			var data = document.getElementById("data").value;
+			// Do something with the data (for example, log it to the console)
+			console.log(data);
+        let params = [];
+        params[0] = data;
+
+        let deets = {
+          "type":"action",
+          "action":400,
+          parameters: params
+        }
+        console.log(JSON.stringify(deets));
+        ws.send(JSON.stringify(deets));
+		}
+	</script>
+
+</body>
+</html>
