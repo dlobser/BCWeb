@@ -256,7 +256,45 @@
     /* Image Slots */
     .image-slot {
       width: 100%;
-      height: 300px;
+      aspect-ratio: 1;
+      background: rgba(108, 99, 255, 0.1);
+      border: 2px dashed var(--primary);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.1em;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+      align-items: start;
+    }
+
+    .content-grid-2col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+      align-items: start;
+    }
+
+    .image-slot-wide {
+      width: 100%;
+      aspect-ratio: 3;
       background: rgba(108, 99, 255, 0.1);
       border: 2px dashed var(--primary);
       border-radius: 15px;
@@ -269,13 +307,10 @@
       padding: 20px;
       margin-bottom: 2rem;
     }
-    
-    .content-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
+
+    .content-full-width {
+      width: 100%;
       margin: 2rem 0;
-      align-items: start;
     }
     
     /* Contact Section */
@@ -336,6 +371,14 @@
         grid-template-columns: 1fr;
       }
       
+      .content-grid-2col {
+        grid-template-columns: 1fr;
+      }
+      
+      .image-row {
+        grid-template-columns: 1fr;
+      }
+      
       .hero-section {
         min-height: 60vh;
         text-align: center;
@@ -376,21 +419,16 @@
     <div class="container">
       <h2 class="section-title">Creative Technology Studio</h2>
       
-      <div class="content-grid">
-        <div>
-          <div class="content-card">
-            <h4>Studio Mission</h4>
-            <p>light.clinic creates software, hardware, and installations for the wellness and mindfulness spaces. We are seeking funds to pursue R&D and full production of a series of apps, devices, and experiences in support of therapeutic altered states.</p>
-            <p>Our team has a wide range of experience creating art & science for therapeutic, mind-altering experiences across multiple platforms and mediums.</p>
-          </div>
-        </div>
-        <div>
-          <div class="image-slot">
-            <div>
-              <i class="fas fa-image fa-3x mb-3"></i><br>
-              Studio Overview Image
-            </div>
-          </div>
+      <!-- Wide Image on Top -->
+      <div class="image-slot-wide" style="background-image: url('src/images/fundraising/studio.png'); background-size: cover; background-position: center;">
+      </div>
+
+      <!-- Full Width Content Below -->
+      <div class="content-full-width">
+        <div class="content-card">
+          <h4>Studio Mission</h4>
+          <p>light.clinic creates software, hardware, and installations for the wellness and mindfulness spaces. We are seeking funds to pursue R&D and full production of a series of apps, devices, and experiences in support of therapeutic altered states.</p>
+          <p>Our team has a wide range of experience creating art & science for therapeutic, mind-altering experiences across multiple platforms and mediums.</p>
         </div>
       </div>
     </div>
@@ -401,51 +439,204 @@
     <div class="container">
       <h2 class="section-title">Hardware Innovation</h2>
       
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="content-card">
-            <h4>🔄 "Day Tripper" Recreation</h4>
-            <p>Recreate the LSD "Day Tripper", a low tech, mechanical, breath driven flicker light to use with the sun or any bright light source. Very popular at Grateful Dead shows.</p>
-          </div>
+      <!-- Image Row -->
+      <div class="image-row">
+        <div class="image-slot" style="background-image: url('src/images/fundraising/daytripper.png'); background-size: cover; background-position: center;">
         </div>
-        
-        <div class="col-lg-6">
-          <div class="content-card">
-            <h4>👓 Low Cost Strobe Goggles</h4>
-            <p>Affordable entry point for therapeutic flicker light experiences, making the technology accessible to a broader audience.</p>
-          </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/schematic.png'); background-size: cover; background-position: center;">
         </div>
-        
-        <div class="col-lg-6">
-          <div class="content-card">
-            <h4>🫶 "Heavy Pillow" Device</h4>
-            <p>You hold on your chest, as you breathe, it synchronizes vibrations to create a purring cat effect for therapeutic relaxation.</p>
-          </div>
-        </div>
-        
-        <div class="col-lg-6">
-          <div class="content-card">
-            <h4>🌊 Tactile Relaxation Blanket</h4>
-            <p>Heavy blanket with rows of actuators designed to create waves of vibratory relaxation for enhanced wellness experiences.</p>
-          </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/hapticdevice.png'); background-size: cover; background-position: center;">
         </div>
       </div>
 
-      <div class="content-grid mt-5">
-        <div>
-          <div class="image-slot">
-            <div>
-              <i class="fas fa-cog fa-3x mb-3"></i><br>
-              Hardware Portfolio Image
-            </div>
-          </div>
+      <!-- Content Row -->
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🔄 "Day Tripper" Recreation</h4>
+          <p>Recreate the LSD "Day Tripper", a low tech, mechanical, breath driven flicker light to use with the sun or any bright light source. Very popular at Grateful Dead shows.</p>
         </div>
-        <div>
-          <div class="content-card">
-            <h4>Hardware Development</h4>
-            <p>Our hardware division focuses on creating accessible, therapeutic devices that bridge the gap between high-end medical equipment and consumer wellness products.</p>
-            <p>Each device is designed with both efficacy and affordability in mind, making therapeutic technology available to individuals and wellness centers.</p>
-          </div>
+        
+        <div class="content-card">
+          <h4>👓 Low Cost Strobe Goggles</h4>
+          <p>Affordable entry point for therapeutic flicker light experiences, making the technology accessible to a broader audience.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🫶 "Heavy Pillow" Device</h4>
+          <p>You hold on your chest, as you breathe, it synchronizes vibrations to create a purring cat effect for therapeutic relaxation.</p>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🌊 Tactile Relaxation Blanket</h4>
+          <p>Heavy blanket with rows of actuators designed to create waves of vibratory relaxation for enhanced wellness experiences.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>💡 Hardware Philosophy</h4>
+          <p>Our hardware division focuses on creating accessible, therapeutic devices that bridge the gap between high-end medical equipment and consumer wellness products.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🎯 Design Principles</h4>
+          <p>Each device is designed with both efficacy and affordability in mind, making therapeutic technology available to individuals and wellness centers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Software Applications -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Software Applications</h2>
+      
+      <!-- Image Row -->
+      <div class="image-row">
+        <div class="image-slot" style="background-image: url('src/images/fundraising/asmr.jpg'); background-size: cover; background-position: center;">
+        </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/sleepapp.png'); background-size: cover; background-position: center;">
+        </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/arttherapy.png'); background-size: cover; background-position: center;">
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>📱 Vibrating Whispers</h4>
+          <p>An ASMR phone app & VR experience that synchronizes with haptic devices for enhanced sensory experiences and therapeutic applications.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>😴 Sleep Stories</h4>
+          <p>An interactive experience with sleep stories and brown noise to help users fall asleep naturally and improve sleep quality.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🎵 VR Sound Bath</h4>
+          <p>Interactive sound bath experiences designed for both VR platforms and mobile applications for deep relaxation and healing.</p>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🎨 AI-Driven Art Therapy</h4>
+          <p>Innovative therapeutic tools that combine artificial intelligence with creative expression for mental health and wellness applications.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🧠 VR Group Therapy</h4>
+          <p>Leverage the power of VR to create therapeutic experiences for groups of people.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🔗 Therapeutic Gaming</h4>
+          <p>A variety of game concepts are under consideration to assist with ADHD, OCD, Anxiety, and Depression.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location-Based Experiences -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Location-Based Entertainment</h2>
+      
+      <!-- Image Row -->
+      <div class="image-row">
+        <div class="image-slot" style="background-image: url('src/images/fundraising/sensoryspa.png'); background-size: cover; background-position: center;">
+        </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/future_03.jpg'); background-size: cover; background-position: center;">
+        </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/therapyintegration.jpg'); background-size: cover; background-position: center;">
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🏢 Brick & Mortar Sensory Spa</h4>
+          <p><strong>Specialized Applications:</strong> For autism support, psychedelic therapy, and banya replacement experiences.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>📦 Sensory Spa Package</h4>
+          <p><strong>For venue owners:</strong> À la carte menu of activations for events, festivals, and corporate retreats.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🚀 LBE VR Experiences</h4>
+          <p>Experiences designed to enter altered states with friends through immersive group sessions and shared therapeutic journeys.</p>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>💊 Ketamine Assisted Therapy</h4>
+          <p>A comprehensive package of immersive sensory devices (VR, haptics, headphones, etc.) designed for easy use in ketamine therapy settings.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🎪 Event Integration</h4>
+          <p>Mobile installations and experiences designed for festivals, corporate retreats, and wellness events with complete setup support.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🏥 Clinical Applications</h4>
+          <p>Professional-grade installations designed specifically for therapeutic environments and clinical settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Foundation -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Research & Development</h2>
+      
+      <!-- Image Row -->
+      <div class="image-row">
+        <div class="image-slot" style="background-image: url('src/images/fundraising/clinicalresearch.png'); background-size: cover; background-position: center;">
+        </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/neuralstudy.png'); background-size: cover; background-position: center;">
+        </div>
+        <div class="image-slot" style="background-image: url('src/images/fundraising/fractalnature.png'); background-size: cover; background-position: center;">
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🔬 Therapeutic Use of VR</h4>
+          <p>Research into the clinical applications of virtual reality and immersive technologies for mental health and wellness treatments.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🧠 ADHD & OCD Research</h4>
+          <p>Ongoing studies into ADHD and OCD therapeutic interventions using immersive technology and sensory stimulation.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>💙 Anxiety & Depression</h4>
+          <p>Clinical research into anxiety and depression management through virtual reality experiences and controlled sensory environments.</p>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🌿 Nature & Fractals</h4>
+          <p>Investigating the therapeutic effects of fractal patterns and natural environments in virtual spaces for healing and restoration.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>📊 Clinical Validation</h4>
+          <p>We collaborate with research institutions and healthcare providers to validate our therapeutic approaches through rigorous scientific studies.</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🎯 Evidence-Based Development</h4>
+          <p>All products are developed using evidence-based approaches, ensuring clinical efficacy and therapeutic value.</p>
         </div>
       </div>
     </div>
@@ -520,6 +711,81 @@
             <p class="role">Software & Design</p>
             <p>Full-stack development, networking, and product design.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Crowdfunding Rewards Section -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Crowdfunding Rewards for Supporters</h2>
+      
+      <div class="highlight-box">
+        <h3>💰 Supporting Therapeutic Innovation</h3>
+        <p class="mb-4">Help us develop groundbreaking wellness technology and receive exclusive rewards</p>
+      </div>
+
+      <h3 style="text-align: center; color: var(--primary); margin: 3rem 0 2rem;">Software & Digital Rewards</h3>
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🌟 Early Supporter</h4>
+          <p><strong>$25</strong></p>
+          <p>Regular updates, a surprise collection of swag, a community of likeminded individuals, and a big thank you</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🎯 Beta Tester</h4>
+          <p><strong>$75</strong></p>
+          <p>Beta access to all software applications + feedback sessions with developers</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🏢 Feedback Session</h4>
+          <p><strong>$200</strong></p>
+          <p>Same as early supporter + beta tester + an individualized feedback session about your device/concept/research</p>
+        </div>
+      </div>
+
+      <h3 style="text-align: center; color: var(--primary); margin: 3rem 0 2rem;">Hardware Pre-Orders</h3>
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>👓 Strobe Goggles</h4>
+          <p><strong>$150</strong></p>
+          <p>Low-cost therapeutic strobe goggles + access to companion app</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🫶 Heavy Pillow</h4>
+          <p><strong>$300</strong></p>
+          <p>Haptic chest device with breathing synchronization + software suite</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🌊 Tactile Blanket</h4>
+          <p><strong>$500</strong></p>
+          <p>Full tactile relaxation blanket with wave actuators + complete software package</p>
+        </div>
+      </div>
+
+      <h3 style="text-align: center; color: var(--primary); margin: 3rem 0 2rem;">Premium Experiences</h3>
+      <div class="content-grid">
+        <div class="content-card">
+          <h4>🔬 Research Collaboration</h4>
+          <p><strong>$400</strong></p>
+          <p>Participate in research studies + quarterly science briefings + early access to findings</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🏢 Spa Kit</h4>
+          <p><strong>$5000</strong></p>
+          <p>We will create a customized kit of products and services you can bundle together to enhance your spa</p>
+        </div>
+        
+        <div class="content-card">
+          <h4>🎨 Custom Installation</h4>
+          <p><strong>$10,000</strong></p>
+          <p>We will develop and install a customized therapy room for you and install everything, includes 3 years of licensing and subscription fees</p>
         </div>
       </div>
     </div>
