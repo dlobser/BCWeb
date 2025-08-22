@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="light.clinic - Investment opportunity for creative technology studio specializing in therapeutic altered states and wellness experiences.">
+  <meta name="author" content="light.clinic">
+  <title>light.clinic - Investment Opportunity</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --secondary: #f5f5f5;
+      --dark: #333;
+      --light: #fff;
+      --gray: #888;
+      --gradient: linear-gradient(135deg, #6c63ff 0%, #7c4dff 100%);
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+    }
+    
+    /* Header */
+    .hero-section {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background-color: #f9f9ff;
+      padding: 3rem 0;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    .hero-bg .shape {
+      position: absolute;
+      background: var(--gradient);
+      border-radius: 50%;
+    }
+    
+    .hero-bg .shape:nth-child(1) {
+      width: 500px;
+      height: 500px;
+      top: -250px;
+      right: -150px;
+      opacity: 0.4;
+    }
+    
+    .hero-bg .shape:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      bottom: -150px;
+      left: -100px;
+      opacity: 0.3;
+    }
+    
+    .hero-content {
+      z-index: 1;
+    }
+    
+    .brand-name {
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -2px;
+      margin-bottom: 2rem;
+    }
+    
+    .tagline {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: var(--gray);
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+    
+    /* Section Titles */
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--dark);
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    
+    /* Content Sections */
+    .content-section {
+      padding: 4rem 0;
+    }
+    
+    .content-section:nth-child(even) {
+      background-color: var(--secondary);
+    }
+    
+    /* Cards */
+    .content-card {
+      background: var(--light);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+      border: none;
+    }
+    
+    .content-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .content-card h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .content-card p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    
+    /* Highlight Boxes */
+    .highlight-box {
+      background: var(--gradient);
+      color: var(--light);
+      border-radius: 15px;
+      padding: 3rem 2rem;
+      margin: 3rem 0;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(108, 99, 255, 0.3);
+    }
+    
+    .highlight-box h3 {
+      color: var(--light);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    
+    .highlight-box p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+    }
+    
+    /* Team Cards */
+    .team-card {
+      background: var(--light);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+    
+    .team-card h5 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    
+    .team-card .role {
+      color: var(--gray);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .team-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+    
+    /* Buttons */
+    .btn-primary {
+      background: var(--gradient);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      color: var(--light);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+      color: var(--light);
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      font-weight: 500;
+      border-radius: 30px;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-outline:hover {
+      background: var(--gradient);
+      color: var(--light);
+      border-color: transparent;
+    }
+    
+    /* Image Slots */
+    .image-slot {
+      width: 100%;
+      height: 300px;
+      background: rgba(108, 99, 255, 0.1);
+      border: 2px dashed var(--primary);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.1em;
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 2rem;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+      align-items: start;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: var(--gradient);
+      color: var(--light);
+      padding: 4rem 0;
+    }
+    
+    .contact-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .contact-card h4 {
+      color: var(--light);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-card p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--light);
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    /* Feature Lists */
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .feature-list li {
+      margin: 0.75rem 0;
+      padding-left: 2rem;
+      position: relative;
+      color: var(--gray);
+    }
+    
+    .feature-list li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-section {
+        min-height: 60vh;
+        text-align: center;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .brand-name {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-12 text-center hero-content">
+          <h1 class="brand-name">light.clinic</h1>
+          <p class="tagline">Investment opportunity for a creative technology studio specializing in therapeutic altered states, wellness experiences, and immersive digital solutions.</p>
+          <a href="#investment" class="btn-primary me-3">Investment Details</a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studio Overview -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Creative Technology Studio</h2>
+      
+      <div class="content-grid">
+        <div>
+          <div class="content-card">
+            <h4>Studio Mission</h4>
+            <p>light.clinic creates software, hardware, and installations for the wellness and mindfulness spaces. We are seeking funds to pursue R&D and full production of a series of apps, devices, and experiences in support of therapeutic altered states.</p>
+            <p>Our team has a wide range of experience creating art & science for therapeutic, mind-altering experiences across multiple platforms and mediums.</p>
+          </div>
+        </div>
+        <div>
+          <div class="image-slot">
+            <div>
+              <i class="fas fa-image fa-3x mb-3"></i><br>
+              Studio Overview Image
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware Portfolio -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">Hardware Innovation</h2>
+      
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="content-card">
+            <h4>🔄 "Day Tripper" Recreation</h4>
+            <p>Recreate the LSD "Day Tripper", a low tech, mechanical, breath driven flicker light to use with the sun or any bright light source. Very popular at Grateful Dead shows.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="content-card">
+            <h4>👓 Low Cost Strobe Goggles</h4>
+            <p>Affordable entry point for therapeutic flicker light experiences, making the technology accessible to a broader audience.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="content-card">
+            <h4>🫶 "Heavy Pillow" Device</h4>
+            <p>You hold on your chest, as you breathe, it synchronizes vibrations to create a purring cat effect for therapeutic relaxation.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="content-card">
+            <h4>🌊 Tactile Relaxation Blanket</h4>
+            <p>Heavy blanket with rows of actuators designed to create waves of vibratory relaxation for enhanced wellness experiences.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-grid mt-5">
+        <div>
+          <div class="image-slot">
+            <div>
+              <i class="fas fa-cog fa-3x mb-3"></i><br>
+              Hardware Portfolio Image
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="content-card">
+            <h4>Hardware Development</h4>
+            <p>Our hardware division focuses on creating accessible, therapeutic devices that bridge the gap between high-end medical equipment and consumer wellness products.</p>
+            <p>Each device is designed with both efficacy and affordability in mind, making therapeutic technology available to individuals and wellness centers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Opportunity -->
+  <section id="investment" class="content-section">
+    <div class="container">
+      <div class="highlight-box">
+        <h3>💰 Investment Opportunity</h3>
+        <p class="mb-4">Seeking strategic funding to accelerate R&D and bring revolutionary therapeutic technology to market</p>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <h5 style="color: white; margin-bottom: 1rem;">Funding Will Support:</h5>
+            <ul style="text-align: left; color: rgba(255,255,255,0.9);">
+              <li>Research & Development across multiple product lines</li>
+              <li>Full production of hardware devices and installations</li>
+              <li>Clinical studies and scientific validation</li>
+              <li>Market expansion and scaling operations</li>
+              <li>Strategic partnerships and content collaborations</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5 style="color: white; margin-bottom: 1rem;">Market Opportunity:</h5>
+            <ul style="text-align: left; color: rgba(255,255,255,0.9);">
+              <li>Growing wellness technology market</li>
+              <li>Increasing demand for mental health solutions</li>
+              <li>VR therapy adoption in healthcare</li>
+              <li>Consumer wellness device expansion</li>
+              <li>Location-based entertainment growth</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="content-section">
+    <div class="container">
+      <h2 class="section-title">The light.clinic Team</h2>
+      
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card">
+            <h5>Till Holzapfel</h5>
+            <p class="role">Chief Science Officer</p>
+            <p>Leading research and scientific validation of therapeutic applications.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card">
+            <h5>Alexx Kaos</h5>
+            <p class="role">Hardware Technology</p>
+            <p>Engineering innovative hardware solutions and device integration.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card">
+            <h5>David Lobser</h5>
+            <p class="role">Lead Creative & VR</p>
+            <p>Creative direction and virtual reality software development.</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="team-card">
+            <h5>Scott Garner</h5>
+            <p class="role">Software & Design</p>
+            <p>Full-stack development, networking, and product design.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title" style="color: white;">Get Involved</h2>
+      
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="contact-card">
+            <h4><i class="fas fa-handshake me-2"></i>Investment Inquiries</h4>
+            <p>Ready to join the future of therapeutic technology?</p>
+            <a href="mailto:info@light.clinic" class="btn-primary">Contact Investment Team</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="contact-card">
+            <h4><i class="fas fa-users me-2"></i>Partnership Opportunities</h4>
+            <p>Interested in collaborating or licensing our technology?</p>
+            <a href="mailto:info@light.clinic" class="btn-primary">Explore Partnerships</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <div class="contact-card">
+            <h4><i class="fas fa-envelope me-2"></i>Contact Information</h4>
+            <p><strong>Email:</strong> <a href="mailto:info@light.clinic" style="color: white;">info@light.clinic</a></p>
+            <p><strong>Website:</strong> <a href="https://light.clinic" style="color: white;">light.clinic</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <p>&copy; 2025 light.clinic. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
