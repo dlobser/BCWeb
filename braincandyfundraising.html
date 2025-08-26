@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,6 +45,8 @@
         .hero-content {
             position: relative;
             z-index: 1;
+            max-width: 960px;
+            margin: 0 auto;
         }
 
         .hero h1 {
@@ -58,7 +61,19 @@
             margin-bottom: 30px;
             color: #FF3366;
         }
-        
+
+        /* Tagline styling */
+        .hero .lead {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(2px);
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            font-size: 1.15rem;
+        }
+
         .content-section {
             background-image: url('src/images/BC_BG_Dark.jpg');
             background-size: 512px;
@@ -182,7 +197,6 @@
             border-color: rgba(51, 204, 255, 0.5);
         }
 
-
         .feature-card h4 {
             color: #33CCFF;
             margin-bottom: 15px;
@@ -209,7 +223,6 @@
             text-align: center;
         }
 
-
         .team-member h5 {
             color: #33CCFF;
             margin-bottom: 10px;
@@ -230,7 +243,6 @@
             text-align: center;
         }
 
-
         .highlight-box h3 {
             color: #FF3366;
             margin-bottom: 20px;
@@ -239,12 +251,12 @@
 
         .highlight-box p {
             color: #e0e0e0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .highlight-box ul {
             color: #e0e0e0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         .price-tag {
@@ -297,7 +309,6 @@
             margin: 20px 0;
         }
 
-
         ul.feature-list {
             list-style: none;
             padding-left: 0;
@@ -338,11 +349,11 @@
             .hero h1 {
                 font-size: 2.5em;
             }
-            
+
             .section-title {
                 font-size: 2em;
             }
-            
+
             .feature-grid {
                 grid-template-columns: 1fr;
             }
@@ -356,7 +367,7 @@
         <div class="hero-content">
             <h1>BRAIN CANDY</h1>
             <h2>Crowdfunding Campaign</h2>
-            <p class="lead">Revolutionary Flicker Light Stimulation Technology for VR and Hardware Experiences</p>
+            <p class="lead">A science-inspired laboratory of sensory exploration, leveraging neuroaesthetics to enable mezmerising stimulation for focus, restoration, and transformation.</p>
             <a href="https://braincandyapp.com/science.html" class="btn-cta">Science</a>
             <a href="https://braincandyapp.com" class="btn-cta">Website</a>
         </div>
@@ -365,19 +376,36 @@
     <!-- Content Section -->
     <div class="content-section">
         <div class="container">
-            
+
             <!-- Overview Section -->
             <section id="overview">
                 <h2 class="section-title">BRAIN CANDY VR</h2>
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <div style="background: rgba(15, 15, 30, 0.95); border-radius: 15px; padding: 30px; border: 1px solid rgba(51, 204, 255, 0.3);">
-                            <p>Brain Candy fuses neuroscience and immersive art to create a new class of wellness and entertainment technology. 
-At its core is <strong>Dynamic Oscillatory Pattern Entrainment (DOPE)</strong>, a method that uses structured rhythms of light, sound, and gentle vibration to align with the brain’s natural patterns. 
-Rather than offering a one-size-fits-all experience, Brain Candy serves a tunable buffet designed to satisfy the wide spectrum of human perceptual palates. 
-Grounded in research on neural entrainment and attention restoration, it pairs rhythmic stimulation with flowing, non-semantic patterns that the nervous system processes fluently, reflecting its evolutionary attunement to the shapes and rhythms of nature. 
-The result is a neuro-aesthetic platform that is scientifically rigorous yet playfully engaging: equally suited for focus, relaxation, and stress relief, as well as for the safe exploration of altered states, vivid perceptual effects, and future gamified experiences. 
-With DOPE as its cornerstone, Brain Candy stands at the intersection of functional wellness and imaginative discovery.</p>
+<p>
+  <strong>Brain Candy</strong> fuses neuroscience and immersive art to create a new class of wellness and entertainment technology.  
+</p>
+
+<p>
+  At its core is <strong>Dynamic Oscillatory Pattern Entrainment (DOPE)</strong> — a method that uses structured rhythms of light, sound, and gentle vibration to align with the brain’s natural patterns.  
+</p>
+
+<p>
+  Rather than offering a one-size-fits-all experience, Brain Candy provides a <em>tunable buffet</em> designed to satisfy the wide spectrum of human perceptual palates.  
+</p>
+
+<p>
+  Grounded in research on neural entrainment and attention restoration, it pairs rhythmic stimulation with flowing, non-semantic patterns that the nervous system processes fluently. This reflects its evolutionary attunement to the shapes and rhythms of nature.  
+</p>
+
+<p>
+  The result is a <strong>neuro-aesthetic platform</strong> that is scientifically rigorous yet playfully engaging — equally suited for focus, relaxation, and stress relief, as well as for the safe exploration of altered states, vivid perceptual effects, and future gamified experiences.  
+</p>
+
+<p>
+  At the crossroads of <em>functional wellness</em> and <em>imaginative discovery</em>, Brain Candy is pretty DOPE.
+</p>
                         </div>
                     </div>
                 </div>
@@ -386,7 +414,7 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
             <!-- Core Product Section -->
             <section id="brain-candy-vr">
                 <div class="subsection-title">Effects & Benefits</div>
-                
+
                 <!-- Image Row -->
                 <div class="image-row">
                     <div class="image-slot" style="background-image: url('src/images/screenshots/screenshot2.png'); background-size: cover; background-position: center;">
@@ -401,11 +429,11 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
                 <div class="feature-grid">
                     <div class="feature-card">
                         <h4>🧠 Brainwave Entrainment</h4>
-                        <p>Scientifically calibrated light frequencies synchronize neural oscillations for targeted mental states</p>
+                        <p>Scientifically calibrated light frequencies synchronize neural oscillations for desired mental states</p>
                     </div>
                     <div class="feature-card">
                         <h4>🌀 Visual Experiences</h4>
-                        <p>Fascinating visual patterns inspired by Kluver "form constants" and informed by the concept of fractal fluency</p>
+                        <p>Mesmerizing visual patterns inspired by neuroaesthetics and attention restoration research</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎯 Enhanced Focus</h4>
@@ -413,15 +441,15 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
                     </div>
                     <div class="feature-card">
                         <h4>🫁 Breathwork</h4>
-                        <p>Pacers designed to aid in the study and practice of breathwork for calm, meditation, and intense altered states</p>
+                        <p>Guided and bioresponsive sessions to practice breathwork for calm, meditation, and intense altered states</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎧 Guidance</h4>
-                        <p>A large collection of voice over meditations help support meditative practices</p>
+                        <p>A large collection of voice over meditations help support various practices</p>
                     </div>
                     <div class="feature-card">
                         <h4>🎮 Interactivity</h4>
-                        <p>Users can interact with their experience directly, changing the intensity and style directly, a unique ability in the flicker light space</p>
+                        <p>Users can interact with their experience directly, changing the intensity and style, a unique ability in the flicker light space</p>
                     </div>
                 </div>
 
@@ -459,7 +487,7 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
             <!-- User Reviews Section -->
             <section id="reviews">
                 <div class="subsection-title">What Users Are Saying</div>
-                
+
                 <div class="review-row">
                     <div class="review-box">
                         <div class="review-stars">★★★★★</div>
@@ -477,7 +505,7 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
                         <p class="review-author">- dangerweenie</p>
                     </div>
                 </div>
-                
+
                 <div class="review-row">
                     <div class="review-box">
                         <div class="review-stars">★★★★★</div>
@@ -504,21 +532,19 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
                     <h4>Competitive Advantage</h4>
                     <p>Current solutions are expensive and limited:</p>
                     <ul>
-                        <li><strong>Traditional devices:</strong> $100-$30,000 + subscription fees</li>
+                        <li><strong>Traditional devices:</strong> $500-$30,000 + subscription fees</li>
                         <li><strong>VR meditation apps:</strong> Lack rhythmic stimulation technology</li>
                         <li><strong>Phone apps (Lumenate):</strong> Limited immersion and features</li>
                     </ul>
-                    <p><strong>Brain Candy offers comprehensive, affordable VR experiences with advanced features unavailable elsewhere.</strong></p>
+                    <p><strong>Brain Candy offers comprehensive, affordable VR experiences with advanced features unavailable elsewhere. Due to its neuroaesthetic design, it can cover the stimulation spectrum that pure light flickering is missing, making it a more controlled experience and accessible for a much larger group of users.</strong></p>
                 </div>
             </section>
-
-            
 
             <!-- Software Expansion -->
             <section id="software">
                 <br>
                 <h2 class="section-title">Future Development</h2>
-                
+
                 <!-- Image Row -->
                 <div class="image-row">
                     <div class="image-slot" style="background-image: url('src/images/fundraising/future_01.png'); background-size: cover; background-position: center;">
@@ -561,10 +587,10 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
             <!-- Hardware Section -->
             <section id="hardware">
                 <h2 class="section-title">Hardware Innovation</h2>
-                
+
                 <div class="highlight-box">
                     <h3>The Brain Candy Dome</h3>
-                    <p>Personal therapeutic flicker light 'entertrainment' device for home and spa use. <br><br> Unlike other strobe lamps, this device is designed for immersive, open eye experiences. This creates an opportunity for a wide range of unique, interactive content. The form factor is meant to recreate a dome/planetarium like experience. When the lamp is not in use, it is a lovely lamp on its own that can be programmed to emit a range of colors, like any other LED light.</p>
+                    <p>Personal therapeutic flicker light 'entertrainment' device for home and spa use. <br><br> Unlike other strobe lamps, this device is designed for immersive, open eye experiences. This creates an opportunity for a wide range of unique, interactive content. Wifi capabilities would allow for synchronous, decentralized live shows fostering community. The form factor is meant to recreate a dome/planetarium like experience. When the lamp is not in use, it is a lovely lamp on its own that can be programmed to emit a range of colors, like any other LED light.</p>
                     <div class="price-tag">$3,000 - $10,000</div>
                 </div>
 
@@ -647,7 +673,7 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
             <!-- Crowdfunding Rewards Section -->
             <section id="crowdfunding">
                 <h2 class="section-title">Proposed Rewards for Crowdfunding Supporters</h2>
-                
+
                 <div class="feature-grid">
                     <div class="feature-card">
                         <h4>💎 Early Bird Digital</h4>
@@ -807,3 +833,4 @@ With DOPE as its cornerstone, Brain Candy stands at the intersection of function
 </body>
 
 </html>
+```
