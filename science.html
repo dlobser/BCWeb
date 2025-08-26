@@ -114,6 +114,71 @@
         .reference-list li {
             margin-bottom: 1rem;
         }
+
+        .poster-section {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .poster-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .poster-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .poster-caption {
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 95%;
+            max-height: 95%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
+        }
     </style>
 </head>
 
@@ -123,6 +188,20 @@
             <h1>The Science Behind Brain Candy</h1>
             <p class="lead">by: Till Holzapfel</p>
         </div>
+    </div>
+
+    <!-- Poster Section -->
+    <div class="poster-section">
+        <div class="container">
+            <img src="src/images/BCPoster.jpg" alt="Brain Candy Scientific Poster" class="poster-image" id="posterImage">
+            <p class="poster-caption">Click to view larger image</p>
+        </div>
+    </div>
+
+    <!-- Modal for larger image -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
     </div>
 
     <div class="science-section">
@@ -318,6 +397,36 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Modal functionality -->
+    <script>
+        // Get the modal
+        var modal = document.getElementById("imageModal");
+        
+        // Get the image and insert it inside the modal
+        var img = document.getElementById("posterImage");
+        var modalImg = document.getElementById("modalImage");
+        
+        img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the image, close the modal
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
