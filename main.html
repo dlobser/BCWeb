@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>brain candy!</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -163,13 +163,257 @@
             margin-bottom: 10px;
         }
 
-        /* For mobile screens */
+        /* Comprehensive Mobile Responsive Design */
         @media (max-width: 768px) {
+            /* Typography adjustments */
             .rainbow-text {
-                font-size: 8em;
-                /* Slightly smaller on mobile */
-                line-height: 0.8;
-                /* Even tighter spacing on mobile */
+                font-size: 4em !important;
+                line-height: 0.9;
+                margin-bottom: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem !important;
+                margin-bottom: 20px;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1.2rem !important;
+            }
+            
+            h3 {
+                font-size: 1.4rem;
+            }
+            
+            p {
+                font-size: 1rem !important;
+            }
+            
+            /* Hero section adjustments */
+            .hero {
+                padding: 30px 15px;
+            }
+            
+            .hero-content {
+                padding: 0 10px;
+            }
+            
+            /* Button improvements */
+            .hero-content .btn {
+                margin: 8px 5px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                display: inline-block;
+                width: auto;
+                min-width: 120px;
+            }
+            
+            /* Store page button - make it more prominent on mobile */
+            .col-12 .btn[href*="meta.com"] {
+                font-size: 1.5rem !important;
+                padding: 18px 25px !important;
+                margin: 10px 0 !important;
+            }
+            
+            /* User review cards - stack vertically */
+            .row .col-md-4 {
+                margin-bottom: 20px;
+            }
+            
+            .row .col-md-4 > div {
+                margin-bottom: 15px !important;
+                padding: 15px !important;
+            }
+            
+            .row .col-md-4 p {
+                font-size: 0.85rem !important;
+            }
+            
+            /* Button group boxes */
+            .col-md-4 > div[style*="background: rgba"] {
+                margin-bottom: 25px;
+                padding: 20px !important;
+            }
+            
+            .col-md-4 h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            /* Features section */
+            .features {
+                padding: 30px 15px;
+            }
+            
+            .features .col-md-4 {
+                margin-bottom: 30px;
+            }
+            
+            /* Video containers */
+            .feature-video-wrapper {
+                margin-bottom: 15px;
+            }
+            
+            .video-container {
+                margin: 20px 0;
+                max-width: 100% !important;
+            }
+            
+            /* Content sections */
+            .content-section {
+                padding: 30px 15px;
+            }
+            
+            .content-image {
+                margin-bottom: 15px;
+            }
+            
+            /* BRAIN text section */
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] {
+                padding: 30px 15px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] h4 {
+                font-size: 1.2rem !important;
+                letter-spacing: 2px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] span[style*="font-size: 180%"] {
+                font-size: 140% !important;
+            }
+            
+            /* About section */
+            .content-section .col-lg-10 > div {
+                padding: 25px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .content-section p {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            /* Only statement box */
+            .col-lg-10.mx-auto > div {
+                padding: 20px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .col-lg-10.mx-auto p {
+                font-size: 1.1rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Floating support button */
+            div[style*="position: fixed"] {
+                bottom: 15px !important;
+                right: 15px !important;
+            }
+            
+            div[style*="position: fixed"] a {
+                padding: 12px 16px !important;
+                font-size: 0.9rem !important;
+                min-width: 100px !important;
+            }
+            
+            /* Row spacing improvements */
+            .row[style*="margin-top"] {
+                margin-top: 30px !important;
+            }
+            
+            /* Footer adjustments */
+            .footer {
+                padding: 20px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .rainbow-text {
+                font-size: 3em !important;
+                line-height: 0.9;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem !important;
+            }
+            
+            .hero {
+                padding: 20px 10px;
+            }
+            
+            .hero p {
+                font-size: 1rem !important;
+            }
+            
+            /* Even smaller buttons on tiny screens */
+            .hero-content .btn {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+                margin: 5px 2px;
+            }
+            
+            .col-12 .btn[href*="meta.com"] {
+                font-size: 1.2rem !important;
+                padding: 15px 20px !important;
+            }
+            
+            /* Tighter spacing */
+            .features,
+            .content-section {
+                padding: 20px 10px;
+            }
+            
+            .col-md-4 > div[style*="background: rgba"] {
+                padding: 15px !important;
+            }
+            
+            /* BRAIN text even smaller */
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] h4 {
+                font-size: 1rem !important;
+                letter-spacing: 1px !important;
+            }
+            
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] span[style*="font-size: 180%"] {
+                font-size: 120% !important;
+            }
+            
+            /* About section */
+            .content-section .col-lg-10 > div {
+                padding: 20px !important;
+            }
+            
+            .content-section p {
+                font-size: 0.95rem !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            /* Very small screens like older phones */
+            .rainbow-text {
+                font-size: 2.5em !important;
+            }
+            
+            .hero h1 {
+                font-size: 1.3rem !important;
+            }
+            
+            .hero {
+                padding: 15px 8px;
+            }
+            
+            .col-12 .btn[href*="meta.com"] {
+                font-size: 1.1rem !important;
+                padding: 12px 18px !important;
+            }
+            
+            .hero-content .btn {
+                font-size: 0.75rem;
+                padding: 8px 12px;
             }
         }
 
@@ -337,7 +581,7 @@
                 <h3 style="font-size:1.8em; color: #FF3366; margin-bottom: 30px; text-align: center;">What Users Are Saying</h3>
                 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-12 mb-3">
                         <div style="background-image: url('http://braincandyapp.com/src/gifs/output_1.gif'); background-size: cover; background-position: center; background-repeat: no-repeat; border: 1px solid rgba(51, 204, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px; position: relative;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 15, 30, 0.5); border-radius: 10px;"></div>
                             <div style="position: relative; z-index: 1;">
@@ -347,7 +591,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-12 mb-3">
                         <div style="background-image: url('http://braincandyapp.com/src/gifs/output_22.gif'); background-size: cover; background-position: center; background-repeat: no-repeat; border: 1px solid rgba(51, 204, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px; position: relative;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 15, 30, 0.5); border-radius: 10px;"></div>
                             <div style="position: relative; z-index: 1;">
@@ -357,7 +601,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-12 mb-3">
                         <div style="background-image: url('http://braincandyapp.com/src/gifs/output_13.gif'); background-size: cover; background-position: center; background-repeat: no-repeat; border: 1px solid rgba(51, 204, 255, 0.3); border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px; position: relative;">
                             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 15, 30, 0.5); border-radius: 10px;"></div>
                             <div style="position: relative; z-index: 1;">
@@ -374,7 +618,7 @@
         <!-- Button Groups in Boxes -->
         <div class="row" style="margin-top: 40px;">
             <!-- Try It Out -->
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12 mb-3">
                 <div style="background: rgba(0,0,0,0.6); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
                     <h3 style="font-size:1.3em; color: #00FFFF; margin-bottom: 20px; text-align: center;">Try It Out</h3>
                     <div class="button-group" style="text-align: center;">
@@ -384,7 +628,7 @@
             </div>
             
             <!-- Learn More -->
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12 mb-3">
                 <div style="background: rgba(0,0,0,0.6); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
                     <h3 style="font-size:1.3em; color: #FFFF00; margin-bottom: 20px; text-align: center;">Learn More</h3>
                     <div class="button-group" style="text-align: center;">
@@ -399,7 +643,7 @@
             </div>
             
             <!-- Feedback & Safety -->
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12 mb-3">
                 <div style="background: rgba(0,0,0,0.6); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
                     <h3 style="font-size:1.3em; color: #FF6600; margin-bottom: 20px; text-align: center;">Community</h3>
                     <div class="button-group" style="text-align: center;">
@@ -426,7 +670,7 @@
             </div>
             
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 mb-4">
                     <div class="feature-video-wrapper">
                         <video class="feature-video" autoplay loop muted playsinline>
                             <source src="src/images/bc_001.mp4" type="video/mp4">
@@ -436,7 +680,7 @@
                     <h3>Tunable Buffet</h3>
                     <p>A wide spectrum of experiences designed to satisfy diverse perceptual palates and moods.</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 mb-4">
                     <div class="feature-video-wrapper">
                         <video class="feature-video" autoplay loop muted playsinline>
                             <source src="src/images/bc_002.mp4" type="video/mp4">
@@ -446,7 +690,7 @@
                     <h3>DOPE Technology</h3>
                     <p>Dynamic Oscillatory Pattern Entrainment aligns with your brain's natural rhythms.</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12 mb-4">
                     <div class="feature-video-wrapper">
                         <video class="feature-video" autoplay loop muted playsinline>
                             <source src="src/images/bc_003.mp4" type="video/mp4">
@@ -495,7 +739,7 @@
     <div class="content-section ">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12 mb-4">
                     <img src="src/images/CandyGif_A.gif" alt="Image 1" class="content-image">
                     <h3>The Science of Light</h3>
                     <p>Brain Candy uses flickering lights and visual patterns guided by research into altered states by
@@ -506,7 +750,7 @@
                         unforgettable experience.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12 mb-4">
                     <img src="src/images/CandyGif_B.gif" alt="Image 2" class="content-image">
                     <h3>How It Works</h3>
                     <p>The flickering light enters your body through your open eyes, reaching the central brain and
@@ -514,7 +758,7 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12 mb-4">
                     <img src="src/images/CandyGif_C.gif" alt="Image 3" class="content-image">
                     <h3>Designed for Everyone</h3>
                     <p>Whether you're looking to melt away stress, boost your focus, or unlock your creativity, Brain
@@ -522,7 +766,7 @@
                         is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.
                     </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-12 mb-4">
                     <img src="src/images/CandyGif_D.gif" alt="Image 4" class="content-image">
                     <h3>Sweet States of Mind</h3>
                     <p>From calming relaxation to bursts of mental energy, Brain Candy helps you discover elusive,
