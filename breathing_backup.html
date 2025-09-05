@@ -187,122 +187,25 @@
             text-align: center;
         }
 
-        .gif-placeholder {
-            width: 200px;
-            height: 200px;
-            background: rgba(0, 0, 0, 0.1);
-            border: 3px dashed rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            font-size: 12px;
-            text-align: center;
-            color: rgba(0, 0, 0, 0.6);
-            font-weight: 600;
-        }
-
-        .breathing-category-grid .gif-placeholder {
-            width: 300px;
-            height: 300px;
-            margin: 15px auto;
-        }
-
-        .pack-category h3 {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .pack-category p {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .store-banner {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-            color: white;
-            text-align: center;
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .store-banner a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-
-        .store-banner a:hover {
-            color: #f8f9fa;
-            text-decoration: none;
-        }
-
-        @media (max-width: 1028px) {
+        @media (max-width: 768px) {
             .rainbow-text {
-                font-size: 3.5em;
-            }
-            .gif-placeholder {
-                width: 150px;
-                height: 150px;
+                font-size: 2.5em;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Store Banner -->
-    <div class="store-banner">
-        <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/">
-            🧠 Get Brain Candy on Meta Quest Store - Available Now! 🧠
-        </a>
-    </div>
-
     <!-- Hero Section -->
     <div class="hero-breathing">
         <div class="hero-content">
             <h1 class="rainbow-text">
-                <span>B</span><span>r</span><span>e</span><span>a</span><span>t</span><span>h</span><span>w</span><span>o</span><span>r</span><span>k</span>
+                <span>B</span><span>r</span><span>e</span><span>a</span><span>t</span><span>h</span><span>i</span><span>n</span><span>g</span>
             </h1>
-  
+            <h2>DLC Pack</h2>
+            <p class="lead">Transform your consciousness through the power of breath</p>
             <div class="mt-4">
-                <!-- <a href="app/index.html" class="btn btn-breathing btn-lg mr-3">Try Live Preview</a> -->
-                <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/" class="btn btn-breathing btn-lg">Get Breathing DLC</a>
-            </div>
-            <br>
-            <div class="container" style="max-width: 900px;">
-                <p class="lead">Unlock the next level of Brain Candy with Breathwork, a collection of over two dozen science-backed, brain-boosting breathing experiences that combine breathing pacers with dynamic oscillatory pattern entrainment to help you relax, focus, and achieve altered states. Each style works differently on your nervous system and brainwaves, and you can use the techniques you learn anytime.</p>
-            </div>
-            
-            <!-- Three Hero GIFs Section -->
-            <div class="container" style="margin-top: 40px;">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div style="width: 100%; height: 250px; background-image: url('src/images/dlc/breathwork/para_01.gif'); background-size: cover; background-position: center; border-radius: 10px; position: relative; margin: 20px 0;">
-                            <div style="color: white; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; width: 90%;">
-                                <span style="font-size: 16px; font-weight: 600; line-height: 1.3;">Over 2 Dozen New Candies!</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div style="width: 100%; height: 250px; background-image: url('src/images/dlc/breathwork/para_02.gif'); background-size: cover; background-position: center; border-radius: 10px; position: relative; margin: 20px 0;">
-                            <div style="color: white; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; width: 90%;">
-                                <span style="font-size: 16px; font-weight: 600; line-height: 1.3;">Breathing Exercises to Alter Your Mind</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div style="width: 100%; height: 250px; background-image: url('src/images/dlc/breathwork/para_03.gif'); background-size: cover; background-position: center; border-radius: 10px; position: relative; margin: 20px 0;">
-                            <div style="color: white; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 8px; width: 90%;">
-                                <span style="font-size: 16px; font-weight: 600; line-height: 1.3;">AERO: Active Entrainment for Respiratory Optimization</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <a href="#explore" class="btn btn-breathing btn-lg">Explore the Science</a>
             </div>
         </div>
     </div>
@@ -313,134 +216,14 @@
             
             <!-- Introduction -->
             <div class="breathing-card">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h2>The Breath: Your Gateway to Altered States</h2>
-                        <p>Breathing is the most fundamental rhythm of life, and it's also the most powerful tool you have for changing your state of consciousness. Unlike your heartbeat or digestion, breathing operates in both automatic and conscious modes - making it a unique bridge between your voluntary and involuntary nervous systems.</p>
-                        
-                        <div class="science-highlight">
-                            <strong>Did you know?</strong> Every breath you take sends information throughout your entire nervous system, directly influencing your brain waves, heart rate variability, stress hormones, and even your gene expression. When you change how you breathe, you literally change who you are at a cellular level.
-                        </div>
-
-                        <p>The Brain Candy Breathing DLC Pack combines ancient breathing wisdom with cutting-edge neuroscience, creating immersive visual experiences that guide you through transformative breathing practices. Each "candy" in our collection synchronizes your breath with carefully crafted visual patterns, helping you achieve specific states of consciousness.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <div style="width: 200px; height: 200px; background-image: url('src/images/dlc/breathwork/output_77.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 20px auto;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="breathing-section" id="explore">
-        
-        <div class="container">
-            <!-- Breathing Pack Categories -->
-            <div class="breathing-card">
-                <h2>The Brain Candy Breathing Collection</h2>
-                <p>Our breathing pack includes 30+ carefully crafted experiences across five distinct categories, each designed to guide you into specific states of consciousness:</p>
-
-                <div class="pack-category box">
-                    <h3>Box Breathing</h3>
-                    <p>Inhale, hold, exhale, hold—each for the same count. Simple, square, and surprisingly powerful. Box breathing balances oxygen and carbon dioxide levels in the blood, stabilizes heart rhythms, and creates a steady state of alert calm. Practiced by Navy SEALs, yogis, and high performers alike, it's like mental push-ups for resilience and focus.</p>
-                    
-                    <div class="row breathing-category-grid">
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/box_01.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_22.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_29.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                    </div>
+                <h2>The Breath: Your Gateway to Altered States</h2>
+                <p>Breathing is the most fundamental rhythm of life, and it's also the most powerful tool you have for changing your state of consciousness. Unlike your heartbeat or digestion, breathing operates in both automatic and conscious modes - making it a unique bridge between your voluntary and involuntary nervous systems.</p>
+                
+                <div class="science-highlight">
+                    <strong>Did you know?</strong> Every breath you take sends information throughout your entire nervous system, directly influencing your brain waves, heart rate variability, stress hormones, and even your gene expression. When you change how you breathe, you literally change who you are at a cellular level.
                 </div>
 
-                <div class="pack-category diaphragm">
-                    <h3>Parasympathetic Pacers</h3>
-                    <p>These slow, rhythmic breathing guides are like a reset button for your nervous system. By extending the exhale, they activate the parasympathetic branch—your body's natural "rest and digest" mode. The result: lowered cortisol, a calmer heartbeat, and a brain that shifts from scattered to centered. Perfect for winding down after overstimulation.</p>
-                    
-                    <div class="row breathing-category-grid">
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/para_01.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/para_02.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/para_03.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pack-category mindful">
-                    <h3>Detected Breathing</h3>
-                    <p>No need to keep time—your headset does it for you. With detected breathing, Brain Candy listens to your inhale and exhale in real time and transforms it into light and sound. Your breath becomes the conductor, and your brain syncs to patterns that feel intuitive, embodied, and deeply immersive.</p>
-                    
-                    <div class="row breathing-category-grid">
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_8.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_20.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_44.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pack-category holotropic">
-                    <h3>Holotropic Breathing</h3>
-                    <p>This is the wild ride. By breathing in fast, deep cycles, you flood the brain with oxygen, tilt your chemistry toward altered states, and often spark vivid imagery or deep emotional release. Used in therapeutic and psychedelic research, it's a safe way to open doors to creativity, self-discovery, and transcendent experiences—all powered by your own lungs.</p>
-                    
-                    <div class="row breathing-category-grid">
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/holotropic_01.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/holotropic_02.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/holotropic_03.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pack-category guided">
-                    <h3>Guided by Voices</h3>
-                    <p>New to these techniques? Our friendly guides talk you through each style, giving context and coaching along the way. It's like having a meditation teacher in your ear, helping you relax into the experience and get the most from every breath.</p>
-                    
-                    <div class="row breathing-category-grid">
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_84.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_77.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div style="width: 300px; height: 300px; background-image: url('src/images/dlc/breathwork/output_44.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 15px auto;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p>The Brain Candy Breathing DLC Pack combines ancient breathing wisdom with cutting-edge neuroscience, creating immersive visual experiences that guide you through transformative breathing practices. Each "candy" in our collection synchronizes your breath with carefully crafted visual patterns, helping you achieve specific states of consciousness.</p>
             </div>
 
             <!-- Why Breathing Works -->
@@ -511,7 +294,72 @@
                 </div>
             </div>
 
-            
+            <!-- Breathing Pack Categories -->
+            <div class="breathing-card">
+                <h2>The Brain Candy Breathing Collection</h2>
+                <p>Our breathing pack includes 30+ carefully crafted experiences across five distinct categories, each designed to guide you into specific states of consciousness:</p>
+
+                <div class="pack-category box">
+                    <h3>Box Breathing (Square Breathing)</h3>
+                    <p>Master the art of rhythmic breathing with equal inhale, hold, exhale, and hold phases. Perfect for focus, stress relief, and nervous system regulation.</p>
+                    <ul class="candy-list">
+                        <li>OccipitalOmms</li>
+                        <li>ChocolateBox</li>
+                        <li>Minimal</li>
+                        <li>CircularBox</li>
+                        <li>BoxyLadyIntense</li>
+                        <li>BoxyLadyFingers</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category diaphragm">
+                    <h3>Diaphragmatic Breathing</h3>
+                    <p>Engage your primary breathing muscle for deep relaxation, improved oxygen exchange, and parasympathetic activation.</p>
+                    <ul class="candy-list">
+                        <li>ChocoChakras</li>
+                        <li>UpDown</li>
+                        <li>PursedLips</li>
+                        <li>BellySwirls</li>
+                        <li>ButeykoBubbles</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category mindful">
+                    <h3>Mindful Breathing</h3>
+                    <p>Cultivate present-moment awareness through gentle, contemplative breathing practices that enhance meditation and mindfulness.</p>
+                    <ul class="candy-list">
+                        <li>Beats</li>
+                        <li>ControlledBreathingDonuts</li>
+                        <li>ControlledBreathing</li>
+                        <li>ControlledSpeckles</li>
+                        <li>Minimal</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category holotropic">
+                    <h3>Holotropic Breathing</h3>
+                    <p>Explore non-ordinary states of consciousness through accelerated breathing patterns that can induce profound healing and insight.</p>
+                    <ul class="candy-list">
+                        <li>GrayPulse</li>
+                        <li>HyperVentrical</li>
+                        <li>HoloHemispheres</li>
+                        <li>Dynamic Intensity Waves</li>
+                        <li>DomePiece</li>
+                    </ul>
+                </div>
+
+                <div class="pack-category guided">
+                    <h3>Guided Experiences</h3>
+                    <p>Multi-layered journeys that combine different breathing techniques with immersive storytelling and progressive visualization.</p>
+                    <ul class="candy-list">
+                        <li>CircularBox Journey</li>
+                        <li>Mindful Integration</li>
+                        <li>Diaphragm Deep Dive</li>
+                        <li>Box Mastery</li>
+                        <li>Holotropic Exploration</li>
+                    </ul>
+                </div>
+            </div>
 
             <!-- The Power of Extremes -->
             <div class="breathing-card">
@@ -550,25 +398,17 @@
 
             <!-- How Brain Candy Helps -->
             <div class="breathing-card">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div style="width: 200px; height: 200px; background-image: url('src/images/dlc/breathwork/output_8.gif'); background-size: cover; background-position: center; border-radius: 10px; margin: 20px auto;">
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h2>How Brain Candy Enhances Your Practice</h2>
-                        
-                        <h3>Visual Breathing Guidance</h3>
-                        <p>Our immersive visual patterns serve as external breathing pacemakers, helping you maintain consistent rhythms without mental effort. The synchronized visuals:</p>
-                        
-                        <ul>
-                            <li>Eliminate the need to count or time your breaths</li>
-                            <li>Create entrainment effects that naturally guide your nervous system</li>
-                            <li>Provide feedback loops that deepen your breathing practice</li>
-                            <li>Induce mild altered states that enhance receptivity to breath work</li>
-                        </ul>
-                    </div>
-                </div>
+                <h2>How Brain Candy Enhances Your Practice</h2>
+                
+                <h3>Visual Breathing Guidance</h3>
+                <p>Our immersive visual patterns serve as external breathing pacemakers, helping you maintain consistent rhythms without mental effort. The synchronized visuals:</p>
+                
+                <ul>
+                    <li>Eliminate the need to count or time your breaths</li>
+                    <li>Create entrainment effects that naturally guide your nervous system</li>
+                    <li>Provide feedback loops that deepen your breathing practice</li>
+                    <li>Induce mild altered states that enhance receptivity to breath work</li>
+                </ul>
 
                 <h3>Neuroplasticity Enhancement</h3>
                 <p>The combination of rhythmic breathing with synchronized visual stimulation creates ideal conditions for neuroplasticity - your brain's ability to form new neural connections. This combination:</p>
@@ -652,7 +492,7 @@
                 <p class="lead">Experience the power of conscious breathing with our immersive DLC pack.</p>
                 
                 <div class="mt-4">
-                    <!-- <a href="app/index.html" class="btn btn-breathing btn-lg mr-3">Try Live Preview</a> -->
+                    <a href="app/index.html" class="btn btn-breathing btn-lg mr-3">Try Live Preview</a>
                     <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/" class="btn btn-breathing btn-lg">Get Breathing DLC</a>
                 </div>
                 
@@ -690,7 +530,7 @@
         <ul class="list-inline">
             <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
             <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
-            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">info@braincandyapp.com</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
         </ul>
     </div>
 
