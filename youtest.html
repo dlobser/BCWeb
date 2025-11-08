@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Strobe Overlay</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: overlay;
+      animation: strobe 0.1s infinite;
+    }
+
+    @keyframes strobe {
+      0%   { background: rgba(255,255,255,0.5); }
+      50%  { background: rgba(0,0,0,0.5); }
+      100% { background: rgba(255,255,255,0.5); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <iframe 
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+    <div class="overlay"></div>
+  </div>
+</body>
+</html>

@@ -1,136 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>brain candy! - warning</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        @font-face {
-            font-family: 'Carbon Block';
-            src: url('src/fonts/Alba_modified.ttf') format('truetype');
-        }
+  <!-- ====== Required meta ====== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain Candy — Strobing Light Warning</title>
+  <meta name="description" content="Brain Candy — altered states in VR. Please review the strobing light warning before you enter." />
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #000;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+  <!-- ====== Rich link previews (Open Graph & Twitter) ====== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Brain Candy" />
+  <meta property="og:site_name" content="Brain Candy" />
+  <meta property="og:description" content="Altered states in VR. Tap to enter — please read the strobing light warning." />
+  <meta property="og:url" content="https://braincandyapp.com/" />
+  <meta property="og:image" content="https://braincandyapp.com/src/images/YOUR_ABSOLUTE_IMAGE_URL.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
-        .hero {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('src/images/BC_BG.jpg');
-            background-size: 512px;
-            background-position: center;
-            background-repeat: repeat;
-            padding: 50px 20px;
-            position: relative;
-        }
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Brain Candy" />
+  <meta name="twitter:description" content="Altered states in VR. Tap to enter — please read the strobing light warning." />
+  <meta name="twitter:image" content="https://braincandyapp.com/src/images/YOUR_ABSOLUTE_IMAGE_URL.jpg" />
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
+  <!-- Optional polish -->
+  <meta name="theme-color" content="#0bbbf6" />
+  <link rel="canonical" href="https://braincandyapp.com/" />
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
+  <!-- Icons -->
+  <link rel="icon" href="src/icons/favicon-32.png" sizes="32x32" />
+  <link rel="icon" href="src/icons/favicon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="src/icons/apple-touch-icon.png" />
 
-        .warning-text {
-            font-family: 'Carbon Block', sans-serif;
-            font-size: 4em;
-            margin-bottom: 40px;
-            color: #ff0000;
-        }
+  <!-- Fonts & Bootstrap -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --hotpink:#FF3366;
+      --sky:#33CCFF;
+      --overlay: rgba(0,0,0,.55);
+      --text-light:#e7f6ff;
+    }
+    @font-face {
+      font-family: 'Carbon Block';
+      src: url('src/fonts/Alba_modified.ttf') format('truetype');
+      font-display: swap;
+    }
 
-        .button-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    /* Base */
+    html, body { height: 100%; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background:#000; color:#fff;
+      display:flex; flex-direction:column;
+    }
 
-        .btn {
-            padding: 12px 24px;
-            border-radius: 50px;
-            border: none;
-            transition: transform 0.2s, opacity 0.2s;
-            font-weight: 600;
-            min-width: 200px;
-        }
+    /* Hero */
+    .hero {
+      flex:1 0 auto;
+      display:flex; align-items:center; justify-content:center;
+      background-image:url('src/images/BC_BG.jpg');
+      background-size:512px; background-position:center; background-repeat:repeat;
+      position:relative; padding:48px 16px; text-align:center;
+    }
+    .hero::before { content:""; position:absolute; inset:0; background:var(--overlay); }
+    .hero-content { position:relative; z-index:1; width:100%; max-width:960px; margin:0 auto; }
 
-        .btn:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
+    /* Rainbow title at the very top */
+    .rainbow-text {
+      font-family:'Carbon Block', sans-serif;
+      font-size: 8em; line-height: .92; margin: 0 0 12px 0; word-break: break-word;
+    }
+    .rainbow-text span:nth-child(1){ color:#f42335; } /* red */
+    .rainbow-text span:nth-child(2){ color:#2ef366; } /* green */
+    .rainbow-text span:nth-child(3){ color:#32a4f1; } /* blue */
+    .rainbow-text span:nth-child(4){ color:#f5f50d; } /* yellow */
+    .rainbow-text span:nth-child(5){ color:#f727f7; } /* pink */
+    .rainbow-text span:nth-child(6){ color:#1eeaea; } /* cyan */
+    .rainbow-text span:nth-child(7){ color:#f45e2b; } /* orange */
+    .rainbow-text span:nth-child(8){ color:#a529f8; } /* purple */
+    .rainbow-text span:nth-child(9){ color:#22e9e9; } /* light blue */
+    .rainbow-text span:nth-child(10){ color:#ee2ea1; } /* rose */
+    .rainbow-text .spacer { display:inline-block; width:.01em; } /* visual spacer for the space */
 
-        .btn-continue {
-            background-color: #33CCFF;
-        }
+    /* Centerpiece image */
+    .brand-image {
+      display:block; margin:6px auto 18px auto;
+      width:min(500px, 90vw); height:auto; object-fit:contain;
+      filter: drop-shadow(0 12px 40px rgba(0,0,0,.45));
+    }
 
-        .btn-warning {
-            background-color: #FF3366;
-        }
+    .subtitle {
+      color:var(--text-light); opacity:.95; margin-bottom:20px;font-size:2rem;
+    }
 
-        .footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+    /* Warning label */
+    .warning-text {
+      font-family:'Carbon Block', sans-serif;
+      font-size:3rem; line-height:1.0; margin:16px 0 18px 0;
+      color:#ff0000; letter-spacing:1px;
+      text-shadow:0 2px 18px rgba(255,0,0,.35);
+    }
+
+    .button-group {
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    }
+    .btn {
+      padding:12px 24px; border-radius:50px; border:none;
+      font-weight:700; min-width:200px;
+      transition:transform .2s, opacity .2s, box-shadow .2s;
+    }
+    .btn:hover { transform:scale(1.05); opacity:.92; }
+    .btn-continue { background-color:var(--sky); box-shadow:0 8px 28px rgba(51,204,255,.28); }
+    .btn-warning  { background-color:var(--hotpink); box-shadow:0 8px 28px rgba(255,51,102,.28); }
+
+    /* Footer */
+    .footer { background:#222; color:#fff; text-align:center; padding:20px; font-size:.95rem; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .hero { background-image:none; background-color:#111; }
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 768px){
+      .rainbow-text { font-size: 4em; }
+    }
+    @media (max-width: 480px){
+      .warning-text { font-size:2.2rem; }
+    }
+  </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <h1 class="warning-text">WARNING!<br>Strobing Lights</h1>
-            <div class="button-group">
-                <a href="main.html" class="btn btn-continue">Continue</a>
-                <a href="warning.html" class="btn btn-warning">Read the Warning</a>
-            </div>
-        </div>
-    </div>
+  <!-- ================= HERO (splash) ================= -->
+  <header class="hero" role="banner" aria-label="Brain Candy splash warning">
+    <div class="hero-content">
 
-    <!-- Floating Support Chat Button -->
-    <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <a href="chatbot.html" style="
-            background: linear-gradient(135deg, #8ebb05, #a8d905);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(142, 187, 5, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: block;
-            text-align: center;
-            min-width: 120px;
-        " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 20px rgba(142, 187, 5, 0.6)';" 
-           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 15px rgba(142, 187, 5, 0.4)';">
-            💬 Support Chat
-        </a>
-    </div>
+      <!-- COLORFUL TITLE AT TOP -->
+      <h1 class="rainbow-text" aria-label="Brain Candy">
+        <span>B</span><span>r</span><span>a</span><span>i</span><span>n</span>
+        <!-- <span class="spacer"></span> -->
+        <span>C</span><span>a</span><span>n</span><span>d</span><span>y</span>
+      </h1>
 
-    <div class="footer">
-        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
-    </div>
+      <!-- Centered brand image -->
+      <img
+        class="brand-image"
+        src="src/images/screenshots/screenshot4_cropped.png"
+        alt="Brain Candy"
+        width="680" height="auto"
+      />
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <p class="subtitle">Altered states in VR.</p>
+
+      <h2 class="warning-text" aria-label="Warning: Strobing Lights">WARNING: Strobing Lights</h2><br>
+
+      <nav class="button-group" aria-label="Primary actions">
+        <a href="main.html" class="btn btn-continue" aria-label="Enter Brain Candy main site">Continue</a>
+        <a href="warning.html" class="btn btn-warning" aria-label="Read the full safety warning">Read the Warning</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer" role="contentinfo">
+    <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+      <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+      <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">info@braincandyapp.com</a></li>
+    </ul>
+  </footer>
+
+  <!-- JS (Bootstrap) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Optional: subtle color shuffle like the reference page -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const letters = document.querySelectorAll(".rainbow-text span:not(.spacer)");
+      const palette = [
+        "#f42335","#2ef366","#32a4f1","#f5f50d",
+        "#f727f7","#1eeaea","#f45e2b","#a529f8",
+        "#22e9e9","#ee2ea1"
+      ];
+      setInterval(() => {
+        letters.forEach(span => {
+          const color = palette[Math.floor(Math.random() * palette.length)];
+          span.style.color = color;
+        });
+      }, 200);
+    });
+  </script>
 </body>
 </html>
