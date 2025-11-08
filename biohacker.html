@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brain Candy - Neural Entrainment for Focus | ADHD & Biohackers</title>
+  
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --primary: #2C3E50;
+      --accent: #3498DB;
+      --dark: #1A1A2E;
+      --light: #ECF0F1;
+      --highlight: #E74C3C;
+    }
+
+    /* @font-face {
+      font-family: 'Carbon Block';
+      src: url('src/fonts/Alba_modified.ttf') format('truetype');
+    } */
+     @font-face {
+      font-family: 'Montserrat', sans-serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0A0A0A;
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Carbon Block', sans-serif;
+      font-weight: 600;
+    }
+
+    /* Main Splash Hero */
+    .splash-hero {
+      position: relative;
+      min-height: 45vh;
+      background-size: cover;
+      background-position: left;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .splash-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .splash-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      max-width: 1000px;
+      padding: 40px 20px;
+    }
+
+    .splash-content h1 {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
+      letter-spacing: 2px;
+    }
+
+    .splash-content .tagline {
+      font-size: 1.8rem;
+      color: var(--light);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+      font-weight: 500;
+    }
+
+    /* Hero Panel Grid - Shorter, Wider */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-height: 30vh;
+    }
+
+    .hero-panel {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      overflow: hidden;
+      min-height: 30vh;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(1px);
+    }
+
+    .hero-panel-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-panel h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-panel p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      background-color: rgba(26, 26, 46, 0.95);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .nav-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-bar a {
+      color: var(--light);
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-bar a:hover {
+      color: var(--accent);
+    }
+
+    .btn-primary-custom {
+      background-color: var(--highlight);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Main Content Section */
+    .main-content {
+      background-color: #0F0F0F;
+      padding: 80px 20px;
+    }
+
+    .headline-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+
+    .headline-section h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      color: var(--accent);
+    }
+
+    .headline-section .lead-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* Science Section */
+    .science-section {
+      background-color: #1A1A2E;
+      padding: 80px 20px;
+    }
+
+    .science-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--accent);
+    }
+
+    .pillar-card {
+      background-color: rgba(44, 62, 80, 0.3);
+      border-left: 4px solid var(--accent);
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .pillar-card:hover {
+      background-color: rgba(44, 62, 80, 0.5);
+      transform: translateX(5px);
+    }
+
+    .pillar-card h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pillar-card p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--light);
+    }
+
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .collapsible-content.active {
+      max-height: 2000px;
+    }
+
+    .references {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    .references h4 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .references a {
+      color: #3498DB;
+      text-decoration: none;
+    }
+
+    .references a:hover {
+      text-decoration: underline;
+    }
+
+    .toggle-icon {
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+
+    .toggle-icon.active {
+      transform: rotate(180deg);
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      background-color: #0A0A0A;
+      padding: 80px 20px;
+    }
+
+    .reviews-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--accent);
+    }
+
+    .review-card {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .review-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 15, 30, 0.85);
+      border-radius: 15px;
+    }
+
+    .review-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stars {
+      color: #FFD700;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-style: italic;
+      color: #E0E0E0;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #1A1A2E;
+      color: var(--light);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .splash-content h1 {
+        font-size: 3.5rem;
+      }
+
+      .splash-content .tagline {
+        font-size: 1.4rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        max-height: none;
+      }
+
+      .hero-panel {
+        min-height: 25vh;
+      }
+
+      .headline-section h1 {
+        font-size: 2.2rem;
+      }
+
+      .science-section h2,
+      .reviews-section h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .splash-hero {
+        min-height: 60vh;
+      }
+
+      .splash-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .splash-content .tagline {
+        font-size: 1.1rem;
+      }
+
+      .hero-panel {
+        min-height: 30vh;
+      }
+
+      .hero-panel h2 {
+        font-size: 1.3rem;
+      }
+
+      .headline-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .nav-bar .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-bar a {
+        margin: 5px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Main Splash Hero -->
+  <section class="splash-hero" style="background-image: url('src/images/biohacker.jpg');">
+    <div class="splash-content">
+      <h1>BRAIN CANDY</h1>
+      <p class="tagline">Altered States for Focus and Meditation</p>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <div class="container">
+      <div>
+        <a href="main.html">Main Site</a>
+        <a href="#science">Science</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <a href="https://www.meta.com/experiences/6445568655500786/" class="btn-primary-custom" target="_blank">Get Brain Candy</a>
+    </div>
+  </nav>
+
+  <!-- Hero Grid with 3 Short Wide Panels -->
+  <section class="hero-grid">
+    <div class="hero-panel" style="background-image: url('src/images/CandyGif_A.gif');">
+      <div class="hero-panel-content">
+        <h2>Mechanical Focus</h2>
+        <p>No willpower. No meditation.<br>Neural entrainment in minutes.</p>
+      </div>
+    </div>
+
+    <div class="hero-panel" style="background-image: url('src/images/CandyGif_B.gif');">
+      <div class="hero-panel-content">
+        <h2>Multisensory Rhythms</h2>
+        <p>Rhythmic stimulation<br>synchronizes scattered networks.</p>
+      </div>
+    </div>
+
+    <div class="hero-panel" style="background-image: url('src/images/CandyGif_C.gif');">
+      <div class="hero-panel-content">
+        <h2>Noticeable Results</h2>
+        <p>Effects in minutes, not weeks.<br>Know if it works immediately.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="main-content" style="background-image: url('src/images/swirl.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <div class="container">
+      <div class="headline-section">
+        <h1>Brain Candy is the only VR tool that uses real-time neural entrainment at theta frequencies to train your brain into focus states without medication or willpower.</h1>
+        
+        <div class="lead-text">
+          <p>Your brain doesn't lack focus, it lacks the right stimulus environment. ADHD brains are actually hypersensitive to novelty and pattern, which is why you can hyperfocus on games for hours but can't read an email. Brain Candy exploits this: it uses multisensory rhythmic stimulation combined with fractal patterns at optimal complexity levels to essentially drag your scattered neural networks into synchronization.</p>
+          
+          <p><strong>This isn't motivation or meditation, it's mechanical.</strong> The research shows rhythmic light stimulation can improve cognitive performance and attention in ADHD populations because it gives your brain the external pacing structure it's missing internally.</p>
+          
+          <p>Here's what matters: it's <strong>fast</strong> (effects in minutes, not weeks), it's <strong>measurable</strong> (you'll know immediately if it works for you), and it's <strong>stackable</strong> with whatever else you're doing—meds, supplements, behavioral strategies. Use it as a pre-work ritual to get into state, or as a reset button when you've hit the afternoon attention crash.</p>
+          
+          <p>The neuroadaptive system learns what patterns work for your specific brain, so it gets more effective over time. No placebo psychology, no "mindfulness journey"—just a targeted tool that manipulates your visual cortex and brainwave patterns to produce the focus state you need, when you need it.</p>
+        </div>
+
+        <div style="margin-top: 40px;">
+          <a href="https://www.meta.com/experiences/6445568655500786/" class="btn-primary-custom" style="font-size: 1.2rem; padding: 15px 40px;" target="_blank">Try Brain Candy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Science Section with Collapsibles -->
+  <section class="science-section" id="science">
+    <div class="container">
+      <h2>The Science: Four Pillars of DOPE</h2>
+      
+      <div class="row">
+        <div class="col-12">
+          
+          <!-- Pillar 1: Thalamocortical Rhythms -->
+          <div class="pillar-card">
+            <h3 onclick="toggleCollapse('pillar1')">
+              Thalamocortical Rhythms
+              <span class="toggle-icon" id="icon1">▼</span>
+            </h3>
+            <p>Rhythmic visual stimulation increases coupling between the thalamus and cortex. When light flashes at specific frequencies, it engages thalamic circuits to coordinate widespread cortical activity, helping your brain maintain focus and coherence.</p>
+            
+            <div class="collapsible-content" id="pillar1">
+              <div class="references">
+                <h4>Key Research</h4>
+                <p>Flickering light at ~10 Hz induces stronger connectivity between the lateral geniculate nucleus (visual thalamus) and higher-order visual cortex. This thalamocortical synchronization acts like a drummer keeping the cortical orchestra in time, enabling coordinated brain activity without pharmacological substances.</p>
+                
+                <p><strong>Selected References:</strong></p>
+                <ul>
+                  <li><a href="https://direct.mit.edu/imag/article/doi/10.1162/imag_a_00033/118034/Flicker-light-stimulation-induces-thalamocortical" target="_blank">Flicker light stimulation induces thalamocortical hyperconnectivity</a></li>
+                  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10198548/" target="_blank">Binaural beats to entrain the brain</a></li>
+                  <li><a href="https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2016.00503/full" target="_blank">Flicker regularity is crucial for entrainment of alpha oscillations</a></li>
+                  <li><a href="https://doi.org/10.1371/journal.pone.0284271" target="_blank">Effect of frequency and rhythmicity on flicker light-induced hallucinatory phenomena</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Fractal Fluency -->
+          <div class="pillar-card">
+            <h3 onclick="toggleCollapse('pillar2')">
+              Fractal Fluency & Attention Restoration
+              <span class="toggle-icon" id="icon2">▼</span>
+            </h3>
+            <p>The human perceptual system processes fractal patterns with exceptional fluency. Mid-range complexity fractals (like those in nature) consistently produce a relaxed-but-alert state, reducing stress markers and enabling "soft fascination"—the effortless attention that allows your directed focus to recover.</p>
+            
+            <div class="collapsible-content" id="pillar2">
+              <div class="references">
+                <h4>Key Research</h4>
+                <p>Research shows that viewing mid-complexity fractals (fractal dimension 1.3-1.5) reduces physiological stress and induces effortless attentional states. Brain Candy's visuals use nature's design language—repetition across scales, symmetry, and statistical randomness within order—as a recipe for calming the mind and recovering from mental fatigue.</p>
+                
+                <p><strong>Selected References:</strong></p>
+                <ul>
+                  <li><a href="https://doi.org/10.1007/978-1-4939-3995-4_30" target="_blank">Taylor & Spehar (2016) - Fractal fluency: An intimate relationship between the brain and processing of fractal stimuli</a></li>
+                  <li><a href="https://doi.org/10.1162/leon.2006.39.3.245" target="_blank">Taylor et al. (2006) - Reduction of physiological stress using fractal art and architecture</a></li>
+                  <li><a href="https://doi.org/10.2190/6V31-7M9R-T9L5-CDG9" target="_blank">Aks & Sprott (1996) - Quantifying aesthetic preference for chaotic patterns</a></li>
+                  <li><a href="https://doi.org/10.1016/j.jenvp.2003.12.004" target="_blank">Hagerhall et al. (2004) - Fractal dimension as predictor of landscape preference</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Harmonic Resonance -->
+          <div class="pillar-card">
+            <h3 onclick="toggleCollapse('pillar3')">
+              Harmonic Resonance & Brain Geometry
+              <span class="toggle-icon" id="icon3">▼</span>
+            </h3>
+            <p>Brain activity naturally organizes into harmonic patterns—standing waves of neural oscillation. Brain Candy aligns external stimuli with these intrinsic harmonics, using structured frequencies that resonate with the brain's natural geometry to facilitate whole-brain coherence and integration.</p>
+            
+            <div class="collapsible-content" id="pillar3">
+              <div class="references">
+                <h4>Key Research</h4>
+                <p>Spontaneous brain activity decomposes into harmonic eigenmodes—standing-wave patterns on cortical geometry. These harmonics explain functional connectivity better than traditional frequency bands. Brain Candy taps into this by structuring stimuli around frequency relationships that mirror the brain's natural resonance patterns.</p>
+                
+                <p><strong>Selected References:</strong></p>
+                <ul>
+                  <li><a href="https://www.nature.com/articles/s42003-023-04474-1" target="_blank">Distributed harmonic patterns of structure-function dependence orchestrate human consciousness</a></li>
+                  <li><a href="https://doi.org/10.1038/ncomms10340" target="_blank">Atasoy et al. (2016) - Human brain networks function in connectome-specific harmonic waves</a></li>
+                  <li><a href="https://www.youtube.com/watch?v=JCEYtgbbpxg" target="_blank">Dr Selen Atasoy: From Harmonics to Enlightenment (Talk)</a></li>
+                  <li><a href="https://www.youtube.com/watch?v=6e_1mQalqwY" target="_blank">Dr Joana Cabral: Oscillatory modes as the basis of a brain melody (Talk)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 4: Oscillatory Entrainment -->
+          <div class="pillar-card">
+            <h3 onclick="toggleCollapse('pillar4')">
+              Oscillatory Entrainment & Phenomenological Control
+              <span class="toggle-icon" id="icon4">▼</span>
+            </h3>
+            <p>External rhythms can drive internal rhythms. Brain Candy uses synchronized light, sound, and vibration at specific frequencies to guide your brain into desired states—theta (4-7 Hz) for deep focus and creativity, alpha (8-12 Hz) for relaxed alertness. This is phenomenological control: guiding subjective state through rhythmic precision.</p>
+            
+            <div class="collapsible-content" id="pillar4">
+              <div class="references">
+                <h4>Key Research</h4>
+                <p>Periodic sensory input synchronizes neural oscillations. A rhythmic 10 Hz flicker produces stronger structured hallucinations than arrhythmic flicker—evidence that entrainment, not intensity, drives effects. Different frequencies bias different experiences: 6 Hz toward theta-dominant reverie, 40 Hz toward alert gamma activity. Multisensory synchronization amplifies effects further.</p>
+                
+                <p><strong>Selected References:</strong></p>
+                <ul>
+                  <li><a href="https://doi.org/10.1371/journal.pone.0284271" target="_blank">Amaya et al. (2023) - Effect of frequency and rhythmicity on flicker light-induced phenomena</a></li>
+                  <li><a href="https://doi.org/10.1038/scientificamerican1073-94" target="_blank">Oster (1973) - Auditory beats in the brain</a></li>
+                  <li><a href="https://doi.org/10.3389/fnhum.2017.00557" target="_blank">López-Caballero & Escera (2017) - Binaural beats: Brain activity and behavioral effects</a></li>
+                  <li><a href="https://doi.org/10.1016/j.dcn.2022.101102" target="_blank">Wass et al. (2022) - Oscillatory entrainment to early social environment</a></li>
+                  <li><a href="https://doi.org/10.3389/fpsyg.2014.00756" target="_blank">Lehrer & Gevirtz (2014) - Heart rate variability biofeedback</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <h2>What Users Are Saying</h2>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="review-card" style="background-image: url('http://braincandyapp.com/src/gifs/output_17.gif');">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"I use Brain Candy whenever I need to focus deeply… Perfect for unwinding after an intense session or stimulating your creativity."</p>
+              <p class="review-author">— Majerik</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="review-card" style="background-image: url('http://braincandyapp.com/src/gifs/output_22.gif');">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"This is the meditation app I have been searching for! … This is the only app I use daily."</p>
+              <p class="review-author">— Kopper23</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="review-card" style="background-image: url('http://braincandyapp.com/src/gifs/output_13.gif');">
+            <div class="review-content">
+              <div class="stars">★★★★★</div>
+              <p class="review-text">"So trippy and awesome… makes my brain tingle and can be relaxing, but also intense. Totally worth it!"</p>
+              <p class="review-author">— KoolenDasheppi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Brain Candy LLC. All rights reserved.</p>
+    <div style="margin-top: 15px;">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="eula.html">Terms of Service</a>
+      <a href="mailto:info@braincandyapp.com">info@braincandyapp.com</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script>
+    function toggleCollapse(pillarId) {
+      const content = document.getElementById(pillarId);
+      const icon = document.getElementById('icon' + pillarId.slice(-1));
+      
+      content.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
