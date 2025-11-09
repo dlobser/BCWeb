@@ -30,11 +30,20 @@
       box-sizing: border-box;
     }
 
+    /* Force proper text scaling on mobile devices */
+    html {
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #0A0A0A;
       color: var(--light);
       line-height: 1.6;
+      font-size: 16px;
     }
 
     h1, h2, h3, h4 {
@@ -401,6 +410,10 @@
     }
 
     @media (max-width: 768px) {
+      html {
+        font-size: 18px; /* Base font size larger on mobile */
+      }
+
       .splash-hero {
         min-height: 50vh;
       }
@@ -410,11 +423,11 @@
       }
 
       .splash-content h1 {
-        font-size: 3.5rem;
+        font-size: 56px;
       }
 
       .splash-content .tagline {
-        font-size: 1.6rem;
+        font-size: 26px;
       }
 
       .hero-panel {
@@ -423,12 +436,12 @@
       }
 
       .hero-panel h2 {
-        font-size: 2rem;
+        font-size: 32px;
         margin-bottom: 0.8rem;
       }
 
       .hero-panel p {
-        font-size: 1.25rem;
+        font-size: 20px;
         line-height: 1.5;
       }
 
@@ -437,13 +450,13 @@
       }
 
       .headline-section h1 {
-        font-size: 2.6rem;
+        font-size: 42px;
         line-height: 1.25;
         margin-bottom: 30px;
       }
 
       .lead-text {
-        font-size: 1.35rem !important;
+        font-size: 22px !important;
         line-height: 1.7 !important;
       }
 
@@ -453,7 +466,7 @@
 
       .science-section h2,
       .reviews-section h2 {
-        font-size: 2.6rem;
+        font-size: 42px;
         margin-bottom: 30px;
       }
 
@@ -463,17 +476,17 @@
       }
 
       .pillar-card h3 {
-        font-size: 1.6rem;
+        font-size: 26px;
         line-height: 1.3;
       }
 
       .pillar-card p {
-        font-size: 1.25rem;
+        font-size: 20px;
         line-height: 1.6;
       }
 
       .references {
-        font-size: 1.15rem;
+        font-size: 19px;
         padding: 18px 15px;
       }
 
@@ -488,18 +501,18 @@
       }
 
       .stars {
-        font-size: 1.5rem;
+        font-size: 24px;
         margin-bottom: 12px;
       }
 
       .review-text {
-        font-size: 1.25rem;
+        font-size: 20px;
         line-height: 1.6;
         margin-bottom: 12px;
       }
 
       .review-author {
-        font-size: 1.15rem;
+        font-size: 19px;
       }
 
       .nav-bar {
@@ -514,21 +527,21 @@
 
       .nav-bar a {
         margin: 6px 10px;
-        font-size: 1.2rem;
+        font-size: 20px;
       }
 
       .btn-primary-custom {
         padding: 14px 35px;
-        font-size: 1.2rem;
+        font-size: 20px;
       }
 
       .footer {
         padding: 35px 20px;
-        font-size: 1.2rem;
+        font-size: 20px;
       }
 
       .footer a {
-        font-size: 1.15rem;
+        font-size: 19px;
         margin: 0 8px;
       }
     }
