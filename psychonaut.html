@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />s -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
   <title>Brain Candy - Psychedelic VR Experience | Neural Art & Altered States</title>
   
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -598,6 +600,75 @@
         font-size: 4vw !important;
       }
     }
+    /* === ANDROID/TINY-TEXT FIX PACK === */
+
+    /* 1) Viewport-friendly base sizing on phones */
+    @media (max-width: 768px) {
+      html {
+        font-size: 18px;              /* raise the rem baseline on mobile */
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+      }
+    }
+
+    /* 2) Remove the old text-boosting hack (it can shrink text on Android) */
+    p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
+      max-height: none !important;
+    }
+
+    /* 3) Use clamp() for responsive copy instead of vw (ensures a readable floor) */
+    .lead-text,
+    .lead-text p,
+    .pillar-card p,
+    .review-text,
+    .nav-bar a,
+    .footer,
+    .footer a,
+    .footer p,
+    .hero-panel p {
+      /* min 16px, prefer ~17–18px, cap ~20px */
+      font-size: clamp(1rem, 0.95rem + 0.6vw, 1.25rem) !important;
+      line-height: 1.65 !important;
+    }
+
+    /* 4) Make headings scale with a readable floor */
+    .splash-content h1 {
+      /* min 34px, fluid, cap ~64px */
+      font-size: clamp(2.125rem, 6.5vw, 4rem) !important;
+    }
+
+    .headline-section h1,
+    .science-section h2,
+    .reviews-section h2,
+    .hero-panel h2,
+    .pillar-card h3 {
+      /* sensible floors so Android never renders them tiny */
+      font-size: clamp(1.5rem, 3.2vw, 2.5rem) !important;
+      line-height: 1.2;
+    }
+
+    /* 5) Buttons & nav—bigger tap targets */
+    .btn-primary-custom {
+      font-size: clamp(1rem, 0.9rem + 0.7vw, 1.25rem) !important;
+      padding: 14px 28px !important;
+    }
+
+    .nav-bar a {
+      padding: 6px 8px;
+    }
+
+    /* 6) Avoid background-attachment: fixed on mobile (can cause odd zoom/layout) */
+    @media (max-width: 768px) {
+      .main-content {
+        background-attachment: scroll !important;
+      }
+    }
+
+    /* 7) Optional: ensure body copy never drops below 16px anywhere */
+    body {
+      font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+    }
+
   </style>
 </head>
 
