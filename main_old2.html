@@ -8,37 +8,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Font Faces */
         @font-face {
             font-family: 'Carbon Block';
             src: url('src/fonts/Alba_modified.ttf') format('truetype');
         }
 
-        /* Base Styles */
-        html {
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Carbon Block', sans-serif;
-        }
-
-        p {
-            font-size: 1.2rem;
-        }
-
-        /* Fix Bootstrap row negative margins */
-        .row {
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        /* Hero Section */
         .hero {
             background-image: url('src/images/BC_BG.jpg');
             background-size: 512px;
@@ -46,8 +20,29 @@
             background-repeat: repeat;
             color: white;
             text-align: center;
-            padding: 0;
-            margin: 0;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .hero2 {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: black;
+            text-align: center;
+            padding: 25px 0px;
+            position: relative;
+        }
+
+        .hero3 {
+            background-image: url('src/images/BCBG.gif');
+            background-size: 512px;
+            /* Adjust size as needed */
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
             position: relative;
         }
 
@@ -64,13 +59,13 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            padding: 50px 20px;
         }
 
         .hero-content .btn {
             margin: 10px;
             padding: 12px 24px;
             border-radius: 50px;
+            /* Makes them very round */
             border: none;
             transition: transform 0.2s, opacity 0.2s;
             font-weight: 600;
@@ -81,39 +76,39 @@
             opacity: 0.9;
         }
 
-        /* Splash Hero */
-        .splash-hero {
-            position: relative;
-            min-height: 45vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            max-width: 100vw;
+        /* Individual button colors */
+        .hero-content .btn:nth-child(1) {
+            background-color: #FF00FF;
+            /* Magenta */
         }
 
-        .splash-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
+        .hero-content .btn:nth-child(2) {
+            background-color: #00FFFF;
+            /* Cyan */
+            color: #000;
+            /* Black text for better contrast */
         }
 
-        .splash-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 1000px;
-            padding: 40px 20px;
+        .hero-content .btn:nth-child(3) {
+            background-color: #FF3366;
+            /* Hot Pink */
         }
 
-        /* Features Section */
+        .hero-content .btn:nth-child(4) {
+            background-color: #33CCFF;
+            /* Bright Blue */
+        }
+
+        .hero-content .btn:nth-child(4) {
+            background-color: #8ebb05;
+            /* Bright Blue */
+        }
+
+        .hero-content .btn:nth-child(6) {
+            background-color: #ff0000;
+            /* Bright Blue */
+        }
+
         .features {
             background-image: url('src/images/BCBG_02.jpg');
             background-size: 512px;
@@ -124,6 +119,20 @@
             max-width: 100%;
             height: auto;
             margin-bottom: 20px;
+        }
+
+        .download {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
         }
 
         .feature-video-wrapper {
@@ -142,73 +151,21 @@
             object-fit: cover;
         }
 
-        /* Content Section */
-        .content-section {
-            background-image: url('src/images/BCBG_02.jpg');
-            background-size: 512px;
-            background-position: center;
-            background-repeat: repeat;
-            padding: 50px 20px;
+        p {
+            font-size: 1.2rem;
         }
 
-        .content-image {
-            max-width: 100%;
-            height: auto;
-            width: 100%;
-            margin-bottom: 20px;
-            object-fit: contain;
-        }
-
-        /* Video Container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 720px;
-            height: auto;
-            max-height: 405px;
-            margin: 0 auto;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 16/9;
-        }
-
-        /* Rainbow Text */
         .rainbow-text {
             font-size: 12em;
             line-height: 1;
+            /* Tighter line spacing */
+            /* Add some bottom margin to compensate for reduced line height */
             margin-bottom: 10px;
         }
 
-        .rainbow-text span:nth-child(1) { color: #f42335; }
-        .rainbow-text span:nth-child(2) { color: #2ef366; }
-        .rainbow-text span:nth-child(3) { color: #32a4f1; }
-        .rainbow-text span:nth-child(4) { color: #f5f50d; }
-        .rainbow-text span:nth-child(5) { color: #f727f7; }
-        .rainbow-text span:nth-child(6) { color: #1eeaea; }
-        .rainbow-text span:nth-child(7) { color: #f45e2b; }
-        .rainbow-text span:nth-child(8) { color: #a529f8; }
-        .rainbow-text span:nth-child(9) { color: #22e9e9; }
-        .rainbow-text span:nth-child(10) { color: #ee2ea1; }
-
-        /* Footer */
-        .footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Animations */
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px rgba(255, 0, 255, 0.5)); }
-            to { filter: drop-shadow(0 0 25px rgba(0, 255, 255, 0.8)); }
-        }
-
-        /* Mobile Responsive Design */
+        /* Comprehensive Mobile Responsive Design */
         @media (max-width: 768px) {
+            /* Typography adjustments */
             .rainbow-text {
                 font-size: 4em !important;
                 line-height: 0.9;
@@ -233,10 +190,16 @@
                 font-size: 1rem !important;
             }
             
-            .hero-content {
+            /* Hero section adjustments */
+            .hero {
                 padding: 30px 15px;
             }
             
+            .hero-content {
+                padding: 0 10px;
+            }
+            
+            /* Button improvements */
             .hero-content .btn {
                 margin: 8px 5px;
                 padding: 12px 20px;
@@ -246,12 +209,14 @@
                 min-width: 120px;
             }
             
+            /* Store page button - make it more prominent on mobile */
             .col-12 .btn[href*="meta.com"] {
                 font-size: 1.5rem !important;
                 padding: 18px 25px !important;
                 margin: 10px 0 !important;
             }
             
+            /* User review cards - stack vertically */
             .row .col-md-4 {
                 margin-bottom: 20px;
             }
@@ -265,6 +230,7 @@
                 font-size: 0.85rem !important;
             }
             
+            /* Button group boxes */
             .col-md-4 > div[style*="background: rgba"] {
                 margin-bottom: 25px;
                 padding: 20px !important;
@@ -275,6 +241,7 @@
                 margin-bottom: 15px !important;
             }
             
+            /* Features section */
             .features {
                 padding: 30px 15px;
             }
@@ -283,9 +250,9 @@
                 margin-bottom: 30px;
             }
             
+            /* Video containers */
             .feature-video-wrapper {
-                padding-top: 0;
-                min-height: 250px;
+                margin-bottom: 15px;
             }
             
             .video-container {
@@ -293,6 +260,7 @@
                 max-width: 100% !important;
             }
             
+            /* Content sections */
             .content-section {
                 padding: 30px 15px;
             }
@@ -301,6 +269,23 @@
                 margin-bottom: 15px;
             }
             
+            /* BRAIN text section */
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] {
+                padding: 30px 15px !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] h4 {
+                font-size: 1.2rem !important;
+                letter-spacing: 2px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] span[style*="font-size: 180%"] {
+                font-size: 140% !important;
+            }
+            
+            /* About section */
             .content-section .col-lg-10 > div {
                 padding: 25px !important;
                 margin-bottom: 20px !important;
@@ -311,6 +296,7 @@
                 line-height: 1.6 !important;
             }
             
+            /* Only statement box */
             .col-lg-10.mx-auto > div {
                 padding: 20px !important;
                 margin-bottom: 30px !important;
@@ -321,6 +307,7 @@
                 line-height: 1.4 !important;
             }
             
+            /* Floating support button */
             div[style*="position: fixed"] {
                 bottom: 15px !important;
                 right: 15px !important;
@@ -332,10 +319,12 @@
                 min-width: 100px !important;
             }
             
+            /* Row spacing improvements */
             .row[style*="margin-top"] {
                 margin-top: 30px !important;
             }
             
+            /* Footer adjustments */
             .footer {
                 padding: 20px 15px;
                 font-size: 0.9rem;
@@ -343,6 +332,7 @@
         }
 
         @media (max-width: 480px) {
+            /* Extra small screens */
             .rainbow-text {
                 font-size: 3em !important;
                 line-height: 0.9;
@@ -352,7 +342,7 @@
                 font-size: 1.5rem !important;
             }
             
-            .hero-content {
+            .hero {
                 padding: 20px 10px;
             }
             
@@ -360,6 +350,7 @@
                 font-size: 1rem !important;
             }
             
+            /* Even smaller buttons on tiny screens */
             .hero-content .btn {
                 font-size: 0.8rem;
                 padding: 10px 15px;
@@ -371,6 +362,7 @@
                 padding: 15px 20px !important;
             }
             
+            /* Tighter spacing */
             .features,
             .content-section {
                 padding: 20px 10px;
@@ -380,6 +372,17 @@
                 padding: 15px !important;
             }
             
+            /* BRAIN text even smaller */
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] h4 {
+                font-size: 1rem !important;
+                letter-spacing: 1px !important;
+            }
+            
+            .container > div[style*="background-image: url('src/images/BCBG.gif')"] span[style*="font-size: 180%"] {
+                font-size: 120% !important;
+            }
+            
+            /* About section */
             .content-section .col-lg-10 > div {
                 padding: 20px !important;
             }
@@ -390,6 +393,7 @@
         }
 
         @media (max-width: 360px) {
+            /* Very small screens like older phones */
             .rainbow-text {
                 font-size: 2.5em !important;
             }
@@ -398,7 +402,7 @@
                 font-size: 1.3rem !important;
             }
             
-            .hero-content {
+            .hero {
                 padding: 15px 8px;
             }
             
@@ -412,36 +416,169 @@
                 padding: 8px 12px;
             }
         }
+
+        /* More saturated rainbow colors */
+        .rainbow-text span:nth-child(1) {
+            color: #f42335;
+        }
+
+        /* Brighter Red */
+        .rainbow-text span:nth-child(2) {
+            color: #2ef366;
+        }
+
+        /* Brighter Green */
+        .rainbow-text span:nth-child(3) {
+            color: #32a4f1;
+        }
+
+        /* Brighter Blue */
+        .rainbow-text span:nth-child(4) {
+            color: #f5f50d;
+        }
+
+        /* Brighter Yellow */
+        .rainbow-text span:nth-child(5) {
+            color: #f727f7;
+        }
+
+        /* Brighter Pink */
+        .rainbow-text span:nth-child(6) {
+            color: #1eeaea;
+        }
+
+        /* Brighter Cyan */
+        .rainbow-text span:nth-child(7) {
+            color: #f45e2b;
+        }
+
+        /* Brighter Orange */
+        .rainbow-text span:nth-child(8) {
+            color: #a529f8;
+        }
+
+        /* Brighter Purple */
+        .rainbow-text span:nth-child(9) {
+            color: #22e9e9;
+        }
+
+        /* Brighter Light Blue */
+        .rainbow-text span:nth-child(10) {
+            color: #ee2ea1;
+        }
+
+        /* Brighter Rose */
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+            max-height: 405px;
+            margin: 0 auto;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+        }
+
+        .content-section {
+            background-image: url('src/images/BCBG_02.jpg');
+            background-size: 512px;
+            padding: 50px 20px;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            width: 100%;
+            /* ensures full width containment */
+            margin-bottom: 20px;
+            object-fit: contain;
+            /* maintains aspect ratio */
+        }
+
+        /* Pastel Rose */
     </style>
 </head>
 
 <body>
+    <!-- <div class="hero">
+        <div class="hero-content">
+            <h1>Feed Your Brain, with Candy! In <span style="color: #ee2ea1">Virtual</span> <span
+                    style="color: #0bbbf6">Reality!</span></h1>
+            <h2 class="rainbow-text">
+                <span>b</span><span>r</span><span>a</span><span>i</span><span>n</span>
+                <span>c</span><span>a</span><span>n</span><span>d</span><span>y</span>!
+            </h2>
+            <p style="font-size:2em">Now available in early access!</p>
+            <div class="button-group">
+                <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/"
+                    class="btn btn-primary btn-lg">Store Page</a>
+            </div>
+            <p style="font-size:2em">Warning! Strobing Visuals!</p>
+            <div class="button-group">
+                <a href="app/index.html" class="btn btn-primary btn-lg">Live Preview</a>
+                <a href="science.html" class="btn btn-primary btn-lg">Science</a>
+                <a href="gallery.html" class="btn btn-primary btn-lg">DLC Gallery</a>
+                <a href="events.html" class="btn btn-primary btn-lg">Events Blog</a>
+                <a href="https://www.youtube.com/@BrainCandyApp" class="btn btn-primary btn-lg">YouTube</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScG3tZOGbROiBHrK9dtU5hFt-bXN7j3p7FFLbwVgA7abwBR_A/viewform?usp=header" class="btn btn-primary btn-lg">Give Feedback!</a>
+                <a href="warning.html" class="btn btn-primary btn-lg">Seizure Warning</a>
+            </div>
+        </div>
+    </div> -->
 <div class="hero">
-    <section class="splash-hero" style="background-image: url('src/images/splash_wide.jpg');">
-    </section>
     <div class="hero-content">
-        <br>
-        <p style="font-size:2em">Rhythmic Stimulation for Altered States, in VR, get it now on Meta Quest!</p>
+        <h1>Feed Your Brain, with Candy! In <span style="color: #ee2ea1">Virtual</span> <span
+                style="color: #0bbbf6">Reality!</span></h1>
+        <h2 class="rainbow-text">
+            <span>b</span><span>r</span><span>a</span><span>i</span><span>n</span>
+            <span>c</span><span>a</span><span>n</span><span>d</span><span>y</span>!
+        </h2>
+        <p style="font-size:2em">Now in early access on Meta Quest!</p>
         
         <!-- Get the App -->
-        <div class="row justify-content-center" style="margin-top: 40px;">
-            <!-- Store Page Button -->
-            <div class="col-auto text-center mb-3">
-                <a href="https://vr.meta.me/s/1P1LyTfJlutPQR4"
-                    class="btn btn-primary btn-lg" style="font-size: 1.5rem; background-color: #28a745; border-color: #28a745; padding: 15px 30px;">Store Page</a>
+         <div class="row" style="margin-top: 40px;">
+            <!-- Store Page Button - Bigger and Above -->
+            <div class="col-12 text-center" style="margin-bottom: 20px;">
+                <div class="button-group">
+                    <a href="https://vr.meta.me/s/1P1LyTfJlutPQR4"
+                        class="btn btn-primary btn-lg" style="font-size:2.2em; background-color: #28a745; border-color: #28a745; padding: 15px 30px;">Store Page</a>
+                </div>
             </div>
-            
-            <!-- New Breathwork DLC Button -->
-            <div class="col-auto text-center mb-3">
-                <a href="breathing.html"
-                    class="btn btn-primary btn-lg" style="font-size: 1.5rem; background-color: #0c8086; border-color: #039eb6; color: #ffffff; padding: 15px 30px;">New Breathwork DLC</a>
+            <!-- Seizure Warning Button - Below and Red -->
+            <div class="col-12 text-center">
+                <div class="button-group">
+                    <a href="breathing.html"
+                        class="btn btn-primary btn-lg" style="background-color: #0c8086; border-color: #039eb6; color: #ffffff;">New Breathwork DLC</a>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <div class="button-group">
+                    <a href="warning.html"
+                        class="btn btn-primary btn-lg" style="background-color: #dc3545; border-color: #dc3545; color: #ffffff;">Seizure Warning</a>
+                </div>
             </div>
         </div>
 
         <!-- User Reviews Section -->
-        <div class="row" style="margin-top: 20px;">
+        <div class="row" style="margin-top: 60px;">
             <div class="col-12">
-                <h3 style="font-size:2em; color: #FF3366; margin-bottom: 30px; text-align: center;">What Users Are Saying</h3>
+                <h3 style="font-size:1.8em; color: #FF3366; margin-bottom: 30px; text-align: center;">What Users Are Saying</h3>
                 
                 <div class="row">
                     <div class="col-md-4 col-sm-12 mb-3">
@@ -495,7 +632,6 @@
                 <div style="background: rgba(0,0,0,0.6); padding: 25px; border-radius: 15px; margin-bottom: 20px;">
                     <h3 style="font-size:1.3em; color: #FFFF00; margin-bottom: 20px; text-align: center;">Learn More</h3>
                     <div class="button-group" style="text-align: center;">
-                        <a href="warning.html" class="btn btn-primary btn-lg" style="font-size: 1.5rem; background-color: #dc3545; border-color: #dc3545; color: #ffffff; padding: 15px 30px;">Seizure Warning</a>
                         <a href="release-notes.html" class="btn btn-primary btn-lg" style="margin: 5px;">Release Notes</a>
                         <a href="science.html" class="btn btn-primary btn-lg" style="margin: 5px;">Science</a>
                         <a href="gallery.html" class="btn btn-primary btn-lg" style="margin: 5px;">DLC Gallery</a>
@@ -520,7 +656,6 @@
         </div>
     </div>
 </div>
-
     <div class="features">
         <div class="container">
             <!-- Only Statement -->
@@ -542,8 +677,8 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <h3><a href="biohacker.html">Brain Hacking</a></h3>
-                    <p>Use Brain Candy to improve your focus and attention, it can energize you or help you sleep.</p>
+                    <h3>Tunable Buffet</h3>
+                    <p>A wide spectrum of experiences designed to satisfy diverse perceptual palates and moods.</p>
                 </div>
                 <div class="col-md-4 col-sm-12 mb-4">
                     <div class="feature-video-wrapper">
@@ -552,8 +687,8 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <h3><a href="biohacker.html">ADHD</a></h3>
-                    <p>Brain Candy uses techniques demonstrated to help with symptoms of ADHD.</p>
+                    <h3>DOPE Technology</h3>
+                    <p>Dynamic Oscillatory Pattern Entrainment aligns with your brain's natural rhythms.</p>
                 </div>
                 <div class="col-md-4 col-sm-12 mb-4">
                     <div class="feature-video-wrapper">
@@ -562,8 +697,8 @@
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <h3><a href="psychonaut.html">Psychonaut</a></h3>
-                    <p>Brain Candy creates altered states of mind, use it alone or augment your practice.</p>
+                    <h3>Neuro-Aesthetic</h3>
+                    <p>Scientifically rigorous yet playfully engaging platform for wellness and discovery.</p>
                 </div>
             </div>
         </div>
@@ -571,6 +706,24 @@
 
     <div style="background-image: url('src/images/BCBG_02.jpg'); background-size: 512px; background-position: center; background-repeat: repeat; padding: 50px 20px;">
         <div class="container">
+            <!-- BRAIN Text with GIF Background -->
+            <div style="background-image: url('src/images/BCBG.gif'); background-size: 512px; background-position: center; background-repeat: repeat; color: white; text-align: center; padding: 50px 20px; position: relative; margin-bottom: 40px;">
+                <div style="background: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></div>
+                <div style="position: relative; z-index: 1;">
+                    <h4 style="line-height: 0.9; font-family: 'Carbon Block', sans-serif; font-size: 2.5rem; letter-spacing: 4px;">
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>B</strong></span><span style="color: #00FFFF;">ioelectric</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>R</strong></span><span style="color: #00FFFF;">esponse of</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>A</strong></span><span style="color: #00FFFF;">ctivated</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>I</strong></span><span style="color: #00FFFF;">nterconnected</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>N</strong></span><span style="color: #00FFFF;">odes &</span><br>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>C</strong></span><span style="color: #00FFFF;">ognitive</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>A</strong></span><span style="color: #00FFFF;">mplification through</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>N</strong></span><span style="color: #00FFFF;">eural</span>
+                        <span style="font-size: 180%; color: #FF77FF;"><strong>D</strong></span><span style="font-size: 180%; color: #FF77FF;"><strong>Y</strong></span><span style="color: #00FFFF;">namics.</span>
+                    </h4>
+                </div>
+            </div>
+            
             <!-- Video Section -->
             <div style="color: white; text-align: center; padding: 0px 20px; margin-bottom: 50px;">
                 <div class="video-container" style="max-width: 900px; width: 100%; margin: 0 auto;">
@@ -582,9 +735,8 @@
             </div>
         </div>
     </div>
-
     <!-- Content Section -->
-    <div class="content-section">
+    <div class="content-section ">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12 mb-4">
@@ -594,7 +746,8 @@
                         <a href="https://en.wikipedia.org/wiki/Heinrich_Kl%C3%BCver">Heinrich Kluver</a> to guide your
                         brain into deep states of relaxation, focus, and energy. We bring science, art, and <a
                             href="https://youtu.be/0OMdNJ9WDBU?si=t9aDd4tJS3tHy3hE"><strong>fun</strong></a> together
-                        for an unforgettable experience.
+                        for an
+                        unforgettable experience.
                     </p>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-4">
@@ -609,7 +762,8 @@
                     <img src="src/images/CandyGif_C.gif" alt="Image 3" class="content-image">
                     <h3>Designed for Everyone</h3>
                     <p>Whether you're looking to melt away stress, boost your focus, or unlock your creativity, Brain
-                        Candy is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.
+                        Candy
+                        is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.
                     </p>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-4">
@@ -631,10 +785,6 @@
                                 <p style="font-size: 1.4rem; line-height: 1.8; color: #33CCFF; font-weight: 600;">
                                     Brain Candy is DOPE.
                                 </p>
-                                
-                                <!-- Image -->
-                                <img src="src/images/bccartoon.jpg" alt="Brain Candy" style="width: 100%; height: auto; margin: 20px 0; border-radius: 10px;">
-                                
                                 <p style="font-size: 1.3rem; line-height: 1.8; color: #ffffff;">
                                     <strong>Brain Candy</strong> fuses neuroscience and immersive art to create a new class of wellness and entertainment technology.
                                     At its core is <strong>Dynamic Oscillatory Pattern Entrainment (DOPE)</strong> — a method that uses structured rhythms of light, sound, and gentle vibration to align with the brain's natural patterns.
@@ -651,6 +801,8 @@
                     </div>
                 </div>
             </div>
+            
+
         </div>
     </div>
 
