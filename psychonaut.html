@@ -49,9 +49,9 @@
     }
 
     /* Prevent Android Chrome from auto-adjusting font sizes */
-    p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
+    /* p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
       max-height: 999999px;
-    }
+    } */
 
     h1, h2, h3, h4 {
       font-family: 'Carbon Block', sans-serif;
@@ -86,6 +86,12 @@
       max-width: 1000px;
       padding: 40px 20px;
     }
+
+   @media (max-width: 768px) {
+  .splash-hero {
+    background-position: left center;
+  }
+}
 
     .splash-content h1 {
       font-size: 5rem;
@@ -300,7 +306,7 @@
     }
 
     .collapsible-content.active {
-      max-height: 2000px;
+      max-height: 5000px;
     }
 
     .references {
@@ -612,9 +618,9 @@
     }
 
     /* 2) Remove the old text-boosting hack (it can shrink text on Android) */
-    p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
+    /* p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
       max-height: none !important;
-    }
+    } */
 
     /* 3) Use clamp() for responsive copy instead of vw (ensures a readable floor) */
     .lead-text,
@@ -674,7 +680,7 @@
 
 <body>
   <!-- Main Splash Hero -->
-  <section class="splash-hero" style="background-image: url('src/images/swirl2.jpg');">
+  <section class="splash-hero" style="background-image: url('src/images/psychedelicHead.jpg');">
     <div class="splash-content">
       <h1>BRAIN CANDY</h1>
       <p class="tagline">Journey Into Hyperspace</p>
@@ -727,15 +733,12 @@
         </div>
         
         <div class="lead-text">
-          <p>You've been here before, in those vast, patterned spaces where consciousness reveals its underlying architecture. The geometric hallucinations, the sense that you're seeing the source code of perception itself, the moments when the boundary between observer and observed dissolves into pure experience.</p>
+          <p>Brain Candy isn't just a recreation or simulation of altered states. It actually drags your brain there, using rhythmic entrainment, fractal recursion, and visual patterns that lock onto your neural geometry. The real mechanics of consciousness exploration, isolated and refined.</p>
           
-          <p><strong>Brain Candy is exactly what it sounds like: pure confectionery for your consciousness.</strong> We're talking fractal recursion, rhythmic entrainment at theta frequencies, and visual patterns that resonate with your neural geometry, the sweetest hits of the psychedelic experience, distilled and crystallized.</p>
+          <p>This is legitimate exploration wrapped in neon and wonder. Living mandalas that pulse with their own rhythm. Tunnels of light that breathe with your attention. Patterns that feel like forgotten memories of the infinite.</p>
           
-          <p>This is beautiful, legitimate exploration wrapped in neon and wonder. Encounters with living mandalas that pulse like candy-coated neurons. Tunnels of light that breathe with your attention. Patterns that taste like forgotten memories of the infinite.</p>
-          
-          <p>It's the visual-rhythmic substrate of the psychedelic experience, isolated, refined, and served up whenever you want to unwrap it. No eight-hour commitment, no navigation anxiety, just pure immersion in hyperspace. You can dive into this candy shop of consciousness for twenty minutes on a Tuesday evening and touch something genuine, then surface clear-headed with that sweetness still lingering.</p>
-          
-          <p><strong>The mystery doesn't need scarcity to be real, it just needs your attention and the right doorway into pure imagination.</strong></p>
+          <p>It's the visual-rhythmic substrate of the psychedelic experience, distilled. No eight-hour commitment, no navigation anxiety. Just pure immersion in hyperspace. Twenty minutes on a Tuesday evening and you touch something genuine, then surface clear-headed with that sweetness still lingering. And if you want to pair it with your own enhancements, you might find it to be a very effective, non-specific amplifier of experiences.</p>
+ 
         </div>
 
         <div style="margin-top: 40px;">
@@ -759,7 +762,7 @@
               Thalamocortical Rhythms: The Conductor
               <span class="toggle-icon" id="icon1">▼</span>
             </h3>
-            <p>Rhythmic visual stimulation synchronizes your thalamus and cortex, the brain's sensory relay station conducting the entire orchestra. When light flashes at theta frequencies, it creates the coordinated neural activity that underlies those geometric visions and sense of unified consciousness.</p>
+            <p>Rhythmic visual stimulation synchronizes your thalamus and cortex, the brain's sensory relay station conducting the entire orchestra. Rhythmic sensory input at the speed of brainwaves creates the coordinated neural activity that underlies those geometric visions and sense of unified consciousness.</p>
             
             <div class="collapsible-content" id="pillar1">
               <div class="references">
@@ -910,12 +913,18 @@
   
   <script>
     function toggleCollapse(pillarId) {
-      const content = document.getElementById(pillarId);
-      const icon = document.getElementById('icon' + pillarId.slice(-1));
-      
-      content.classList.toggle('active');
-      icon.classList.toggle('active');
-    }
+  const content = document.getElementById(pillarId);
+  const iconNumber = pillarId.replace('pillar', '');
+  const icon = document.getElementById('icon' + iconNumber);
+  
+  if (content.classList.contains('active')) {
+    content.classList.remove('active');
+    icon.classList.remove('active');
+  } else {
+    content.classList.add('active');
+    icon.classList.add('active');
+  }
+}
   </script>
 </body>
 </html>
