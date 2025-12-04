@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />s -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>Brain Candy - Psychedelic VR Experience | Neural Art & Altered States</title>
@@ -31,7 +30,7 @@
       box-sizing: border-box;
     }
 
-    /* Force proper text scaling on mobile devices */
+    /* CRITICAL: Force proper text scaling and prevent Android auto-inflation */
     html {
       -webkit-text-size-adjust: 100%;
       -moz-text-size-adjust: 100%;
@@ -48,10 +47,11 @@
       -webkit-text-size-adjust: 100%;
     }
 
-    /* Prevent Android Chrome from auto-adjusting font sizes */
-    /* p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
+    /* ANDROID FIX: This prevents Chrome's text inflation algorithm from activating */
+    /* The max-height trick tells Android the element could be taller, so don't inflate text */
+    p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
       max-height: 999999px;
-    } */
+    }
 
     h1, h2, h3, h4 {
       font-family: 'Carbon Block', sans-serif;
@@ -87,11 +87,11 @@
       padding: 40px 20px;
     }
 
-   @media (max-width: 768px) {
-  .splash-hero {
-    background-position: left center;
-  }
-}
+    @media (max-width: 768px) {
+      .splash-hero {
+        background-position: left center;
+      }
+    }
 
     .splash-content h1 {
       font-size: 5rem;
@@ -431,7 +431,9 @@
       text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
     }
 
-    /* Responsive */
+    /* RESPONSIVE BREAKPOINTS */
+    
+    /* Tablet */
     @media (max-width: 992px) {
       .splash-content h1 {
         font-size: 3.5rem;
@@ -460,9 +462,11 @@
       }
     }
 
+    /* Mobile - Using clamp() for better control on Android */
     @media (max-width: 768px) {
+      /* Increase base size slightly for mobile */
       html {
-        font-size: 20px !important;
+        font-size: 17px;
       }
 
       .splash-hero {
@@ -473,12 +477,13 @@
         padding: 40px 20px;
       }
 
+      /* Main title - clamp ensures minimum readable size */
       .splash-content h1 {
-        font-size: 15vw !important;
+        font-size: clamp(2.5rem, 12vw, 4rem);
       }
 
       .splash-content .tagline {
-        font-size: 6vw !important;
+        font-size: clamp(1.1rem, 5vw, 1.6rem);
       }
 
       .hero-panel {
@@ -487,12 +492,12 @@
       }
 
       .hero-panel h2 {
-        font-size: 7vw !important;
+        font-size: clamp(1.3rem, 5.5vw, 2rem);
         margin-bottom: 0.8rem;
       }
 
       .hero-panel p {
-        font-size: 4.5vw !important;
+        font-size: clamp(0.95rem, 4vw, 1.15rem);
         line-height: 1.5;
       }
 
@@ -501,24 +506,21 @@
       }
 
       .headline-section h1 {
-        font-size: 7vw !important;
+        font-size: clamp(1.6rem, 6vw, 2.5rem);
         line-height: 1.25;
         margin-bottom: 30px;
       }
 
-      .lead-text {
-        font-size: 4.5vw !important;
-        line-height: 1.7 !important;
-      }
-
+      .lead-text,
       .lead-text p {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+        line-height: 1.7;
         margin-bottom: 20px;
-        font-size: 4.5vw !important;
       }
 
       .science-section h2,
       .reviews-section h2 {
-        font-size: 7vw !important;
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
         margin-bottom: 30px;
       }
 
@@ -528,27 +530,22 @@
       }
 
       .pillar-card h3 {
-        font-size: 5.5vw !important;
+        font-size: clamp(1.15rem, 4.8vw, 1.5rem);
         line-height: 1.3;
       }
 
       .pillar-card p {
-        font-size: 4.5vw !important;
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
         line-height: 1.6;
       }
 
       .references {
-        font-size: 4vw !important;
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
         padding: 18px 15px;
       }
 
       .references li {
         margin-bottom: 10px;
-        font-size: 4vw !important;
-      }
-
-      .references a {
-        font-size: 4vw !important;
       }
 
       .review-card {
@@ -558,18 +555,18 @@
       }
 
       .stars {
-        font-size: 5vw !important;
+        font-size: clamp(1rem, 4.5vw, 1.3rem);
         margin-bottom: 12px;
       }
 
       .review-text {
-        font-size: 4.5vw !important;
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
         line-height: 1.6;
         margin-bottom: 12px;
       }
 
       .review-author {
-        font-size: 4vw !important;
+        font-size: clamp(0.9rem, 3.8vw, 1rem);
       }
 
       .nav-bar {
@@ -584,95 +581,32 @@
 
       .nav-bar a {
         margin: 6px 10px;
-        font-size: 4.5vw !important;
+        font-size: clamp(0.95rem, 4vw, 1.1rem);
       }
 
       .btn-primary-custom {
-        padding: 16px 40px !important;
-        font-size: 4.5vw !important;
+        padding: 14px 35px;
+        font-size: clamp(0.95rem, 4vw, 1.15rem);
       }
 
       .footer {
         padding: 35px 20px;
-        font-size: 4vw !important;
+      }
+
+      .footer,
+      .footer a,
+      .footer p {
+        font-size: clamp(0.9rem, 3.8vw, 1rem);
       }
 
       .footer a {
-        font-size: 4vw !important;
         margin: 0 8px;
       }
 
-      .footer p {
-        font-size: 4vw !important;
-      }
-    }
-    /* === ANDROID/TINY-TEXT FIX PACK === */
-
-    /* 1) Viewport-friendly base sizing on phones */
-    @media (max-width: 768px) {
-      html {
-        font-size: 18px;              /* raise the rem baseline on mobile */
-        -webkit-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-      }
-    }
-
-    /* 2) Remove the old text-boosting hack (it can shrink text on Android) */
-    /* p, div, span, a, li, h1, h2, h3, h4, h5, h6 {
-      max-height: none !important;
-    } */
-
-    /* 3) Use clamp() for responsive copy instead of vw (ensures a readable floor) */
-    .lead-text,
-    .lead-text p,
-    .pillar-card p,
-    .review-text,
-    .nav-bar a,
-    .footer,
-    .footer a,
-    .footer p,
-    .hero-panel p {
-      /* min 16px, prefer ~17–18px, cap ~20px */
-      font-size: clamp(1rem, 0.95rem + 0.6vw, 1.25rem) !important;
-      line-height: 1.65 !important;
-    }
-
-    /* 4) Make headings scale with a readable floor */
-    .splash-content h1 {
-      /* min 34px, fluid, cap ~64px */
-      font-size: clamp(2.125rem, 6.5vw, 4rem) !important;
-    }
-
-    .headline-section h1,
-    .science-section h2,
-    .reviews-section h2,
-    .hero-panel h2,
-    .pillar-card h3 {
-      /* sensible floors so Android never renders them tiny */
-      font-size: clamp(1.5rem, 3.2vw, 2.5rem) !important;
-      line-height: 1.2;
-    }
-
-    /* 5) Buttons & nav—bigger tap targets */
-    .btn-primary-custom {
-      font-size: clamp(1rem, 0.9rem + 0.7vw, 1.25rem) !important;
-      padding: 14px 28px !important;
-    }
-
-    .nav-bar a {
-      padding: 6px 8px;
-    }
-
-    /* 6) Avoid background-attachment: fixed on mobile (can cause odd zoom/layout) */
-    @media (max-width: 768px) {
+      /* Prevent background-attachment: fixed issues on mobile */
       .main-content {
-        background-attachment: scroll !important;
+        background-attachment: scroll;
       }
-    }
-
-    /* 7) Optional: ensure body copy never drops below 16px anywhere */
-    body {
-      font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
     }
 
   </style>
@@ -695,7 +629,7 @@
         <a href="#science">The Science</a>
         <a href="#reviews">Explorers</a>
       </div>
-      <a href="https://www.meta.com/experiences/6445568655500786/" class="btn-primary-custom" target="_blank">Enter the Candy Shop</a>
+      <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098/" class="btn-primary-custom" target="_blank">Enter the Candy Shop</a>
     </div>
   </nav>
 
@@ -724,7 +658,7 @@
   </section>
 
   <!-- Main Content -->
-  <section class="main-content" style="background-image: url('src/images/swirl.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+  <section class="main-content" style="background-image: url('src/images/swirl.jpg'); background-size: cover; background-position: center;">
     <div class="container">
       <div class="headline-section">
         <h1>Brain Candy uses neuroaesthetics to create psychdelic experiences, in VR.</h1>
@@ -742,7 +676,7 @@
         </div>
 
         <div style="margin-top: 40px;">
-          <a href="https://www.meta.com/experiences/6445568655500786/" class="btn-primary-custom" style="font-size: 1.2rem; padding: 15px 40px;" target="_blank">Unwrap the Experience</a>
+          <a href="https://www.meta.com/en-gb/experiences/brain-candy/8052379494880098" class="btn-primary-custom" style="font-size: 1.2rem; padding: 15px 40px;" target="_blank">Unwrap the Experience</a>
         </div>
       </div>
     </div>
@@ -913,18 +847,18 @@
   
   <script>
     function toggleCollapse(pillarId) {
-  const content = document.getElementById(pillarId);
-  const iconNumber = pillarId.replace('pillar', '');
-  const icon = document.getElementById('icon' + iconNumber);
-  
-  if (content.classList.contains('active')) {
-    content.classList.remove('active');
-    icon.classList.remove('active');
-  } else {
-    content.classList.add('active');
-    icon.classList.add('active');
-  }
-}
+      const content = document.getElementById(pillarId);
+      const iconNumber = pillarId.replace('pillar', '');
+      const icon = document.getElementById('icon' + iconNumber);
+      
+      if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        icon.classList.remove('active');
+      } else {
+        content.classList.add('active');
+        icon.classList.add('active');
+      }
+    }
   </script>
 </body>
 </html>
