@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Candy VR Analytics Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .config-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .config-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .input-group small {
+            display: block;
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .connect-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .connect-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .connect-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .error {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .success {
+            background: #51cf66;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            height: 500px;
+        }
+
+        .chart-container canvas {
+            max-height: 420px;
+        }
+
+        .chart-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .candy-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .candy-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .candy-item:hover {
+            background: #f8f9fa;
+        }
+
+        .candy-name {
+            font-weight: 500;
+        }
+
+        .candy-time {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .instructions h3 {
+            margin-bottom: 10px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+        }
+
+        .refresh-controls {
+            display: none;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .refresh-button {
+            background: white;
+            color: #667eea;
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .refresh-button:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .last-updated {
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍭 Brain Candy VR Analytics Dashboard</h1>
+        
+        <div class="instructions">
+            <h3>📋 How to Connect:</h3>
+            <ol>
+                <li>Get your Firebase Project ID from Firebase Console → Project Settings</li>
+                <li>Enter it below and click "Connect to Firebase"</li>
+                <li>The dashboard will automatically load and refresh your data!</li>
+            </ol>
+        </div>
+
+        <div class="config-section">
+            <h2>🔧 Firebase Configuration</h2>
+            
+            <div class="input-group">
+                <label>Firebase Project ID</label>
+                <input type="text" id="projectId" placeholder="your-project-id" />
+                <small>Found in Firebase Console → Project Settings → General</small>
+            </div>
+
+            <div class="input-group">
+                <label>Collection Name</label>
+                <select id="collectionName">
+                    <option value="detailed_sessions">detailed_sessions</option>
+                    <option value="user_sessions">user_sessions</option>
+                    <option value="scene_time_data">scene_time_data</option>
+                    <option value="test_data">test_data</option>
+                </select>
+                <small>Select the collection where your analytics data is stored</small>
+            </div>
+
+            <button class="connect-button" id="connectBtn" onclick="connectToFirebase()">
+                🔗 Connect to Firebase
+            </button>
+        </div>
+
+        <div class="loading" id="loading">
+            <p>🔄 Loading your data...</p>
+        </div>
+
+        <div class="error" id="error"></div>
+        <div class="success" id="success"></div>
+
+        <div class="refresh-controls" id="refreshControls">
+            <button class="refresh-button" onclick="loadData()">🔄 Refresh Data</button>
+            <button class="refresh-button" onclick="toggleAutoRefresh()">
+                <span id="autoRefreshText">⏱️ Enable Auto-Refresh</span>
+            </button>
+            <div class="last-updated" id="lastUpdated"></div>
+        </div>
+
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-value" id="totalUsers">0</div>
+                <div class="stat-label">Total Unique Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalSessions">0</div>
+                <div class="stat-label">Total Sessions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="avgSessionTime">0</div>
+                <div class="stat-label">Avg Session (min)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalCandyTime">0</div>
+                <div class="stat-label">Total Candy Time (min)</div>
+            </div>
+        </div>
+
+        <div class="dashboard" id="dashboard">
+            <div class="chart-container">
+                <div class="chart-title">🍬 Most Popular Candy Scenes</div>
+                <canvas id="candyChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">📅 Daily Active Users</div>
+                <canvas id="usersChart"></canvas>
+            </div>
+
+            <div class="chart-container full-width">
+                <div class="chart-title">⏱️ Session Duration Distribution</div>
+                <canvas id="sessionChart"></canvas>
+            </div>
+
+            <div class="chart-container full-width">
+                <div class="chart-title">🍭 All Candy Scenes Ranked</div>
+                <div class="candy-list" id="candyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let charts = {};
+        let config = {
+            projectId: '',
+            collectionName: 'detailed_sessions',
+            baseUrl: ''
+        };
+        let autoRefreshInterval = null;
+
+        // Save config to localStorage
+        function saveConfig() {
+            localStorage.setItem('firebaseConfig', JSON.stringify(config));
+        }
+
+        // Load config from localStorage
+        function loadConfig() {
+            const saved = localStorage.getItem('firebaseConfig');
+            if (saved) {
+                config = JSON.parse(saved);
+                document.getElementById('projectId').value = config.projectId;
+                document.getElementById('collectionName').value = config.collectionName;
+                
+                if (config.projectId) {
+                    // Auto-connect if we have saved config
+                    connectToFirebase();
+                }
+            }
+        }
+
+        function connectToFirebase() {
+            const projectId = document.getElementById('projectId').value.trim();
+            const collectionName = document.getElementById('collectionName').value;
+            
+            if (!projectId) {
+                showError('Please enter your Firebase Project ID');
+                return;
+            }
+
+            config.projectId = projectId;
+            config.collectionName = collectionName;
+            config.baseUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents`;
+            
+            saveConfig();
+            
+            document.getElementById('connectBtn').disabled = true;
+            document.getElementById('connectBtn').textContent = '🔗 Connecting...';
+            
+            loadData();
+        }
+
+        async function loadData() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+                document.getElementById('success').style.display = 'none';
+
+                // Load ALL documents with pagination
+                const allDocuments = await loadAllDocuments();
+                
+                if (!allDocuments || allDocuments.length === 0) {
+                    throw new Error('No documents found in this collection');
+                }
+
+                // Convert Firestore format to our format
+                const convertedData = allDocuments.map(doc => convertFirestoreDocument(doc));
+                
+                console.log('Loaded documents:', convertedData.length);
+                
+                analyzeData(convertedData);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('success').style.display = 'block';
+                document.getElementById('success').textContent = `✅ Successfully loaded ${convertedData.length} sessions!`;
+                
+                setTimeout(() => {
+                    document.getElementById('success').style.display = 'none';
+                }, 3000);
+                
+                document.getElementById('connectBtn').disabled = false;
+                document.getElementById('connectBtn').textContent = '✅ Connected';
+                document.getElementById('refreshControls').style.display = 'block';
+                
+                updateLastUpdatedTime();
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                showError(`Error: ${error.message}. Check your Project ID and Collection Name.`);
+                document.getElementById('connectBtn').disabled = false;
+                document.getElementById('connectBtn').textContent = '🔗 Connect to Firebase';
+            }
+        }
+
+        async function loadAllDocuments() {
+            let allDocuments = [];
+            let pageToken = null;
+            let pageCount = 0;
+            const maxPages = 50; // Safety limit (50 pages × ~300 docs = ~15,000 documents max)
+
+            do {
+                pageCount++;
+                console.log(`Loading page ${pageCount}...`);
+                
+                // Build URL with pagination
+                let url = `${config.baseUrl}/${config.collectionName}?pageSize=300`;
+                if (pageToken) {
+                    url += `&pageToken=${encodeURIComponent(pageToken)}`;
+                }
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                
+                if (data.documents && data.documents.length > 0) {
+                    allDocuments = allDocuments.concat(data.documents);
+                    console.log(`Page ${pageCount}: Loaded ${data.documents.length} documents (Total: ${allDocuments.length})`);
+                }
+                
+                // Get next page token
+                pageToken = data.nextPageToken;
+                
+                // Update loading message with progress
+                document.getElementById('loading').innerHTML = 
+                    `<p>🔄 Loading your data... (${allDocuments.length} sessions loaded)</p>`;
+                
+                // Safety check
+                if (pageCount >= maxPages) {
+                    console.warn(`Reached maximum page limit (${maxPages}). Stopping pagination.`);
+                    break;
+                }
+                
+            } while (pageToken);
+
+            console.log(`Total documents loaded: ${allDocuments.length} across ${pageCount} pages`);
+            return allDocuments;
+        }
+
+        function convertFirestoreDocument(doc) {
+            const fields = doc.fields;
+            const converted = {};
+            
+            for (const [key, value] of Object.entries(fields)) {
+                if (value.stringValue !== undefined) {
+                    converted[key] = value.stringValue;
+                } else if (value.integerValue !== undefined) {
+                    converted[key] = parseInt(value.integerValue);
+                } else if (value.doubleValue !== undefined) {
+                    converted[key] = value.doubleValue;
+                } else if (value.booleanValue !== undefined) {
+                    converted[key] = value.booleanValue;
+                } else if (value.timestampValue !== undefined) {
+                    converted[key] = value.timestampValue;
+                }
+            }
+            
+            return converted;
+        }
+
+        function analyzeData(data) {
+            const candyData = {};
+            const dailyUsers = {};
+            const sessionTimes = [];
+            const uniqueUsers = new Set();
+            let totalSessions = 0;
+
+            data.forEach(record => {
+                if (record.userID || record.userUUID) {
+                    uniqueUsers.add(record.userID || record.userUUID);
+                }
+
+                if (record.sessionId || record.sessionDuration !== undefined) {
+                    totalSessions++;
+                }
+
+                if (record.sessionDuration && record.sessionDuration > 0) {
+                    sessionTimes.push(record.sessionDuration);
+                }
+
+                if (record.timestamp || record.sent_at) {
+                    const dateStr = (record.timestamp || record.sent_at).split('T')[0];
+                    if (!dailyUsers[dateStr]) dailyUsers[dateStr] = new Set();
+                    dailyUsers[dateStr].add(record.userID || record.userUUID || 'anonymous');
+                }
+
+                Object.keys(record).forEach(key => {
+                    if (key.startsWith('sceneTime_tracker_') && typeof record[key] === 'number') {
+                        const sceneName = key.replace(/^sceneTime_tracker_\d+_/, '');
+                        if (!candyData[sceneName]) candyData[sceneName] = 0;
+                        candyData[sceneName] += record[key];
+                    }
+                });
+            });
+
+            const avgSessionTime = sessionTimes.length > 0 
+                ? (sessionTimes.reduce((a, b) => a + b, 0) / sessionTimes.length)
+                : 0;
+            
+            const totalCandyTime = Object.values(candyData).reduce((a, b) => a + b, 0) / 60;
+
+            document.getElementById('totalUsers').textContent = uniqueUsers.size;
+            document.getElementById('totalSessions').textContent = totalSessions;
+            document.getElementById('avgSessionTime').textContent = avgSessionTime.toFixed(1);
+            document.getElementById('totalCandyTime').textContent = totalCandyTime.toFixed(1);
+
+            createCandyChart(candyData);
+            createUsersChart(dailyUsers);
+            createSessionChart(sessionTimes);
+            createCandyList(candyData);
+
+            document.getElementById('statsGrid').style.display = 'grid';
+            document.getElementById('dashboard').style.display = 'grid';
+        }
+
+        function createCandyChart(candyData) {
+            const ctx = document.getElementById('candyChart').getContext('2d');
+            
+            const sortedCandy = Object.entries(candyData)
+                .filter(([name, time]) => time > 0)
+                .sort(([,a], [,b]) => b - a)
+                .slice(0, 10);
+
+            if (charts.candy) charts.candy.destroy();
+            
+            charts.candy = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: sortedCandy.map(([name]) => name),
+                    datasets: [{
+                        label: 'Time Spent (seconds)',
+                        data: sortedCandy.map(([,time]) => time),
+                        backgroundColor: [
+                            '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
+                            '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Total Time (seconds)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createUsersChart(dailyUsers) {
+            const ctx = document.getElementById('usersChart').getContext('2d');
+            
+            const sortedDates = Object.keys(dailyUsers).sort();
+            const userCounts = sortedDates.map(date => dailyUsers[date].size);
+
+            if (charts.users) charts.users.destroy();
+            
+            charts.users = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: sortedDates,
+                    datasets: [{
+                        label: 'Daily Active Users',
+                        data: userCounts,
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.1,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Users'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createSessionChart(sessionTimes) {
+            const ctx = document.getElementById('sessionChart').getContext('2d');
+            
+            // Create bins for session duration in MINUTES
+            const bins = [0, 5, 10, 15, 20, 30, 45, 60]; // minutes
+            const binLabels = ['0-5m', '5-10m', '10-15m', '15-20m', '20-30m', '30-45m', '45-60m', '60m+'];
+            const binCounts = new Array(binLabels.length).fill(0);
+
+            sessionTimes.forEach(time => {
+                // time is already in minutes from your data
+                for (let i = bins.length - 1; i >= 0; i--) {
+                    if (time >= bins[i]) {
+                        if (i < binCounts.length) binCounts[i]++;
+                        break;
+                    }
+                }
+            });
+
+            if (charts.session) charts.session.destroy();
+            
+            charts.session = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: binLabels,
+                    datasets: [{
+                        label: 'Number of Sessions',
+                        data: binCounts,
+                        backgroundColor: 'rgba(118, 75, 162, 0.8)',
+                        borderColor: '#764ba2',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Sessions'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Session Duration (minutes)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createCandyList(candyData) {
+            const listContainer = document.getElementById('candyList');
+            listContainer.innerHTML = '';
+
+            const sortedCandy = Object.entries(candyData)
+                .filter(([name, time]) => time > 0)
+                .sort(([,a], [,b]) => b - a);
+
+            sortedCandy.forEach(([name, time]) => {
+                const item = document.createElement('div');
+                item.className = 'candy-item';
+                item.innerHTML = `
+                    <span class="candy-name">${name}</span>
+                    <span class="candy-time">${(time / 60).toFixed(1)} min</span>
+                `;
+                listContainer.appendChild(item);
+            });
+        }
+
+        function toggleAutoRefresh() {
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = null;
+                document.getElementById('autoRefreshText').textContent = '⏱️ Enable Auto-Refresh';
+            } else {
+                autoRefreshInterval = setInterval(loadData, 60000); // Refresh every 60 seconds
+                document.getElementById('autoRefreshText').textContent = '⏸️ Disable Auto-Refresh';
+                showSuccess('Auto-refresh enabled (every 60 seconds)');
+            }
+        }
+
+        function updateLastUpdatedTime() {
+            const now = new Date();
+            document.getElementById('lastUpdated').textContent = 
+                `Last updated: ${now.toLocaleTimeString()}`;
+        }
+
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error').textContent = message;
+        }
+
+        function showSuccess(message) {
+            document.getElementById('success').style.display = 'block';
+            document.getElementById('success').textContent = message;
+            setTimeout(() => {
+                document.getElementById('success').style.display = 'none';
+            }, 3000);
+        }
+
+        // Load saved config on page load
+        window.addEventListener('load', loadConfig);
+    </script>
+</body>
+</html>
