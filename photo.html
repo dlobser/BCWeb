@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5.createloop@0.2.8/dist/p5.createloop.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap" rel="stylesheet">
 
     <style>
         @font-face {
@@ -462,6 +463,16 @@
                         p.image(img, 0, 0, p.width, p.height);
                         p.filter(p.INVERT);
                     }
+                    
+                    // Add watermark
+                    p.push();
+                    p.textFont('Dosis');
+                    p.textStyle(p.BOLD);
+                    p.textSize(16);
+                    p.textAlign(p.RIGHT, p.BOTTOM);
+                    p.fill(255, 255, 255, 80); // White with low opacity (barely visible)
+                    p.text('braincandyapp.com', p.width - 10, p.height - 10);
+                    p.pop();
                 };
 
                 document.getElementById('downloadBtn').onclick = function() {
