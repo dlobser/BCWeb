@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>candy maker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.createloop@0.2.8/dist/p5.createloop.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('https://braincandyapp.com/src/fonts/Alba_modified.ttf') format('truetype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000;
+            min-height: 100vh;
+            padding: 0;
+            color: #fff;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        .hero {
+            background-image: url('https://braincandyapp.com/src/images/BC_BG.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            color: white;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+
+        .main-content {
+            background-image: url('https://braincandyapp.com/src/images/BCBG_02.jpg');
+            background-size: 512px;
+            background-position: center;
+            background-repeat: repeat;
+            padding: 60px 30px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .upload-section {
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #33CCFF;
+            border-radius: 15px;
+            padding: 60px 40px;
+            text-align: center;
+            margin: 0 auto 40px;
+            max-width: 900px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-section:hover {
+            background: rgba(0,0,0,0.85);
+            border-color: #00FFFF;
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .upload-section h2 {
+            color: #33CCFF;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .upload-section p {
+            color: #e0e0e0;
+            font-size: 1.1em;
+        }
+
+        .preview-section {
+            display: none;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .preview-section.active {
+            display: block;
+        }
+
+        .preview-container {
+            margin: 40px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn {
+            background: #FF00FF;
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn:nth-child(2) {
+            background: #00FFFF;
+            color: #000;
+        }
+
+        #defaultCanvas0 {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 2px solid rgba(51, 204, 255, 0.5);
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .footer a {
+            color: #33CCFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #00FFFF;
+        }
+
+        .gallery-section {
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(51, 204, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            border-color: #33CCFF;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(51, 204, 255, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 30px 15px;
+            }
+            
+            .upload-section {
+                padding: 40px 20px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.9em;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>candy maker</h1>
+            <p>Upload photos and create flashing GIFs</p>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon">📸</div>
+            <h2>Drop Photos Here or Click to Browse</h2>
+            <p>Upload multiple images • Auto-cropped to 512×512</p>
+            <input type="file" id="fileInput" accept="image/*" multiple>
+        </div>
+
+        <div class="preview-section" id="previewSection">
+            <div class="preview-container" id="previewContainer"></div>
+            <button class="btn" id="downloadBtn">Download GIF</button>
+            <button class="btn" id="uploadMoreBtn">Upload More Images</button>
+        </div>
+
+        <!-- Gallery Section -->
+        <div class="gallery-section">
+            <h2 style="text-align: center; color: #33CCFF; font-size: 2.5em; margin-bottom: 40px;">Gallery</h2>
+            
+            <div class="gallery-grid">
+                <!-- Row 1 -->
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_01.gif" alt="Gallery 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_02.gif" alt="Gallery 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_03.gif" alt="Gallery 3">
+                </div>
+                
+                <!-- Row 2 -->
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_04.gif" alt="Gallery 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_05.gif" alt="Gallery 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_06.gif" alt="Gallery 6">
+                </div>
+                
+                <!-- Row 3 -->
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_07.gif" alt="Gallery 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_08.gif" alt="Gallery 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_09.gif" alt="Gallery 9">
+                </div>
+                
+                <!-- Row 4 -->
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_10.gif" alt="Gallery 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_11.gif" alt="Gallery 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="src/images/diygifs/strobe_12.gif" alt="Gallery 12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024, Developed by: <a href="https://braincandyapp.com">Brain Candy LLC</a>. All rights reserved.</p>
+    </div>
+
+    <script>
+        let croppedImages = [];
+        let sketch = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadSection = document.getElementById('uploadSection');
+            const fileInput = document.getElementById('fileInput');
+
+            uploadSection.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+
+            uploadSection.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadSection.classList.add('dragover');
+            });
+            uploadSection.addEventListener('dragleave', () => {
+                uploadSection.classList.remove('dragover');
+            });
+            uploadSection.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadSection.classList.remove('dragover');
+                handleFileSelect({ target: { files: e.dataTransfer.files } });
+            });
+
+            document.getElementById('uploadMoreBtn').addEventListener('click', () => {
+                if (sketch) {
+                    sketch.remove();
+                    sketch = null;
+                }
+                croppedImages = [];
+                document.getElementById('previewSection').classList.remove('active');
+                document.getElementById('uploadSection').style.display = 'block';
+            });
+        });
+
+        function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            if (files.length === 0) return;
+
+            croppedImages = [];
+            let processedCount = 0;
+
+            files.forEach(file => {
+                if (!file.type.startsWith('image/')) return;
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        processImage(img);
+                        processedCount++;
+                        if (processedCount === files.length) {
+                            setTimeout(() => {
+                                createSketch();
+                            }, 500);
+                        }
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function processImage(img) {
+            const tempCanvas = document.createElement('canvas');
+            const size = Math.min(img.width, img.height);
+            tempCanvas.width = size;
+            tempCanvas.height = size;
+            const ctx = tempCanvas.getContext('2d');
+
+            const sx = (img.width - size) / 2;
+            const sy = (img.height - size) / 2;
+            ctx.drawImage(img, sx, sy, size, size, 0, 0, size, size);
+
+            const croppedDataUrl = tempCanvas.toDataURL('image/png');
+            croppedImages.push(croppedDataUrl);
+        }
+
+        function createSketch() {
+            document.getElementById('uploadSection').style.display = 'none';
+            document.getElementById('previewSection').classList.add('active');
+
+            const images = [];
+            let myLoop = null;
+
+            sketch = new p5((p) => {
+                p.preload = function() {
+                    croppedImages.forEach(dataUrl => {
+                        p.loadImage(dataUrl, (img) => {
+                            images.push(img);
+                        });
+                    });
+                };
+
+                p.setup = function() {
+                    p.pixelDensity(1);
+                    p.frameRate(20);
+                    const canvas = p.createCanvas(512, 512);
+                    canvas.parent('previewContainer');
+                };
+
+                let frame = 0;
+
+                p.draw = function() {
+                    if (images.length === 0) {
+                        p.background(200);
+                        return;
+                    }
+
+                    p.background(0);
+                    
+                    let currentFrame;
+                    if (p.animLoop) {
+                        const totalFrames = images.length * 4;
+                        currentFrame = Math.floor(p.animLoop.progress * totalFrames);
+                    } else {
+                        currentFrame = p.frameCount;
+                    }
+                    
+                    const imgIndex = Math.floor(currentFrame / 4) % images.length;
+                    const img = images[imgIndex];
+                    
+                    if (currentFrame % 2 === 0) {
+                        p.image(img, 0, 0, p.width, p.height);
+                    } else {
+                        p.image(img, 0, 0, p.width, p.height);
+                        p.filter(p.INVERT);
+                    }
+                };
+
+                document.getElementById('downloadBtn').onclick = function() {
+                    document.getElementById('downloadBtn').disabled = true;
+                    document.getElementById('downloadBtn').textContent = 'Generating GIF...';
+                    
+                    myLoop = p.createLoop({
+                        duration: images.length * 0.2,
+                        framesPerSecond: 20,
+                        gif: {
+                            frameRate: 20,
+                            render: false,
+                            download: true,
+                            fileName: 'candy-strobe'
+                        }
+                    });
+                    
+                    setTimeout(() => {
+                        document.getElementById('downloadBtn').disabled = false;
+                        document.getElementById('downloadBtn').textContent = 'Download GIF';
+                    }, 3000);
+                };
+            }, 'previewContainer');
+        }
+    </script>
+</body>
+</html>
