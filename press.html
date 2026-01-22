@@ -10,7 +10,6 @@
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap" rel="stylesheet">
         <!-- Bootstrap core CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -115,6 +114,7 @@
                 height: auto;
                 border-radius: 5px;
                 transition: transform 0.3s ease;
+                cursor: pointer;
             }
             
             .gallery-image:hover {
@@ -162,6 +162,30 @@
                 margin-bottom: 20px;
             }
             
+            .embed-responsive {
+                position: relative;
+                display: block;
+                width: 100%;
+                padding: 0;
+                overflow: hidden;
+            }
+            
+            .embed-responsive::before {
+                display: block;
+                content: "";
+                padding-top: 56.25%; /* 16:9 aspect ratio */
+            }
+            
+            .embed-responsive iframe {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+            
             @media (max-width: 768px) {
                 .branded-title {
                     font-size: 2.5em;
@@ -169,6 +193,15 @@
                 
                 .image-gallery {
                     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                }
+                
+                .nav-pills {
+                    flex-wrap: wrap;
+                }
+                
+                .nav-pills .nav-link {
+                    font-size: 0.85em;
+                    padding: 0.4rem 0.6rem;
                 }
             }
         </style>
@@ -195,6 +228,9 @@
                         <a class="nav-link" href="#overview">Overview</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#press-release">Press Release</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#description">Description</a>
                     </li>
                     <li class="nav-item">
@@ -211,6 +247,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#download">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#assets">Assets</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -230,14 +269,15 @@
                             <p><strong>Title:</strong> Brain Candy</p>
                             <p><strong>Developer:</strong> Brain Candy LLC</p>
                             <p><strong>Based in:</strong> USA</p>
-                            <p><strong>Release Status:</strong> Early Access</p>
+                            <p><strong>Release Status:</strong> Full Release (January 29, 2026)</p>
                             <p><strong>Platform:</strong> Meta Quest (VR)</p>
-                            <p><strong>Price:</strong> Free (Base App) with DLC options</p>
-                            <p><strong>Website:</strong> <a href="#" style="color: #FF00FF;">braincandy.app</a></p>
+                            <p><strong>Price:</strong> $9.99 (Base App) with DLC options</p>
+                            <p><strong>Website:</strong> <a href="https://braincandy.app" style="color: #FF00FF;">braincandy.app</a></p>
                             <p><strong>Social:</strong> 
                                 <a href="https://www.youtube.com/@BrainCandyApp" style="color: #FF00FF;">YouTube</a>
+                                <a href="https://www.instagram.com/braincandyapp/" style="color: #FF00FF;">braincandyapp</a>
                             </p>
-                            <p><strong>Email:</strong> <a href="mailto:braincandyapp@proton.me" style="color: #FF00FF;">braincandyapp@proton.me</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:info@braincandy.app" style="color: #FF00FF;">info@braincandy.app</a></p>
                         </div>
                         <div class="col-md-4">
                             <div style="position: relative; padding-bottom: 100%; height: 0;">
@@ -247,42 +287,64 @@
                     </div>
                 </section>
                 
+                <!-- Press Release Section -->
+                <section id="press-release" class="content-section">
+                    <h2>Press Release</h2>
+                    <p><strong>For Immediate Release - January 29, 2026</strong></p>
+                    <p><a href="/brain_candy_press_release.pdf" download class="download-btn">Download Press Release (PDF)</a></p>
+                    
+                    <h3 class="mt-4">Brain Candy Launches Full Release on Meta Quest: A VR Experience in Rhythmic Light and Perception</h3>
+                    
+                    <p><strong>January 29, 2026</strong> — Brain Candy LLC today announced the full release of Brain Candy, a virtual reality experience that uses rhythmic flickering lights, fractal patterns, and synchronized sound to create immersive perceptual experiences. Available on Meta Quest, Brain Candy transitions from early access to full release with support from Meta's partnerships team.</p>
+                    
+                    <p>Inspired by neuroscience research into brainwave entrainment and visual perception, Brain Candy offers users a collection of immersive audio-visual experiences designed to influence relaxation, focus, and creative states. The project positions itself as experimental art informed by scientific research rather than medical technology. Since entering early access, Brain Candy has reached 1,990 installs on Meta Quest, with users applying the experience across creative, relaxation, and exploratory contexts.</p>
+                    
+                    <p>The full release includes new DLC collaborations with musician East Forest, dream researcher Dr. Deirdre Barrett, and visual artist Symmetric Vision, expanding the range of available experiences.</p>
+                    
+                    <p><em>"Brain Candy explores how VR can influence mental states through rhythmic stimulation,"</em> said David Lobser, Lead Creative Developer at Brain Candy LLC. <em>"We're not creating games or traditional meditation apps—we're building immersive experiences inspired by research into visual perception, neural rhythms, and psychophysical effects that people can use for relaxation, focus, or creative exploration."</em></p>
+                    
+                    <p>For full press release and high-resolution assets, see sections below.</p>
+                </section>
+                
                 <!-- Description Section -->
                 <section id="description" class="content-section">
                     <h2>Description</h2>
-                    <p>Brain Candy is a VR experience that uses flickering lights and visual patterns to guide your brain into various states of consciousness. Drawing on both scientific research and ancient practices, it offers a collection of audio-visual experiences designed to promote relaxation, focus, and creative states of mind.</p>
                     
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <h4>Short Description (50 words)</h4>
-                            <p>Brain Candy uses strobing lights and dynamic visuals in VR to alter your brain state, helping you relax, focus, or energize based on scientific research into neural resonance and brainwave entrainment.</p>
+                            <h4>Short Description (75 words)</h4>
+                            <p>A VR experience that uses rhythmic light and sound to explore altered states of perception. Brain Candy synchronizes flickering visuals, binaural beats, and haptic feedback to guide users into states of deep relaxation, sharp focus, or exploratory awareness. No meditation experience required. Just put on your headset, choose your journey, and feed your brain some candy.</p>
                         </div>
                         <div class="col-md-6">
                             <h4>Medium Description (100 words)</h4>
-                            <p>Brain Candy is a VR experience that uses flickering lights and visual patterns to guide your brain into altered states. Based on research into neural rhythms and sensory processing, each "candy" represents a unique combination of audio-visual stimulation designed to promote specific mental states - from deep relaxation to heightened focus and creativity. The app combines scientific principles with artistic expression to create an immersive journey into consciousness exploration.</p>
+                            <p><strong>Transform your perception.</strong> Brain Candy uses precisely timed visual patterns, binaural audio, and haptic feedback to guide users into different experiential states: deep relaxation, laser focus, or energized flow. Each session creates a synchronized field of stimuli informed by neuroscience research. Whether you're melting stress, sharpening concentration, or exploring consciousness, Brain Candy offers immersive experiences designed for personal exploration and creative practice.</p>
                         </div>
                     </div>
                     
                     <h4 class="mt-4">Full Description</h4>
-                    <p>Brain Candy uses flickering lights and visual patterns guided by research into altered states by Heinrich Kluver to guide your brain into deep states of relaxation, focus, and energy. We bring science, art, and fun together for an unforgettable experience.</p>
+                    <p>Brain Candy uses rhythmic visual flicker and sound to evoke strong perceptual and attentional effects, a technique historically explored in experimental psychology, electronic art, and ceremonial practices. Drawing from research into neural entrainment and altered states, Brain Candy orchestrates light frequencies (0.1-36 Hz), spatial patterns, and synchronized sound to create noticeable subjective changes in perception and attention, as reported by users.</p>
                     
-                    <p>The flickering light enters your body through your open eyes, reaching the central brain and sparking neural rhythms and hyperconnectivity which can help you sync, energize, and breathe your way into a harmonious state.</p>
+                    <h4 class="mt-4">Choose Your Experience</h4>
+                    <ul>
+                        <li><strong>RELAX</strong> - Gentle waves of color and rhythm wash away tension</li>
+                        <li><strong>FOCUS</strong> - Sharp geometric patterns and steady beats enhance concentration</li>
+                        <li><strong>ENERGIZE</strong> - Dynamic visuals and driving frequencies boost your mental state</li>
+                        <li><strong>EXPLORE</strong> - Intense scenes reveal hidden patterns in your perception</li>
+                    </ul>
                     
-                    <p>Whether you're looking to melt away stress, boost your focus, or unlock your creativity, Brain Candy is here to sweeten your day. Our intuitive design makes it easy for anyone to explore and enjoy.</p>
-                    
-                    <p>From calming relaxation to bursts of mental energy, Brain Candy helps you discover elusive, ephemeral, altered states. Let our light pulses guide you to a place of wonder, awe, and inner balance.</p>
+                    <p>Some scenes may feel intense or unusual - that's your visual system responding to new stimuli. Stay curious, breathe, and notice what happens. Or simply drift in calm environments designed for pure relaxation.</p>
                     
                     <h4 class="mt-4">Who Is This For?</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <h5>Perfect For:</h5>
                             <ul>
-                                <li>Meditation enthusiasts looking for new tools to deepen their practice</li>
                                 <li>People interested in consciousness exploration and altered states</li>
                                 <li>VR users seeking relaxation and stress relief experiences</li>
                                 <li>Creative individuals looking for inspiration or flow states</li>
                                 <li>Those curious about the intersection of neuroscience and experience design</li>
-                                <li>Mindfulness practitioners wanting to enhance their focus</li>
+                                <li>Focus-seekers exploring non-clinical options for attention and relaxation</li>
+                                <li>Artists and explorers of perception</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
@@ -299,41 +361,30 @@
                     
                     <div class="alert alert-danger mt-4">
                         <h5><i class="fas fa-exclamation-triangle"></i> Important Safety Notice</h5>
-                        <p>Brain Candy features strobing visuals that may not be suitable for individuals with photosensitive epilepsy or similar conditions. Please consult the warnings page for full details.</p>
+                        <p><strong>WARNING: Contains rapidly flashing lights. Not suitable for those with photosensitive epilepsy.</strong> Brain Candy features intense strobing visuals that may not be suitable for individuals with photosensitive epilepsy or similar conditions. Please consult the warnings page for full safety information before use.</p>
                     </div>
                 </section>
                 
                 <!-- Science Section -->
                 <section id="science" class="content-section">
                     <h2>Scientific Background</h2>
-                    <p>Brain Candy is built on a foundation of neuroscience research and traditional practices that recognize the power of rhythmic stimulation on consciousness. Here's a brief overview of the science behind the experience:</p>
+                    <p>Brain Candy is built on a foundation of neuroscience research and historical practices that recognize the power of rhythmic stimulation on perception and consciousness.</p>
                     
-                    <h4>Neural Symphony</h4>
-                    <p>Inside your head, billions of neurons are performing an intricate dance - not random, but orchestrated in rhythmic patterns that scientists can measure and map. Like a vast neural symphony, these patterns shift and flow as you move between different states of consciousness - from intense focus to deep relaxation and boundless bliss.</p>
+                    <h4>The Science Behind the Experience</h4>
+                    <p>Drawing from decades of research into neural entrainment and altered states, Brain Candy orchestrates light frequencies (0.1-36 Hz), spatial patterns, and synchronized sound informed by scientific research into perception and attention.</p>
                     
-                    <h4>B.R.A.I.N. C.A.N.D.Y.</h4>
-                    <p>Our name represents our scientific approach:</p>
-                    <ul>
-                        <li><strong>B</strong>ioelectric</li>
-                        <li><strong>R</strong>esponse of</li>
-                        <li><strong>A</strong>ctivated</li>
-                        <li><strong>I</strong>nterconnected</li>
-                        <li><strong>N</strong>odes &</li>
-                        <li><strong>C</strong>ognitive</li>
-                        <li><strong>A</strong>mplification through</li>
-                        <li><strong>N</strong>eural</li>
-                        <li><strong>DY</strong>namics</li>
-                    </ul>
+                    <p>The experience uses rhythmic visual flicker and sound to evoke strong perceptual and attentional effects, a technique historically explored in experimental psychology and electronic art traditions.</p>
                     
-                    <h4>Key Scientific Concepts</h4>
+                    <h4>Key Research Areas</h4>
                     <ul>
                         <li>Brainwave entrainment through rhythmic visual stimulation</li>
-                        <li>Flicker light stimulation inducing thalamocortical hyperconnectivity</li>
-                        <li>Form constants and psychophysical research by Heinrich Kluver</li>
-                        <li>Natural fractal patterns and their effect on neural processing</li>
+                        <li>Flicker light stimulation and thalamocortical activity</li>
+                        <li>Form constants and psychophysical research by Heinrich Klüver</li>
+                        <li>Natural fractal patterns and their effect on visual processing</li>
+                        <li>Binaural audio and frequency following response</li>
                     </ul>
                     
-                    <p>For more detailed information about the scientific background of Brain Candy, please visit our <a href="#" style="color: #FF00FF;">Science Page</a> which includes full references to research papers and further reading.</p>
+                    <p><strong>Note:</strong> Brain Candy positions itself as experimental art informed by scientific research rather than medical technology. Users report highly individualized subjective experiences.</p>
                 </section>
                 
                 <!-- Features Section -->
@@ -342,23 +393,23 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4>Tailored Experiences</h4>
-                            <p>Select the mode that suits your mood, from deep relaxation to energizing focus.</p>
+                            <p>Select the mode that suits your needs, from deep relaxation to energizing focus.</p>
                             
                             <h4>Easy to Use</h4>
-                            <p>Simple, intuitive interface designed for accessibility and immersion.</p>
+                            <p>Simple, intuitive interface designed for accessibility and immersion. No meditation experience required.</p>
                             
-                            <h4>Scientifically Inspired</h4>
-                            <p>Based on brainwave entrainment research and neural resonance principles.</p>
+                            <h4>Scientifically Informed</h4>
+                            <p>Inspired by research into brainwave entrainment, visual perception, and psychophysical effects.</p>
                         </div>
                         <div class="col-md-6">
+                            <h4>Multi-Sensory Synchronization</h4>
+                            <p>Rhythmic light entrainment, binaural audio, and optional haptic feedback work together to create immersive experiences.</p>
+                            
                             <h4>Individual Variations</h4>
-                            <p>Each person's nervous system responds uniquely to different patterns of stimulation, creating a personalized experience.</p>
+                            <p>Users report highly individualized experiences with different patterns and frequencies.</p>
                             
-                            <h4>Consciousness Laboratory</h4>
-                            <p>Become an active participant in exploring how different patterns affect your unique nervous system.</p>
-                            
-                            <h4>Expanding DLC Gallery</h4>
-                            <p>New experiences continually being developed to explore different states of consciousness.</p>
+                            <h4>Expanding DLC Library</h4>
+                            <p>New experiences continually being developed, including collaborations with East Forest (music), Dr. Deirdre Barrett (dream research), and Symmetric Vision (visual art).</p>
                         </div>
                     </div>
                 </section>
@@ -369,17 +420,36 @@
                     <p>Below are high-resolution screenshots and promotional images for media use. Click on images to download full resolution versions.</p>
                     
                     <div class="image-gallery">
-                        <img src="/src/images/screenshots/screenshot1.png" alt="Brain Candy Screenshot 1" class="gallery-image">
-                        <img src="/src/images/screenshots/screenshot2.png" alt="Brain Candy Screenshot 2" class="gallery-image">
-                        <img src="/src/images/screenshots/screenshot3.png" alt="Brain Candy Screenshot 3" class="gallery-image">
-                        <img src="/src/images/screenshots/screenshot4.png" alt="Brain Candy Screenshot 4" class="gallery-image">
-                        <img src="/src/images/screenshots/screenshot5.png" alt="Brain Candy Screenshot 5" class="gallery-image">
-                        <img src="/src/images/screenshots/BCCapture22560x1440.png" alt="Brain Candy Screenshot 3" class="gallery-image">
-                        <img src="/src/images/screenshots/BCCapture21440x1440.png" alt="Brain Candy Screenshot 4" class="gallery-image">
-                        <img src="/src/images/screenshots/BCCapture21008x1440.png" alt="Brain Candy Screenshot 5" class="gallery-image">
-                        <img src="/src/images/screenshots/BCLogo.png" alt="Brain Candy Screenshot 4" class="gallery-image">
-                        <img src="/src/images/screenshots/BCIcon.png" alt="Brain Candy Screenshot 5" class="gallery-image">
-
+                        <a href="/src/images/screenshots/screenshot1.png" download>
+                            <img src="/src/images/screenshots/screenshot1.png" alt="Brain Candy Screenshot 1" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/screenshot2.png" download>
+                            <img src="/src/images/screenshots/screenshot2.png" alt="Brain Candy Screenshot 2" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/screenshot3.png" download>
+                            <img src="/src/images/screenshots/screenshot3.png" alt="Brain Candy Screenshot 3" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/screenshot4.png" download>
+                            <img src="/src/images/screenshots/screenshot4.png" alt="Brain Candy Screenshot 4" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/screenshot5.png" download>
+                            <img src="/src/images/screenshots/screenshot5.png" alt="Brain Candy Screenshot 5" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/BCCapture22560x1440.png" download>
+                            <img src="/src/images/screenshots/BCCapture22560x1440.png" alt="Brain Candy Capture 2560x1440" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/BCCapture21440x1440.png" download>
+                            <img src="/src/images/screenshots/BCCapture21440x1440.png" alt="Brain Candy Capture 1440x1440" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/BCCapture21008x1440.png" download>
+                            <img src="/src/images/screenshots/BCCapture21008x1440.png" alt="Brain Candy Capture 1008x1440" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/BCLogo.png" download>
+                            <img src="/src/images/screenshots/BCLogo.png" alt="Brain Candy Logo" class="gallery-image">
+                        </a>
+                        <a href="/src/images/screenshots/BCIcon.png" download>
+                            <img src="/src/images/screenshots/BCIcon.png" alt="Brain Candy Icon" class="gallery-image">
+                        </a>
                     </div>
                     
                     <div class="mt-4">
@@ -391,11 +461,27 @@
                 <section id="media" class="content-section">
                     <h2>Media & Coverage</h2>
                     
+                    <h4>Press Release</h4>
+                    <p><strong>January 29, 2026:</strong> <a href="/brain_candy_press_release.pdf" style="color: #FF00FF;">Brain Candy Launches Full Release on Meta Quest</a></p>
+                    <p>Brain Candy transitions from early access to full release. The VR experience uses rhythmic light and sound to create immersive perceptual experiences.</p>
+                    
                     <h4>Videos</h4>
                     <div class="row">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7Z0o1Ltpz5M?si=68sdp0qgjFbftP_H" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <iframe width="560" height="315" src="https://youtube.com/embed/60R4GwQweJo?si=ZQRseT_Nfjh2YQNe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/jjqDQZ5Uha0?si=lOqZ3B7aOwymiM25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <div class="col-md-4 mb-3">
+                            <div class="embed-responsive">
+                                <iframe src="https://www.youtube.com/embed/7Z0o1Ltpz5M?si=68sdp0qgjFbftP_H" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="embed-responsive">
+                                <iframe src="https://youtube.com/embed/60R4GwQweJo?si=ZQRseT_Nfjh2YQNe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="embed-responsive">
+                                <iframe src="https://www.youtube.com/embed/jjqDQZ5Uha0?si=lOqZ3B7aOwymiM25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
+                        </div>
                     </div>
                     
                     <h4 class="mt-4">Interviews & Articles</h4>
@@ -404,11 +490,13 @@
                     </ul>
                     
                     <h4 class="mt-4">Awards & Recognition</h4>
-                    <p>Part of the Cyberdelic Society lineup at Games Ground conference</p>
-                    <p>Poster presentation at the IVRHA</p>
-                    <p>Dome show at ETH Denver</p>
-                    <p>Dome show at the Fisk planetarium in Denver with Itchy-O</p>
-                    <p>Upcoming talk at AWE 2025</p>
+                    <ul>
+                        <li>Featured in the Cyberdelic Society lineup at Games Ground conference</li>
+                        <li>Poster presentation at the International Virtual Reality Healthcare Association (IVRHA) conference, 2024</li>
+                        <li>Dome shows at ETH Denver 2024-2025</li>
+                        <li>Dome show at the Fisk Planetarium in Denver with Itchy-O</li>
+                        <li>Upcoming talk at AWE 2025</li>
+                    </ul>
                 </section>
                 
                 <!-- Download Section -->
@@ -420,7 +508,8 @@
                     
                     <h4>Pricing</h4>
                     <p>Base Application: $9.99</p>
-                    <p>DLC Packs: Various prices</p>
+                    <p>DLC Packs: Prices vary by content</p>
+                    <p>Brain Candy has been in early access since 2025, with ongoing updates and expanding content releases.</p>
                     
                     <h4>Review Copies</h4>
                     <p>Journalists and content creators interested in covering Brain Candy can request a review copy through our <a href="https://forms.gle/N71oX1C5PP5tpJh49" style="color: #FF00FF;">Request A Key</a> form.</p>
@@ -429,33 +518,26 @@
                 <!-- About Section -->
                 <section id="about" class="content-section">
                     <h2>About Brain Candy LLC</h2>
-                    <p>Brain Candy LLC is dedicated to creating experiences that alter and uplift people's minds through the immersive medium of VR. We see our work as a contribution to the language and understanding of how to use new media technologies to positively influence consciousness.</p>
+                    <p>Brain Candy LLC creates immersive VR experiences exploring consciousness through rhythmic audio-visual stimulation. Drawing inspiration from experimental psychology and electronic art traditions, the company develops tools informed by neuroscience research for personal exploration, creative practice, and wellness applications.</p>
                     
-                    <p>Drawing inspiration from avant-garde artistic movements and ancient ceremonial practices, our team combines scientific research with creative expression to craft immersive experiences that can directly affect the physiological and psychological state of the user.</p>
+                    <p>The work positions itself as "art inspired by science" rather than medical technology, creating accessible tools for exploration and creative work. Based in the USA, Brain Candy LLC collaborates with consciousness researchers, musicians, and visual artists to expand the language of VR as a medium for perceptual exploration.</p>
                     
                     <div class="row mt-4">
                         <div class="col-md-6">
-                            <h4>Lead Contributors</h4>
+                            <h4>Key Collaborators</h4>
                             <p><strong>David Lobser</strong> - Lead Creative Developer</p>
-                            <p><strong>Till Holzapfel</strong> - Scientific Content</p>
-                            <p><strong>Aysu Unal</strong> - Event Production</p>
+                            
+                            <p><strong><a href="https://www.linkedin.com/in/till-holzapfel-intangiblerealitieslab/">Till Holzapfel</a></strong> - Science Advisor</p>
+                            <p><strong><a href="https://eastforest.org/">East Forest</a></strong> - Music Partnership</p>
+                            <p><strong><a href="https://en.wikipedia.org/wiki/Deirdre_Barrett">Dr. Deirdre Barrett</a></strong> - Dream Research Collaboration</p>
+                            <p><strong><a href="https://www.symmetric-vision.xyz/">Symmetric Vision</a></strong> - Visual Art Partnership</p>
                         </div>
-                    </div>
-                </section>
-                
-                <!-- Contact Section -->
-                <section id="contact" class="content-section">
-                    <h2>Contact Information</h2>
-                    
-                    <div class="contact-info">
-                        <p><strong>Press Contact:</strong> <a href="mailto:braincandyapp@proton.me" style="color: #FF00FF;">braincandyapp@proton.me</a></p>
-                        
-                        <p><strong>Social Media:</strong></p>
-                        <ul>
-                            <li>YouTube: <a href="https://www.youtube.com/@BrainCandyApp" style="color: #FF00FF;">@BrainCandyApp</a></li>
-                        </ul>
-                        
-                        <p><strong>Website:</strong> <a href="#" style="color: #FF00FF;">braincandy.app</a></p>
+                        <div class="col-md-6">
+                            <h4>Research Collaborations</h4>
+                            <p>In conversation with researchers and organizations in the consciousness and immersive art space, including:</p>
+                            <p><a href="https://qri.org/">Qualia Research Institute</a></p>
+                            <p><a href="https://www.cyberdelic.nexus/">Cyberdelic Society</a></p>
+                        </div>
                     </div>
                 </section>
                 
@@ -482,9 +564,27 @@
                     </div>
                     
                     <div class="mt-4">
-                        <button class="download-btn">Download Press Kit (ZIP)</button>
-                        <button class="download-btn">Download Logo Pack (ZIP)</button>
-                        <button class="download-btn">Download Fact Sheet (PDF)</button>
+                        <a href="/brain_candy_press_release.pdf" download class="download-btn">Download Press Release (PDF)</a>
+                        <a href="/brain-candy-press-kit.zip" download class="download-btn">Download Full Press Kit (ZIP)</a>
+                        <a href="/src/images/screenshots/brain-candy-screenshots.zip" download class="download-btn">Download Logo Pack (ZIP)</a>
+                    </div>
+                </section>
+                
+                <!-- Contact Section -->
+                <section id="contact" class="content-section">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="contact-info">
+                        <p><strong>Press Contact:</strong> <a href="mailto:info@braincandy.app" style="color: #FF00FF;">info@braincandy.app</a></p>
+                        <p><strong>Subject Line:</strong> "Press Inquiry - Brain Candy"</p>
+                        
+                        <p><strong>Social Media:</strong></p>
+                        <ul>
+                            <li>YouTube: <a href="https://www.youtube.com/@BrainCandyApp" style="color: #FF00FF;">@BrainCandyApp</a></li>
+                            <li>Instagram: <a href="https://www.instagram.com/braincandyapp/" style="color: #FF00FF;">braincandyapp</a></li>
+                        </ul>
+                        
+                        <p><strong>Website:</strong> <a href="https://braincandy.app" style="color: #FF00FF;">braincandy.app</a></p>
                     </div>
                 </section>
             </div>
@@ -493,18 +593,18 @@
         <!-- Footer -->
         <div class="footer">
             <div class="container">
-                <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+                <p>&copy; 2026, Developed by: Brain Candy LLC. All rights reserved.</p>
                 <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#" style="color: white;">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a href="#" style="color: white;">Terms of Service</a></li>
-                    <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color: white;">braincandyapp@proton.me</a></li>
+                    <li class="list-inline-item"><a href="/privacy.html" style="color: white;">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="/eula.html" style="color: white;">Terms of Service</a></li>
+                    <li class="list-inline-item"><a href="mailto:info@braincandy.app" style="color: white;">info@braincandy.app</a></li>
                 </ul>
             </div>
         </div>
         
         <!-- Bootstrap core JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         
         <!-- Core theme JS -->
@@ -515,8 +615,10 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
+                    const navHeight = document.querySelector('.nav-section').offsetHeight;
+                    
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - navHeight,
                         behavior: 'smooth'
                     });
                     
@@ -532,13 +634,13 @@
             window.addEventListener('scroll', function() {
                 let currentSection = '';
                 const sections = document.querySelectorAll('section');
-                const navHeight = 80;
+                const navHeight = document.querySelector('.nav-section').offsetHeight;
                 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
                     
-                    if (pageYOffset >= sectionTop - navHeight) {
+                    if (pageYOffset >= sectionTop - navHeight - 10) {
                         currentSection = '#' + section.getAttribute('id');
                     }
                 });
