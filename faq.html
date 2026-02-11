@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Brain Candy – FAQ</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Carbon Block';
+            src: url('src/fonts/Alba_modified.ttf') format('truetype');
+            font-display: swap;
+        }
+
+        :root {
+            --hotpink: #FF3366;
+            --cyan: #00FFFF;
+            --magenta: #FF00FF;
+            --text-light: #e7f6ff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: white;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Carbon Block', sans-serif;
+        }
+
+        .faq-header {
+            background-color: var(--hotpink);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-container {
+            max-width: 860px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .faq-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            opacity: 0.9;
+            font-size: 1.05rem;
+        }
+
+        .faq-category {
+            margin-bottom: 36px;
+        }
+
+        .faq-category h2 {
+            font-size: 1.4rem;
+            color: var(--cyan);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .faq-item {
+            background-color: rgba(255, 51, 102, 0.08);
+            border-left: 4px solid var(--hotpink);
+            margin-bottom: 12px;
+            border-radius: 0 6px 6px 0;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255, 51, 102, 0.15);
+        }
+
+        .faq-question .arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+            color: var(--hotpink);
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .faq-item.open .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 20px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 600px;
+            padding: 0 20px 18px;
+        }
+
+        .faq-answer a {
+            color: var(--hotpink);
+        }
+
+        .faq-answer a:hover {
+            color: var(--cyan);
+        }
+
+        .footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-header">
+        <h1>FAQ</h1>
+    </div>
+
+    <div class="faq-container">
+        <p class="faq-intro">Common questions about Brain Candy, answered.</p>
+
+        <!-- WHAT IT IS -->
+        <div class="faq-category">
+            <h2>What It Is</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is Brain Candy?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Brain Candy is a VR app for Meta Quest that uses strobing lights, fractal visuals, binaural beats, and haptic feedback to create altered-state experiences. It's designed as an accessible alternative to expensive therapeutic strobe devices like the Lucia No.03 ($35k), Roxiva ($5k), and NeuroVizr ($600).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How is this different from a music visualizer or screensaver?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The visuals exist in the same universe as screensaver art, but the key difference is the strobing. The patterns are there to hold your attention, but the rhythmic strobing is doing the work — using frequencies shown to create measurable changes in how the thalamus and visual cortex communicate (thalamocortical hyperconnectivity). It's a science-inspired art experience, not just pretty pictures.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do I keep my eyes open or closed?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Brain Candy is designed for <strong>open eyes</strong>. Most traditional strobe lamps and goggles are made for closed eyes, where your eyelids diffuse the light and your brain generates the patterns. VR displays aren't bright enough to do much through closed eyelids. That said, some users with "thin eyelids" report cool closed-eye visuals too — especially after letting their eyes adjust in darkness first.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What about the patterns — are they real hallucinations or just graphics?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Both. Some scenes use pure strobing where any patterns you see are generated by your own brain (the same Klüver form constants you'd see with expensive strobe lights, though less intense). Other scenes combine strobing with artistic visuals informed by the catalogued work of Klüver and Purkinĕ, who documented their own subjective flicker-light experiences centuries ago. The interesting thing is that these hallucinated patterns are highly mathematical and can be closely approximated using shader code.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is the audio synchronized to the visuals?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>It varies by scene. Some tightly synchronize visuals, audio, and haptics. Some are loosely coupled. Some are intentionally asynchronous. Each scene is built from scratch using a patch-bay style setup. The binaural beats tend to use something between true binaural (tones isolated to each ear) and isochronic (same source), with tones separated in stereo but not 100%.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there depth to the visuals, or is it like a 360° video?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>There is depth. All the scenes are built from layers of infinitely long tunnels and cones. The stereoscopic 3D is what really differentiates the VR experience from a flat screen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCIENCE & EFFECTIVENESS -->
+        <div class="faq-category">
+            <h2>Science & Effectiveness</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there actual science behind this?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Brain Candy is a science-inspired art app, not a clinical device. The techniques it uses — frequency entrainment, fractal fluency, binaural beats — are based on peer-reviewed research. Any rhythmic visual stimulation at brainwave frequencies will show up on an EEG. Research at MIT is exploring strobing for Alzheimer's treatment. A study is in the works comparing real strobing with Brain Candy's simulated strobing.</p>
+                    <p>That said, individual response is highly variable, and the leap from "we see theta waves on an EEG" to specific therapeutic claims is often overstated across the industry. Brain Candy doesn't make therapeutic claims.</p>
+                    <p>Read more: <a href="science.html">The Science Behind Brain Candy</a></p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What frequencies does each scene use?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The scenes use a variety of rhythms across different sensory channels. Visual rhythms tend toward alpha range, while audio and haptics lean more delta or theta — but they also transition and oscillate, always changing. Randomizing parameters changes all of these details. Subtly changing frequencies create more interest and more intense visual hallucinations than steady-state rhythms. All the flicker light devices we're aware of craft their experiences with transitions rather than fixed frequencies.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does this compare to actual psychedelics?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>It's in the same general neighborhood as breathwork, float tanks, and light-based practices — but more subtle than classic psychedelics. Think of it as the anti-sensory-deprivation tank: sensory activation rather than sensory restriction. Unlike psychedelics, you can stop at any time, sessions are 20 minutes on average, and there's no 5-hour commitment you can't turn off. Brain Candy is for substance-free journeys.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can this trigger lucid dreams?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>At least one user reported an intense lucid dream after a short pre-bed session. Our dream research collaborator Dr. Deirdre Barrett (Harvard) notes that lucid dream triggers are highly individual, and proven methods take consistent work. One theory: Brain Candy's rhythmic stimulation may alter sleep architecture similarly to how "dream herbs" like Blue Lotus work — by making the sleeping brain slightly more awake. It's anecdotal for now, but we're paying attention.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRYING & BUYING -->
+        <div class="faq-category">
+            <h2>Trying & Buying</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I try it before buying?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>There's a <a href="https://braincandy.app">live web preview</a> with about 10 scenes (the app has ~40). It can't match VR immersion and doesn't include synthesized audio, but it gives you a reasonable idea. You can also buy the app and request a refund through Meta if it's not for you — Meta makes that straightforward, and our refund rate is very low.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    What platforms is it available on?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently available on <a href="https://www.meta.com/experiences/brain-candy/8052379494880098">Meta Quest</a>. Steam is coming soon.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How much does it cost?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>$9.99 for the base app. There's also an optional Breathwork DLC with breathing pacer scenes. Compare that to $600–$35,000 for dedicated strobe devices.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Will it come to Pico / other headsets?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Steam support is in the works, which will cover PCVR headsets. Other standalone platforms are being evaluated based on demand.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOW TO USE IT -->
+        <div class="faq-category">
+            <h2>How to Use It</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do I need to be online?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>You need to be online to download content initially, but after that it's saved on your device for offline use.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I use it with a Subpac or vibroacoustic setup?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. Brain Candy's low frequencies translate well to Subpacs and similar tactile transducer devices.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long should a session be?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>The average session is about 20 minutes. Some people use it for brief 5-minute wind-downs after gaming, others do longer sessions. Experiment and see what works for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAFETY -->
+        <div class="faq-category">
+            <h2>Safety</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is it safe? What about seizures?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Seizure warning:</strong> Brain Candy uses intense strobing lights that can cause seizures in people with photosensitive epilepsy. If you have epilepsy or a history of seizures, do not use this app. For everyone else, strobing light is a well-studied phenomenon with a long history of safe recreational and therapeutic use. Read our full <a href="warning.html">safety information</a>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Could this cause anxiety?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Responses are highly individual. Some people find it deeply relaxing, others find certain intensities overstimulating. You have full control over scene selection and intensity, and you can stop at any time. If you experience anxiety, try gentler scenes or shorter sessions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMUNITY -->
+        <div class="faq-category">
+            <h2>Community & Support</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there a community?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Join the <a href="https://discord.gg/4ABMpgzA">Brain Candy Discord</a> to share experiences, report issues, and connect with other users.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do I contact support?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Email <a href="mailto:braincandyapp@proton.me">braincandyapp@proton.me</a> or visit the <a href="support.html">support page</a>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Where can I learn more about the science?
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Check out the <a href="science.html">science page</a>, or read this comprehensive overview of strobe entrainment research: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12342384/">PMC overview paper</a>.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
+        <ul class="list-inline mb-0">
+            <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
+            <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">braincandyapp@proton.me</a></li>
+        </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
