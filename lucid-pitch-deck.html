@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucid — Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #0a0e17;
+    --bg-card: #111827;
+    --bg-card-hover: #1a2332;
+    --accent: #38bdf8;
+    --accent-warm: #a78bfa;
+    --accent-glow: rgba(56, 189, 248, 0.15);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: rgba(148, 163, 184, 0.08);
+    --gradient-hero: linear-gradient(135deg, #0a0e17 0%, #0f1729 40%, #111d2e 100%);
+    --gradient-accent: linear-gradient(135deg, #38bdf8, #a78bfa);
+    --gradient-warm: linear-gradient(135deg, #a78bfa, #f472b6);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 600;
+    background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+  .nav-tag {
+    font-size: 0.72rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px; font-weight: 500;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500; line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  p.body-text {
+    color: var(--text-secondary); font-size: 1.05rem; max-width: 640px; line-height: 1.7;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 100px; position: relative;
+    background: var(--gradient-hero);
+  }
+  .hero::after {
+    content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+    background: radial-gradient(ellipse at 80% 40%, rgba(56, 189, 248, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 100px; padding: 6px 16px; font-size: 0.78rem; color: var(--accent);
+    margin-bottom: 32px; width: fit-content;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 500; line-height: 1.05;
+    margin-bottom: 28px; max-width: 800px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero .subtitle {
+    font-size: 1.15rem; color: var(--text-secondary); max-width: 560px; line-height: 1.7;
+    margin-bottom: 48px;
+  }
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+  }
+  .hero-stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 600;
+    background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-stat-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px; max-width: 1200px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* ─── PROBLEM ─── */
+  .problem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px;
+    align-items: start;
+  }
+  .problem-stat {
+    padding: 32px; border-radius: 16px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .problem-stat:hover { transform: translateY(-2px); border-color: rgba(56, 189, 248, 0.2); }
+  .problem-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; font-weight: 600;
+    background: var(--gradient-warm); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .problem-stat p { color: var(--text-secondary); font-size: 0.95rem; }
+
+  /* ─── PRODUCT ─── */
+  .product-section { position: relative; }
+  .product-hero {
+    margin-top: 48px;
+    border-radius: 20px; overflow: hidden;
+    background: linear-gradient(135deg, #111827, #1a1f3a);
+    border: 1px solid var(--border);
+    padding: 60px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: center;
+    min-height: 420px;
+  }
+  .product-hero-text h3 { font-size: 1.8rem; margin-bottom: 20px; }
+  .product-hero-text p { color: var(--text-secondary); line-height: 1.7; }
+
+  .phone-mockup {
+    width: 240px; height: 480px; margin: 0 auto;
+    border-radius: 36px;
+    background: #000;
+    border: 3px solid #333;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(56, 189, 248, 0.08);
+  }
+  .phone-notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 100px; height: 24px; background: #000; border-radius: 0 0 16px 16px; z-index: 2;
+  }
+  .phone-screen {
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg,
+      #1a0a2e 0%, #2d1b4e 15%, #1a2744 30%, #0f2027 45%,
+      #2d1b4e 55%, #1a0a2e 70%, #0f2027 85%, #1a2744 100%
+    );
+    background-size: 100% 200%;
+    animation: scrollFeed 8s ease-in-out infinite;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 40px 20px 20px;
+    position: relative;
+  }
+  @keyframes scrollFeed {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 0% 100%; }
+  }
+  .phone-ui-state {
+    font-size: 0.65rem; color: rgba(255,255,255,0.6);
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;
+  }
+  .phone-ui-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: #fff; margin-bottom: 16px; text-align: center;
+  }
+  .phone-visual {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(167,139,250,0.6), rgba(56,189,248,0.3), transparent);
+    animation: pulse 4s ease-in-out infinite;
+    filter: blur(1px);
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+  .phone-bottom-bar {
+    position: absolute; bottom: 16px; left: 20px; right: 20px;
+    display: flex; justify-content: space-around;
+  }
+  .phone-nav-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  }
+  .phone-nav-dot.active { background: rgba(56, 189, 248, 0.3); border-color: var(--accent); }
+  .phone-heart {
+    position: absolute; right: 16px; top: 50%;
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; color: rgba(244,114,182,0.7);
+    animation: heartbeat 3s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+  }
+
+  .features-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 40px;
+  }
+  .feature-card {
+    padding: 32px; border-radius: 16px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .feature-card:hover { border-color: rgba(56, 189, 248, 0.2); transform: translateY(-2px); }
+  .feature-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent-glow);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px; font-size: 1.2rem;
+  }
+  .feature-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+  .feature-card p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+  /* ─── COMPETITIVE ─── */
+  .comp-table {
+    width: 100%; margin-top: 48px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .comp-table th {
+    text-align: left; padding: 16px 20px;
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--text-muted); font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-table th.highlight {
+    color: var(--accent); background: rgba(56, 189, 248, 0.05);
+    border-radius: 12px 12px 0 0;
+  }
+  .comp-table td {
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .comp-table td.highlight {
+    color: var(--text-primary); font-weight: 500;
+    background: rgba(56, 189, 248, 0.03);
+  }
+  .comp-table .check { color: var(--accent); font-weight: 600; }
+  .comp-table .partial { color: var(--text-muted); }
+  .comp-table .none { color: #475569; }
+
+  /* ─── MARKET ─── */
+  .market-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 48px;
+  }
+  .market-card {
+    padding: 40px 32px; border-radius: 16px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    text-align: center;
+  }
+  .market-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem; font-weight: 600;
+    background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .market-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+  .market-sub { color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px; }
+
+  /* ─── TRACTION ─── */
+  .traction-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 48px;
+  }
+  .traction-item { text-align: center; }
+  .traction-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 600; color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .traction-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ─── SCIENCE ─── */
+  .science-items {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-top: 48px;
+  }
+  .science-item {
+    padding: 32px; border-radius: 16px;
+    background: var(--bg-card); border: 1px solid var(--border);
+  }
+  .science-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; color: var(--accent); }
+  .science-item p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+  /* ─── BUSINESS MODEL ─── */
+  .model-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    margin-top: 48px;
+  }
+  .model-tier {
+    padding: 40px; border-radius: 16px;
+    background: var(--bg-card); border: 1px solid var(--border);
+  }
+  .model-tier.premium { border-color: rgba(56, 189, 248, 0.3); }
+  .tier-label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--text-muted); margin-bottom: 12px;
+  }
+  .tier-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 600; margin-bottom: 20px;
+  }
+  .tier-features { list-style: none; }
+  .tier-features li {
+    padding: 8px 0; font-size: 0.9rem; color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+  .tier-features li::before { content: '→ '; color: var(--accent); }
+
+  /* ─── ASK ─── */
+  .ask-section {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), rgba(167, 139, 250, 0.05));
+    border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.1);
+    padding: 80px 60px; text-align: center;
+    margin-top: 48px;
+  }
+  .ask-section h2 { margin-bottom: 20px; }
+  .ask-section p { margin: 0 auto 40px; }
+  .ask-roles {
+    display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+  }
+  .ask-role {
+    padding: 24px 32px; border-radius: 16px;
+    background: rgba(10, 14, 23, 0.6); border: 1px solid var(--border);
+    min-width: 200px;
+  }
+  .ask-role h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+  .ask-role p { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* ─── PLACEHOLDER IMAGES ─── */
+  .img-placeholder {
+    background: linear-gradient(135deg, #1a2332, #111827);
+    border: 1px dashed rgba(148, 163, 184, 0.15);
+    border-radius: 16px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    min-height: 240px; position: relative; overflow: hidden;
+  }
+  .img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.04), transparent);
+  }
+  .img-placeholder span { position: relative; z-index: 1; }
+  .img-placeholder .ph-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.4; }
+
+  /* ─── TEAM ─── */
+  .team-highlight {
+    margin-top: 48px; padding: 48px;
+    border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border);
+    display: grid; grid-template-columns: auto 1fr; gap: 40px;
+    align-items: center;
+  }
+  .team-photo {
+    width: 120px; height: 120px; border-radius: 50%;
+    background: linear-gradient(135deg, #1a2332, #2d1b4e);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+  }
+  .team-info h3 { margin-bottom: 4px; }
+  .team-role { font-size: 0.82rem; color: var(--accent); margin-bottom: 12px; }
+  .team-bio { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; }
+
+  /* ─── UGC / SOCIAL ─── */
+  .ugc-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin-top: 48px;
+  }
+  .ugc-card {
+    border-radius: 12px; overflow: hidden;
+    background: var(--bg-card); border: 1px solid var(--border);
+  }
+  .ugc-visual {
+    height: 180px;
+    background: linear-gradient(135deg, #1a0a2e, #2d1b4e);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .ugc-visual .play-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; color: #fff;
+  }
+  .ugc-card-body { padding: 16px; }
+  .ugc-card-body p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+  .ugc-card-body .ugc-user { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center; padding: 60px 40px;
+    border-top: 1px solid var(--border);
+  }
+  .footer p { color: var(--text-muted); font-size: 0.82rem; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    section { padding: 60px 24px; }
+    .nav { padding: 16px 24px; }
+    .problem-grid, .science-items, .model-grid, .product-hero { grid-template-columns: 1fr; }
+    .features-grid, .market-cards { grid-template-columns: 1fr; }
+    .traction-grid { grid-template-columns: repeat(2, 1fr); }
+    .ugc-row { grid-template-columns: 1fr 1fr; }
+    .team-highlight { grid-template-columns: 1fr; text-align: center; }
+    .team-photo { margin: 0 auto; }
+    .product-hero { padding: 40px 24px; }
+    .comp-table { font-size: 0.78rem; }
+    .comp-table th, .comp-table td { padding: 12px 10px; }
+    .ask-section { padding: 48px 24px; }
+    .hero-stats { gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Lucid</div>
+  <div class="nav-tag">Confidential — Pitch Deck 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Seeking Marketing Co-Founder</div>
+  <h1>Choose how<br>you <em>feel.</em></h1>
+  <p class="subtitle">Lucid is a mobile wellness app that uses visual entrainment and binaural audio to shift your mental state in minutes. TikTok-style feed. Science-backed. No meditation skills required.</p>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-value">2,000+</div>
+      <div class="hero-stat-label">VR Users (Existing)</div>
+    </div>
+    <div>
+      <div class="hero-stat-value">4.5★</div>
+      <div class="hero-stat-label">App Store Rating</div>
+    </div>
+    <div>
+      <div class="hero-stat-value">~2%</div>
+      <div class="hero-stat-label">Refund Rate</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<section>
+  <div class="section-label">The Problem</div>
+  <h2>People are overwhelmed, overstimulated,<br>and underserved</h2>
+  <p class="body-text">Meditation apps ask too much. Supplements take too long. Therapy is expensive. People want to feel better <em>right now</em>, and they want it to be easy.</p>
+
+  <div class="problem-grid">
+    <div class="problem-stat">
+      <div class="problem-number">1 in 5</div>
+      <p>U.S. adults reported depression and anxiety in 2024 (CDC)</p>
+    </div>
+    <div class="problem-stat">
+      <div class="problem-number">12B</div>
+      <p>Workdays lost to mental health issues annually — $1T in global economic cost (WHO/ILO)</p>
+    </div>
+    <div class="problem-stat">
+      <div class="problem-number">92%</div>
+      <p>of meditation app users quit within 90 days. The content isn't engaging enough to build a habit.</p>
+    </div>
+    <div class="problem-stat">
+      <div class="problem-number">$8.6B</div>
+      <p>Mental health app market in 2026, growing 15%+ CAGR to $17B+ by 2030</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCT -->
+<section class="product-section">
+  <div class="section-label">The Product</div>
+  <h2>A visual wellness feed<br>powered by neuroscience</h2>
+
+  <div class="product-hero">
+    <div class="product-hero-text">
+      <h3>Scroll. Choose your state. Feel it.</h3>
+      <p>Lucid presents a TikTok-style feed of short visual experiences — each one a unique combination of entraining fractal patterns, binaural beats, and breathing cues designed to shift your mental state.</p>
+      <br>
+      <p>Users choose what they want to feel — <strong>Focus, Calm, Energy, Sleep, Creative Flow</strong> — and the intensity of visual stimulation they're comfortable with. No skill required. Effects begin in minutes.</p>
+      <br>
+      <p>Save favorites to your gallery. Your favorites surface in the feed for others to discover. A built-in creation tool lets users design and share their own experiences.</p>
+    </div>
+    <div class="phone-mockup">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-ui-state">Focus</div>
+        <div class="phone-ui-title">Deep Work</div>
+        <div class="phone-visual"></div>
+        <div class="phone-heart">♥</div>
+        <div class="phone-bottom-bar">
+          <div class="phone-nav-dot active"></div>
+          <div class="phone-nav-dot"></div>
+          <div class="phone-nav-dot"></div>
+          <div class="phone-nav-dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h4>State Selection</h4>
+      <p>Choose Focus, Calm, Energy, Sleep, or Creative Flow. Each experience is tuned to specific brainwave frequency targets — alpha, theta, gamma — using synchronized visual and audio patterns.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h4>Intensity Control</h4>
+      <p>Users set their preferred strobe intensity from subtle ambient pulses to full entrainment. The app adapts to individual sensitivity levels and comfort.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h4>Creator Tools</h4>
+      <p>Users can build and share their own visual experiences using our creation engine. User-generated content drives engagement and viral discovery loops.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">♥</div>
+      <h4>Social Discovery</h4>
+      <p>Favorited experiences surface in the feed for others. Popular "candies" rise organically, creating a community-curated content library that grows itself.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔬</div>
+      <h4>Science-Backed</h4>
+      <p>Built on 15 years of R&D in strobing technology, neural entrainment, and fractal fluency research. Frequency combinations refined through thousands of user sessions.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⏱</div>
+      <h4>Instant Results</h4>
+      <p>No meditation skills needed. No 10-day courses. The visual entrainment works on your nervous system directly — most users report feeling a shift within the first 2-3 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- UGC / CONTENT PREVIEW -->
+<section>
+  <div class="section-label">Content Preview</div>
+  <h2>What the feed looks like</h2>
+  <p class="body-text">Each "candy" is a short visual experience — fractal patterns, color fields, and gentle strobing paired with binaural audio. They're beautiful enough to watch, powerful enough to shift your state.</p>
+
+  <div class="ugc-row">
+    <div class="ugc-card">
+      <div class="ugc-visual" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
+        <div class="play-icon">▶</div>
+      </div>
+      <div class="ugc-card-body">
+        <p><strong>Deep Focus</strong> — 40Hz gamma entrainment with ocean fractals</p>
+        <div class="ugc-user">Placeholder: animated GIF of focus session</div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-visual" style="background: linear-gradient(135deg, #1a0a2e, #3b1f6e, #a78bfa);">
+        <div class="play-icon">▶</div>
+      </div>
+      <div class="ugc-card-body">
+        <p><strong>Dream Drift</strong> — Theta waves with kaleidoscopic geometry</p>
+        <div class="ugc-user">Placeholder: animated GIF of sleep session</div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-visual" style="background: linear-gradient(135deg, #1c1917, #f59e0b, #ef4444);">
+        <div class="play-icon">▶</div>
+      </div>
+      <div class="ugc-card-body">
+        <p><strong>Morning Charge</strong> — Beta boost with warm fractal blooms</p>
+        <div class="ugc-user">Placeholder: animated GIF of energy session</div>
+      </div>
+    </div>
+    <div class="ugc-card">
+      <div class="ugc-visual" style="background: linear-gradient(135deg, #064e3b, #10b981, #34d399);">
+        <div class="play-icon">▶</div>
+      </div>
+      <div class="ugc-card-body">
+        <p><strong>Open Canvas</strong> — Alpha flow with organic patterns</p>
+        <div class="ugc-user">Placeholder: animated GIF of creative session</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-placeholder" style="margin-top: 32px; min-height: 300px;">
+    <span class="ph-icon">📱</span>
+    <span>Placeholder: Photo of person relaxing with phone, eyes closed, peaceful expression</span>
+    <span style="margin-top: 8px; opacity: 0.6;">— lifestyle shot showing the experience in context —</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPETITIVE -->
+<section>
+  <div class="section-label">Competitive Landscape</div>
+  <h2>Same market. Different approach.</h2>
+  <p class="body-text">Calm and Headspace own audio meditation. Mesmerize adds visuals but no entrainment. Lumenate does entrainment but uses your phone flashlight. Lucid is the first to combine real visual entrainment, social discovery, and user-generated content in a mobile feed format.</p>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th class="highlight">Lucid</th>
+        <th>Mesmerize</th>
+        <th>Lumenate</th>
+        <th>Calm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Visual Entrainment</td>
+        <td class="highlight check">✓ Full spectrum</td>
+        <td class="partial">Decorative only</td>
+        <td class="check">✓ Phone flashlight</td>
+        <td class="none">✗</td>
+      </tr>
+      <tr>
+        <td>Binaural Audio</td>
+        <td class="highlight check">✓ Synced to visuals</td>
+        <td class="partial">Soundscapes only</td>
+        <td class="check">✓ Guided</td>
+        <td class="partial">Music / narration</td>
+      </tr>
+      <tr>
+        <td>State Selection (Focus, Sleep, etc.)</td>
+        <td class="highlight check">✓ Science-tuned</td>
+        <td class="check">✓ Categories</td>
+        <td class="partial">Limited</td>
+        <td class="check">✓ Categories</td>
+      </tr>
+      <tr>
+        <td>TikTok-style Feed / Social</td>
+        <td class="highlight check">✓ Core UX</td>
+        <td class="none">✗</td>
+        <td class="none">✗</td>
+        <td class="none">✗</td>
+      </tr>
+      <tr>
+        <td>User-Generated Content</td>
+        <td class="highlight check">✓ Creation tools</td>
+        <td class="none">✗</td>
+        <td class="none">✗</td>
+        <td class="none">✗</td>
+      </tr>
+      <tr>
+        <td>No Special Hardware</td>
+        <td class="highlight check">✓ Phone screen</td>
+        <td class="check">✓</td>
+        <td class="check">✓ Phone flashlight</td>
+        <td class="check">✓</td>
+      </tr>
+      <tr>
+        <td>Strobe Intensity Control</td>
+        <td class="highlight check">✓ User-adjustable</td>
+        <td class="none">✗</td>
+        <td class="check">✓</td>
+        <td class="none">✗</td>
+      </tr>
+      <tr>
+        <td>Works Eyes Open (on-screen)</td>
+        <td class="highlight check">✓</td>
+        <td class="check">✓</td>
+        <td class="none">✗ Eyes closed</td>
+        <td class="none">N/A</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCIENCE -->
+<section>
+  <div class="section-label">Scientific Foundation</div>
+  <h2>Built on real research,<br>positioned as art</h2>
+  <p class="body-text">Lucid is "science-inspired art" — we don't make clinical claims. The underlying technology draws from peer-reviewed research on neural entrainment, fractal perception, and brainwave synchronization.</p>
+
+  <div class="science-items">
+    <div class="science-item">
+      <h4>Neural Entrainment</h4>
+      <p>The brain naturally synchronizes to external rhythmic stimuli — the Frequency Following Response. Specific flicker frequencies correspond to specific brainwave states: 10Hz alpha for calm, 40Hz gamma for focus, 4-8Hz theta for creative/meditative states.</p>
+    </div>
+    <div class="science-item">
+      <h4>Multi-Sensory Stacking</h4>
+      <p>Overlapping frequencies across visual, auditory, and haptic channels creates whole-brain coherence that individual frequencies cannot achieve alone. This is the core innovation from 15 years of hardware R&D.</p>
+    </div>
+    <div class="science-item">
+      <h4>Fractal Fluency</h4>
+      <p>Research shows fractal patterns reduce physiological stress by 60% and match the brain's natural visual processing preferences. Lucid's visuals are built on fractal geometry tuned for therapeutic response.</p>
+    </div>
+    <div class="science-item">
+      <h4>Research Partnerships</h4>
+      <p>Active relationships with consciousness researchers including Dr. Deirdre Barrett (Harvard dream research), David Glowacki's lab, and the Qualia Research Institute. Academic credibility built through NYU, Harvard, and SVA teaching positions.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MARKET -->
+<section>
+  <div class="section-label">Market Opportunity</div>
+  <h2>A $17B market that's still<br>waiting for its TikTok moment</h2>
+
+  <div class="market-cards">
+    <div class="market-card">
+      <div class="market-value">$8.6B</div>
+      <div class="market-label">Market Size 2026</div>
+      <div class="market-sub">Mental health apps</div>
+    </div>
+    <div class="market-card">
+      <div class="market-value">15%+</div>
+      <div class="market-label">Annual Growth</div>
+      <div class="market-sub">CAGR through 2030</div>
+    </div>
+    <div class="market-card">
+      <div class="market-value">74%</div>
+      <div class="market-label">Employer Adoption</div>
+      <div class="market-sub">of U.S. employers offer wellness apps</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top: 32px;">Calm and Headspace proved the market. But their core UX — audio meditation — hasn't fundamentally changed in a decade. Lucid introduces a new modality: visual entrainment in a social feed format that's more engaging, more shareable, and requires zero skill to use.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRACTION -->
+<section>
+  <div class="section-label">Existing Traction</div>
+  <h2>Proven in VR. Ready for mobile.</h2>
+  <p class="body-text">The core technology is already live and validated as Brain Candy on Meta Quest. The mobile version expands the addressable market from ~30M VR headset owners to 4B+ smartphone users.</p>
+
+  <div class="traction-grid">
+    <div class="traction-item">
+      <div class="traction-value">2,000+</div>
+      <div class="traction-label">Active VR Users</div>
+    </div>
+    <div class="traction-item">
+      <div class="traction-value">4.5★</div>
+      <div class="traction-label">Meta Quest Rating</div>
+    </div>
+    <div class="traction-item">
+      <div class="traction-value">~2%</div>
+      <div class="traction-label">Refund Rate</div>
+    </div>
+    <div class="traction-item">
+      <div class="traction-value">15 yrs</div>
+      <div class="traction-label">R&D Foundation</div>
+    </div>
+  </div>
+
+  <div class="img-placeholder" style="margin-top: 48px; min-height: 200px;">
+    <span class="ph-icon">⭐</span>
+    <span>Placeholder: Collage of user reviews / testimonials from Meta Quest store</span>
+  </div>
+
+  <div style="margin-top: 40px; padding: 32px; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border);">
+    <h4 style="font-size: 0.9rem; color: var(--accent); margin-bottom: 12px;">What users are saying</h4>
+    <p style="color: var(--text-secondary); font-size: 0.95rem; font-style: italic; line-height: 1.7;">"The trippiest meditation app yet." &nbsp;·&nbsp; "A brain massage you don't want to end." &nbsp;·&nbsp; "I didn't expect something so simple could have such an intense effect on my mind." &nbsp;·&nbsp; "It's like my brain finally got the treat it was craving."</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BUSINESS MODEL -->
+<section>
+  <div class="section-label">Business Model</div>
+  <h2>Freemium with social flywheel</h2>
+
+  <div class="model-grid">
+    <div class="model-tier">
+      <div class="tier-label">Free Tier</div>
+      <div class="tier-price">$0</div>
+      <ul class="tier-features">
+        <li>Browse the visual feed</li>
+        <li>3 free sessions per day</li>
+        <li>Basic state categories</li>
+        <li>Community favorites</li>
+        <li>Ad-supported (non-intrusive)</li>
+      </ul>
+    </div>
+    <div class="model-tier premium">
+      <div class="tier-label">Lucid Pro</div>
+      <div class="tier-price" style="background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$9.99/mo</div>
+      <ul class="tier-features">
+        <li>Unlimited sessions</li>
+        <li>Full intensity controls</li>
+        <li>Creator tools — build & share</li>
+        <li>Advanced state targeting (40Hz gamma, etc.)</li>
+        <li>Offline downloads</li>
+        <li>Artist collaboration packs</li>
+        <li>No ads</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin-top: 32px;">Growth levers: UGC creation and sharing drives organic acquisition. Favoriting creates social proof. Short-form visual content is natively shareable to TikTok/Reels/Shorts, driving viral loops outside the app.</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- TEAM -->
+<section>
+  <div class="section-label">Team</div>
+  <h2>Built by a consciousness technologist</h2>
+
+  <div class="team-highlight">
+    <div class="team-photo">Photo</div>
+    <div class="team-info">
+      <h3>David</h3>
+      <div class="team-role">Creator & Lead Developer</div>
+      <p class="team-bio">15 years building consciousness technology. Faculty at NYU, Harvard, and SVA teaching immersive media. Created the Brain Candy VR experience from scratch — Unity developer, shader programmer, audio designer. Active relationships with Meta, East Forest, Dr. Deirdre Barrett, and the Qualia Research Institute. Equal parts artist and engineer.</p>
+    </div>
+  </div>
+
+  <div class="ask-section">
+    <div class="section-label">What We're Looking For</div>
+    <h2>A marketing mind to<br>build this with me</h2>
+    <p class="body-text" style="margin: 0 auto 40px; text-align: center;">The product works. The science is real. The VR version is validated. What's needed now is someone who can own the go-to-market, build the brand, and scale user acquisition for the mobile launch.</p>
+
+    <div class="ask-roles">
+      <div class="ask-role">
+        <h4>Brand Strategy</h4>
+        <p>Position Lucid in the wellness market. Define voice, visual identity, and messaging for two distinct audiences.</p>
+      </div>
+      <div class="ask-role">
+        <h4>Growth & Acquisition</h4>
+        <p>Own paid and organic channels. Build the viral UGC flywheel. Scale from VR niche to mainstream mobile.</p>
+      </div>
+      <div class="ask-role">
+        <h4>Partnerships</h4>
+        <p>Creator collabs, wellness influencers, employer wellness programs. Open doors the product alone can't.</p>
+      </div>
+    </div>
+
+    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 40px;">This is a co-founder level role. Equity-based. Let's talk.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section>
+  <div class="section-label">Roadmap</div>
+  <h2>Where we're going</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px;">
+    <div class="feature-card">
+      <h4 style="color: var(--accent);">Now</h4>
+      <p>VR app live on Meta Quest. 2000+ users. Forbes coverage. Meta partnership support.</p>
+    </div>
+    <div class="feature-card">
+      <h4 style="color: var(--accent-warm);">Q2 2026</h4>
+      <p>Mobile MVP on iOS. Core feed + state selection + favorites. Closed beta with existing user base.</p>
+    </div>
+    <div class="feature-card">
+      <h4 style="color: var(--accent-warm);">Q3 2026</h4>
+      <p>Android launch. Creator tools. UGC sharing. Social features. First artist collaboration pack (East Forest).</p>
+    </div>
+    <div class="feature-card">
+      <h4 style="color: var(--accent-warm);">Q4 2026+</h4>
+      <p>Employer wellness channel. Wearable integration. Research partnerships. Platform expansion (Steam, web).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text-primary); margin-bottom: 12px;">Lucid</p>
+  <p>Confidential — For discussion purposes only</p>
+  <p style="margin-top: 8px;">david@[your-domain].com</p>
+</div>
+
+</body>
+</html>
