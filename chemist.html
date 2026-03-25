@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psychedelic Chemist</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --peach: #F4A96A;
+  --peach-light: #FAD4B0;
+  --peach-dark: #E07830;
+  --cyan: #5DD9D4;
+  --cyan-light: #A8EDEA;
+  --cyan-dark: #2BABA5;
+  --pink: #F472B6;
+  --pink-light: #FBCFE8;
+  --pink-dark: #BE185D;
+  --lavender: #C4B5FD;
+  --lavender-dark: #7C3AED;
+  --blue: #60A5FA;
+  --orange: #FB923C;
+  --yellow: #FCD34D;
+  --bg: #FFF5EE;
+  --bg2: #FFEEDD;
+  --text: #3D1C02;
+  --text2: #7C4A1E;
+  --card-bg: #FFFAF5;
+  --shadow: rgba(61,28,2,0.12);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── CANVAS BG ── */
+#bg-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.35;
+}
+
+/* ── SCREENS ── */
+.screen { display: none; position: relative; z-index: 1; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; }
+
+/* ══════════════════════════════
+   TITLE SCREEN
+══════════════════════════════ */
+#screen-title {
+  align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #FFEEDD 0%, #FFD4B0 50%, #E8F8F8 100%);
+  padding: 40px 20px;
+  gap: 20px;
+}
+
+.title-logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(48px, 10vw, 96px);
+  line-height: 1;
+  text-align: center;
+}
+.title-logo span:nth-child(1) { color: var(--cyan-dark); }
+.title-logo span:nth-child(2) { color: var(--pink); }
+.title-logo span:nth-child(3) { color: var(--peach-dark); }
+.title-logo span:nth-child(4) { color: var(--lavender-dark); }
+
+.title-sub {
+  font-size: 16px; color: var(--text2);
+  text-align: center; max-width: 420px;
+  line-height: 1.6; font-weight: 600;
+}
+
+.bubble-row {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  justify-content: center; margin: 10px 0;
+}
+
+.bubble-stat {
+  background: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 13px; font-weight: 700;
+  color: var(--text2);
+  box-shadow: 0 4px 16px var(--shadow);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.bubble-stat .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+
+.btn-primary {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  background: linear-gradient(135deg, var(--cyan) 0%, var(--cyan-dark) 100%);
+  color: white;
+  border: none; cursor: pointer;
+  padding: 16px 48px;
+  border-radius: 50px;
+  box-shadow: 0 6px 24px rgba(45,171,165,0.4);
+  transition: transform .15s, box-shadow .15s;
+  letter-spacing: 0.5px;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(45,171,165,0.5); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-secondary {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+  color: white;
+  border: none; cursor: pointer;
+  padding: 12px 32px;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(244,114,182,0.35);
+  transition: transform .15s;
+}
+.btn-secondary:hover { transform: translateY(-2px); }
+
+.btn-warn {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--peach-dark) 100%);
+  color: white;
+  border: none; cursor: pointer;
+  padding: 10px 24px;
+  border-radius: 50px;
+  box-shadow: 0 4px 14px rgba(251,146,60,0.35);
+  transition: transform .15s;
+}
+.btn-warn:hover { transform: translateY(-2px); }
+
+.btn-small {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; font-weight: 700;
+  background: var(--bg2);
+  color: var(--text);
+  border: 2px solid var(--peach);
+  cursor: pointer;
+  padding: 6px 16px;
+  border-radius: 50px;
+  transition: background .15s;
+}
+.btn-small:hover { background: var(--peach-light); }
+
+/* ══════════════════════════════
+   GAME LAYOUT
+══════════════════════════════ */
+#screen-game {
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.top-bar {
+  background: white;
+  border-bottom: 2px solid var(--peach-light);
+  padding: 10px 16px;
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 12px var(--shadow);
+  position: sticky; top: 0; z-index: 100;
+}
+
+.top-bar-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px; color: var(--cyan-dark);
+  margin-right: 8px;
+}
+
+.stat-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--bg2);
+  border-radius: 50px;
+  padding: 5px 12px;
+  font-size: 12px; font-weight: 700;
+  color: var(--text);
+  border: 1.5px solid var(--peach-light);
+}
+.stat-chip .icon { font-size: 14px; }
+.stat-chip .val { color: var(--peach-dark); }
+
+.stat-chip.danger .val { color: var(--pink-dark); }
+.stat-chip.good .val { color: var(--cyan-dark); }
+
+.top-bar-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+/* ── TAB NAV ── */
+.tab-nav {
+  display: flex; gap: 0;
+  background: white;
+  border-bottom: 2px solid var(--peach-light);
+  overflow-x: auto;
+}
+
+.tab-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: 15px;
+  padding: 12px 20px;
+  background: none; border: none; cursor: pointer;
+  color: var(--text2); white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.tab-btn:hover { color: var(--cyan-dark); }
+.tab-btn.active { color: var(--cyan-dark); border-bottom-color: var(--cyan); }
+
+/* ── PANELS ── */
+.game-panel { display: none; padding: 16px; flex: 1; }
+.game-panel.active { display: block; }
+
+/* ══════════════════════════════
+   CARDS
+══════════════════════════════ */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 4px 20px var(--shadow);
+  border: 2px solid var(--peach-light);
+  margin-bottom: 14px;
+}
+
+.card-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px; color: var(--text);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.card-title .tag {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px;
+  background: var(--cyan-light); color: var(--cyan-dark);
+}
+
+/* ── STAT BARS ── */
+.stat-bar-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+}
+.stat-bar-label {
+  width: 90px; font-size: 12px; font-weight: 700; color: var(--text2);
+  flex-shrink: 0;
+}
+.stat-bar-track {
+  flex: 1; height: 12px;
+  background: var(--bg2);
+  border-radius: 6px; overflow: hidden;
+  border: 1.5px solid var(--peach-light);
+}
+.stat-bar-fill {
+  height: 100%; border-radius: 6px;
+  transition: width .5s cubic-bezier(.34,1.56,.64,1);
+}
+.stat-bar-val { width: 30px; text-align: right; font-size: 12px; font-weight: 800; }
+.fill-edu { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+.fill-cha { background: linear-gradient(90deg, var(--pink), var(--lavender)); }
+.fill-del { background: linear-gradient(90deg, var(--orange), var(--pink-dark)); }
+.fill-syn { background: linear-gradient(90deg, var(--cyan-dark), var(--lavender-dark)); }
+.fill-rep { background: linear-gradient(90deg, var(--yellow), var(--peach-dark)); }
+
+/* ── DICE ── */
+.dice-area {
+  background: linear-gradient(135deg, #FFF5EE, #E8F8F8);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 2px solid var(--peach-light);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.dice-container { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin: 16px 0; }
+
+.die {
+  width: 60px; height: 60px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px var(--shadow), inset 0 1px 0 rgba(255,255,255,0.8);
+  border: 2px solid var(--peach-light);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 28px; color: var(--cyan-dark);
+  cursor: pointer;
+  transition: transform .1s;
+  user-select: none;
+}
+.die:hover { transform: scale(1.08) rotate(3deg); }
+.die.rolling {
+  animation: dieRoll 0.5s ease-out;
+}
+@keyframes dieRoll {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(0.95); }
+  75% { transform: rotate(270deg) scale(1.08); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.die.locked {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px var(--cyan-light), 0 4px 16px var(--shadow);
+}
+
+.dice-result-text {
+  font-size: 14px; font-weight: 700; color: var(--text2);
+  min-height: 22px;
+}
+
+/* ── FRIEND CARDS ── */
+.friend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+
+.friend-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 14px;
+  border: 2px solid var(--peach-light);
+  box-shadow: 0 3px 14px var(--shadow);
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.friend-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow); }
+.friend-card.selected { border-color: var(--cyan); box-shadow: 0 0 0 3px var(--cyan-light); }
+
+.friend-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; margin-bottom: 10px;
+  border: 3px solid white;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.friend-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 17px; color: var(--text); margin-bottom: 4px;
+}
+.friend-role { font-size: 11px; color: var(--text2); font-weight: 600; margin-bottom: 10px; }
+
+/* ── INVENTORY GRID ── */
+.inv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+
+.inv-item {
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 12px 10px;
+  text-align: center;
+  border: 2px solid var(--peach-light);
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform .15s;
+  cursor: default;
+}
+.inv-item:hover { transform: translateY(-2px); }
+.inv-item .inv-icon { font-size: 28px; margin-bottom: 6px; }
+.inv-item .inv-name { font-size: 12px; font-weight: 700; color: var(--text); }
+.inv-item .inv-qty { font-size: 11px; color: var(--text2); margin-top: 2px; }
+.inv-item.highlight { border-color: var(--cyan); background: var(--cyan-light); }
+
+/* ── KNOWLEDGE CARDS ── */
+.knowledge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+
+.knowledge-card {
+  background: linear-gradient(135deg, var(--lavender) 0%, var(--cyan-light) 100%);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 2px solid var(--lavender);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.15);
+  position: relative; overflow: hidden;
+}
+.knowledge-card::before {
+  content: '';
+  position: absolute; top: -20px; right: -20px;
+  width: 80px; height: 80px;
+  background: white; opacity: 0.15; border-radius: 50%;
+}
+.knowledge-card .kc-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px; color: var(--lavender-dark); margin-bottom: 6px;
+}
+.knowledge-card .kc-desc {
+  font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 10px;
+}
+.knowledge-card .kc-unlock {
+  font-size: 11px; font-weight: 700;
+  color: var(--lavender-dark);
+  background: white; border-radius: 50px; padding: 3px 10px; display: inline-block;
+}
+.knowledge-card.locked { filter: grayscale(0.6); opacity: 0.6; }
+.knowledge-card.locked .kc-name { color: var(--gray-d); }
+
+/* ── SYNTHESIS ── */
+.synth-workbench {
+  background: linear-gradient(160deg, #FFFAF5, #EFF9F9);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 2px solid var(--cyan-light);
+  margin-bottom: 14px;
+}
+.synth-slots { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+.synth-slot {
+  flex: 1; min-width: 120px;
+  border: 2.5px dashed var(--peach);
+  border-radius: var(--radius-sm);
+  padding: 14px 10px; text-align: center;
+  background: white; cursor: pointer;
+  transition: all .15s; min-height: 80px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 4px;
+}
+.synth-slot:hover { border-color: var(--cyan); background: var(--cyan-light); }
+.synth-slot.filled { border-style: solid; border-color: var(--cyan); }
+.synth-slot.correct { border-color: var(--cyan-dark); background: var(--cyan-light); }
+.synth-slot.wrong { border-color: var(--pink-dark); background: var(--pink-light); }
+.synth-slot .slot-label { font-size: 10px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: .05em; }
+.synth-slot .slot-content { font-size: 22px; }
+.synth-slot .slot-name { font-size: 11px; font-weight: 700; color: var(--text); }
+
+.purity-display {
+  display: flex; align-items: center; gap: 14px;
+  background: white; border-radius: var(--radius-sm);
+  padding: 12px 16px; border: 2px solid var(--peach-light);
+  margin-top: 14px;
+}
+.purity-circle {
+  width: 64px; height: 64px; border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  flex-shrink: 0;
+  border: 4px solid var(--cyan);
+  background: var(--cyan-light);
+}
+.purity-num { font-size: 20px; color: var(--cyan-dark); line-height: 1; }
+.purity-label { font-size: 9px; color: var(--text2); font-weight: 700; }
+
+/* ── EXPERIENCE / WORLD ── */
+.world-container {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 3px solid var(--peach-light);
+  box-shadow: 0 6px 24px var(--shadow);
+  margin-bottom: 14px;
+  position: relative;
+}
+#world-canvas { width: 100%; height: 260px; display: block; cursor: crosshair; }
+.world-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(61,28,2,0.5));
+  padding: 20px 16px 12px;
+  color: white;
+}
+.world-caption {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px; text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.world-sub { font-size: 12px; opacity: 0.85; margin-top: 2px; }
+
+.intensity-slider-wrap {
+  display: flex; align-items: center; gap: 12px;
+  background: white; border-radius: var(--radius-sm);
+  padding: 12px 16px; border: 2px solid var(--peach-light);
+  margin-bottom: 10px;
+}
+.intensity-slider-wrap label { font-size: 13px; font-weight: 700; color: var(--text2); width: 80px; }
+.intensity-slider-wrap input[type=range] { flex: 1; accent-color: var(--cyan-dark); }
+.intensity-val { font-family: 'Fredoka One', cursive; font-size: 18px; color: var(--cyan-dark); min-width: 36px; text-align: right; }
+
+/* ── BEING CARDS ── */
+.being-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.being-card {
+  background: linear-gradient(135deg, var(--cyan-light), var(--lavender));
+  border-radius: var(--radius);
+  padding: 14px; text-align: center;
+  border: 2px solid var(--cyan-light);
+  cursor: pointer; transition: transform .15s;
+  box-shadow: 0 3px 12px rgba(93,217,212,0.25);
+}
+.being-card:hover { transform: scale(1.05); }
+.being-icon { font-size: 36px; margin-bottom: 6px; }
+.being-name { font-family: 'Fredoka One', cursive; font-size: 14px; color: var(--lavender-dark); }
+.being-desc { font-size: 11px; color: var(--text2); margin-top: 4px; line-height: 1.4; }
+
+/* ── LOG / NARRATIVE ── */
+.game-log {
+  background: white;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--peach-light);
+  padding: 12px 14px;
+  max-height: 200px; overflow-y: auto;
+  font-size: 13px; line-height: 1.7;
+}
+.log-entry { border-bottom: 1px solid var(--bg2); padding: 5px 0; }
+.log-entry:last-child { border-bottom: none; }
+.log-entry .log-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 1px 7px; border-radius: 50px; margin-right: 6px;
+}
+.log-tag-event { background: var(--cyan-light); color: var(--cyan-dark); }
+.log-tag-warn { background: var(--pink-light); color: var(--pink-dark); }
+.log-tag-good { background: var(--peach-light); color: var(--peach-dark); }
+.log-tag-info { background: var(--lavender); color: var(--lavender-dark); }
+
+/* ── TOKENS ── */
+.token-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+.token {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: transform .1s;
+}
+.token:hover { transform: scale(1.2); }
+.token.spent { opacity: 0.3; filter: grayscale(1); }
+.token-int { background: var(--cyan-light); }
+.token-del { background: var(--pink-light); }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(61,28,2,0.45);
+  align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 480px; width: 100%;
+  box-shadow: 0 20px 60px rgba(61,28,2,0.25);
+  border: 2px solid var(--peach-light);
+  animation: popIn .2s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.modal-title { font-family: 'Fredoka One', cursive; font-size: 22px; color: var(--text); margin-bottom: 10px; }
+.modal-body { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
+.modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ── NOTIFICATION TOAST ── */
+.toast {
+  position: fixed; bottom: 20px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--text);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(61,28,2,0.3);
+  z-index: 999;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── DAY/NIGHT BANNER ── */
+.day-banner {
+  background: linear-gradient(90deg, var(--cyan-light), var(--lavender), var(--pink-light));
+  text-align: center;
+  padding: 8px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px;
+  color: var(--lavender-dark);
+  border-bottom: 2px solid var(--lavender);
+}
+
+/* ── TRACK UNLOCK ── */
+.track-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+.track-card {
+  border-radius: var(--radius);
+  padding: 16px; cursor: pointer;
+  border: 2.5px solid transparent;
+  transition: all .2s;
+  box-shadow: 0 3px 14px var(--shadow);
+}
+.track-card:hover { transform: translateY(-3px); }
+.track-card.selected { border-color: var(--cyan); }
+.track-icon { font-size: 36px; margin-bottom: 8px; }
+.track-name { font-family: 'Fredoka One', cursive; font-size: 16px; margin-bottom: 4px; }
+.track-desc { font-size: 12px; line-height: 1.5; }
+
+/* ── MISC ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.progress-label { font-size: 12px; font-weight: 700; color: var(--text2); width: 80px; }
+.progress-track { flex: 1; height: 16px; background: var(--bg2); border-radius: 8px; overflow: hidden; border: 1.5px solid var(--peach-light); }
+.progress-fill { height: 100%; border-radius: 8px; transition: width .5s; }
+.progress-val { font-family: 'Fredoka One', cursive; font-size: 16px; min-width: 36px; text-align: right; }
+
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px; color: var(--text);
+  margin-bottom: 12px; margin-top: 4px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.badge {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 50px;
+}
+.badge-cyan { background: var(--cyan-light); color: var(--cyan-dark); }
+.badge-pink { background: var(--pink-light); color: var(--pink-dark); }
+.badge-amber { background: #FEF3C7; color: #92400E; }
+.badge-purple { background: var(--lavender); color: var(--lavender-dark); }
+
+hr.divider { border: none; border-top: 2px solid var(--peach-light); margin: 12px 0; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:600px){ .two-col{ grid-template-columns:1fr; } }
+
+.intro-scene {
+  background: linear-gradient(160deg, var(--peach-light), var(--cyan-light));
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 2px solid var(--peach);
+  margin-bottom: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px; line-height: 1.8;
+  color: var(--text);
+}
+.intro-scene p { margin-bottom: 10px; }
+.intro-scene strong { color: var(--cyan-dark); }
+
+.carousel-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- ══════════════════════════════════
+     TITLE SCREEN
+══════════════════════════════════ -->
+<div class="screen active" id="screen-title">
+  <div class="title-logo">
+    <span>Psyche</span><span>delic</span><br>
+    <span>Chem</span><span>ist</span>
+  </div>
+  <p class="title-sub">Roll the dice. Build your lab. Find your friends. Discover what consciousness is made of.</p>
+
+  <div class="bubble-row">
+    <div class="bubble-stat"><div class="dot" style="background:var(--cyan)"></div> Education</div>
+    <div class="bubble-stat"><div class="dot" style="background:var(--pink)"></div> Charisma</div>
+    <div class="bubble-stat"><div class="dot" style="background:var(--orange)"></div> Delusion</div>
+    <div class="bubble-stat"><div class="dot" style="background:var(--lavender-dark)"></div> Synthesis</div>
+  </div>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <button class="btn-primary" onclick="startGame()">Start Journey</button>
+    <button class="btn-secondary" onclick="openModal('modal-howto')">How to Play</button>
+  </div>
+
+  <p style="font-size:11px;color:var(--text2);margin-top:16px;opacity:0.7;">A harm reduction game about consciousness, chemistry & community</p>
+</div>
+
+<!-- ══════════════════════════════════
+     GAME SCREEN
+══════════════════════════════════ -->
+<div class="screen" id="screen-game">
+
+  <div class="day-banner" id="day-banner">☀ Day 1 — The Beginning</div>
+
+  <div class="top-bar">
+    <div class="top-bar-title">🧪 P.Chemist</div>
+    <div class="stat-chip good"><span class="icon">🎓</span><span>EDU</span><span class="val" id="stat-edu">3</span></div>
+    <div class="stat-chip"><span class="icon">✨</span><span>CHA</span><span class="val" id="stat-cha">4</span></div>
+    <div class="stat-chip danger"><span class="icon">🌀</span><span>DEL</span><span class="val" id="stat-del">1</span></div>
+    <div class="stat-chip"><span class="icon">⚗</span><span>SYN</span><span class="val" id="stat-syn">1</span></div>
+    <div class="stat-chip"><span class="icon">💰</span><span class="val" id="stat-money">$120</span></div>
+    <div class="top-bar-right">
+      <span class="stat-chip"><span class="icon">🌿</span><span class="val" id="stat-integ">3</span> IP</span>
+      <button class="btn-small" onclick="endDay()">End Day →</button>
+    </div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('town')" data-tab="town">🏘 Town</button>
+    <button class="tab-btn" onclick="switchTab('lab')" data-tab="lab">🔬 Lab</button>
+    <button class="tab-btn" onclick="switchTab('friends')" data-tab="friends">👥 Friends</button>
+    <button class="tab-btn" onclick="switchTab('knowledge')" data-tab="knowledge">📚 Knowledge</button>
+    <button class="tab-btn" onclick="switchTab('experience')" data-tab="experience">🌈 Trip</button>
+    <button class="tab-btn" onclick="switchTab('integrate')" data-tab="integrate">🪷 Integrate</button>
+  </div>
+
+  <!-- ── TOWN ── -->
+  <div class="game-panel active" id="panel-town">
+    <div class="section-title">🏘 The Town <span class="badge badge-cyan" id="town-day-badge">Day 1</span></div>
+
+    <div class="intro-scene" id="intro-scene-text">
+      <p>Your phone buzzes. It's <strong>Remy</strong> — your oldest friend, the one who read chemistry textbooks for fun in high school. <em>"Come over,"</em> he texts. <em>"I've got something to show you."</em></p>
+      <p>You find him at his kitchen table surrounded by glassware, a bag of root bark, and a photocopied protocol. He looks up, grinning. <em>"DMT. We can do this. I need your help."</em></p>
+      <p>This is how it begins.</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="section-title" style="font-size:16px;">📍 Locations</div>
+        <div style="display:flex;flex-direction:column;gap:8px;" id="location-list">
+          <!-- filled by JS -->
+        </div>
+      </div>
+      <div>
+        <div class="section-title" style="font-size:16px;">🎲 Daily Dice Roll</div>
+        <div class="dice-area">
+          <p style="font-size:13px;color:var(--text2);margin-bottom:4px;">Roll to see what the day brings — or take manual control in each panel.</p>
+          <div class="dice-container" id="dice-container">
+            <div class="die" id="die1" onclick="lockDie(0)">?</div>
+            <div class="die" id="die2" onclick="lockDie(1)">?</div>
+            <div class="die" id="die3" onclick="lockDie(2)">?</div>
+          </div>
+          <div class="dice-result-text" id="dice-result">Click a die to roll, or roll all below.</div>
+          <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap;">
+            <button class="btn-primary" style="font-size:16px;padding:10px 28px;" onclick="rollAllDice()">Roll All</button>
+            <button class="btn-small" onclick="autoPlay()">Auto-Play Day</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" style="font-size:16px;margin-top:4px;">📋 Event Log</div>
+    <div class="game-log" id="game-log">
+      <div class="log-entry"><span class="log-tag log-tag-info">START</span>Remy shows up with root bark and a protocol. Your journey begins.</div>
+    </div>
+  </div>
+
+  <!-- ── LAB ── -->
+  <div class="game-panel" id="panel-lab">
+    <div class="section-title">🔬 The Lab <span class="badge badge-cyan">Synthesis</span></div>
+
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-title">Equipment <span class="tag" id="equip-count">3 items</span></div>
+          <div class="inv-grid" id="equipment-grid"><!-- JS --></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Chemicals & Materials</div>
+          <div class="inv-grid" id="chemicals-grid"><!-- JS --></div>
+        </div>
+      </div>
+      <div>
+        <div class="synth-workbench">
+          <div class="card-title">Workbench</div>
+          <p style="font-size:12px;color:var(--text2);margin-bottom:6px;">Select a recipe, place ingredients, and synthesize. Higher Education + Synthesis = better purity.</p>
+          <div style="margin-bottom:10px;">
+            <label style="font-size:12px;font-weight:700;color:var(--text2);">Recipe:</label>
+            <select id="recipe-select" onchange="loadRecipe()" style="margin-left:8px;font-family:inherit;font-size:13px;padding:5px 10px;border-radius:8px;border:1.5px solid var(--peach);background:white;">
+              <option value="">— Choose Recipe —</option>
+              <option value="dmt-extract">DMT Extraction (Root Bark)</option>
+              <option value="mushroom" disabled>Mushroom Cultivation (locked)</option>
+              <option value="mdma" disabled>MDMA Synthesis (locked)</option>
+            </select>
+          </div>
+          <div class="synth-slots" id="synth-slots">
+            <div class="synth-slot" id="slot-0"><span class="slot-label">Slot 1</span><span class="slot-content">+</span></div>
+            <div class="synth-slot" id="slot-1"><span class="slot-label">Slot 2</span><span class="slot-content">+</span></div>
+            <div class="synth-slot" id="slot-2"><span class="slot-label">Slot 3</span><span class="slot-content">+</span></div>
+          </div>
+          <div class="purity-display" id="purity-display">
+            <div class="purity-circle" id="purity-circle">
+              <div class="purity-num" id="purity-num">—</div>
+              <div class="purity-label">PURITY</div>
+            </div>
+            <div style="flex:1;">
+              <div id="purity-desc" style="font-size:13px;color:var(--text2);line-height:1.5;">Place ingredients to begin synthesis.</div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;" id="synth-btn-row">
+                <button class="btn-primary" style="font-size:14px;padding:8px 20px;" onclick="doSynthesize()" id="btn-synthesize" disabled>Synthesize!</button>
+                <button class="btn-small" onclick="clearWorkbench()">Clear</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Stash <span class="tag" id="stash-count">empty</span></div>
+      <div class="inv-grid" id="stash-grid">
+        <div class="inv-item" style="opacity:0.4;"><div class="inv-icon">📦</div><div class="inv-name">Nothing yet</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FRIENDS ── -->
+  <div class="game-panel" id="panel-friends">
+    <div class="section-title">👥 Your People</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Friends have their own stats and resources. Build trust, share experiences, unlock their networks. <br><span style="color:var(--pink-dark);font-weight:700;">⚠ Their Delusion score rises if you involve them carelessly.</span></p>
+    <div class="friend-grid" id="friend-grid"><!-- JS --></div>
+
+    <div class="card" id="friend-detail" style="display:none;">
+      <div class="card-title" id="fd-name">Friend</div>
+      <div id="fd-stats"></div>
+      <hr class="divider">
+      <div id="fd-actions" style="display:flex;gap:8px;flex-wrap:wrap;"></div>
+    </div>
+  </div>
+
+  <!-- ── KNOWLEDGE ── -->
+  <div class="game-panel" id="panel-knowledge">
+    <div class="section-title">📚 Knowledge Cards</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Knowledge cards unlock recipes, provide equipment lists, and improve synthesis outcomes. Earn them from friends, lectures, and reading.</p>
+    <div class="knowledge-grid" id="knowledge-grid"><!-- JS --></div>
+  </div>
+
+  <!-- ── EXPERIENCE ── -->
+  <div class="game-panel" id="panel-experience">
+    <div class="section-title">🌈 The Experience</div>
+
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-title">Preparation</div>
+          <div class="checks" id="exp-checks"><!-- JS --></div>
+          <hr class="divider">
+          <div class="intensity-slider-wrap">
+            <label>Dose</label>
+            <input type="range" min="1" max="10" step="1" value="3" id="dose-input" oninput="updateDoseDisplay(this.value)">
+            <div class="intensity-val" id="dose-val">3</div>
+          </div>
+          <div style="font-size:12px;color:var(--text2);" id="dose-warning"></div>
+          <button class="btn-primary" style="margin-top:12px;width:100%;font-size:16px;" onclick="beginTrip()">Begin Experience</button>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Beings of Light <span class="tag">Friends from Beyond</span></div>
+          <p style="font-size:12px;color:var(--text2);margin-bottom:10px;">At sufficient depth, you may encounter entities. They can become persistent allies.</p>
+          <div class="being-grid" id="being-grid"><!-- JS --></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="world-container">
+          <canvas id="world-canvas"></canvas>
+          <div class="world-overlay">
+            <div class="world-caption" id="world-caption">The town, sober</div>
+            <div class="world-sub" id="world-sub">Ready when you are</div>
+          </div>
+        </div>
+        <div class="card" id="trip-log-card">
+          <div class="card-title">Experience Journal</div>
+          <div class="game-log" id="trip-log">
+            <div class="log-entry"><span class="log-tag log-tag-info">READY</span>Prepare and begin your experience above.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTEGRATION ── -->
+  <div class="game-panel" id="panel-integrate">
+    <div class="section-title">🪷 Integration <span class="badge badge-purple">Spend Tokens</span></div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Spend integration tokens to process your experience. <strong style="color:var(--pink-dark);">Skip this and your Delusion score rises.</strong> Deep integration unlocks insights and world changes.</p>
+
+    <div class="two-col">
+      <div>
+        <div class="card">
+          <div class="card-title">Integration Tokens</div>
+          <p style="font-size:12px;color:var(--text2);margin-bottom:8px;">You have <strong id="token-count">0</strong> tokens to spend. Each token spent reduces Delusion by 0.5 and grants an insight.</p>
+          <div class="token-row" id="token-row"><!-- JS --></div>
+          <hr class="divider">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn-primary" style="font-size:14px;padding:8px 20px;" onclick="spendToken()">Spend Token</button>
+            <button class="btn-secondary" style="font-size:14px;padding:8px 20px;" onclick="skipIntegration()">Skip (−)</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Inner Work Cards <span class="tag" id="iw-count">0 earned</span></div>
+          <div id="inner-work-list" style="font-size:13px;color:var(--text2);line-height:1.7;">Complete integration to earn inner work cards. They persist across cycles and improve future experiences.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="card-title">Journal Prompts</div>
+          <div id="journal-prompts"><!-- JS --></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Career Track</div>
+          <p style="font-size:12px;color:var(--text2);margin-bottom:10px;">Your integration score determines which paths stay open. High Delusion closes corporate and academic tracks.</p>
+          <div class="track-grid" id="track-grid"><!-- JS --></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════
+     MODALS
+══════════════════════════════════ -->
+<div class="modal-overlay" id="modal-howto">
+  <div class="modal">
+    <div class="modal-title">🎲 How to Play</div>
+    <div class="modal-body">
+      <strong>Each day:</strong> Roll dice to automate your session, or manually navigate each tab.<br><br>
+      <strong>Stats:</strong> Education (🎓) boosts synthesis. Charisma (✨) builds friendships. Delusion (🌀) rises if you trip without integrating — it limits options and can destabilize friends.<br><br>
+      <strong>Synthesis:</strong> You need knowledge cards + equipment + chemicals. Without knowledge, you're guessing. With it, slots are pre-labeled and purity is higher.<br><br>
+      <strong>Friends:</strong> Each has their own stats. They can supply materials, join trips, and share knowledge. Neglect or exploit them and watch their Delusion rise.<br><br>
+      <strong>Integration:</strong> Spend tokens after every trip. Skip and face consequences. The Shulgin path requires impeccable integration discipline.<br><br>
+      <strong>Career tracks:</strong> Party promoter → dealer → pharma exec → DEA-licensed researcher. Or: pure psychonaut → consciousness researcher. Your stats unlock different paths.
+    </div>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="closeModal('modal-howto')">Got it!</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-event">
+  <div class="modal">
+    <div class="modal-title" id="modal-event-title">Event</div>
+    <div class="modal-body" id="modal-event-body"></div>
+    <div class="modal-actions" id="modal-event-actions"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-friend-detail">
+  <div class="modal">
+    <div class="modal-title" id="mfd-name"></div>
+    <div class="modal-body" id="mfd-body"></div>
+    <div class="modal-actions" id="mfd-actions"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+// GAME STATE
+// ══════════════════════════════════════════
+const G = {
+  day: 1,
+  money: 120,
+  stats: { edu: 3, cha: 4, del: 1, syn: 1, rep: 2 },
+  integrationTokens: 0,
+  integrationPoints: 3,
+  diceValues: [null, null, null],
+  lockedDice: [false, false, false],
+  currentRecipe: null,
+  workbench: [null, null, null],
+  stash: [],
+  lastTripPurity: 0,
+  tripping: false,
+  tripStage: 0,
+  worldMode: 'sober',
+  beingsUnlocked: [],
+  innerWorkCards: [],
+  journalEntries: [],
+  prepChecks: { tested: false, rested: false, sitter: false, intention: false },
+  dose: 3,
+  expChecks: { tested: false, rested: false, sitter: false, intention: false },
+  friends: [
+    {
+      id: 'remy', name: 'Remy', emoji: '🧪', role: 'Chemist Friend',
+      color: '#E1F5FE',
+      stats: { edu: 6, cha: 3, del: 2, syn: 4 },
+      trust: 5, resources: ['root-bark', 'lye', 'protocol-card'],
+      desc: 'Your oldest friend. Read chemistry textbooks for fun. Brought the first protocol. Gets obsessive.',
+      available: true, tripped: false,
+    },
+    {
+      id: 'maya', name: 'Maya', emoji: '🛋', role: 'Trip Sitter',
+      color: '#F3E5F5',
+      stats: { edu: 4, cha: 7, del: 1, syn: 1 },
+      trust: 3, resources: ['harm-reduction-card'],
+      desc: 'Calm, grounded, experienced sitter. Reduces your crisis risk. Knows when to call for help.',
+      available: true, tripped: false,
+    },
+    {
+      id: 'dr-k', name: 'Dr. Kessler', emoji: '👨‍🔬', role: 'Mentor',
+      color: '#FFF8E1',
+      stats: { edu: 9, cha: 5, del: 0, syn: 8 },
+      trust: 1, resources: ['tihkal-card', 'lab-access'],
+      desc: 'Retired pharmacologist. Cautious but brilliant. His trust is hard-won. Worth every effort.',
+      available: false, tripped: false,
+    },
+    {
+      id: 'marcus', name: 'Marcus', emoji: '🎉', role: 'Reckless Contact',
+      color: '#FBE9E7',
+      stats: { edu: 4, cha: 8, del: 5, syn: 3 },
+      trust: 2, resources: ['party-invite', 'sketchy-supply'],
+      desc: 'Charming, fun, cavalier about safety. His network is vast. His judgment is unreliable.',
+      available: true, tripped: true,
+    },
+  ],
+  equipment: [
+    { id: 'sep-funnel', name: 'Sep. Funnel', icon: '⚗', qty: 1 },
+    { id: 'mason-jar', name: 'Mason Jar', icon: '🫙', qty: 3 },
+    { id: 'hotplate', name: 'Hotplate', icon: '🔥', qty: 1 },
+  ],
+  chemicals: [
+    { id: 'root-bark', name: 'Root Bark', icon: '🌿', qty: 50, unit: 'g' },
+    { id: 'lye', name: 'Lye (NaOH)', icon: '🧂', qty: 100, unit: 'g' },
+    { id: 'naphtha', name: 'Naphtha', icon: '🧪', qty: 200, unit: 'ml' },
+  ],
+  knowledge: [
+    {
+      id: 'remy-protocol', name: "Remy's Protocol", unlocked: true,
+      desc: 'A hand-copied extraction method. Rough but functional. Unlocks DMT extraction with guided slots.',
+      effect: 'Synthesis slots labeled. Purity +10%.',
+      recipe: 'dmt-extract',
+      slots: [
+        { label: 'Plant Material', accepts: ['root-bark'], icon: '🌿' },
+        { label: 'Base (NaOH)', accepts: ['lye'], icon: '🧂' },
+        { label: 'Solvent', accepts: ['naphtha'], icon: '🧪' },
+      ]
+    },
+    {
+      id: 'harm-reduction', name: 'Harm Reduction Protocols', unlocked: true,
+      desc: 'Test your substance. Dose low. Have support. Wait for integration. Know the risks.',
+      effect: 'Trip sitter bonus +2. Crisis risk −15%.',
+      recipe: null,
+    },
+    {
+      id: 'tihkal', name: 'TIHKAL (Tryptamines)', unlocked: false,
+      desc: "Shulgin's second book. The tryptamine bible. Unlocks advanced synthesis and novel compound design.",
+      effect: 'Unlocks advanced recipes. Purity ceiling +10%.',
+      recipe: 'advanced',
+    },
+    {
+      id: 'set-setting', name: 'Set & Setting', unlocked: false,
+      desc: "Leary's framework. Where you are and who you are shapes everything about the experience.",
+      effect: 'All experience outcomes improved when preparation cards played.',
+      recipe: null,
+    },
+  ],
+  beings: [
+    { id: 'the-teacher', name: 'The Teacher', icon: '✨', desc: 'Ancient, patient. Speaks in geometric truths. Unlocks +2 EDU when contacted.', unlocked: false, threshold: 6 },
+    { id: 'the-jester', name: 'The Jester', icon: '🎭', desc: 'Chaotic, funny, surprising. Raises CHA +1 but may increase DEL briefly.', unlocked: false, threshold: 4 },
+    { id: 'the-guardian', name: 'The Guardian', icon: '🛡', desc: 'Protective. Reduces crisis risk permanently by 10% once met.', unlocked: false, threshold: 8 },
+    { id: 'the-mirror', name: 'The Mirror', icon: '🪞', desc: 'Shows you yourself. Hard. Unlocks the deepest integration prompts.', unlocked: false, threshold: 9 },
+  ],
+  tracks: [
+    { id: 'psychonaut', name: 'Psychonaut', icon: '🌌', color: 'linear-gradient(135deg,#E8F5E9,#E3F2FD)', req: 'DEL < 5', desc: 'Consciousness researcher. Pure curiosity. The Shulgin path.', unlocked: true },
+    { id: 'promoter', name: 'Party Promoter', icon: '🎉', color: 'linear-gradient(135deg,#FFF9C4,#FFECB3)', req: 'CHA ≥ 5', desc: 'Build the scene. Know everyone. Move things.', unlocked: false },
+    { id: 'delivery', name: 'Delivery Service', icon: '📦', color: 'linear-gradient(135deg,#F3E5F5,#E8EAF6)', req: 'Trust ≥ 3 friends', desc: 'Reliable, discreet, necessary. Build the network.', unlocked: false },
+    { id: 'pharma', name: 'Pharma Exec', icon: '💊', color: 'linear-gradient(135deg,#E3F2FD,#E8EAF6)', req: 'EDU ≥ 7, DEL < 3', desc: 'Corporate track. Legitimacy. Compromise. Scale.', unlocked: false },
+    { id: 'shulgin', name: 'The Shulgin Path', icon: '📋', color: 'linear-gradient(135deg,#F9FBE7,#E8F5E9)', req: 'EDU 9, SYN 8, DEL 0', desc: 'DEA license. Full legitimacy. The true endgame.', unlocked: false },
+  ],
+  journalPrompts: [
+    { q: 'What felt true during the experience that ordinary consciousness obscures?', answered: false },
+    { q: 'Was there friction? What was the friction trying to say?', answered: false },
+    { q: 'One sentence back to yourself before you dosed:', answered: false },
+  ],
+  events: {
+    town: [
+      { text: 'Remy calls — he found a better solvent source. Naphtha +100ml.', effect: () => { addChemical('naphtha', 100); } },
+      { text: 'A lecture at the community center: "Introduction to Psychedelic Research." +1 EDU.', effect: () => { changeStat('edu', 1); } },
+      { text: 'Marcus invites you to a party. Good for CHA, risky for DEL.', effect: () => { showEventModal('Party Invite', 'Marcus wants you at his party. Boost charisma but risk delusion creeping up.', [{label:'Go (+1 CHA, possible +1 DEL)', fn: () => { changeStat('cha',1); if(Math.random()>0.5) changeStat('del',1,'warn'); }}, {label:'Skip', fn:()=>{}}]); } },
+      { text: 'A stranger at the coffee shop mentions they know Dr. Kessler. Trust with Dr. K +1.', effect: () => { changeFriendTrust('dr-k', 1); } },
+      { text: 'Quiet day. You read. +1 EDU.', effect: () => { changeStat('edu', 1); } },
+      { text: 'Maya checks in on you. Friendship +1 trust.', effect: () => { changeFriendTrust('maya', 1); } },
+    ]
+  },
+  tripStages: [
+    { mode:'onset', caption:'Onset', sub:'+0:00 — the body notices first', narrative:'A warmth in the chest. The room is ordinary. Your relationship to it is beginning to shift.', choices:[{label:'Lie down with music',fx:'comfort'},{label:'Sit by the window',fx:'setting'}] },
+    { mode:'altered', caption:'Coming Up', sub:'+0:20 — the world responds', narrative:'Colors insist on themselves. Edges have opinions. Something in your chest is working through something.', choices:[{label:'Surrender to it',fx:'surrender'},{label:'Focus on breath',fx:'stability'},{label:'Talk to your sitter',fx:'connection'}] },
+    { mode:'peak', caption:'Peak', sub:'+0:45 — full amplitude', narrative:'Geometry is a suggestion now. The walls breathe with a slow patience. There is a sound that isn\'t a sound.', choices:[{label:'Follow the geometry inward',fx:'deep'},{label:'Stay with the breath',fx:'stable'},{label:'Ask a question',fx:'insight'}] },
+    { mode:'breakthrough', caption:'Breakthrough', sub:'+1:00 — the walls come down', narrative:'The town dissolves. Fractal light. Beings of indeterminate origin. You are very far and very here at the same time.', choices:[{label:'Approach the light',fx:'being'},{label:'Hold the anchor',fx:'anchor'},{label:'Let go completely',fx:'ego-loss'}] },
+    { mode:'fading', caption:'Coming Down', sub:'+1:30 — the room reassembles', narrative:'The room becomes a room again. A tremendous tiredness. Something was touched that will take days to understand.', choices:[{label:'Write immediately',fx:'journal'},{label:'Sit with your sitter',fx:'sitter-bond'}] },
+  ],
+};
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+function startGame() {
+  document.getElementById('screen-title').classList.remove('active');
+  document.getElementById('screen-game').classList.add('active');
+  renderAll();
+  startBgCanvas();
+  startWorldCanvas();
+}
+
+function renderAll() {
+  renderStats();
+  renderLocations();
+  renderEquipment();
+  renderChemicals();
+  renderStash();
+  renderFriends();
+  renderKnowledge();
+  renderBeings();
+  renderTokens();
+  renderJournalPrompts();
+  renderTracks();
+  renderExpChecks();
+  updateDayBanner();
+}
+
+// ── STATS ──
+function renderStats() {
+  document.getElementById('stat-edu').textContent = G.stats.edu;
+  document.getElementById('stat-cha').textContent = G.stats.cha;
+  document.getElementById('stat-del').textContent = G.stats.del;
+  document.getElementById('stat-syn').textContent = G.stats.syn;
+  document.getElementById('stat-money').textContent = '$' + G.money;
+  document.getElementById('stat-integ').textContent = G.integrationPoints;
+}
+
+function changeStat(key, delta, type) {
+  G.stats[key] = Math.max(0, Math.min(10, G.stats[key] + delta));
+  renderStats();
+  const msg = delta > 0 ? `+${delta} ${key.toUpperCase()}` : `${delta} ${key.toUpperCase()}`;
+  showToast(msg);
+  if (type === 'warn') addLog(msg, 'warn'); else addLog(msg, 'good');
+}
+
+function changeFriendTrust(id, delta) {
+  const f = G.friends.find(x => x.id === id);
+  if (!f) return;
+  f.trust = Math.max(0, Math.min(10, f.trust + delta));
+  if (f.id === 'dr-k' && f.trust >= 3) f.available = true;
+  renderFriends();
+  addLog(`${f.name} trust ${delta > 0 ? '+' : ''}${delta}`, 'good');
+}
+
+function addChemical(id, qty) {
+  const c = G.chemicals.find(x => x.id === id);
+  if (c) c.qty += qty;
+  renderChemicals();
+}
+
+// ── LOCATIONS ──
+const LOCATIONS = [
+  { icon: '🏠', name: 'Your House', desc: 'Lab, garden, journal', action: () => switchTab('lab') },
+  { icon: '🌿', name: 'Remy\'s Place', desc: 'Chemistry help, root bark', action: () => visitFriend('remy') },
+  { icon: '📬', name: 'Post Office', desc: 'Order supplies (slow)', action: () => showEventModal('Mail Order', 'Order root bark: $40, Naphtha: $20, pH strips: $10.', [{label:'Root Bark $40', fn:()=>{if(G.money>=40){G.money-=40;addChemical('root-bark',50);renderStats();}}}, {label:'Naphtha $20', fn:()=>{if(G.money>=20){G.money-=20;addChemical('naphtha',100);renderStats();}}}, {label:'Close', fn:()=>{}}]) },
+  { icon: '🏭', name: 'Supply Store', desc: 'Chemicals & equipment', action: () => showEventModal('Supply Store', 'Hotplate $60. Rotary Evap $200. Separatory Funnel $40.', [{label:'Close', fn:()=>{}}]) },
+  { icon: '🎓', name: 'Community Center', desc: 'Lectures, harm reduction', action: () => { changeStat('edu', 1); addLog('Attended lecture. +1 EDU.', 'good'); } },
+  { icon: '🌲', name: 'The Forest', desc: 'Trip setting, foraging', action: () => { addLog('You walked in the forest. Calm.', 'info'); G.expChecks.intention = true; renderExpChecks(); } },
+];
+
+function renderLocations() {
+  const el = document.getElementById('location-list');
+  el.innerHTML = LOCATIONS.map(l => `
+    <div onclick="(${l.action.toString()})()" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:white;border-radius:var(--radius-sm);border:1.5px solid var(--peach-light);cursor:pointer;transition:background .15s;" onmouseover="this.style.background='var(--peach-light)'" onmouseout="this.style.background='white'">
+      <span style="font-size:22px;">${l.icon}</span>
+      <div><div style="font-family:'Fredoka One',cursive;font-size:15px;">${l.name}</div><div style="font-size:11px;color:var(--text2);">${l.desc}</div></div>
+    </div>`).join('');
+}
+
+function visitFriend(id) {
+  const f = G.friends.find(x => x.id === id);
+  if (!f) return;
+  switchTab('friends');
+  setTimeout(() => showFriendDetail(f), 100);
+}
+
+// ── DICE ──
+function rollAllDice() {
+  G.lockedDice = [false, false, false];
+  const dice = ['die1','die2','die3'];
+  dice.forEach((id, i) => document.getElementById(id).classList.remove('locked'));
+  G.diceValues = G.diceValues.map((v, i) => G.lockedDice[i] ? v : Math.ceil(Math.random() * 6));
+  animateDice(() => {
+    G.diceValues.forEach((v, i) => {
+      document.getElementById('die' + (i + 1)).textContent = v;
+    });
+    interpretDice();
+  });
+}
+
+function animateDice(cb) {
+  const dice = ['die1', 'die2', 'die3'];
+  dice.forEach((id, i) => {
+    if (!G.lockedDice[i]) {
+      const el = document.getElementById(id);
+      el.classList.add('rolling');
+      el.textContent = Math.ceil(Math.random() * 6);
+    }
+  });
+  setTimeout(() => {
+    dice.forEach(id => document.getElementById(id).classList.remove('rolling'));
+    cb();
+  }, 520);
+}
+
+function lockDie(i) {
+  if (G.diceValues[i] === null) { rollAllDice(); return; }
+  G.lockedDice[i] = !G.lockedDice[i];
+  document.getElementById('die' + (i + 1)).classList.toggle('locked', G.lockedDice[i]);
+}
+
+function interpretDice() {
+  const [a, b, c] = G.diceValues;
+  const sum = a + b + c;
+  let result = '';
+  if (sum >= 15) { result = '🌟 Excellent day — all actions have bonus outcomes'; if(Math.random()>0.5) changeStat('edu',1); }
+  else if (sum >= 11) { result = '✅ Good day — standard outcomes'; }
+  else if (sum >= 7) { result = '😐 Average day — one action costs double'; }
+  else { result = '⚠ Rough day — Delusion check'; if(G.stats.del > 3) changeStat('del', 1, 'warn'); }
+  document.getElementById('dice-result').textContent = result;
+  const evts = G.events.town;
+  const evt = evts[Math.floor(Math.random() * evts.length)];
+  addLog(evt.text, 'event');
+  evt.effect();
+}
+
+function autoPlay() {
+  rollAllDice();
+  setTimeout(() => {
+    addLog('Auto-play: visited lab, tended garden, checked in with friends.', 'info');
+    showToast('Day auto-played!');
+  }, 700);
+}
+
+// ── EQUIPMENT / CHEMICALS / STASH ──
+function renderEquipment() {
+  document.getElementById('equipment-grid').innerHTML = G.equipment.map(e =>
+    `<div class="inv-item"><div class="inv-icon">${e.icon}</div><div class="inv-name">${e.name}</div><div class="inv-qty">×${e.qty}</div></div>`
+  ).join('');
+  document.getElementById('equip-count').textContent = G.equipment.length + ' items';
+}
+
+function renderChemicals() {
+  document.getElementById('chemicals-grid').innerHTML = G.chemicals.map(c =>
+    `<div class="inv-item" onclick="selectIngredient('${c.id}')"><div class="inv-icon">${c.icon}</div><div class="inv-name">${c.name}</div><div class="inv-qty">${c.qty}${c.unit||''}</div></div>`
+  ).join('');
+}
+
+function renderStash() {
+  const el = document.getElementById('stash-grid');
+  if (G.stash.length === 0) {
+    el.innerHTML = '<div class="inv-item" style="opacity:0.4;"><div class="inv-icon">📦</div><div class="inv-name">Nothing yet</div></div>';
+    document.getElementById('stash-count').textContent = 'empty';
+  } else {
+    el.innerHTML = G.stash.map(s =>
+      `<div class="inv-item highlight"><div class="inv-icon">${s.icon}</div><div class="inv-name">${s.name}</div><div class="inv-qty">${s.qty} doses @ ${s.purity}%</div></div>`
+    ).join('');
+    document.getElementById('stash-count').textContent = G.stash.length + ' compound' + (G.stash.length > 1 ? 's' : '');
+  }
+}
+
+// ── RECIPE / SYNTHESIS ──
+let selectedIngredient = null;
+let activeSlot = null;
+
+function selectIngredient(id) {
+  selectedIngredient = id;
+  document.querySelectorAll('.inv-item').forEach(el => el.style.outline = 'none');
+  event.currentTarget.style.outline = '2.5px solid var(--cyan)';
+  addLog('Selected: ' + id + '. Click a workbench slot to place.', 'info');
+}
+
+function loadRecipe() {
+  const val = document.getElementById('recipe-select').value;
+  G.currentRecipe = val;
+  const kc = G.knowledge.find(k => k.recipe === val && k.unlocked);
+  const slots = document.getElementById('synth-slots');
+
+  if (kc) {
+    slots.innerHTML = kc.slots.map((s, i) =>
+      `<div class="synth-slot" id="slot-${i}" onclick="placeIngredient(${i})">
+        <span class="slot-label">${s.label}</span>
+        <span class="slot-content">${s.icon}</span>
+        <span class="slot-name">Empty</span>
+      </div>`
+    ).join('');
+    G.workbench = [null, null, null];
+    updatePurityDisplay();
+    addLog('Knowledge card loaded: ' + kc.name, 'good');
+  } else if (val) {
+    slots.innerHTML = [0,1,2].map(i =>
+      `<div class="synth-slot" id="slot-${i}" onclick="placeIngredient(${i})">
+        <span class="slot-label">Slot ${i+1}</span>
+        <span class="slot-content">?</span>
+        <span class="slot-name">Unknown</span>
+      </div>`
+    ).join('');
+    G.workbench = [null, null, null];
+    addLog('No knowledge card for this recipe. Guessing...', 'warn');
+  }
+}
+
+function placeIngredient(slotIdx) {
+  if (!selectedIngredient) { addLog('Select an ingredient from your chemicals first.', 'warn'); return; }
+  if (!G.currentRecipe) { addLog('Select a recipe first.', 'warn'); return; }
+
+  const chem = G.chemicals.find(c => c.id === selectedIngredient);
+  if (!chem || chem.qty <= 0) { addLog('Not enough of this chemical.', 'warn'); return; }
+
+  const kc = G.knowledge.find(k => k.recipe === G.currentRecipe && k.unlocked);
+  let correct = true;
+  let slotLabel = 'Ingredient';
+
+  if (kc && kc.slots[slotIdx]) {
+    correct = kc.slots[slotIdx].accepts.includes(selectedIngredient);
+    slotLabel = kc.slots[slotIdx].label;
+  }
+
+  G.workbench[slotIdx] = { id: selectedIngredient, correct };
+  const el = document.getElementById('slot-' + slotIdx);
+  el.className = 'synth-slot filled ' + (correct ? 'correct' : 'wrong');
+  el.innerHTML = `<span class="slot-label">${slotLabel}</span><span class="slot-content">${chem.icon}</span><span class="slot-name">${chem.name}</span>`;
+
+  updatePurityDisplay();
+  selectedIngredient = null;
+  document.querySelectorAll('.inv-item').forEach(el => el.style.outline = 'none');
+}
+
+function updatePurityDisplay() {
+  const filled = G.workbench.filter(Boolean).length;
+  if (filled === 0) { document.getElementById('purity-num').textContent = '—'; return; }
+
+  let purity = 40;
+  purity += G.stats.edu * 4;
+  purity += G.stats.syn * 5;
+  const kc = G.knowledge.find(k => k.recipe === G.currentRecipe && k.unlocked);
+  if (kc) purity += 15;
+  const correct = G.workbench.filter(x => x && x.correct).length;
+  const wrong = G.workbench.filter(x => x && !x.correct).length;
+  purity += correct * 8;
+  purity -= wrong * 18;
+  purity = Math.max(5, Math.min(98, purity));
+
+  const circle = document.getElementById('purity-circle');
+  const num = document.getElementById('purity-num');
+  num.textContent = purity + '%';
+
+  let col, desc;
+  if (purity >= 85) { col = 'var(--cyan-dark)'; desc = 'Excellent purity. Clean signal. Well done.'; }
+  else if (purity >= 70) { col = 'var(--teal)'; desc = 'Good purity. Some body load expected.'; }
+  else if (purity >= 55) { col = 'var(--amber)'; desc = 'Rough purity. Significant body load.'; }
+  else { col = 'var(--pink-dark)'; desc = 'Poor purity. Not recommended. Gain knowledge first.'; }
+
+  circle.style.borderColor = col;
+  circle.style.background = col + '22';
+  num.style.color = col;
+  document.getElementById('purity-desc').textContent = desc;
+  document.getElementById('btn-synthesize').disabled = filled < 2;
+  G.lastPurity = purity;
+}
+
+function clearWorkbench() {
+  G.workbench = [null, null, null];
+  document.querySelectorAll('.synth-slot').forEach((el, i) => {
+    el.className = 'synth-slot';
+    el.innerHTML = `<span class="slot-label">Slot ${i+1}</span><span class="slot-content">+</span><span class="slot-name"></span>`;
+  });
+  document.getElementById('purity-num').textContent = '—';
+  document.getElementById('purity-desc').textContent = 'Place ingredients to begin synthesis.';
+  document.getElementById('btn-synthesize').disabled = true;
+}
+
+function doSynthesize() {
+  if (!G.currentRecipe) { addLog('No recipe selected.', 'warn'); return; }
+  const purity = G.lastPurity || 60;
+  const doses = 3 + Math.floor(G.stats.syn / 2);
+  const compound = { name: 'DMT Extract', icon: '💎', qty: doses, purity };
+
+  G.stash.push(compound);
+
+  const rootIdx = G.chemicals.findIndex(c => c.id === 'root-bark');
+  if (rootIdx >= 0) G.chemicals[rootIdx].qty = Math.max(0, G.chemicals[rootIdx].qty - 30);
+  const lyeIdx = G.chemicals.findIndex(c => c.id === 'lye');
+  if (lyeIdx >= 0) G.chemicals[lyeIdx].qty = Math.max(0, G.chemicals[lyeIdx].qty - 20);
+
+  G.stats.syn = Math.min(10, G.stats.syn + 1);
+  clearWorkbench();
+  renderChemicals();
+  renderStash();
+  renderStats();
+  G.integrationTokens += 1;
+  renderTokens();
+
+  showEventModal('Synthesis Complete!',
+    `You made ${doses} doses of ${compound.name} at ${purity}% purity.\n\nSynthesis skill +1.\n\n${purity >= 80 ? 'Clean batch. Well done.' : 'Rough batch. Study more, get better equipment.'}`,
+    [{ label: 'Great!', fn: () => {} }]);
+  addLog(`Synthesized: ${doses} doses of ${compound.name} @ ${purity}%`, 'good');
+}
+
+// ── FRIENDS ──
+function renderFriends() {
+  const el = document.getElementById('friend-grid');
+  el.innerHTML = G.friends.map(f => {
+    const locked = !f.available;
+    return `<div class="friend-card ${locked ? 'locked' : ''}" onclick="${locked ? '' : `showFriendDetail(G.friends.find(x=>x.id==='${f.id}'))`}" style="opacity:${locked ? 0.5 : 1};">
+      <div class="friend-avatar" style="background:${f.color};">${f.emoji}</div>
+      <div class="friend-name">${f.name} ${locked ? '🔒' : ''}</div>
+      <div class="friend-role">${f.role}</div>
+      <div style="font-size:11px;color:var(--text2);line-height:1.4;margin-bottom:8px;">${f.desc}</div>
+      ${renderMiniStats(f.stats)}
+      <div style="display:flex;gap:6px;align-items:center;margin-top:8px;">
+        <span style="font-size:11px;font-weight:700;color:var(--text2);">Trust:</span>
+        ${Array(10).fill(0).map((_, i) => `<span style="font-size:8px;color:${i < f.trust ? 'var(--cyan-dark)' : 'var(--peach-light)'};">●</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderMiniStats(stats) {
+  const entries = [['edu','var(--cyan)'],['cha','var(--pink)'],['del','var(--orange)'],['syn','var(--lavender-dark)']];
+  return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">` +
+    entries.map(([k, col]) => `
+      <div style="display:flex;align-items:center;gap:5px;">
+        <span style="font-size:10px;font-weight:700;color:var(--text2);width:28px;">${k.toUpperCase()}</span>
+        <div style="flex:1;height:6px;background:var(--bg2);border-radius:3px;overflow:hidden;"><div style="height:100%;width:${(stats[k]||0)*10}%;background:${col};border-radius:3px;"></div></div>
+        <span style="font-size:10px;font-weight:700;color:var(--text);">${stats[k]||0}</span>
+      </div>`).join('') + '</div>';
+}
+
+function showFriendDetail(f) {
+  document.getElementById('mfd-name').textContent = f.emoji + ' ' + f.name;
+  document.getElementById('mfd-body').innerHTML = `
+    <div style="margin-bottom:12px;font-size:13px;line-height:1.6;">${f.desc}</div>
+    ${renderMiniStats(f.stats)}
+    <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--text2);">Resources: ${f.resources.join(', ')}</div>
+    <div style="margin-top:6px;font-size:12px;">Trust: <strong>${f.trust}/10</strong></div>
+  `;
+  const actions = document.getElementById('mfd-actions');
+  actions.innerHTML = '';
+  const add = (label, fn) => {
+    const b = document.createElement('button');
+    b.className = 'btn-secondary';
+    b.style.fontSize = '13px'; b.style.padding = '8px 16px';
+    b.textContent = label; b.onclick = () => { fn(); closeModal('modal-friend-detail'); };
+    actions.appendChild(b);
+  };
+  add('Ask for help (+EDU)', () => { changeStat('edu', 1); changeFriendTrust(f.id, -1); addLog(f.name + ' helped you study. Trust -1, EDU +1.', 'good'); });
+  if (f.resources.includes('root-bark')) add('Get root bark', () => { addChemical('root-bark', 30); addLog(f.name + ' gave you 30g root bark.', 'good'); });
+  add('Invite to trip (+sitter)', () => { G.expChecks.sitter = true; renderExpChecks(); changeFriendTrust(f.id, 1); addLog(f.name + ' agreed to sit for you.', 'good'); });
+  const close = document.createElement('button');
+  close.className = 'btn-small'; close.textContent = 'Close';
+  close.onclick = () => closeModal('modal-friend-detail');
+  actions.appendChild(close);
+  openModal('modal-friend-detail');
+}
+
+// ── KNOWLEDGE ──
+function renderKnowledge() {
+  document.getElementById('knowledge-grid').innerHTML = G.knowledge.map(k => `
+    <div class="knowledge-card ${k.unlocked ? '' : 'locked'}">
+      <div class="kc-name">${k.name}</div>
+      <div class="kc-desc">${k.desc}</div>
+      ${k.unlocked ? `<div class="kc-unlock">✓ ${k.effect}</div>` : `<div class="kc-unlock" style="background:var(--gray-l);color:var(--gray-d);">🔒 Locked</div>`}
+    </div>`
+  ).join('');
+}
+
+// ── BEINGS ──
+function renderBeings() {
+  document.getElementById('being-grid').innerHTML = G.beings.map(b => `
+    <div class="being-card ${b.unlocked ? '' : 'locked'}" style="opacity:${b.unlocked ? 1 : 0.5};" onclick="${b.unlocked ? `showToast('${b.name} is with you.')` : ''}">
+      <div class="being-icon">${b.icon}</div>
+      <div class="being-name">${b.name}</div>
+      <div class="being-desc">${b.unlocked ? b.desc : 'Requires depth ' + b.threshold + '+ at peak'}</div>
+    </div>`
+  ).join('');
+}
+
+// ── EXPERIENCE ──
+function renderExpChecks() {
+  const checks = [
+    { key: 'tested', label: 'Substance tested', note: '−15% crisis risk' },
+    { key: 'rested', label: 'Well rested', note: '−10% anxiety risk' },
+    { key: 'sitter', label: 'Sitter arranged', note: 'Crisis recovery bonus' },
+    { key: 'intention', label: 'Intention set', note: '+12 IP if honoured' },
+  ];
+  document.getElementById('exp-checks').innerHTML = checks.map(c => `
+    <div class="cr">
+      <div class="cb ${G.expChecks[c.key] ? 'checked' : ''}" onclick="toggleCheck('${c.key}')">${G.expChecks[c.key] ? '✓' : ''}</div>
+      <div class="cn">${c.label}</div>
+      <div class="cno">${c.note}</div>
+    </div>`
+  ).join('');
+}
+
+function toggleCheck(key) {
+  G.expChecks[key] = !G.expChecks[key];
+  renderExpChecks();
+}
+
+function updateDoseDisplay(v) {
+  G.dose = parseInt(v);
+  document.getElementById('dose-val').textContent = v;
+  const warns = ['', 'Microdose — gentle, safe', 'Low — clear, minimal risk', 'Moderate — meaningful, watch purity', 'Strong — full experience', 'High — intense, have a sitter', 'Very high — breakthrough territory', 'Heroic — ego loss likely', 'Extreme — not recommended without experience', 'Max — crisis risk elevated', 'Overdose territory — STOP'];
+  document.getElementById('dose-warning').textContent = warns[v] || '';
+  document.getElementById('dose-warning').style.color = v >= 7 ? 'var(--pink-dark)' : v >= 5 ? 'var(--amber)' : 'var(--text2)';
+}
+
+let tripInterval = null;
+
+function beginTrip() {
+  if (G.stash.length === 0) { showToast('No compounds in stash!'); return; }
+  const compound = G.stash[0];
+  G.tripping = true;
+  G.tripStage = 0;
+  G.integrationTokens = (G.integrationTokens || 0) + G.dose;
+  addTripLog('START', `Dosing ${compound.name} (${compound.purity}% purity, dose level ${G.dose}).`);
+  renderTokens();
+  advanceTripStage();
+}
+
+function advanceTripStage() {
+  if (G.tripStage >= G.tripStages.length) {
+    endTrip(); return;
+  }
+  const stage = G.tripStages[G.tripStage];
+  G.worldMode = stage.mode;
+  document.getElementById('world-caption').textContent = stage.caption;
+  document.getElementById('world-sub').textContent = stage.sub;
+  addTripLog('EVENT', stage.narrative);
+
+  const choicesEl = document.createElement('div');
+  choicesEl.style.cssText = 'display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;';
+  stage.choices.forEach(ch => {
+    const b = document.createElement('button');
+    b.className = 'btn-small'; b.textContent = ch.label;
+    b.onclick = () => { handleTripChoice(ch.fx); choicesEl.remove(); };
+    choicesEl.appendChild(b);
+  });
+  document.getElementById('trip-log').appendChild(choicesEl);
+
+  if (stage.mode === 'breakthrough' && G.dose >= 6) {
+    const being = G.beings.find(b => !b.unlocked && b.threshold <= G.dose + G.stats.edu);
+    if (being) {
+      being.unlocked = true;
+      renderBeings();
+      addTripLog('BEING', `You encounter ${being.name}. ${being.desc}`);
+      if (being.id === 'the-teacher') changeStat('edu', 2);
+      if (being.id === 'the-jester') changeStat('cha', 1);
+    }
+  }
+}
+
+function handleTripChoice(fx) {
+  const outcomes = {
+    comfort: 'You settle into the experience. Body load eases.',
+    setting: 'The world outside is a grounding reference.',
+    surrender: 'Something loosens. The interference fades.',
+    stability: 'The breath is a rope. You hold it.',
+    connection: '"I\'ve got you." The most important sentence.',
+    deep: 'You follow the geometry inward. Vast territory ahead.',
+    stable: 'You maintain the center. Safe passage.',
+    insight: 'A question asked in this state carries unusual weight.',
+    being: 'You move toward the light. It notices you.',
+    anchor: 'You hold the thread back to ordinary reality.',
+    'ego-loss': 'The personal narrator goes quiet. Something opens.',
+    journal: 'Words come out strange and true.',
+    'sitter-bond': 'You sit together without speaking. This is integration beginning.',
+  };
+  addTripLog('CHOICE', outcomes[fx] || fx);
+  if (fx === 'ego-loss') { G.stats.del = Math.min(10, G.stats.del + 1); renderStats(); addTripLog('WARN', 'Delusion +1 from ego dissolution without integration anchor.'); }
+  if (fx === 'insight') { G.stats.edu = Math.min(10, G.stats.edu + 1); renderStats(); }
+  G.tripStage++;
+  setTimeout(advanceTripStage, 800);
+}
+
+function endTrip() {
+  G.tripping = false;
+  if (G.stash.length > 0) {
+    G.stash[0].qty--;
+    if (G.stash[0].qty <= 0) G.stash.shift();
+  }
+  G.lastTripPurity = G.stash.length > 0 ? G.stash[0]?.purity : G.lastPurity || 70;
+  renderStash();
+  addTripLog('END', 'The experience completes. Integration tokens earned: ' + G.dose + '. Visit the Integration tab.');
+  showToast('Experience complete — integrate now!');
+  G.worldMode = 'fading';
+  setTimeout(() => { G.worldMode = 'sober'; }, 5000);
+}
+
+function addTripLog(tag, text) {
+  const el = document.getElementById('trip-log');
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+  const tagColors = { START:'log-tag-good', EVENT:'log-tag-info', BEING:'log-tag-event', CHOICE:'log-tag-good', WARN:'log-tag-warn', END:'log-tag-info' };
+  entry.innerHTML = `<span class="log-tag ${tagColors[tag]||'log-tag-info'}">${tag}</span>${text}`;
+  el.appendChild(entry);
+  el.scrollTop = el.scrollHeight;
+}
+
+// ── INTEGRATION ──
+function renderTokens() {
+  document.getElementById('token-count').textContent = G.integrationTokens;
+  const row = document.getElementById('token-row');
+  const total = Math.max(G.integrationTokens, 6);
+  row.innerHTML = Array(total).fill(0).map((_, i) =>
+    `<div class="token token-int ${i >= G.integrationTokens ? 'spent' : ''}" onclick="spendToken()">🪷</div>`
+  ).join('');
+}
+
+function spendToken() {
+  if (G.integrationTokens <= 0) { showToast('No tokens to spend!'); return; }
+  G.integrationTokens--;
+  G.integrationPoints++;
+  G.stats.del = Math.max(0, G.stats.del - 0.5);
+  renderStats();
+  renderTokens();
+  addLog('Integration token spent. DEL −0.5, IP +1.', 'good');
+  checkInnerWork();
+}
+
+function skipIntegration() {
+  G.stats.del = Math.min(10, G.stats.del + 1);
+  renderStats();
+  addLog('Skipped integration. DEL +1. This will compound.', 'warn');
+  showToast('Delusion rises...');
+}
+
+function checkInnerWork() {
+  if (G.integrationPoints >= 5 && !G.innerWorkCards.includes('surrender')) {
+    G.innerWorkCards.push('surrender');
+    document.getElementById('inner-work-list').innerHTML += '<div style="padding:6px 0;border-bottom:1px solid var(--bg2);"><strong style="color:var(--cyan-dark);">Surrender</strong> — body load −1 on all future experiences. You stopped fighting it.</div>';
+    document.getElementById('iw-count').textContent = G.innerWorkCards.length + ' earned';
+    showToast('Inner Work Card unlocked: Surrender!');
+  }
+}
+
+function renderJournalPrompts() {
+  document.getElementById('journal-prompts').innerHTML = G.journalPrompts.map((p, i) => `
+    <div style="margin-bottom:14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:4px;font-style:italic;">"${p.q}"</div>
+      <textarea id="journal-${i}" rows="3" placeholder="Write here..." onchange="answerPrompt(${i})"
+        style="width:100%;font-family:inherit;font-size:13px;padding:8px 10px;border:1.5px solid var(--peach);border-radius:var(--radius-sm);resize:vertical;background:white;color:var(--text);"
+        ${p.answered ? 'style="border-color:var(--cyan);"' : ''}></textarea>
+      ${p.answered ? '<div style="font-size:11px;color:var(--cyan-dark);font-weight:700;margin-top:2px;">✓ +20 IP</div>' : ''}
+    </div>`
+  ).join('');
+}
+
+function answerPrompt(i) {
+  const val = document.getElementById('journal-' + i).value.trim();
+  if (val.split(' ').length >= 5 && !G.journalPrompts[i].answered) {
+    G.journalPrompts[i].answered = true;
+    G.integrationPoints += 20;
+    renderStats();
+    renderJournalPrompts();
+    addLog('Journal prompt answered. +20 IP.', 'good');
+    showToast('+20 Integration Points!');
+  }
+}
+
+// ── TRACKS ──
+function renderTracks() {
+  G.tracks[1].unlocked = G.stats.cha >= 5;
+  G.tracks[2].unlocked = G.friends.filter(f => f.trust >= 3).length >= 2;
+  G.tracks[3].unlocked = G.stats.edu >= 7 && G.stats.del < 3;
+  G.tracks[4].unlocked = G.stats.edu >= 9 && G.stats.syn >= 8 && G.stats.del === 0;
+
+  document.getElementById('track-grid').innerHTML = G.tracks.map(t => `
+    <div class="track-card ${t.unlocked ? '' : 'locked'}" style="background:${t.unlocked ? t.color : 'var(--bg2)'};opacity:${t.unlocked ? 1 : 0.5};" onclick="${t.unlocked ? `showToast('Track: ${t.name}')` : ''}">
+      <div class="track-icon">${t.icon}</div>
+      <div class="track-name" style="color:${t.unlocked ? 'var(--text)' : 'var(--text2)'};">${t.name}</div>
+      <div class="track-desc" style="color:var(--text2);">${t.desc}</div>
+      <div style="margin-top:8px;font-size:10px;font-weight:700;color:${t.unlocked ? 'var(--cyan-dark)' : 'var(--text2)'};">${t.unlocked ? '✓ UNLOCKED' : '🔒 ' + t.req}</div>
+    </div>`
+  ).join('');
+}
+
+// ── DAY CYCLE ──
+function endDay() {
+  G.day++;
+  if (!G.tripping && G.integrationTokens > 0) {
+    G.stats.del = Math.min(10, G.stats.del + 0.5);
+    addLog('Unspent integration tokens at day end. DEL +0.5.', 'warn');
+  }
+  G.expChecks = { tested: false, rested: true, sitter: false, intention: false };
+  renderExpChecks();
+  updateDayBanner();
+  renderTracks();
+  renderStats();
+  addLog(`Day ${G.day} begins.`, 'event');
+  showToast(`Day ${G.day}`);
+}
+
+function updateDayBanner() {
+  const bannerTexts = ['Dawn', 'Morning', 'Afternoon', 'Evening', 'Night'];
+  document.getElementById('day-banner').textContent = `☀ Day ${G.day} — ${bannerTexts[(G.day - 1) % 5]}`;
+  document.getElementById('town-day-badge').textContent = 'Day ' + G.day;
+}
+
+// ── LOG ──
+function addLog(text, type) {
+  const el = document.getElementById('game-log');
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+  const tagMap = { event:'log-tag-event', warn:'log-tag-warn', good:'log-tag-good', info:'log-tag-info' };
+  const tagLabel = { event:'EVENT', warn:'WARN', good:'✓', info:'INFO' };
+  entry.innerHTML = `<span class="log-tag ${tagMap[type]||'log-tag-info'}">${tagLabel[type]||type.toUpperCase()}</span>${text}`;
+  el.insertBefore(entry, el.firstChild);
+  if (el.children.length > 30) el.removeChild(el.lastChild);
+}
+
+// ── TABS ──
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('.game-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+}
+
+// ── MODAL ──
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+function showEventModal(title, body, actions) {
+  document.getElementById('modal-event-title').textContent = title;
+  document.getElementById('modal-event-body').textContent = body;
+  const el = document.getElementById('modal-event-actions');
+  el.innerHTML = '';
+  actions.forEach(a => {
+    const b = document.createElement('button');
+    b.className = 'btn-primary'; b.style.fontSize = '14px'; b.style.padding = '8px 18px';
+    b.textContent = a.label;
+    b.onclick = () => { a.fn(); closeModal('modal-event'); };
+    el.appendChild(b);
+  });
+  openModal('modal-event');
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ══════════════════════════════════════════
+// BACKGROUND CANVAS — organic blobs
+// ══════════════════════════════════════════
+function startBgCanvas() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  const blobs = Array.from({ length: 8 }, () => ({
+    x: Math.random(), y: Math.random(),
+    r: 80 + Math.random() * 160,
+    dx: (Math.random() - 0.5) * 0.0003,
+    dy: (Math.random() - 0.5) * 0.0003,
+    col: ['#5DD9D4','#F472B6','#F4A96A','#C4B5FD','#60A5FA'][Math.floor(Math.random()*5)],
+  }));
+  function loop() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    blobs.forEach(b => {
+      b.x += b.dx; b.y += b.dy;
+      if (b.x < 0 || b.x > 1) b.dx *= -1;
+      if (b.y < 0 || b.y > 1) b.dy *= -1;
+      const grd = ctx.createRadialGradient(b.x * canvas.width, b.y * canvas.height, 0, b.x * canvas.width, b.y * canvas.height, b.r);
+      grd.addColorStop(0, b.col + '55');
+      grd.addColorStop(1, b.col + '00');
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(b.x * canvas.width, b.y * canvas.height, b.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    t++;
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+// ══════════════════════════════════════════
+// WORLD CANVAS — experience renderer
+// ══════════════════════════════════════════
+function startWorldCanvas() {
+  const canvas = document.getElementById('world-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  const dpr = window.devicePixelRatio || 1;
+
+  function resize() {
+    const W = canvas.offsetWidth;
+    canvas.width = W * dpr;
+    canvas.height = 260 * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const buildings = Array.from({ length: 10 }, (_, i) => ({
+    x: i * 70 + 10, w: 50 + Math.random() * 30,
+    h: 40 + Math.random() * 80,
+    col: ['#1a1a3e', '#0f3460', '#162447', '#1a2a5e'][i % 4],
+    windows: Array.from({ length: 6 }, () => Math.random() > 0.4),
+  }));
+
+  function drawSober(W, H) {
+    ctx.fillStyle = '#1a1a3e';
+    ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 60; i++) {
+      ctx.fillStyle = `rgba(255,255,255,${0.2 + Math.random() * 0.5})`;
+      ctx.beginPath();
+      ctx.arc((i * 137.5) % W, (i * 89) % (H * 0.55), 0.8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    const moon = { x: W * 0.8, y: H * 0.18, r: 18 };
+    const mg = ctx.createRadialGradient(moon.x, moon.y, 0, moon.x, moon.y, moon.r);
+    mg.addColorStop(0, '#FAEEDA'); mg.addColorStop(1, '#F4A96A44');
+    ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(moon.x, moon.y, moon.r, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, H * 0.65, W, H * 0.35);
+    buildings.forEach(b => {
+      ctx.fillStyle = b.col;
+      ctx.fillRect(b.x, H * 0.65 - b.h, b.w, b.h);
+      b.windows.forEach((on, j) => {
+        if (on) {
+          ctx.fillStyle = `rgba(252,211,77,${0.3 + Math.sin(t * 0.01 + j) * 0.2})`;
+          ctx.fillRect(b.x + 6 + (j % 2) * 22, H * 0.65 - b.h + 10 + Math.floor(j / 2) * 18, 10, 8);
+        }
+      });
+    });
+    ctx.fillStyle = '#0a0a1a'; ctx.fillRect(0, H * 0.62, W, 8);
+    ctx.fillStyle = 'rgba(93,217,212,0.6)';
+    ctx.font = 'bold 11px monospace';
+    ctx.fillText('your town · night · sober', 12, H - 10);
+  }
+
+  function drawAltered(W, H) {
+    const hue = (t * 0.2) % 360;
+    ctx.fillStyle = `hsl(${220 + Math.sin(t * 0.005) * 30},60%,8%)`;
+    ctx.fillRect(0, 0, W, H);
+    for (let i = 0; i < 5; i++) {
+      const y = (H * 0.2) + Math.sin(t * 0.003 + i * 0.8) * 20 + i * 12;
+      ctx.strokeStyle = `hsla(${hue + i * 25},80%,65%,${0.12 + Math.sin(t * 0.002 + i) * 0.06})`;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(0, y);
+      for (let x = 0; x < W; x += 8) ctx.lineTo(x, y + Math.sin(t * 0.004 + x * 0.015) * 14);
+      ctx.stroke();
+    }
+    buildings.forEach(b => {
+      ctx.fillStyle = `hsl(${(hue + b.x) % 360},35%,${12 + Math.sin(t * 0.003 + b.x) * 4}%)`;
+      ctx.fillRect(b.x, H * 0.65 - b.h, b.w, b.h);
+      b.windows.forEach((on, j) => {
+        if (on) {
+          const wHue = (hue + j * 40) % 360;
+          ctx.fillStyle = `hsla(${wHue},90%,65%,${0.4 + Math.sin(t * 0.01 + j) * 0.3})`;
+          ctx.fillRect(b.x + 6 + (j % 2) * 22, H * 0.65 - b.h + 10 + Math.floor(j / 2) * 18, 10, 8);
+        }
+      });
+    });
+    ctx.fillStyle = 'rgba(93,217,212,0.7)';
+    ctx.font = 'bold 11px monospace';
+    ctx.fillText('coming up · +0:20 · the world responds', 12, H - 10);
+  }
+
+  function drawPeak(W, H) {
+    ctx.fillStyle = '#060612';
+    ctx.fillRect(0, 0, W, H);
+    const cx = W / 2, cy = H / 2;
+    for (let layer = 0; layer < 8; layer++) {
+      const r = 15 + layer * 20 + Math.sin(t * 0.001 + layer) * 6;
+      const rot = t * 0.0004 * (layer % 2 === 0 ? 1 : -1) + layer * 0.4;
+      const sides = 5 + layer;
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(rot);
+      ctx.strokeStyle = `hsla(${(t * 0.2 + layer * 42) % 360},85%,${55 + layer * 3}%,${0.55 - layer * 0.04})`;
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      for (let s = 0; s <= sides; s++) {
+        const a = (s / sides) * Math.PI * 2;
+        const rr = r + Math.sin(a * 3 + t * 0.002) * 9;
+        s === 0 ? ctx.moveTo(Math.cos(a) * rr, Math.sin(a) * rr) : ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr);
+      }
+      ctx.closePath(); ctx.stroke(); ctx.restore();
+    }
+    for (let i = 0; i < 40; i++) {
+      const a = (i / 40) * Math.PI * 2 + t * 0.0005;
+      const r2 = 55 + Math.sin(t * 0.001 + i * 0.3) * 22;
+      ctx.fillStyle = `hsla(${(i * 9 + t * 0.3) % 360},90%,70%,0.75)`;
+      ctx.beginPath();
+      ctx.arc(cx + Math.cos(a) * r2, cy + Math.sin(a) * r2, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.fillStyle = 'rgba(196,181,253,0.75)';
+    ctx.font = 'bold 11px monospace';
+    ctx.fillText('peak · +0:45 · geometry optional', 12, H - 10);
+  }
+
+  function drawBreakthrough(W, H) {
+    ctx.fillStyle = '#020208';
+    ctx.fillRect(0, 0, W, H);
+    const cx = W / 2, cy = H * 0.48;
+    for (let ring = 0; ring < 12; ring++) {
+      for (let seg = 0; seg < 16 + ring * 4; seg++) {
+        const a1 = (seg / (16 + ring * 4)) * Math.PI * 2 + t * 0.0003 * (ring % 2 ? 1 : -1);
+        const a2 = ((seg + 1) / (16 + ring * 4)) * Math.PI * 2 + t * 0.0003 * (ring % 2 ? 1 : -1);
+        const r1 = 12 + ring * 14;
+        const r2 = r1 + 13;
+        const hue = (ring * 30 + seg * 8 + t * 0.15) % 360;
+        const bright = 40 + Math.sin(t * 0.002 + ring + seg) * 20;
+        ctx.fillStyle = `hsla(${hue},90%,${bright}%,0.8)`;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r2, a1, a2);
+        ctx.arc(cx, cy, r1, a2, a1, true);
+        ctx.closePath(); ctx.fill();
+      }
+    }
+    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, 30);
+    grd.addColorStop(0, 'rgba(255,255,255,0.9)');
+    grd.addColorStop(0.5, 'rgba(93,217,212,0.4)');
+    grd.addColorStop(1, 'transparent');
+    ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(cx, cy, 30, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+    ctx.font = 'bold 11px monospace';
+    ctx.fillText('breakthrough · +1:00 · beings of light', 12, H - 10);
+  }
+
+  function drawFading(W, H) {
+    const alpha = 0.15 + Math.sin(t * 0.004) * 0.06;
+    drawSober(W, H);
+    ctx.fillStyle = `rgba(83,74,183,${alpha})`;
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(196,181,253,0.6)';
+    ctx.font = 'bold 11px monospace';
+    ctx.fillText('coming back · +1:30 · the room reassembles', 12, H - 10);
+  }
+
+  function loop() {
+    t++;
+    const W = canvas.offsetWidth;
+    const H = 260;
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const mode = G.worldMode || 'sober';
+    if (mode === 'sober') drawSober(W, H);
+    else if (mode === 'onset') drawAltered(W, H);
+    else if (mode === 'altered') drawAltered(W, H);
+    else if (mode === 'peak') drawPeak(W, H);
+    else if (mode === 'breakthrough') drawBreakthrough(W, H);
+    else if (mode === 'fading') drawFading(W, H);
+    ctx.restore();
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+// Kick off background on load
+startBgCanvas();
+</script>
+</body>
+</html>
