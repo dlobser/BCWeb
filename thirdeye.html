@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Third Eye Chemist — Game Design Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --peach: #F4A96A;
+  --peach-light: #FAD4B0;
+  --peach-dark: #E07830;
+  --cyan: #5DD9D4;
+  --cyan-light: #A8EDEA;
+  --cyan-dark: #2BABA5;
+  --pink: #F472B6;
+  --pink-light: #FBCFE8;
+  --pink-dark: #BE185D;
+  --lavender: #C4B5FD;
+  --lavender-dark: #7C3AED;
+  --blue: #60A5FA;
+  --orange: #FB923C;
+  --yellow: #FCD34D;
+  --bg: #FFF5EE;
+  --bg2: #FFEEDD;
+  --text: #3D1C02;
+  --text2: #7C4A1E;
+  --card-bg: #FFFAF5;
+  --shadow: rgba(61,28,2,0.12);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#bg-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.35;
+}
+
+/* ── TOPBAR ── */
+#topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,245,238,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--peach-light);
+  padding: 0 24px;
+  display: flex; align-items: center; gap: 16px;
+  height: 56px;
+  overflow-x: auto;
+}
+#topbar .logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: 22px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+#topbar .logo span:nth-child(1) { color: var(--lavender-dark); }
+#topbar .logo span:nth-child(2) { color: var(--cyan-dark); }
+#topbar .logo span:nth-child(3) { color: var(--pink); }
+.nav-tabs {
+  display: flex; gap: 6px; flex-shrink: 0;
+}
+.nav-tab {
+  background: none; border: none; cursor: pointer;
+  font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--text2); padding: 6px 14px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-tab:hover, .nav-tab.active {
+  background: var(--cyan-light);
+  color: var(--cyan-dark);
+}
+
+/* ── HERO ── */
+#hero {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 72px 24px 56px;
+  background: linear-gradient(160deg, #FFEEDD 0%, #FFD4B0 40%, #E0F8F6 100%);
+}
+.hero-eyebrow {
+  font-size: 12px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--lavender-dark);
+  margin-bottom: 12px;
+}
+.hero-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(52px, 11vw, 104px);
+  line-height: 1; margin-bottom: 8px;
+}
+.hero-title .w1 { color: var(--lavender-dark); }
+.hero-title .w2 { color: var(--cyan-dark); }
+.hero-title .w3 { color: var(--pink); }
+.hero-subtitle {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(18px, 3vw, 28px);
+  color: var(--text2); margin-bottom: 24px;
+}
+.hero-concept {
+  max-width: 620px; margin: 0 auto 32px;
+  font-size: 16px; line-height: 1.7; color: var(--text2); font-weight: 600;
+}
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.tag {
+  padding: 6px 18px; border-radius: 50px;
+  font-size: 13px; font-weight: 700;
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  color: var(--text2);
+}
+.tag.cyan  { background: var(--cyan-light);    border-color: var(--cyan);    color: var(--cyan-dark); }
+.tag.pink  { background: var(--pink-light);    border-color: var(--pink);    color: var(--pink-dark); }
+.tag.lav   { background: #EDE9FE;              border-color: var(--lavender); color: var(--lavender-dark); }
+.tag.peach { background: #FFF0E0;              border-color: var(--peach);   color: var(--peach-dark); }
+
+/* ── MAIN LAYOUT ── */
+#content {
+  position: relative; z-index: 1;
+  max-width: 900px; margin: 0 auto;
+  padding: 40px 20px 80px;
+  display: flex; flex-direction: column; gap: 40px;
+}
+
+/* ── SECTION ── */
+.section { scroll-margin-top: 72px; }
+.section-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.section-icon {
+  width: 44px; height: 44px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.icon-lav   { background: #EDE9FE; }
+.icon-cyan  { background: var(--cyan-light); }
+.icon-pink  { background: var(--pink-light); }
+.icon-peach { background: #FFF0E0; }
+.icon-blue  { background: #DBEAFE; }
+.icon-green { background: #DCFCE7; }
+.icon-yellow{ background: #FEF9C3; }
+
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px; color: var(--text);
+}
+.section-num {
+  font-size: 12px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--text2);
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+.card p, .card li {
+  font-size: 14px; line-height: 1.75; color: var(--text2);
+}
+.card p + p { margin-top: 10px; }
+.card ul { padding-left: 20px; }
+.card ul li { margin-bottom: 6px; }
+
+/* ── PILLARS ── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.pillar-card {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px var(--shadow);
+}
+.pillar-num {
+  font-family: 'Fredoka One', cursive;
+  font-size: 36px; line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar-title {
+  font-size: 15px; font-weight: 800;
+  color: var(--text); margin-bottom: 8px;
+}
+.pillar-body {
+  font-size: 13px; line-height: 1.6; color: var(--text2);
+}
+
+/* ── LOOP ── */
+.loop-steps {
+  display: flex; flex-wrap: wrap;
+  gap: 8px; align-items: center;
+  padding: 20px;
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px var(--shadow);
+  margin-bottom: 20px;
+}
+.loop-step {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 17px;
+  display: flex; align-items: center; gap: 8px;
+}
+.loop-arrow {
+  font-size: 18px; color: var(--text2);
+}
+.step-gather  { background: #DCFCE7; color: #166534; }
+.step-craft   { background: var(--cyan-light); color: var(--cyan-dark); }
+.step-dose    { background: var(--lavender); color: var(--lavender-dark); }
+.step-trip    { background: var(--pink-light); color: var(--pink-dark); }
+.step-collect { background: #FEF9C3; color: #854D0E; }
+.step-deliver { background: #FFF0E0; color: var(--peach-dark); }
+
+.loop-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.loop-detail-card {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.loop-detail-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 16px; margin-bottom: 6px;
+}
+.loop-detail-body {
+  font-size: 13px; line-height: 1.6; color: var(--text2);
+}
+
+/* ── DEVICE / TABS ── */
+.inner-tabs {
+  display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.inner-tab {
+  padding: 7px 18px;
+  border-radius: 50px;
+  background: var(--bg2);
+  border: 2px solid var(--peach-light);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--text2); cursor: pointer;
+  transition: all 0.2s;
+}
+.inner-tab.active {
+  background: var(--cyan-light);
+  border-color: var(--cyan);
+  color: var(--cyan-dark);
+}
+.inner-panel { display: none; }
+.inner-panel.active { display: block; }
+
+/* ── TWO-COL ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .two-col { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── OSCILLATORS / PLUGS ── */
+.node-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.node-chip {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px; font-weight: 700;
+  color: var(--text2);
+  display: flex; align-items: center; gap: 8px;
+}
+.node-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ── PIPELINE ── */
+.pipeline {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.pipe-step {
+  display: flex; align-items: stretch; gap: 0;
+}
+.pipe-label {
+  background: linear-gradient(135deg, var(--cyan-light), var(--lavender));
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  padding: 12px 16px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 14px; color: var(--text);
+  min-width: 160px; display: flex; align-items: center;
+  flex-shrink: 0;
+}
+.pipe-body {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-left: none;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 16px;
+  font-size: 13px; line-height: 1.6; color: var(--text2);
+  flex: 1;
+}
+.pipe-arrow {
+  text-align: center; color: var(--cyan-dark);
+  font-size: 20px; line-height: 1; padding: 2px 0;
+}
+
+/* ── DOSAGE TABLE ── */
+.dose-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+.dose-table th {
+  background: linear-gradient(135deg, var(--cyan-light), var(--lavender));
+  padding: 12px 16px; text-align: left;
+  font-weight: 800; color: var(--text);
+  font-size: 13px;
+}
+.dose-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+.dose-table th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+.dose-table td {
+  padding: 11px 16px; border-bottom: 1px solid var(--peach-light);
+  color: var(--text2); line-height: 1.5;
+}
+.dose-table tr:last-child td { border-bottom: none; }
+.dose-table tr:nth-child(even) td { background: #FFF8F2; }
+.dose-level {
+  display: inline-block;
+  padding: 3px 12px; border-radius: 50px;
+  font-weight: 800; font-size: 12px;
+}
+.dose-micro   { background: #DCFCE7; color: #166534; }
+.dose-std     { background: var(--cyan-light); color: var(--cyan-dark); }
+.dose-heavy   { background: var(--pink-light); color: var(--pink-dark); }
+
+/* ── WORLD CARDS ── */
+.world-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+.world-card {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.world-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px var(--shadow);
+}
+.world-card-icon { font-size: 32px; margin-bottom: 10px; }
+.world-card-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 17px; color: var(--text); margin-bottom: 6px;
+}
+.world-card-body { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+/* ── NPC CARDS ── */
+.npc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.npc-card {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.npc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px var(--shadow);
+}
+.npc-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 12px;
+}
+.npc-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: 17px; color: var(--text); margin-bottom: 4px;
+}
+.npc-complaint {
+  font-size: 12px; color: var(--text2);
+  font-style: italic; margin-bottom: 10px; line-height: 1.5;
+}
+.npc-need-label {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--text2); margin-bottom: 4px;
+}
+.npc-need {
+  font-size: 13px; color: var(--text2); line-height: 1.5; margin-bottom: 10px;
+}
+.npc-hint-label {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--cyan-dark); margin-bottom: 4px;
+}
+.npc-hint {
+  font-size: 12px; color: var(--cyan-dark);
+  background: var(--cyan-light); border-radius: 8px;
+  padding: 6px 10px; line-height: 1.5;
+}
+
+/* ── PROGRESSION AXES ── */
+.axes-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.axis-row {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+.axis-icon { font-size: 24px; flex-shrink: 0; }
+.axis-content { flex: 1; }
+.axis-title { font-weight: 800; font-size: 15px; color: var(--text); margin-bottom: 3px; }
+.axis-body  { font-size: 13px; color: var(--text2); line-height: 1.5; }
+.axis-bar-track {
+  height: 8px; background: var(--bg2);
+  border-radius: 50px; margin-top: 8px; overflow: hidden;
+}
+.axis-bar-fill {
+  height: 100%; border-radius: 50px;
+  transition: width 0.8s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ── STORY BEATS ── */
+.beats-list {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative;
+}
+.beats-list::before {
+  content: '';
+  position: absolute; left: 22px; top: 0; bottom: 0;
+  width: 2px; background: var(--peach-light);
+}
+.beat-row {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 0 0 20px 0; position: relative;
+}
+.beat-dot {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive; font-size: 16px;
+  flex-shrink: 0; z-index: 1;
+  border: 3px solid var(--bg);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.beat-content { padding-top: 8px; flex: 1; }
+.beat-title { font-weight: 800; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+.beat-body  { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+/* ── THEMES ── */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.theme-card {
+  background: linear-gradient(135deg, var(--card-bg), #F0F9FF);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+.theme-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 17px; color: var(--lavender-dark); margin-bottom: 8px;
+}
+.theme-body { font-size: 13px; color: var(--text2); line-height: 1.65; }
+
+/* ── CONTROLS ── */
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.control-row {
+  display: flex; gap: 12px; align-items: center;
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+}
+.kbd {
+  background: var(--bg2);
+  border: 2px solid var(--peach);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-family: monospace; font-size: 13px; font-weight: 700;
+  color: var(--peach-dark); white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 2px 0 var(--peach-light);
+}
+.control-label { font-size: 13px; color: var(--text2); font-weight: 600; }
+
+/* ── TECH TABLE ── */
+.tech-table {
+  width: 100%; border-collapse: collapse; font-size: 13px;
+}
+.tech-table th {
+  background: linear-gradient(135deg, #FFEEDD, #FAD4B0);
+  padding: 11px 14px; text-align: left;
+  font-weight: 800; color: var(--text); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.tech-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+.tech-table th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+.tech-table td {
+  padding: 10px 14px; border-bottom: 1px solid var(--peach-light);
+  color: var(--text2); line-height: 1.5; vertical-align: top;
+}
+.tech-table tr:last-child td { border-bottom: none; }
+.tech-table tr:nth-child(even) td { background: #FFF8F2; }
+.tech-system {
+  font-weight: 800; color: var(--text);
+}
+.tech-asset {
+  font-family: monospace; font-size: 12px;
+  background: #F0F9FF; border-radius: 6px;
+  padding: 2px 8px; color: var(--cyan-dark);
+}
+
+/* ── SCOPE GRID ── */
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.scope-card {
+  background: var(--card-bg);
+  border: 2px solid var(--peach-light);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+.scope-card-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.scope-badge {
+  padding: 4px 14px; border-radius: 50px;
+  font-size: 12px; font-weight: 800;
+}
+.badge-must   { background: #DCFCE7; color: #166534; }
+.badge-should { background: var(--cyan-light); color: var(--cyan-dark); }
+.badge-nice   { background: var(--lavender); color: var(--lavender-dark); }
+.scope-title {
+  font-family: 'Fredoka One', cursive; font-size: 18px; color: var(--text);
+}
+.scope-list { list-style: none; padding: 0; }
+.scope-list li {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 13px; line-height: 1.6; color: var(--text2);
+  padding: 5px 0; border-bottom: 1px solid var(--peach-light);
+}
+.scope-list li:last-child { border-bottom: none; }
+.scope-list li::before {
+  content: '▸'; flex-shrink: 0; color: var(--peach-dark); margin-top: 1px;
+}
+
+/* ── QUOTE ── */
+.quote-block {
+  background: linear-gradient(135deg, #EDE9FE, #E0F8F6);
+  border-left: 4px solid var(--lavender-dark);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+.quote-block p {
+  font-size: 15px; font-style: italic;
+  color: var(--lavender-dark); line-height: 1.7;
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--bg2);
+  border-top: 2px solid var(--peach-light);
+  font-size: 13px; color: var(--text2); font-weight: 600;
+}
+footer .footer-logo {
+  font-family: 'Fredoka One', cursive;
+  font-size: 20px; margin-bottom: 8px;
+}
+footer .footer-logo span:nth-child(1) { color: var(--lavender-dark); }
+footer .footer-logo span:nth-child(2) { color: var(--cyan-dark); }
+footer .footer-logo span:nth-child(3) { color: var(--pink); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section { animation: fadeInUp 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <div class="logo"><span>Third</span> <span>Eye</span> <span>Chemist</span></div>
+  <div class="nav-tabs">
+    <button class="nav-tab" onclick="scrollTo('concept')">Concept</button>
+    <button class="nav-tab" onclick="scrollTo('loop')">Loop</button>
+    <button class="nav-tab" onclick="scrollTo('device')">Device</button>
+    <button class="nav-tab" onclick="scrollTo('trip')">Trip</button>
+    <button class="nav-tab" onclick="scrollTo('world')">World</button>
+    <button class="nav-tab" onclick="scrollTo('npcs')">Seekers</button>
+    <button class="nav-tab" onclick="scrollTo('progression')">Progression</button>
+    <button class="nav-tab" onclick="scrollTo('narrative')">Narrative</button>
+    <button class="nav-tab" onclick="scrollTo('technical')">Technical</button>
+    <button class="nav-tab" onclick="scrollTo('scope')">Scope</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Game Design Document</div>
+  <div class="hero-title">
+    <span class="w1">Third</span> <span class="w2">Eye</span> <span class="w3">Chemist</span>
+  </div>
+  <div class="hero-subtitle">A first-person psychedelic crafting &amp; exploration game</div>
+  <p class="hero-concept">
+    You inherit a mysterious device on an island of seekers. By gathering ingredients, tweaking parameters, and dropping compounds onto your third eye, you shift perception — revealing hidden layers of reality rendered as a living voxel dreamscape.
+  </p>
+  <div class="hero-tags">
+    <span class="tag cyan">First-Person</span>
+    <span class="tag lav">Psychedelic</span>
+    <span class="tag pink">Crafting</span>
+    <span class="tag peach">Exploration</span>
+    <span class="tag">PC (Unity 6 · URP)</span>
+    <span class="tag">Warm &amp; Strange</span>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div id="content">
+
+  <!-- ① CONCEPT & PILLARS -->
+  <section class="section" id="concept">
+    <div class="section-header">
+      <div class="section-icon icon-lav">💡</div>
+      <div>
+        <div class="section-num">Section 01</div>
+        <div class="section-title">Design Pillars</div>
+      </div>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num" style="color:var(--cyan-dark)">01</div>
+        <div class="pillar-title">Tinkering is the game</div>
+        <div class="pillar-body">The joy is in tweaking sliders, combining ingredients, and seeing what happens. The Device is an instrument you learn to play.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num" style="color:var(--pink)">02</div>
+        <div class="pillar-title">Perception is progression</div>
+        <div class="pillar-body">The world doesn't change — your ability to see it does. Tripping reveals what was always there.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num" style="color:var(--lavender-dark)">03</div>
+        <div class="pillar-title">Every person needs something specific</div>
+        <div class="pillar-body">NPCs aren't quest dispensers. They're people with a particular inner blockage, and the right compound is personal to them.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num" style="color:var(--peach-dark)">04</div>
+        <div class="pillar-title">The trip is the reward</div>
+        <div class="pillar-body">The visual payoff of dropping and exploring is the primary aesthetic experience. It should feel genuinely novel every time parameters shift.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ② CORE LOOP -->
+  <section class="section" id="loop">
+    <div class="section-header">
+      <div class="section-icon icon-cyan">🔄</div>
+      <div>
+        <div class="section-num">Section 02</div>
+        <div class="section-title">Core Gameplay Loop</div>
+      </div>
+    </div>
+    <div class="loop-steps">
+      <span class="loop-step step-gather">🌿 GATHER</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step step-craft">⚗️ CRAFT</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step step-dose">👁 DOSE</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step step-trip">✨ TRIP</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step step-collect">💎 COLLECT</span>
+      <span class="loop-arrow">→</span>
+      <span class="loop-step step-deliver">🤝 DELIVER</span>
+      <span class="loop-arrow">↺</span>
+    </div>
+    <div class="loop-details">
+      <div class="loop-detail-card">
+        <div class="loop-detail-title" style="color:var(--cyan-dark)">🌿 Gather</div>
+        <div class="loop-detail-body">Explore the island in the sober world. Find raw materials — plants, minerals, fungi, water from specific sources. Items found while tripping are more potent and rarer items only appear in the trip layer.</div>
+      </div>
+      <div class="loop-detail-card">
+        <div class="loop-detail-title" style="color:var(--cyan-dark)">⚗️ Craft (The Device)</div>
+        <div class="loop-detail-body">Return to your inherited house. Place gathered ingredients into the Device. Tweak parameters — frequency, amplitude, waveform, color bias, intensity, duration. The Device UI is a node graph where oscillators feed into plugs.</div>
+      </div>
+      <div class="loop-detail-card">
+        <div class="loop-detail-title" style="color:var(--lavender-dark)">👁 Dose</div>
+        <div class="loop-detail-body">Choose how many doses to manufacture. Each dose is a single-use item. To activate: open your third eye and drop a dose onto it. You can do this anywhere on the island.</div>
+      </div>
+      <div class="loop-detail-card">
+        <div class="loop-detail-title" style="color:var(--pink-dark)">✨ Trip</div>
+        <div class="loop-detail-body">The world transforms through the voxel pipeline — every pixel becomes a manipulable quad. Objects grow auras. Colors shift. Hidden geometry, creatures, symbols, and pathways emerge from the substrate of reality.</div>
+      </div>
+      <div class="loop-detail-card">
+        <div class="loop-detail-title" style="color:#854D0E">💎 Collect</div>
+        <div class="loop-detail-body">While tripping, interact with revealed objects and entities. Trip collectibles serve as potent ingredients, Device upgrades, story fragments, or keys to new areas.</div>
+      </div>
+      <div class="loop-detail-card">
+        <div class="loop-detail-title" style="color:var(--peach-dark)">🤝 Deliver</div>
+        <div class="loop-detail-body">Bring the right compound to the right NPC. When the parameters match their need, their third eye opens. They ascend toward the mountain. You unlock new knowledge, recipes, or areas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ THE DEVICE -->
+  <section class="section" id="device">
+    <div class="section-header">
+      <div class="section-icon icon-peach">⚙️</div>
+      <div>
+        <div class="section-num">Section 03</div>
+        <div class="section-title">The Device</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <p>The Device is the central crafting interface — a physical object in the player's inherited house. A strange, beautiful machine presented as a <strong>node-based parameter editor</strong>. The player connects <strong>Oscillators</strong> (signal sources) to <strong>Plugs</strong> (output targets) to shape a compound.</p>
+    </div>
+    <div class="inner-tabs">
+      <button class="inner-tab active" onclick="switchTab(this,'osc')">Oscillators</button>
+      <button class="inner-tab" onclick="switchTab(this,'plugs')">Plugs</button>
+      <button class="inner-tab" onclick="switchTab(this,'unlock')">Unlocking</button>
+    </div>
+    <div class="inner-panel active" id="panel-osc">
+      <div class="card">
+        <p style="margin-bottom:14px;"><strong>Oscillators</strong> generate signals that drive the compound's properties:</p>
+        <div class="node-grid">
+          <div class="node-chip"><span class="node-dot" style="background:var(--cyan)"></span>Sine wave</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--pink)"></span>Saw wave</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--lavender-dark)"></span>Square wave</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--peach-dark)"></span>Triangle</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--blue)"></span>Noise</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--cyan-dark)"></span>Frequency</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--pink-dark)"></span>Amplitude</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--orange)"></span>Phase</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--yellow)"></span>Add / Multiply</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--cyan)"></span>Remap curve</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--lavender)"></span>Breath-synced 🔒</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--pink)"></span>Heartbeat-synced 🔒</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--peach)"></span>Input-reactive 🔒</div>
+        </div>
+      </div>
+    </div>
+    <div class="inner-panel" id="panel-plugs">
+      <div class="card">
+        <p style="margin-bottom:14px;"><strong>Plugs</strong> are the compound's output properties — each maps to a shader parameter or audio property in the trip:</p>
+        <div class="node-grid">
+          <div class="node-chip"><span class="node-dot" style="background:var(--pink)"></span>Color shift / palette</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--cyan)"></span>Voxel displacement</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--lavender-dark)"></span>Aura radius</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--blue)"></span>Aura behavior</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--cyan-dark)"></span>Reverb / chorus</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--peach)"></span>Low / high pass</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--orange)"></span>Distortion type</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--pink-dark)"></span>Distortion strength</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--lavender)"></span>Layer depth</div>
+          <div class="node-chip"><span class="node-dot" style="background:var(--yellow)"></span>Duration curve</div>
+        </div>
+      </div>
+    </div>
+    <div class="inner-panel" id="panel-unlock">
+      <div class="card">
+        <div class="axes-list">
+          <div class="axis-row">
+            <div class="axis-icon">🌱</div>
+            <div class="axis-content">
+              <div class="axis-title">Early Game</div>
+              <div class="axis-body">2–3 exposed parameters (intensity, color bias, duration). Feels like adjusting a simple dial.</div>
+              <div class="axis-bar-track"><div class="axis-bar-fill" style="width:25%;background:linear-gradient(90deg,var(--cyan-light),var(--cyan))"></div></div>
+            </div>
+          </div>
+          <div class="axis-row">
+            <div class="axis-icon">⚗️</div>
+            <div class="axis-content">
+              <div class="axis-title">Mid Game</div>
+              <div class="axis-body">Node graph opens up. Multiple oscillators, remapping curves, 5–6 plugs exposed. Player starts to understand the system deeply.</div>
+              <div class="axis-bar-track"><div class="axis-bar-fill" style="width:60%;background:linear-gradient(90deg,var(--pink-light),var(--pink))"></div></div>
+            </div>
+          </div>
+          <div class="axis-row">
+            <div class="axis-icon">🎹</div>
+            <div class="axis-content">
+              <div class="axis-title">Late Game</div>
+              <div class="axis-body">Full node graph with advanced oscillators (breath-synced, heartbeat, reactive), complex routing, all plugs available. Mastery feels like playing an instrument.</div>
+              <div class="axis-bar-track"><div class="axis-bar-fill" style="width:100%;background:linear-gradient(90deg,var(--lavender),var(--lavender-dark))"></div></div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:16px;">New parameters are unlocked by collecting trip-world items, learning from NPCs, finding instruction fragments, and opening third eyes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ THE TRIP -->
+  <section class="section" id="trip">
+    <div class="section-header">
+      <div class="section-icon icon-pink">✨</div>
+      <div>
+        <div class="section-num">Section 04</div>
+        <div class="section-title">The Trip — Rendering Pipeline</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <p>The trip is the visual centerpiece. It is <strong>not a separate world</strong> — it is the same world seen differently. The full shader pipeline is implemented and locked from the start. The player never builds the rendering system — they're tuning the parameters that feed into it.</p>
+    </div>
+    <div class="pipeline" style="margin-bottom:20px;">
+      <div class="pipe-step">
+        <div class="pipe-label">Scene Camera</div>
+        <div class="pipe-body">Renders base scene to RenderTexture with depth buffer.</div>
+      </div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Info Passes</div>
+        <div class="pipe-body">Normals · World Position · Depth · Object ID · Material ID — all captured as additional render textures.</div>
+      </div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Voxel Pass</div>
+        <div class="pipe-body"><strong>Sober:</strong> quads laid flat → world looks normal with subtle living micro-drift.<br><strong>Tripping:</strong> quads displaced, rotated, textured, physics-driven by compound parameters.</div>
+      </div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Verlet Aura Pass</div>
+        <div class="pipe-body">Soft, breathing halos that pulse with compound rhythm. Size / color / behavior driven by compound parameters. Every object breathes.</div>
+      </div>
+      <div class="pipe-arrow">↓</div>
+      <div class="pipe-step">
+        <div class="pipe-label">Composite</div>
+        <div class="pipe-body">Blend voxel pass + verlet pass + overlay effects → final frame output.</div>
+      </div>
+    </div>
+
+    <div class="card" style="overflow:hidden;padding:0;">
+      <table class="dose-table">
+        <thead>
+          <tr>
+            <th>Dose Level</th>
+            <th>Visual Effect</th>
+            <th>Gameplay Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="dose-level dose-micro">Micro</span></td>
+            <td>Subtle color shift, slight quad drift, faint auras</td>
+            <td>Hints at hidden objects, mild perception boost</td>
+          </tr>
+          <tr>
+            <td><span class="dose-level dose-std">Standard</span></td>
+            <td>Full voxel displacement, visible auras, texture injection</td>
+            <td>Hidden objects and paths fully visible, collectibles accessible</td>
+          </tr>
+          <tr>
+            <td><span class="dose-level dose-heavy">Heavy</span></td>
+            <td>Intense displacement, physics-reactive quads, deep layers</td>
+            <td>Deepest secrets revealed — navigation is challenging</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ⑤ WORLD STRUCTURE -->
+  <section class="section" id="world">
+    <div class="section-header">
+      <div class="section-icon icon-green">🗺️</div>
+      <div>
+        <div class="section-num">Section 05</div>
+        <div class="section-title">World Structure</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <p>The game opens on a <strong>boat prologue</strong> — a tutorial space where three fellow passengers let you passively trip on their "vibes," establishing the visual vocabulary without crafting. This builds desire for the Device before you receive it.</p>
+    </div>
+    <div class="world-grid">
+      <div class="world-card">
+        <div class="world-card-icon">⛵</div>
+        <div class="world-card-title">The Boat</div>
+        <div class="world-card-body">Prologue. Three passengers each emit a distinct vibe-trip: warm &amp; grounding, fast &amp; chaotic, or deep &amp; oceanic. Introduces visual language passively.</div>
+      </div>
+      <div class="world-card">
+        <div class="world-card-icon">⚓</div>
+        <div class="world-card-title">The Dock / Town</div>
+        <div class="world-card-body">Hub area. Several NPCs live here with specific requests. Shops, gathering spots, your inherited house with the Device.</div>
+      </div>
+      <div class="world-card">
+        <div class="world-card-icon">🌿</div>
+        <div class="world-card-title">The Wilds</div>
+        <div class="world-card-body">Forests, caves, beaches, ruins. Rich in ingredients. Different biomes reveal different things when tripping. Some areas only appear in the trip layer.</div>
+      </div>
+      <div class="world-card">
+        <div class="world-card-icon">🛤️</div>
+        <div class="world-card-title">The Paths</div>
+        <div class="world-card-body">Trails connecting areas. Some paths only appear while tripping. Trip-only navigation rewards deep compound crafting.</div>
+      </div>
+      <div class="world-card">
+        <div class="world-card-icon">⛰️</div>
+        <div class="world-card-title">The Mountain</div>
+        <div class="world-card-body">Visible from everywhere. The Guru waits at the summit. Unreachable until every seeker's third eye is opened.</div>
+      </div>
+      <div class="world-card" style="border-color:var(--lavender);background:linear-gradient(135deg,var(--card-bg),#EDE9FE);">
+        <div class="world-card-icon">🔮</div>
+        <div class="world-card-title">The Summit (Endgame)</div>
+        <div class="world-card-body">Final ascent without the Device. The island itself opens your third eye. Every layer visible simultaneously. The island's true nature revealed.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ NPCs -->
+  <section class="section" id="npcs">
+    <div class="section-header">
+      <div class="section-icon icon-pink">🧍</div>
+      <div>
+        <div class="section-num">Section 06</div>
+        <div class="section-title">The Seekers</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <p>Each NPC is a person with a specific inner state that needs a specific compound. They don't give you a recipe — they describe how they feel, what they're missing, what they've tried. You <strong>interpret their words into Device parameters</strong>.</p>
+      <p style="margin-top:10px;">The NPC interaction flow: <strong>Talk → Interpret → Craft → Deliver → Feedback</strong>. If it's wrong, they describe what happened — giving clues to adjust. If it's right, their third eye opens.</p>
+    </div>
+    <div class="npc-grid">
+      <div class="npc-card">
+        <div class="npc-avatar" style="background:#DBEAFE;">🎣</div>
+        <div class="npc-name">The Fisherman</div>
+        <div class="npc-complaint">"The sea used to sing to me. Now it's silent."</div>
+        <div class="npc-need-label">What They Need</div>
+        <div class="npc-need">Audio-reactive compound, deep blue, oceanic aura that reveals the ocean's hidden voice.</div>
+        <div class="npc-hint-label">Parameter Hint</div>
+        <div class="npc-hint">Low freq oscillator · high reverb · blue palette · strong aura on water</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar" style="background:var(--pink-light);">🎨</div>
+        <div class="npc-name">The Painter</div>
+        <div class="npc-complaint">"I see the world in grey. I used to see every color."</div>
+        <div class="npc-need-label">What They Need</div>
+        <div class="npc-need">Intense color saturation, chromatic texture injection to restore their chromatic world.</div>
+        <div class="npc-hint-label">Parameter Hint</div>
+        <div class="npc-hint">High amplitude color plug · texture injection with paint-like patterns</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar" style="background:#DCFCE7;">🌙</div>
+        <div class="npc-name">The Insomniac</div>
+        <div class="npc-complaint">"I can't slow down. Everything races."</div>
+        <div class="npc-need-label">What They Need</div>
+        <div class="npc-need">Calming, slow, grounding experience that quiets the racing mind.</div>
+        <div class="npc-hint-label">Parameter Hint</div>
+        <div class="npc-hint">Low frequency · minimal displacement · earth tones · long duration curve</div>
+      </div>
+      <div class="npc-card">
+        <div class="npc-avatar" style="background:#FEF9C3;">🕯️</div>
+        <div class="npc-name">The Hermit</div>
+        <div class="npc-complaint">"I know there's something in the cave but I can never find it."</div>
+        <div class="npc-need-label">What They Need</div>
+        <div class="npc-need">A compound tuned to reveal the cave's deepest hidden layer.</div>
+        <div class="npc-hint-label">Parameter Hint</div>
+        <div class="npc-hint">High intensity layer depth · cave-biome resonance · heavy dose</div>
+      </div>
+      <div class="npc-card" style="border-color:var(--cyan-light);">
+        <div class="npc-avatar" style="background:var(--cyan-light);">🎵</div>
+        <div class="npc-name">The Musician</div>
+        <div class="npc-complaint">NPC Teacher — demonstrates how waveform shapes change the character of a trip.</div>
+        <div class="npc-need-label">Role</div>
+        <div class="npc-need">Teaches advanced Device techniques through relationship-building. Shows waveform → emotion mapping.</div>
+        <div class="npc-hint-label">Teaches</div>
+        <div class="npc-hint">Waveform shape → experiential quality</div>
+      </div>
+      <div class="npc-card" style="border-color:var(--lavender);">
+        <div class="npc-avatar" style="background:#EDE9FE;">🧪</div>
+        <div class="npc-name">The Chemist</div>
+        <div class="npc-complaint">NPC Teacher — former chemist who explains ingredient combinations.</div>
+        <div class="npc-need-label">Role</div>
+        <div class="npc-need">Teaches how to combine certain ingredients for potency multipliers and new compound properties.</div>
+        <div class="npc-hint-label">Teaches</div>
+        <div class="npc-hint">Ingredient synergies and advanced mixing</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ PROGRESSION -->
+  <section class="section" id="progression">
+    <div class="section-header">
+      <div class="section-icon icon-yellow">📈</div>
+      <div>
+        <div class="section-num">Section 07</div>
+        <div class="section-title">Progression System</div>
+      </div>
+    </div>
+    <div class="axes-list" style="margin-bottom:20px;">
+      <div class="axis-row">
+        <div class="axis-icon">⚙️</div>
+        <div class="axis-content">
+          <div class="axis-title">Device Mastery</div>
+          <div class="axis-body">More parameters unlocked, more complex compounds possible. The Device grows with the player.</div>
+          <div class="axis-bar-track"><div class="axis-bar-fill" style="width:90%;background:linear-gradient(90deg,var(--cyan-light),var(--cyan-dark))"></div></div>
+        </div>
+      </div>
+      <div class="axis-row">
+        <div class="axis-icon">🌿</div>
+        <div class="axis-content">
+          <div class="axis-title">Ingredient Library</div>
+          <div class="axis-body">More materials gathered, including rare trip-only ingredients that only appear in the altered state.</div>
+          <div class="axis-bar-track"><div class="axis-bar-fill" style="width:75%;background:linear-gradient(90deg,#DCFCE7,#16A34A)"></div></div>
+        </div>
+      </div>
+      <div class="axis-row">
+        <div class="axis-icon">👁</div>
+        <div class="axis-content">
+          <div class="axis-title">World Revelation</div>
+          <div class="axis-body">More of the hidden world becomes persistently visible as you trip more — even sober, faint traces remain after heavy use.</div>
+          <div class="axis-bar-track"><div class="axis-bar-fill" style="width:65%;background:linear-gradient(90deg,var(--lavender),var(--lavender-dark))"></div></div>
+        </div>
+      </div>
+      <div class="axis-row">
+        <div class="axis-icon">🤝</div>
+        <div class="axis-content">
+          <div class="axis-title">NPC Relationships</div>
+          <div class="axis-body">Each opened third eye teaches you something and opens new possibilities. Seekers ascend the mountain as you help them.</div>
+          <div class="axis-bar-track"><div class="axis-bar-fill" style="width:80%;background:linear-gradient(90deg,var(--pink-light),var(--pink-dark))"></div></div>
+        </div>
+      </div>
+      <div class="axis-row">
+        <div class="axis-icon">📖</div>
+        <div class="axis-content">
+          <div class="axis-title">Story</div>
+          <div class="axis-body">Fragments of island lore assembled through trip collectibles and NPC dialogue. Piece together who came before you.</div>
+          <div class="axis-bar-track"><div class="axis-bar-fill" style="width:55%;background:linear-gradient(90deg,#FEF9C3,#B45309)"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <p><strong>The Tripping Feedback Loop:</strong> Items collected while tripping are more potent. More things are revealed in the real world the more you trip. Some areas are only accessible while tripping. Each trip teaches you how parameters map to visual effects. This creates a virtuous cycle: trip to find better ingredients to make better compounds to trip harder to find even better ingredients.</p>
+    </div>
+  </section>
+
+  <!-- ⑧ NARRATIVE -->
+  <section class="section" id="narrative">
+    <div class="section-header">
+      <div class="section-icon icon-lav">📖</div>
+      <div>
+        <div class="section-num">Section 08</div>
+        <div class="section-title">Narrative</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <p>You are nobody special — just someone who inherited something from someone you never met. The island is populated by seekers who came here looking for something they couldn't find in the ordinary world. The previous Device owner helped them but died before finishing the work.</p>
+    </div>
+    <div class="quote-block">
+      <p>"This island is a land of seekers — people looking for relief and elevation. The device you now hold can give them what they need. Once elevated, they can join the Guru on the mountain. Open every third eye on this island, and you may open your own."</p>
+    </div>
+    <div class="beats-list" style="margin-top:24px;margin-bottom:24px;">
+      <div class="beat-row">
+        <div class="beat-dot" style="background:var(--cyan-light);color:var(--cyan-dark);">1</div>
+        <div class="beat-content">
+          <div class="beat-title">Boat</div>
+          <div class="beat-body">Meet three strangers. Experience passive trips. Arrive at the island with a sense of wonder and desire for the Device.</div>
+        </div>
+      </div>
+      <div class="beat-row">
+        <div class="beat-dot" style="background:#FFF0E0;color:var(--peach-dark);">2</div>
+        <div class="beat-content">
+          <div class="beat-title">Inheritance</div>
+          <div class="beat-body">Lawyer delivers the news. You find the house, the Device, and the instructions from the previous owner.</div>
+        </div>
+      </div>
+      <div class="beat-row">
+        <div class="beat-dot" style="background:var(--pink-light);color:var(--pink-dark);">3</div>
+        <div class="beat-content">
+          <div class="beat-title">First Eye</div>
+          <div class="beat-body">Open your first NPC's third eye. They ascend partway up the mountain. You feel the island shift subtly beneath the surface.</div>
+        </div>
+      </div>
+      <div class="beat-row">
+        <div class="beat-dot" style="background:#EDE9FE;color:var(--lavender-dark);">4</div>
+        <div class="beat-content">
+          <div class="beat-title">The Deepening</div>
+          <div class="beat-body">As more eyes open, the sober world starts showing traces of the hidden world. Reality thins. The previous owner's story emerges.</div>
+        </div>
+      </div>
+      <div class="beat-row">
+        <div class="beat-dot" style="background:#FEF9C3;color:#B45309;">5</div>
+        <div class="beat-content">
+          <div class="beat-title">The Previous Owner</div>
+          <div class="beat-body">Through trip collectibles and NPC stories, you learn who came before you. Their notes become your guide to mastering the Device.</div>
+        </div>
+      </div>
+      <div class="beat-row">
+        <div class="beat-dot" style="background:#DCFCE7;color:#166534;">6</div>
+        <div class="beat-content">
+          <div class="beat-title">The Final Seekers</div>
+          <div class="beat-body">The last NPCs have complex, subtle needs. Full Device mastery required. This is where all the learning pays off.</div>
+        </div>
+      </div>
+      <div class="beat-row">
+        <div class="beat-dot" style="background:linear-gradient(135deg,var(--cyan-light),var(--lavender));color:var(--lavender-dark);">7</div>
+        <div class="beat-content">
+          <div class="beat-title">The Summit</div>
+          <div class="beat-body">All eyes open. The mountain path appears. You ascend without the Device. The island reveals itself completely — every layer visible at once.</div>
+        </div>
+      </div>
+    </div>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <div class="theme-title">Perception as Choice</div>
+        <div class="theme-body">The hidden world was always there. The compound doesn't create it; it lets you see it. Revelation is a personal act, not a gift.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-title">Listening as Craft</div>
+        <div class="theme-body">The best chemist is the one who listens most carefully to what people need. Empathy is the primary skill, not chemistry.</div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-title">Tools as Instruments</div>
+        <div class="theme-body">The Device isn't a factory. It's an instrument. Mastery comes from practice and intuition, not following recipes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑨ CONTROLS + AUDIO -->
+  <section class="section" id="controls-audio">
+    <div class="section-header">
+      <div class="section-icon icon-blue">🎮</div>
+      <div>
+        <div class="section-num">Section 09</div>
+        <div class="section-title">Controls &amp; Audio</div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-bottom:16px;">
+      <div>
+        <div class="card" style="margin-bottom:0;">
+          <p style="font-weight:800;margin-bottom:12px;">Core Controls</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div class="control-row"><span class="kbd">WASD</span><span class="control-label">Move + mouse look</span></div>
+            <div class="control-row"><span class="kbd">E</span><span class="control-label">Talk / interact / pick up</span></div>
+            <div class="control-row"><span class="kbd">T</span><span class="control-label">Open third eye + dose</span></div>
+            <div class="control-row"><span class="kbd">Device</span><span class="control-label">Full-screen node graph at the house</span></div>
+            <div class="control-row"><span class="kbd">Tab</span><span class="control-label">Inventory (ingredients, doses, collectibles)</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:0;">
+          <p style="font-weight:800;margin-bottom:12px;">Device Interface</p>
+          <ul>
+            <li>Node graph fills screen while at the Device</li>
+            <li>Drag to connect oscillators to plugs</li>
+            <li>Click nodes to adjust sliders, waveform selectors, curve editors</li>
+            <li>Real-time preview viewport shows trip with current settings</li>
+            <li>"Manufacture" button commits ingredients and produces doses</li>
+            <li>Dose count shown based on available ingredients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <p style="font-weight:800;margin-bottom:10px;">🔊 Audio</p>
+      <p>The audio pipeline transforms in parallel with the visual. Compound parameters drive audio filters (reverb, chorus, pitch, low/high pass). The synth oscillators that shape the visuals also shape the sound. The trip is <strong>synesthetic</strong> — what you see, you hear.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:14px;">
+        <div style="background:#DCFCE7;border-radius:12px;padding:12px 14px;">
+          <div style="font-weight:800;font-size:13px;margin-bottom:4px;">Sober World</div>
+          <div style="font-size:12px;color:var(--text2);">Natural ambient soundscape. Waves, wind, birds, village life.</div>
+        </div>
+        <div style="background:var(--pink-light);border-radius:12px;padding:12px 14px;">
+          <div style="font-weight:800;font-size:13px;margin-bottom:4px;">Tripping</div>
+          <div style="font-size:12px;color:var(--text2);">Compound parameters drive audio filters. Synesthetic — visual and audio driven by same oscillators.</div>
+        </div>
+        <div style="background:var(--cyan-light);border-radius:12px;padding:12px 14px;">
+          <div style="font-weight:800;font-size:13px;margin-bottom:4px;">NPC Vibes</div>
+          <div style="font-size:12px;color:var(--text2);">Each boat character has a musical signature that drives their ambient trip.</div>
+        </div>
+        <div style="background:#EDE9FE;border-radius:12px;padding:12px 14px;">
+          <div style="font-weight:800;font-size:13px;margin-bottom:4px;">The Mountain</div>
+          <div style="font-size:12px;color:var(--text2);">As you ascend, all audio layers converge into a unified harmonic.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑩ TECHNICAL -->
+  <section class="section" id="technical">
+    <div class="section-header">
+      <div class="section-icon icon-peach">🔧</div>
+      <div>
+        <div class="section-num">Section 10</div>
+        <div class="section-title">Technical Architecture</div>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden;padding:0;margin-bottom:16px;">
+      <table class="tech-table">
+        <thead>
+          <tr>
+            <th>Game System</th>
+            <th>Existing Asset</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tech-system">Player Controller</td>
+            <td><span class="tech-asset">Assets/FPS/</span></td>
+            <td>Adapt FPS microgame controller, remove weapons, add trip/interact</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Device UI (Node Graph)</td>
+            <td><span class="tech-asset">Assets/synth2/Scripts/Node/</span></td>
+            <td>NodeGraphManager, NodeView, ConnectionView — this IS the Device</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Oscillators</td>
+            <td><span class="tech-asset">Assets/synth2/Scripts/Oscillator/</span></td>
+            <td>Waveform generators, math ops, remaps, breath/heartbeat sources</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Plugs (Output)</td>
+            <td><span class="tech-asset">Assets/synth2/Scripts/Plug/</span></td>
+            <td>Shader variables, audio filters, color, transform</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Voxel Rendering</td>
+            <td><span class="tech-asset">Assets/MudBun/</span></td>
+            <td>Compute shaders for voxel generation, SDF, ray-traced voxels</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Verlet Auras</td>
+            <td><span class="tech-asset">Assets/VerletMesh/</span></td>
+            <td>Verlet physics for soft body aura surfaces around objects</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Erosion Effects</td>
+            <td><span class="tech-asset">Assets/ErosionEffect/</span></td>
+            <td>Spreading/dissolving effects for trip transitions</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Island Environment</td>
+            <td><span class="tech-asset">Assets/Palmov Island/</span></td>
+            <td>Base island art assets + SimpleNaturePack</td>
+          </tr>
+          <tr>
+            <td class="tech-system">Navigation</td>
+            <td><span class="tech-asset">Assets/NavMeshComponents/</span></td>
+            <td>NPC pathfinding for seeker movement toward mountain</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <p style="font-weight:800;margin-bottom:12px;">New Systems Required</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+        <div style="background:var(--bg2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text2);">
+          <div style="font-weight:800;color:var(--text);margin-bottom:4px;">Compound Data Model</div>
+          ScriptableObject defining a compound's parameter state
+        </div>
+        <div style="background:var(--bg2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text2);">
+          <div style="font-weight:800;color:var(--text);margin-bottom:4px;">Inventory System</div>
+          Ingredients, doses, collectibles — simple grid UI
+        </div>
+        <div style="background:var(--bg2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text2);">
+          <div style="font-weight:800;color:var(--text);margin-bottom:4px;">NPC Dialogue System</div>
+          Conversation trees with emotional state tracking
+        </div>
+        <div style="background:var(--bg2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text2);">
+          <div style="font-weight:800;color:var(--text);margin-bottom:4px;">Trip State Manager</div>
+          Transition, dose duration curves, layer depth thresholds
+        </div>
+        <div style="background:var(--bg2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text2);">
+          <div style="font-weight:800;color:var(--text);margin-bottom:4px;">Ingredient System</div>
+          Types, potency, sourcing rules (trip-only, location-specific)
+        </div>
+        <div style="background:var(--bg2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--text2);">
+          <div style="font-weight:800;color:var(--text);margin-bottom:4px;">Third Eye Tracker</div>
+          Global progression: which NPCs elevated, parameters unlocked
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑪ SCOPE -->
+  <section class="section" id="scope">
+    <div class="section-header">
+      <div class="section-icon icon-green">🎯</div>
+      <div>
+        <div class="section-num">Section 11</div>
+        <div class="section-title">Scope &amp; Priorities</div>
+      </div>
+    </div>
+    <div class="scope-grid">
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <span class="scope-badge badge-must">Must Have</span>
+          <div class="scope-title">Core Experience</div>
+        </div>
+        <ul class="scope-list">
+          <li>Device with progressive parameter unlocking</li>
+          <li>Trip rendering pipeline (voxel + verlet auras)</li>
+          <li>5–8 Seeker NPCs with unique needs</li>
+          <li>Boat prologue with 3 passive trip characters</li>
+          <li>Island with 3–4 distinct biomes</li>
+          <li>Ingredient gathering (sober + tripping)</li>
+          <li>Dose manufacturing and delivery</li>
+          <li>Third eye opening feedback loop</li>
+          <li>Mountain endgame sequence</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <span class="scope-badge badge-should">Should Have</span>
+          <div class="scope-title">Full Vision</div>
+        </div>
+        <ul class="scope-list">
+          <li>Persistent world revelation (sober world changes with cumulative tripping)</li>
+          <li>NPC teaching system (learn Device features from islanders)</li>
+          <li>Previous owner story fragments as trip collectibles</li>
+          <li>Audio transformation pipeline synced to visual trip</li>
+          <li>Trip-only paths and areas</li>
+        </ul>
+      </div>
+      <div class="scope-card">
+        <div class="scope-card-header">
+          <span class="scope-badge badge-nice">Nice to Have</span>
+          <div class="scope-title">Stretch Goals</div>
+        </div>
+        <ul class="scope-list">
+          <li>Dynamic NPC reactions to wrong compounds (humor/drama)</li>
+          <li>Weather affecting trip character</li>
+          <li>Time of day affecting what's revealed</li>
+          <li>Boat characters reappearing on the island</li>
+          <li>Photo mode during trips</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /content -->
+
+<footer>
+  <div class="footer-logo"><span>Third</span> <span>Eye</span> <span>Chemist</span></div>
+  Game Design Document · Unity 6 · URP · PC
+</footer>
+
+<script>
+// ── BLOB BACKGROUND ──
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+const blobs = [
+  { x:0.1, y:0.2, r:0.28, c:'#5DD9D4', vx:0.0003, vy:0.0002 },
+  { x:0.8, y:0.1, r:0.22, c:'#F472B6', vx:-0.0002, vy:0.0003 },
+  { x:0.5, y:0.6, r:0.32, c:'#F4A96A', vx:0.0002, vy:-0.0002 },
+  { x:0.2, y:0.8, r:0.18, c:'#C4B5FD', vx:0.0003, vy:0.0001 },
+  { x:0.9, y:0.7, r:0.24, c:'#60A5FA', vx:-0.0001, vy:-0.0003 },
+  { x:0.6, y:0.15, r:0.20, c:'#FCD34D', vx:0.0002, vy:0.0002 },
+  { x:0.35, y:0.45, r:0.16, c:'#A8EDEA', vx:-0.0003, vy:0.0001 },
+  { x:0.75, y:0.5, r:0.20, c:'#FBCFE8', vx:0.0001, vy:-0.0002 },
+];
+let t = 0;
+function drawBg() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const W = canvas.width, H = canvas.height;
+  blobs.forEach(b => {
+    b.x += b.vx; b.y += b.vy;
+    if (b.x < 0 || b.x > 1) b.vx *= -1;
+    if (b.y < 0 || b.y > 1) b.vy *= -1;
+    const grad = ctx.createRadialGradient(b.x*W, b.y*H, 0, b.x*W, b.y*H, b.r * Math.max(W,H));
+    grad.addColorStop(0, b.c + 'CC');
+    grad.addColorStop(1, b.c + '00');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(b.x*W, b.y*H, b.r * Math.max(W,H), 0, Math.PI*2);
+    ctx.fill();
+  });
+  t++;
+  requestAnimationFrame(drawBg);
+}
+drawBg();
+
+// ── NAV SCROLL ──
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── INNER TABS ──
+function switchTab(btn, panelId) {
+  const tabs = btn.parentElement.querySelectorAll('.inner-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const section = btn.closest('.section');
+  section.querySelectorAll('.inner-panel').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('panel-' + panelId);
+  if (target) target.classList.add('active');
+}
+
+// ── ACTIVE NAV HIGHLIGHT ──
+const sections = ['concept','loop','device','trip','world','npcs','progression','narrative','technical','scope'];
+const navTabs = document.querySelectorAll('.nav-tab');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + 100;
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) current = id;
+  });
+  navTabs.forEach((tab, i) => {
+    tab.classList.toggle('active', sections[i] === current);
+  });
+});
+</script>
+</body>
+</html>
