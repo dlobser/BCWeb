@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dark — Game Design Document</title>
+<style>
+  :root {
+    --bg: #0b0b0d;
+    --fg: #d9d4c7;
+    --dim: #8a8576;
+    --accent: #c9a227;
+    --rule: #2a2a30;
+    --panel: #131318;
+  }
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+  h1 {
+    font-size: 2.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  h1 + .subtitle {
+    color: var(--dim);
+    font-style: italic;
+    margin-bottom: 3rem;
+  }
+  h2 {
+    color: var(--accent);
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 0.3rem;
+    margin-top: 3rem;
+  }
+  h3 {
+    color: var(--fg);
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    margin-top: 1.8rem;
+  }
+  blockquote {
+    border-left: 2px solid var(--accent);
+    margin: 1.5rem 0;
+    padding: 0.2rem 1rem;
+    color: var(--dim);
+    font-style: italic;
+  }
+  .question {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 0.8rem 1.2rem;
+    margin: 0.6rem 0;
+    border-radius: 3px;
+  }
+  ul, ol { padding-left: 1.5rem; }
+  li { margin: 0.4rem 0; }
+  .scare {
+    background: var(--panel);
+    border-left: 3px solid #5a1a1a;
+    padding: 0.8rem 1.2rem;
+    margin: 0.8rem 0;
+  }
+  .scare strong { color: #c86a6a; }
+  .theme-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+    margin: 1rem 0;
+  }
+  .theme-grid div {
+    border: 1px solid var(--rule);
+    padding: 0.6rem 0.9rem;
+    background: var(--panel);
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.1rem 0.5rem;
+    margin-right: 0.3rem;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2.5rem 0;
+  }
+  .open {
+    color: var(--dim);
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <h1>Dark</h1>
+  <div class="subtitle">A short, weird sci-fi horror game about a child running errands at the end of the world.</div>
+
+  <p>
+    <span class="tag">Horror</span>
+    <span class="tag">Mystery</span>
+    <span class="tag">Sci-fi</span>
+    <span class="tag">Sonar</span>
+    <span class="tag">Short-form</span>
+  </p>
+
+  <h2>Concept</h2>
+  <p>
+    You are four years old. A portal to another dimension has opened, unleashing death and madness.
+    Daddy is in his room with Mommy, and the door is closed. You can hear Mommy moaning and
+    screaming. Daddy's voice comes through the door — calm, specific, asking for things. You don't
+    know what he's doing in there. You don't understand it. You just know he needs you to fetch
+    things, and you do, because he's Daddy.
+  </p>
+  <p>
+    Cables run out from under the door into the living room, where they connect to a collection of
+    machines. From the center of the machines, a booming electrical storm tears upward through the
+    ceiling — a tornado of light and energy, visible from outside the house. The machines are always
+    on. You never go in the room. You never see Daddy or Mommy until the very end.
+  </p>
+  <blockquote>
+    You go outside. Everything is dark. You navigate with an acoustic ping — a sonar device that
+    briefly illuminates the world through sound. Daddy said to keep an eye out for your sisters.
+  </blockquote>
+
+  <h2>Pillars</h2>
+  <ul>
+    <li><strong>Sound is sight.</strong> The sonar ping is the primary sense. Pinging is dangerous.</li>
+    <li><strong>The lore arrives in pieces.</strong> Understanding leaks in at the edges, never stated.</li>
+    <li><strong>Dread over gore.</strong> Most scares are false alarms. The real ones land harder for it.</li>
+    <li><strong>Short and strange.</strong> Compact, no padding. Every mission means something.</li>
+  </ul>
+
+  <h2>The Three Questions</h2>
+  <div class="question">What is Daddy doing to Mommy?</div>
+  <div class="question">What happened to your sisters?</div>
+  <div class="question">What is being built in the living room?</div>
+  <p class="open">
+    Some of these will be answered in fragments as you go. Some may never be answered directly.
+    The machine behind the door is the spine of the mystery.
+  </p>
+
+  <h2>Core Loop</h2>
+  <ol>
+    <li>Daddy's voice comes through the door. You have a mission.</li>
+    <li>Go outside into the dark. Navigate with your sonar ping.</li>
+    <li>Complete the mission objectives — area-based, multi-step.</li>
+    <li>Return to the house. Daddy may or may not acknowledge you.</li>
+    <li>Mission progress is saved. You always restart from the house.</li>
+  </ol>
+
+  <h2>Sight, Sound, and the Ping</h2>
+  <ul>
+    <li>Passive vision: a faint outline of the ground close around you.</li>
+    <li>Noise-emitters in the world give off light proportional to the sound they make.</li>
+    <li>The ping is your active sense — a short pulse that reveals geometry briefly.</li>
+    <li>Pinging has cost: the <strong>Scarecrow</strong> will get you if you ping it. The <strong>Evil Sister</strong> can see you when you ping.</li>
+    <li>The flashlight is the only holdable light source — steady light, no ping risk, limited range.</li>
+  </ul>
+
+  <h2>The Looking Rule</h2>
+  <blockquote>
+    If you're not looking at the scary thing, it can't hurt you.
+  </blockquote>
+  <p>
+    The central survival trick: know where the threat is, and make sure you aren't facing it.
+    This inverts normal horror instincts — the player's impulse is to look, and looking is often
+    what gets you killed.
+  </p>
+
+  <h2>The Sisters</h2>
+  <p>
+    Daddy tells you to keep an eye out for your sisters. As you explore, the narrative of what
+    happened to them unfolds: some have died in horrible ways, some have gone insane, some may
+    attack you. Some have been turned into trees.
+  </p>
+  <p>
+    The trees are everywhere — dark silhouettes in the field. They look ordinary until you ping
+    them. Then the sonar flash reveals twisted, suffering shapes. And sometimes you hear it: a
+    voice from inside the bark.
+  </p>
+  <blockquote>
+    <em>"Help me."</em>
+  </blockquote>
+  <p class="open">
+    The tree-sisters are lore first and gameplay second. They appear as discoveries, not objectives.
+    Whether the player can do anything to help them is an open question.
+  </p>
+
+  <h2>Missions</h2>
+
+  <h3>Get the Mail</h3>
+  <p>
+    Walk to the mailbox at the end of the drive. Bring back whatever arrived — schematics,
+    instructions, a component for the machine. The road is dark. Something may be watching.
+  </p>
+
+  <h3>Get Bloodfruit</h3>
+  <p>
+    Bloodfruit grows from the trees fed by the animals butchered in the barn. Go to the barn,
+    find what's left, follow the runoff to the trees. Pick the fruit. Don't look at what's on
+    the barn floor too long.
+  </p>
+
+  <h3>Collect Electricity</h3>
+  <p>
+    The forest of power lines crackles with loose current. Bring a collector and gather enough
+    charge. The lines hum and spark. Things may be drawn to the light.
+  </p>
+
+  <h3>Start the Generator</h3>
+  <p>
+    The generator is out back. Find it, find what it needs, get it running. The storm overhead
+    does not help with navigation.
+  </p>
+
+  <h3>Go to the Church</h3>
+  <p>
+    Walk to the church at the edge of the property. Get the Bible from inside.
+    The church is not empty.
+  </p>
+
+  <h3>Fix the Basement Electrical</h3>
+  <p>
+    The lights have gone out. Go to the basement and fix whatever broke. It is very dark in the
+    basement. Ping carefully.
+  </p>
+
+  <h2>Monsters</h2>
+
+  <h3>The Scarecrow</h3>
+  <p>
+    Appears in different positions on the map each time. It looks like a silhouette. If you ping
+    it — directly, with your sonar — it gets you. No warning. No second chance. Don't ping
+    silhouettes that look too still.
+  </p>
+
+  <h3>Tumbleweeds</h3>
+  <p>
+    They look like tumbleweeds. They are not tumbleweeds. They roll through the dark and if one
+    hits you, you go down and wake up somewhere else on the map. Disorienting by design.
+  </p>
+
+  <h3>Evil Sister</h3>
+  <p>
+    She stalks you. She can only see you when you ping — your sonar pulse lights you up for her.
+    As long as you stay dark, she stays blind. She will get close. She will breathe. As long as
+    you can't see her, she can't see you.
+  </p>
+
+  <h3>Giant Monster</h3>
+  <p>
+    It walks around in the distance. It is very large. It seems like it might hurt you. It never
+    does. It is there to remind you that the world outside is not on your side.
+  </p>
+
+  <h3>Trees (Sister-Trees)</h3>
+  <p>
+    Appear as silhouettes in the dark. If you ping them, the sonar flash reveals twisted, reaching
+    forms — your sisters, transformed. They do not attack. They ask for help. Whether they can be
+    helped is unclear.
+  </p>
+
+  <h3>Holes</h3>
+  <p>
+    Holes in the ground. You can fall into them. Navigate carefully in new areas.
+  </p>
+
+  <h2>Jump Scares</h2>
+  <p>
+    Fear of jump scares is the goal — real scares should be rare. One at the very beginning so
+    the player knows what to be afraid of. After that, mostly false alarms: building tension
+    without payoff, again and again, until the real ones land.
+  </p>
+
+  <div class="scare">
+    <strong>The Scarecrow Tutorial (real).</strong> Early on, you ping a still silhouette. It was
+    the Scarecrow. It gets you. Now you know.
+  </div>
+
+  <div class="scare">
+    <strong>The Rustling Door (false).</strong> Something pushes against a closed door from
+    inside. You ping. Nothing is there.
+  </div>
+
+  <div class="scare">
+    <strong>The Sister Tree (unsettling, not lethal).</strong> You ping a tree and the sonar
+    flash shows a twisted face. A voice: <em>"Help me."</em> It does not attack.
+  </div>
+
+  <div class="scare">
+    <strong>The Tumbleweed (startling).</strong> A tumbleweed hits you from nowhere. You wake up
+    somewhere else. Startling, not deadly.
+  </div>
+
+  <div class="scare">
+    <strong>The Giant Nearby (false).</strong> You ping and the Giant is much closer than
+    expected. It turns and walks away. Nothing happens.
+  </div>
+
+  <div class="scare">
+    <strong>The Generator Wakes (scripted).</strong> The generator starts and everything shudders —
+    lights flash, a roar, the storm overhead flares. Camera briefly taken over. Then quiet.
+  </div>
+
+  <h2>Tableaus</h2>
+  <p>
+    Scattered environmental set-pieces: the aftermath of horrible things. Carcasses in the barn
+    split open and drained. Trails of blood leading out to the trees. The charred silhouette of
+    something large near the power lines. A sister's shoe in the field, alone.
+  </p>
+  <p class="open">
+    Tableaus are wordless lore. They imply sequence, causality, and horror without ever naming
+    what happened. The player builds the picture from fragments.
+  </p>
+
+  <h2>Scoring</h2>
+  <ul>
+    <li><strong>Time.</strong> How long it took to complete each objective.</li>
+    <li><strong>Secrets found.</strong> Environmental discoveries, sister-trees heard, hidden lore.</li>
+  </ul>
+  <p class="open">
+    Score is shown at the end. No in-mission feedback — just how it felt, then the tally afterward.
+  </p>
+
+  <h2>Game Systems</h2>
+
+  <h3>Mission System</h3>
+  <p>
+    Missions use <strong>area markers</strong>, not point markers — a region on the map lights up,
+    not a waypoint arrow. Missions may have multiple objectives that unlock sequentially or in
+    parallel. Daddy's voice or a note in the mailbox starts each mission. Progress is tracked as
+    mission state, not world state.
+  </p>
+
+  <h3>Interaction</h3>
+  <p>
+    Click to interact with objects or pick them up. Items go directly to inventory. The flashlight
+    is the only holdable item — equipping it means holding it, which means it occupies your hand
+    and stays on until you put it away. Other items (fruit, components) are just carried invisibly.
+  </p>
+
+  <h3>Event System</h3>
+  <p>
+    A global broadcast event bus fires on mission state changes, area entries, item pickups, and
+    monster contacts. Scripted moments — the generator waking, finding a sister-tree, reaching the
+    church — can take over the camera briefly for a fixed sequence before returning control. Events
+    can trigger sounds, music shifts, Daddy's voice, or map notes.
+  </p>
+
+  <h3>Monster Behaviors</h3>
+  <ul>
+    <li><strong>Scarecrow:</strong> Repositions between pings. Ping it directly = instant death. Detected by raycasting from its position to ping origin.</li>
+    <li><strong>Tumbleweeds:</strong> Patrol loose paths. On contact, trigger a "tumbled" state that relocates the player.</li>
+    <li><strong>Evil Sister:</strong> Follows the player at a distance. Enters "sight" state only when the player pings — she can then close in. Returns to blind-follow on no ping.</li>
+    <li><strong>Giant Monster:</strong> Wanders a fixed route in the far background. No aggression. Scales with distance to stay always-looming.</li>
+  </ul>
+
+  <h3>HUD / Compass / Map</h3>
+  <p>
+    A minimal compass sits in one corner. A small map view (togglable) shows explored area with
+    mission area markers. An inventory panel shows held items. A notes panel accumulates mission
+    logs and found lore — this is the primary narrative vehicle. No waypoints. No enemy indicators.
+  </p>
+
+  <h3>Save System</h3>
+  <p>
+    You always start at the house. Mission progress is saved between sessions — objectives
+    completed stay completed. There are no mid-mission saves and no checkpoints outside the house.
+    If you die, you wake up at the house with mission progress intact but position reset.
+  </p>
+
+  <hr>
+  <p class="open" style="text-align:center;">— end of document —</p>
+
+</main>
+</body>
+</html>
