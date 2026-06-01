@@ -1,87 +1,314 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Send Data</title>
+    <title>Infinite Zoom — light.clinic</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-kiI9X5zhBkCcf5Dyj2rUsnE1IgITnFZZAlVc8jKfXADtLXLG1BJny7kFyWw5HJj3q+P+zp7um5E5n9XHtr5k2Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-deep: #1a1147;
+            --bg-mid: #2d1b6b;
+            --bg-warm: #4a1d8a;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.18);
+            --text-primary: #f4f1ff;
+            --text-soft: #d8d0ff;
+            --accent: #a78bfa;
+            --accent-bright: #c4b5fd;
+            --accent-blue: #7dd3fc;
+            --button-grad-1: #6366f1;
+            --button-grad-2: #a855f7;
+            --button-glow: rgba(168, 85, 247, 0.5);
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            font-family: 'Nunito', system-ui, sans-serif;
+            color: var(--text-primary);
+        }
+
         body {
-            background-color: #e6f3f3;
+            background:
+                radial-gradient(ellipse at 20% 0%, var(--bg-warm) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 100%, #1e3a8a 0%, transparent 55%),
+                linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 32px 20px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
-        #data {
-            height: 300px;
-            width: 50%;
-            margin: 0 auto;
-            resize: none;
-            border-radius: 10px;
-            border: none;
-            background-color: #d4e8e8;
-            font-size: 1.2rem;
+
+        .wrap {
+            width: 100%;
+            max-width: 680px;
         }
-        button {
-            border-radius: 20px;
-            background-color: #28a745;
+
+        header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        h1 {
+            font-family: 'Quicksand', 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin: 0 0 6px;
+            letter-spacing: -0.01em;
+            background: linear-gradient(90deg, #c4b5fd, #7dd3fc, #c4b5fd);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 8s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .byline {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            margin: 0;
+        }
+
+        a {
+            color: var(--accent-bright);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1.5px dotted rgba(196, 181, 253, 0.4);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        a:hover {
             color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
+            border-bottom-color: #fff;
         }
-        button:hover {
-            background-color: #218838;
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 22px;
+            padding: 26px;
+            margin-bottom: 22px;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        ol.steps {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: step;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 22px;
+        }
+        ol.steps li {
+            counter-increment: step;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            white-space: nowrap;
+        }
+        ol.steps li::before {
+            content: counter(step);
+            flex: 0 0 auto;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--button-grad-1), var(--button-grad-2));
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px var(--button-glow);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 160px;
+            padding: 18px 20px;
+            border-radius: 18px;
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            background: #fdf9e4;
+            color: #2a1f4a;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.45;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+        textarea::placeholder {
+            color: rgba(42, 31, 74, 0.45);
+            font-weight: 500;
+        }
+        textarea:focus {
+            border-color: #f5d76e;
+            background: #fffbe8;
+            box-shadow: 0 0 0 4px rgba(245, 215, 110, 0.28);
+        }
+
+        .send-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 18px;
+        }
+
+        button#send {
+            font-family: 'Quicksand', 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #3a2410;
+            border: none;
+            padding: 14px 38px;
+            border-radius: 999px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
+            box-shadow:
+                0 8px 24px rgba(245, 158, 11, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            letter-spacing: 0.02em;
+        }
+        button#send:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.06);
+            box-shadow:
+                0 12px 32px rgba(245, 158, 11, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        button#send:active {
+            transform: translateY(0);
+        }
+
+        .about h2 {
+            font-family: 'Quicksand', 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 0 12px;
+            color: var(--accent-blue);
+        }
+        .about p {
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--text-soft);
+            margin: 0 0 14px;
+        }
+        .projects {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .projects li {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .projects li .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: linear-gradient(135deg, var(--button-grad-1), var(--button-grad-2));
+            vertical-align: middle;
+        }
+        .contact {
+            font-size: 1rem;
+            color: var(--text-soft);
+            margin: 0;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 20px 14px 40px; }
+            .card { padding: 20px; border-radius: 18px; }
+            ol.steps li { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-  <div class="row mt-5">
-      <div class="col-md-12 text-center">
-          <h3 style="font-family: sans-serif;">Infinite AI Zoom&trade;</h3>
-          <p style="font-family: sans-serif;">by <a href="http://light.clinic">light.clinic<a><p>
-          <p style="font-family: sans-serif;"> <a href="https://www.instagram.com/the_lightclinic/">Instagram<a><p>
-            
-      </div>
-  </div>
-  <div class="container">
-    <div class="row mt-5">
-        <div class="col-md-12 text-center">
-            <textarea id="data" class="form-control" style="padding: 10px;" placeholder="Enter your prompt here..."></textarea>
-        </div>
+    <div class="wrap">
+        <header>
+            <h1>Infinite Zoom</h1>
+            <p class="byline">by <a href="http://light.clinic" target="_blank" rel="noopener">light.clinic</a></p>
+        </header>
+
+        <section class="card">
+            <ol class="steps">
+                <li>Enter your prompt</li>
+                <li>Click Send</li>
+                <li>Reload the page if it doesn't work</li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <textarea id="data" placeholder="Enter your AI image generation prompt here"></textarea>
+            <div class="send-row">
+                <button id="send" onclick="senddata()">Send Prompt</button>
+            </div>
+        </section>
+
+        <section class="card about">
+            <h2>About Light Clinic</h2>
+            <p>Light Clinic is a creative digital media studio focused on mind-expanding immersive tech experiences such as:</p>
+            <ul class="projects">
+                <li><span class="dot"></span><a href="https://braincandyapp.com" target="_blank" rel="noopener">brain candy</a> — braincandyapp.com</li>
+                <li><span class="dot"></span><a href="https://cosmicsugarvr.com" target="_blank" rel="noopener">Cosmic Sugar</a> — cosmicsugarvr.com</li>
+                <li><span class="dot"></span><a href="https://visitationsvr.com" target="_blank" rel="noopener">visitations</a> — visitationsvr.com</li>
+            </ul>
+            <p class="contact">Contact: <a href="mailto:info@light.clinic">info@light.clinic</a></p>
+        </section>
     </div>
-    <div class="row mt-2">
-        <div class="col-md-12 text-center">
-            <button class="btn btn-lg btn-primary rounded-pill" onclick="senddata()">Send Prompt</button>
-          <p class="lead" style="font-family: sans-serif;"><br><br><br>Open the <a href="https://www.youtube.com/@the_lightclinic/streams"> stream</a><br>Reload this page if the prompt does not appear.</p>
-        </div>
-    </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-AvVdSNjyQmOxIe1rMGAf9vknfzGOfOdKtYXBjw+B2LxIm+GyLr+KjGzNL+kX9sRcftjK2bHKLbr3xnk+AVtTZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-  let ws = new WebSocket("wss://refrain-api-staging.j38.workers.dev/namespace/visitations/case-farm-honor-dance");//"wss://refrain-staging.j38.workers.dev/namespace/visitations");
+    <script>
+        let ws = new WebSocket("wss://refrain-api-staging.j38.workers.dev/namespace/visitations/case-farm-honor-dance");
 
-  ws.onopen = () => {
-    console.log("OPEN");
-  }
+        ws.onopen = () => { console.log("OPEN"); };
 
-	function senddata() {
-		// Get the value of the text area
-		var data = document.getElementById("data").value;
-		// Do something with the data (for example, log it to the console)
-		console.log(data);
-        let params = [];
-        params[0] = data;
+        function senddata() {
+            const data = document.getElementById("data").value;
+            const deets = {
+                type: "action",
+                action: 400,
+                parameters: [data]
+            };
+            console.log(JSON.stringify(deets));
+            ws.send(JSON.stringify(deets));
 
-        let deets = {
-          "type":"action",
-          "action":400,
-          parameters: params
+            const btn = document.getElementById("send");
+            const original = btn.textContent;
+            btn.textContent = "Sent ✨";
+            btn.style.filter = "brightness(1.15)";
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.style.filter = "";
+            }, 1200);
         }
-        console.log(JSON.stringify(deets));
-        ws.send(JSON.stringify(deets));
-}
-</script>
-
+    </script>
 </body>
 </html>
