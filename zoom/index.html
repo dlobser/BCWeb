@@ -32,6 +32,8 @@
             min-height: 100%;
             font-family: 'Nunito', system-ui, sans-serif;
             color: var(--text-primary);
+            -webkit-text-size-adjust: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -228,6 +230,8 @@
             font-size: 1.02rem;
             font-weight: 600;
             color: var(--text-primary);
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
         .projects li .dot {
             display: inline-block;
@@ -244,10 +248,49 @@
             margin: 0;
         }
 
-        @media (max-width: 480px) {
-            body { padding: 20px 14px 40px; }
-            .card { padding: 20px; border-radius: 18px; }
-            ol.steps li { font-size: 1rem; }
+        @media (max-width: 600px) {
+            body { padding: 22px 14px 44px; }
+            .card { padding: 20px 18px; border-radius: 18px; margin-bottom: 16px; }
+            header { margin-bottom: 20px; }
+            .byline { font-size: 1rem; }
+
+            ol.steps {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            ol.steps li {
+                font-size: 1rem;
+                white-space: normal;
+            }
+
+            textarea {
+                min-height: 140px;
+                font-size: 1rem;
+                padding: 16px;
+                border-radius: 14px;
+            }
+
+            button#send {
+                width: 100%;
+                padding: 16px 28px;
+                font-size: 1.1rem;
+            }
+
+            .about h2 { font-size: 1.15rem; }
+            .about p, .projects li, .contact { font-size: 0.98rem; }
+        }
+
+        @media (max-width: 380px) {
+            h1 { font-size: 1.85rem; }
+            .card { padding: 18px 16px; }
+            ol.steps li { font-size: 0.95rem; }
+            ol.steps li::before { width: 26px; height: 26px; font-size: 0.85rem; }
+        }
+
+        @media (hover: none) {
+            button#send:hover { transform: none; filter: none; }
+            a:hover { color: var(--accent-bright); border-bottom-color: rgba(196, 181, 253, 0.4); }
         }
     </style>
 </head>
