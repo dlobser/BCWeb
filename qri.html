@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscilleditor UI/UX Briefing | QRI & Consciousness Research</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #e0e0e0;
+            --accent-color: #00ffcc;
+            --secondary-accent: #ff00ff;
+            --card-bg: #111111;
+            --border-color: #333333;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, var(--accent-color), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 1rem;
+            max-width: 800px;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            z-index: 100;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--accent-color); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section { margin-bottom: 6rem; }
+
+        h2 {
+            font-size: 2rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #222;
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: var(--font-mono);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .metric-table th, .metric-table td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .metric-table th { color: #888; font-weight: 600; }
+
+        .paper-link {
+            display: block;
+            margin-top: 1rem;
+            color: var(--secondary-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .paper-link:hover { text-decoration: underline; }
+
+        .abstract {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .ca-visualization {
+            height: 200px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ca-pixel {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-color);
+            position: absolute;
+            opacity: 0.3;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.1; transform: scale(0.5); }
+            to { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        footer {
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .highlight { color: var(--accent-color); font-weight: 600; }
+        
+        .deep-dive-box {
+            background: linear-gradient(to right, #111, #1a1a1a);
+            border-left: 4px solid var(--secondary-accent);
+            padding: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="hero-title">Oscilleditor UI/UX</h1>
+        <p class="hero-subtitle">Interactive control panel for mapping, visualization, and modulation of human consciousness state-spaces.</p>
+    </header>
+
+    <nav>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#mathematics">Mathematics</a>
+        <a href="#research">Research Deep Dive</a>
+        <a href="#library">Plane Library</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- 1. Purpose & Philosophy -->
+        <section id="philosophy">
+            <h2>1. Purpose & Philosophy</h2>
+            <div class="card">
+                <p>The Oscilleditor is a core front-end control panel designed to map, visualize, and interactively modulate the mathematical geometries of consciousness. Instead of viewing altered states as noise, it treats them as highly organized, predictable state-spaces governed by <span class="highlight">wave computations</span> and <span class="highlight">oscillatory dynamics</span>.</p>
+                <p>The "phenomenal field" acts as an interpolating matrix modeled using formal mathematical structures, categorizing experiences across two primary axes:</p>
+                
+                <table class="metric-table">
+                    <thead>
+                        <tr>
+                            <th>Axis</th>
+                            <th>Description</th>
+                            <th>Tracking Metrics</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Level of Consciousness</strong></td>
+                            <td>Depth, neuroplasticity, and structural predictability.</td>
+                            <td>Lempel-Ziv Complexity (LZc)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Content of Consciousness</strong></td>
+                            <td>Geometry, harmonic distribution, spatial properties.</td>
+                            <td>Connectome Harmonics (Zipf Dist.)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 2. Specific Frontend Requirements -->
+        <section id="requirements">
+            <h2>2. Frontend Engineering Priorities</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">Interactivity Over Static Data</div>
+                    <p>High-performance input controls (sliders, coordinate grids) for dynamic parameter alteration and instant wave behavior observation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Kernel Dynamics</div>
+                    <p>Leveraging particle-system logic (e.g., Cosmic Sugar) to visualize high-dimensional state transitions and field visual noise self-organization.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Dual-Axis Visualization</div>
+                    <p>Clean, scannable layouts presenting independent data streams (LZc vs. Harmonics) without cognitive fatigue.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Hardware Adaptability</div>
+                    <p>Real-time monitoring of EEG, EMG, and biometric arrays with clear visual state indicators.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Mathematical Sync-Up -->
+        <section id="mathematics">
+            <h2>3. Mathematical Foundations</h2>
+            <div class="deep-dive-box">
+                <p><strong>Connectome-Harmonic Decomposition (CHD):</strong> Developed by <span class="highlight">Selen Atasoy</span>, this framework applies the Laplace operator to the brain's structural wiring to identify its "resonant modes."</p>
+                <p><strong>Symmetry Theory of Valence (STV):</strong> A QRI hypothesis stating that the valence (the pleasantness) of an experience is directly proportional to the mathematical symmetry of the brain's harmonic activity.</p>
+                <p><strong>Neural Annealing:</strong> The process where high-energy states (induced by meditation/psychedelics) allow the brain to "melt" out of dissonant configurations and settle into symmetrical, consonant ones.</p>
+            </div>
+        </section>
+
+        <!-- 4. Research Deep Dive -->
+        <section id="research">
+            <h2>4. Research Deep Dive</h2>
+            
+            <div class="card">
+                <div class="card-title">5-MeO-DMT & Topological Simplification</div>
+                <span class="tag">EEG</span> <span class="tag">Neurophenomenology</span> <span class="tag">QRI</span>
+                <p>Recent studies demonstrate up to a <strong>40% increase in signal originality</strong> via LZc markers. While N,N-DMT increases topological complexity (fractal visuals), 5-MeO-DMT induces "Topological Simplification"—driving the brain toward a massive, global resonant mode.</p>
+                <p class="abstract">Key Reference: <a href="https://doi.org/10.1093/nc/niaf007" target="_blank">Timmermann, C., et al. (2025). "Exploring 5-MeO-DMT as a pharmacological model for deconstructed consciousness."</a></p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Cellular Automata & Internal States</div>
+                <span class="tag">IIT</span> <span class="tag">Complexity</span> <span class="tag">Emergence</span>
+                <p>Cellular Automata (CA) model the brain as a discrete, self-organizing system. Integrated Information Theory (IIT) identifies that information peaks at the "edge of chaos" (criticality). Visual hallucinations are modeled as symmetry-breaking patterns in CA-like neural fields.</p>
+                <div class="ca-visualization">
+                    <div class="ca-pixel" style="top:20%; left:30%;"></div>
+                    <div class="ca-pixel" style="top:50%; left:70%;"></div>
+                    <div class="ca-pixel" style="top:80%; left:20%;"></div>
+                    <div class="ca-pixel" style="top:40%; left:40%;"></div>
+                    <div class="ca-pixel" style="top:10%; left:80%;"></div>
+                    <p style="font-size: 0.8rem; color: #444;">[ Rule 110 Simulation Approximation ]</p>
+                </div>
+                <p class="abstract">Key Reference: <a href="https://arxiv.org/abs/2106.10211" target="_blank">Mediano, P. M., et al. (2021). "Integrated information as a common signature of dynamical and information-processing complexity."</a></p>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Jhana, Fire Kasina & Bindus</div>
+                <span class="tag">Meditation</span> <span class="tag">7T MRI</span> <span class="tag">Pīti</span>
+                <p>Fire Kasina practice involves concentrating on "bindus" (visual points). Advanced practitioners show unique "spindle" activity and high-voltage slow waves while remaining lucid. 7-Tesla MRI reveals reorganization of functional connectivity gradients, shifting the brain toward a globally integrated state.</p>
+                <p class="abstract">Key Reference: <a href="https://doi.org/10.1093/cercor/bhae214" target="_blank">Yang, et al. (2024). "Neurophenomenology of jhanas in an intensively sampled adept meditator."</a></p>
+            </div>
+        </section>
+
+        <!-- 5. The Plane-Ready Resource Library -->
+        <section id="library">
+            <h2>5. Flight-Ready Reading List</h2>
+            <p>Search these specific titles on Google Scholar or PubMed for a comprehensive deep dive into the science of the phenomenal field.</p>
+            
+            <div class="card">
+                <div class="highlight">Connectome-Harmonic Decomposition</div>
+                <p><strong><a href="https://www.nature.com/articles/s41598-017-17546-0" target="_blank">Atasoy, S., et al. (2017).</a></strong> "Connectome-harmonic decomposition of human brain activity reveals dynamical repertoire re-organization under LSD." <em>Scientific Reports.</em></p>
+                <p class="abstract">Essential for understanding how brain states follow power-law (Zipf) distributions and reach criticality.</p>
+                
+                <div class="highlight" style="margin-top:2rem;">Lempel-Ziv Complexity & Consciousness</div>
+                <p><strong><a href="https://www.nature.com/articles/srep46421" target="_blank">Schartner, M. M., et al. (2017).</a></strong> "Increased spontaneous MEG signal diversity for psychoactive states of consciousness." <em>Scientific Reports.</em></p>
+                <p class="abstract">The foundational proof that psychedelics increase the "compressibility" threshold of neural signals.</p>
+
+                <div class="highlight" style="margin-top:2rem;">Symmetry Theory of Valence</div>
+                <p><strong><a href="https://researchers.one/articles/20.02.00011v1.pdf" target="_blank">Johnson, M. (2016).</a></strong> "Principia Qualia: Blueprint for a New Science of Experience." <em>QRI.</em></p>
+                <p class="abstract">The theoretical bedrock for building the Oscilleditor's valence-tracking metrics.</p>
+
+                <div class="highlight" style="margin-top:2rem;">Hallucinations as Symmetry Breaking</div>
+                <p><strong><a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2000.0769" target="_blank">Bressloff, P. C., et al. (2001).</a></strong> "Geometric visual hallucinations, Euclidean symmetry and the functional architecture of primary visual cortex." <em>Philosophical Transactions of the Royal Society.</em></p>
+                <p class="abstract">The definitive math behind why we see grids, webs, and tunnels in altered states.</p>
+
+                <div class="highlight" style="margin-top:2rem;">5-MeO-DMT Neurophenomenology</div>
+                <p><strong><a href="https://doi.org/10.1093/nc/niaf007" target="_blank">Timmermann, C., et al. (2025).</a></strong> "Exploring 5-MeO-DMT as a pharmacological model for deconstructed consciousness." <em>Neuroscience of Consciousness.</em></p>
+                <p class="abstract">Brand new research on "Pure Phenomenal" states without content.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Oscilleditor Briefing Framework | Generated for Internal Research Sync | 2026</p>
+    </footer>
+
+</body>
+</html>
