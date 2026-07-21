@@ -1,0 +1,4232 @@
+{
+  "graphSchema": {
+    "last_node_id": 69,
+    "last_link_id": 91,
+    "nodes": [
+      {
+        "id": 4,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          150
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 3,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 3
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              6
+            ]
+          }
+        ],
+        "title": "The Static Dispatch Call",
+        "properties": {
+          "title": "The Static Dispatch Call",
+          "location": "Mr. D's House",
+          "charactersPresent": "",
+          "text": "Narrator: Mr. D lifts the heavy rotary phone receiver and dials the eleven-digit number stamped into the lead seal.\nNarrator: After a single ring, a sharp, monotone voice answers amidst the sound of thousands of pages rustling in a heavy wind.\nSenior Receptionist: Sheriff's Office, Division of Marital Audits. State your Case Pair ID.\nMr. D: We are calling about a notice left on our door for Mr. D and Mrs. O. Case Pair 409.\nSenior Receptionist: Ah, Case 409. The persistent anomaly pair. We have been monitoring your temporal cohesion metrics since Tuesday.\nMrs. O: What do you mean by anomaly pair? We're a married couple!\nSenior Receptionist: Most couples begin disputing shared memories within six minutes of receiving a revision notice. Your metrics remain inconveniently synchronized.\nMr. D: We aren't disputing anything. We demand to know what authority you have over our lives.\nSenior Receptionist: Authority is delegated by the High Auditor. Please report between nine and five before your file is shredded.\nNarrator: The line drops into a harsh burst of static that sounds like a choir whispering legal citations in unison.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/mr-d-s-house.png",
+          "backgroundName": "mr-d-s-house.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "notice_pattern",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 7,
+        "type": "vnovel/passthrough",
+        "pos": [
+          400,
+          390
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 6,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 8
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              12
+            ]
+          }
+        ],
+        "title": "Interview with Sheriff Harry Persad",
+        "properties": {
+          "title": "Interview with Sheriff Harry Persad",
+          "location": "Interview Room",
+          "charactersPresent": "",
+          "text": "Sheriff Harry Persad: Please sit, Mr. D, Mrs. O. I must say, your file is causing quite a stir in the Revision Bureau.\nMrs. O: Why? What is wrong with our records?\nSheriff Harry Persad: Nothing is wrong with your records, madam. That is the problem. Your lives match the 1994 master census perfectly.\nMr. D: Then why issue a revision notice?\nSheriff Harry Persad: Because the 1994 master census was declared non-canonical three hours ago. We are retroactively adjusting all citizen pairings from that era.\nMrs. O: You can't just declare a decade non-canonical!\nSheriff Harry Persad: We do it twice a month, Mrs. O. Bureaucracy requires constant pruning to keep reality manageable.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/interview-room.png",
+          "backgroundName": "interview-room.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "reality_revision",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 9,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          390
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 8,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 10
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              14
+            ]
+          }
+        ],
+        "title": "The Whispering Citizen's Warning",
+        "properties": {
+          "title": "The Whispering Citizen's Warning",
+          "location": "Waiting Room",
+          "charactersPresent": "",
+          "text": "Narrator: Mrs. O and Mr. D take seats on a hard oak bench beside a thin, pale man wearing three coats over one another.\nNarrator: The man continuously checks a pocket watch that has no hands, only a small mirror inside the face.\nWhispering Citizen: Don't let the clerks separate you into Room A and Room B. That's how they broke my parents.\nMrs. O: How do they break people?\nWhispering Citizen: They give Room A a file that says Room B never existed. Then they give Room B a file that says Room A died ten years ago. Once you doubt each other for a second, the building absorbs your names.\nMr. D: We trust each other completely.\nWhispering Citizen: Then go to the sub-levels. Find the old Archivist before the High Auditor signs the daily shredding order.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/waiting-room.png",
+          "backgroundName": "waiting-room.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "archivist_secret",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 10,
+        "type": "vnovel/choice",
+        "pos": [
+          1300,
+          390
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 10,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 40
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Infiltrate the Master Administrative Suite on Floor 3",
+            "type": -1,
+            "links": [
+              15
+            ],
+            "label": "Infiltrate the Ma..."
+          },
+          {
+            "name": "Descend into the Endless Stairwell toward the Basement Archive",
+            "type": -1,
+            "links": [
+              16
+            ],
+            "label": "Descend into the ..."
+          },
+          {
+            "name": "Sneak into the Forgotten Courtroom to inspect the active dockets",
+            "type": -1,
+            "links": [
+              17
+            ],
+            "label": "Sneak into the Fo..."
+          }
+        ],
+        "title": "Choosing the Infiltration Arc",
+        "properties": {
+          "title": "Choosing the Infiltration Arc",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Infiltrate the Master Administrative Suite on Floor 3",
+              "condition": "",
+              "mission": "Infiltrate the Lower Archive"
+            },
+            {
+              "text": "Descend into the Endless Stairwell toward the Basement Archive",
+              "condition": "",
+              "mission": "Infiltrate the Lower Archive"
+            },
+            {
+              "text": "Sneak into the Forgotten Courtroom to inspect the active dockets",
+              "condition": "",
+              "mission": "Expose the False Summons"
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 11,
+        "type": "vnovel/traversal",
+        "pos": [
+          100,
+          630
+        ],
+        "size": {
+          "0": 240,
+          "1": 120
+        },
+        "flags": {},
+        "order": 13,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 15
+          }
+        ],
+        "outputs": [
+          {
+            "name": "🎉 Escape / Success",
+            "type": -1,
+            "links": [
+              18
+            ],
+            "label": "🎉 Escape / Success"
+          },
+          {
+            "name": "Auditor Patrol Evasion",
+            "type": -1,
+            "links": [
+              19
+            ],
+            "label": "Auditor Patrol Evasion"
+          },
+          {
+            "name": "Senior Registrar Interception",
+            "type": -1,
+            "links": [
+              20
+            ],
+            "label": "Senior Registrar Interception"
+          },
+          {
+            "name": "Sanctum Breach",
+            "type": -1,
+            "links": [
+              21
+            ],
+            "label": "Sanctum Breach"
+          },
+          {
+            "name": "🚪 Early Exit",
+            "type": -1,
+            "links": [
+              22
+            ],
+            "label": "🚪 Early Exit"
+          }
+        ],
+        "title": "Administrative Suite Infiltration",
+        "properties": {
+          "title": "Administrative Suite Infiltration",
+          "location": "Master Administrative Suite",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "targetAccumulation": 65,
+          "outcomes": [
+            {
+              "label": "Auditor Patrol Evasion",
+              "probability": 35,
+              "description": "You slip past the patrolling bailiffs into the Stamp Registry."
+            },
+            {
+              "label": "Senior Registrar Interception",
+              "probability": 35,
+              "description": "A registrar confronts you, but you bluff your way through."
+            },
+            {
+              "label": "Sanctum Breach",
+              "probability": 30,
+              "description": "You locate the High Auditor's inner office."
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 12,
+        "type": "vnovel/traversal",
+        "pos": [
+          400,
+          630
+        ],
+        "size": {
+          "0": 240,
+          "1": 120
+        },
+        "flags": {},
+        "order": 9,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 16
+          }
+        ],
+        "outputs": [
+          {
+            "name": "🎉 Escape / Success",
+            "type": -1,
+            "links": [
+              23
+            ],
+            "label": "🎉 Escape / Success"
+          },
+          {
+            "name": "Archive Floor Landing",
+            "type": -1,
+            "links": [
+              24
+            ],
+            "label": "Archive Floor Landing"
+          },
+          {
+            "name": "Holding Cell Block",
+            "type": -1,
+            "links": [],
+            "label": "Holding Cell Block"
+          },
+          {
+            "name": "Reality Vault Threshold",
+            "type": -1,
+            "links": [
+              25
+            ],
+            "label": "Reality Vault Threshold"
+          },
+          {
+            "name": "🚪 Early Exit",
+            "type": -1,
+            "links": [
+              26
+            ],
+            "label": "🚪 Early Exit"
+          }
+        ],
+        "title": "Endless Stairwell Descent",
+        "properties": {
+          "title": "Endless Stairwell Descent",
+          "location": "Endless Stairwell",
+          "background": "assets/backgrounds/endless-stairwell.png",
+          "backgroundName": "endless-stairwell.png",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "targetAccumulation": 70,
+          "outcomes": [
+            {
+              "label": "Archive Floor Landing",
+              "probability": 40,
+              "description": "You reach the cavernous floor of the Basement Archive."
+            },
+            {
+              "label": "Holding Cell Block",
+              "probability": 30,
+              "description": "You stumble into the high"
+            },
+            {
+              "label": "Reality Vault Threshold",
+              "probability": 30,
+              "description": "You emerge directly before the blast doors of the Reality Vault."
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 13,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          630
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 14,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 17
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              27
+            ]
+          }
+        ],
+        "title": "The Forgotten Courtroom Docket",
+        "properties": {
+          "title": "The Forgotten Courtroom Docket",
+          "location": "Forgotten Courtroom",
+          "charactersPresent": "",
+          "text": "Narrator: High vaulted ceilings echo with the sound of a mechanical typewriter typing continuously without a clerk present.\nNarrator: Rows of empty wooden pews face a massive judicial dais where three leather-bound dockets lie open.\nArchival Clerk: Case Pair 409 is scheduled for Docket Removal at 17:00 hours.\nMrs. O: Not if we have anything to say about it.\nMr. D: Look at the judge's dais... it lists the Celestial Protocol rules.\nMrs. O: \"Section 9: Any reality revision may be challenged if the subjects present an original Unwritten Ledger entry signed by both parties.\"\nMr. D: That means if we find the Unwritten Ink, we can legally void their revision notice right here!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/forgotten-courtroom.png",
+          "backgroundName": "forgotten-courtroom.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "cosmic_protocol",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 14,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          630
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 18,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 19
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              28
+            ]
+          }
+        ],
+        "title": "Evading the Bailiff Guards",
+        "properties": {
+          "title": "Evading the Bailiff Guards",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: Heavy iron boots clatter against the marble floor as three tall bailiffs carry glowing brass stamping rods down the hallway.\nNarrator: Mr. D quickly pulls Mrs. O into an alcove concealed behind a heavy velvet tapestry depicting the founding of the Revision Bureau.\nMr. D: Those stamping rods... if a guard touches you with one, it reclassifies your citizen tier on the spot.\nMrs. O: Look across the hall... there's a heavy oak door marked \"CLERK STAMP REGISTRY.\"\nMr. D: Wait until the lead guard turns the corner... now! Move!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "stairwell_loop",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 15,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          630
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 19,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 66
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              29
+            ]
+          }
+        ],
+        "title": "The Stamp Registry Vault",
+        "properties": {
+          "title": "The Stamp Registry Vault",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: The room is filled from floor to ceiling with wooden racks holding thousands of heavy iron stamps.\nNarrator: Each stamp bears a word in raised steel letters: APPROVED, REVISED, SHREDDED, EXPUNGED, REASSIGNED.\nMrs. O: Look at this massive brass seal in the velvet display case... \"RECLASSIFIED MASTER CLEARANCE.\"\nMr. D: If we take that stamp, we can forge official authorization passes to access any restricted vault in the building.\nMrs. O: Press it onto a blank parchment sheet... perfect. Now we hold the authority of a Senior Registrar.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "clerk_stamp",
+          "rewardKnowledge": "reality_revision",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 16,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          870
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 20,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 21
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              30
+            ]
+          }
+        ],
+        "title": "The High Auditor's Office",
+        "properties": {
+          "title": "The High Auditor's Office",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: Inside a glass-walled office overlooking the entire administrative floor, the High Auditor sits at a desk made of compressed legal documents.\nHigh Auditor: Case Pair 409. You are trespassing in the Executive Revision Sector.\nMr. D: We are here to reclaim our records, Auditor.\nHigh Auditor: Your records are property of the Revision Bureau! Without constant administrative maintenance, human lives collapse into narrative chaos!\nMrs. O: Our life is not narrative chaos; it's our marriage!\nNarrator: Mrs. O glances at the Auditor's blotter and notes a set of numbers carved into the leather: 7-14-21.\nMr. D: That's the combination to the Reality Vault downstairs!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "vault_combination",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 17,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          400,
+          870
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 22,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 30
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              31
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              32
+            ]
+          }
+        ],
+        "title": "Stamp Authorization Check",
+        "properties": {
+          "title": "Stamp Authorization Check",
+          "condition": "has_item('clerk_stamp')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 18,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          870
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 28,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 31
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              33
+            ]
+          }
+        ],
+        "title": "Forging the Master Clearance Pass",
+        "properties": {
+          "title": "Forging the Master Clearance Pass",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: Using the stolen clerk stamp, Mrs. O firmly presses the heavy seal onto a sheet of gold-leaf document paper.\nNarrator: The gold leaf flashes with bright blue light as the text automatically reconfigures into a Master Clearance Directive.\nMr. D: Outstanding work, Henry. Now no guard or clerk in this building can block us.\nMrs. O: Let's head straight down to the sub-levels and find the Master Ledger before sundown.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "cosmic_protocol",
+          "startMission": "",
+          "completeMission": "Infiltrate the Lower Archive",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 19,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          870
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 29,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 79
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              34
+            ]
+          }
+        ],
+        "title": "The Renegade Janitor's Refuge",
+        "properties": {
+          "title": "The Renegade Janitor's Refuge",
+          "location": "Sealed Corridor",
+          "charactersPresent": "",
+          "text": "Narrator: Red alarm lights flash along the ceiling as a loud buzzer sounds down the corridor.\nNarrator: A door to a supply closet swings open, and a man in greasy gray overalls pulls Mrs. O and Mr. D inside.\nRenegade Janitor: Quiet! The bailiffs are conducting a sweep of Sector 4.\nMr. D: Who are you?\nRenegade Janitor: I used to be a Senior Registrar until they erased my home town in '02. I've been living in the ventilation shafts ever since, sabotaging their paper shredders.\nMrs. O: There are people locked in the cells down here!\nRenegade Janitor: Aye, cell block 3 is full of citizens whose files are half-shredded. Help me get them out, and I'll show you the secret path to the Archivist.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/sealed-corridor.png",
+          "backgroundName": "sealed-corridor.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "archivist_secret",
+          "startMission": "Rescue the Erased Citizens",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 20,
+        "type": "vnovel/choice",
+        "pos": [
+          1300,
+          870
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 35,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 34
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Descend directly to the Basement Archive Floor",
+            "type": -1,
+            "links": [
+              35
+            ],
+            "label": "Descend directly ..."
+          },
+          {
+            "name": "Assist the Renegade Janitor in unlocking Cell Block 3",
+            "type": -1,
+            "links": [
+              36
+            ],
+            "label": "Assist the Renega..."
+          },
+          {
+            "name": "Use the vault combination to open the Reality Vault",
+            "type": -1,
+            "links": [
+              37
+            ],
+            "label": "Use the vault com..."
+          },
+          {
+            "name": "Enter the Sub-Level Crossroads to inspect the security sub-vaults",
+            "type": -1,
+            "links": [
+              38
+            ],
+            "label": "Enter the Sub-Lev..."
+          },
+          {
+            "name": "Use the clerk stamp to unseal secret Revision Bureau memos",
+            "type": -1,
+            "links": [
+              39
+            ],
+            "label": "Use the clerk sta..."
+          }
+        ],
+        "title": "Sub-Level Descent Choices",
+        "properties": {
+          "title": "Sub-Level Descent Choices",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Descend directly to the Basement Archive Floor",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Assist the Renegade Janitor in unlocking Cell Block 3",
+              "condition": "",
+              "mission": "Rescue the Erased Citizens"
+            },
+            {
+              "text": "Use the vault combination to open the Reality Vault",
+              "condition": "has_knowledge('vault_combination')",
+              "mission": "Reclaim Your Real Names"
+            },
+            {
+              "text": "Enter the Sub-Level Crossroads to inspect the security sub-vaults",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Use the clerk stamp to unseal secret Revision Bureau memos",
+              "condition": "has_item('clerk_stamp')",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 21,
+        "type": "vnovel/traversal",
+        "pos": [
+          100,
+          1110
+        ],
+        "size": {
+          "0": 240,
+          "1": 120
+        },
+        "flags": {},
+        "order": 11,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 45
+          }
+        ],
+        "outputs": [
+          {
+            "name": "🎉 Escape / Success",
+            "type": -1,
+            "links": [
+              40
+            ],
+            "label": "🎉 Escape / Success"
+          },
+          {
+            "name": "Filing Cabinet Shift",
+            "type": -1,
+            "links": [
+              41
+            ],
+            "label": "Filing Cabinet Shift"
+          },
+          {
+            "name": "Chamber of Floating Records",
+            "type": -1,
+            "links": [
+              42
+            ],
+            "label": "Chamber of Floating Records"
+          },
+          {
+            "name": "The Archivist's Desk",
+            "type": -1,
+            "links": [
+              43
+            ],
+            "label": "The Archivist's Desk"
+          },
+          {
+            "name": "🚪 Early Exit",
+            "type": -1,
+            "links": [
+              44
+            ],
+            "label": "🚪 Early Exit"
+          }
+        ],
+        "title": "Basement Archive Navigation",
+        "properties": {
+          "title": "Basement Archive Navigation",
+          "location": "Basement Archive",
+          "background": "assets/backgrounds/basement-archive.png",
+          "backgroundName": "basement-archive.png",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "targetAccumulation": 70,
+          "outcomes": [
+            {
+              "label": "Filing Cabinet Shift",
+              "probability": 30,
+              "description": "Moving shelves reveal a hidden passage to the Master Files."
+            },
+            {
+              "label": "Chamber of Floating Records",
+              "probability": 35,
+              "description": "You enter a vast cavern where memory cards float like lanterns."
+            },
+            {
+              "label": "The Archivist's Desk",
+              "probability": 35,
+              "description": "You locate the quiet sanctuary of the Chief Archivist."
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 22,
+        "type": "vnovel/passthrough",
+        "pos": [
+          400,
+          1110
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 46,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 36
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              45
+            ]
+          }
+        ],
+        "title": "Liberation of Cell Block 3",
+        "properties": {
+          "title": "Liberation of Cell Block 3",
+          "location": "Sealed Corridor",
+          "charactersPresent": "",
+          "text": "Narrator: Mr. D uses a heavy iron crowbar to shatter the brass padlock securing the door of Cell Block 3.\nNarrator: Inside sit dozens of men and women whose bodies are semi-translucent, their faces glowing faintly with lost memories.\nWhispering Citizen: You... you can actually see us? The clerks said we were completely nullified!\nMrs. O: No one is nullified here! Get up, all of you! We're breaking out of this building together!\nRenegade Janitor: Take these floor plans! They show the emergency stairwell leading straight up to the rooftop exit!\nMr. D: Lead the citizens to the rooftop stairs! We'll secure the master files so they can never erase you again!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/sealed-corridor.png",
+          "backgroundName": "sealed-corridor.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "true_names",
+          "startMission": "",
+          "completeMission": "Rescue the Erased Citizens",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 23,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          1110
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 12,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 37
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              46
+            ]
+          }
+        ],
+        "title": "The Reality Vault Threshold",
+        "properties": {
+          "title": "The Reality Vault Threshold",
+          "location": "The Reality Vault",
+          "charactersPresent": "",
+          "text": "Narrator: At the end of a heavily reinforced hallway stands a circular steel vault door ten feet thick, fitted with three brass dials and a central obsidian slot.\nNarrator: In the central slot rests a smooth black stone token that emits a freezing mist.\nMr. D: This is the Black Token... the physical core that powers the building's reality engine.\nMrs. O: If we pull this token out, their automated shredders and revision stamps will freeze instantly!\nNarrator: Mrs. O grips the cold obsidian token and pulls it free. The massive vault door groans as power surges through the floor.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/the-reality-vault.png",
+          "backgroundName": "the-reality-vault.png",
+          "showCharacterImages": true,
+          "rewardItems": "black_token",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 24,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          1110
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 15,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 41
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              47
+            ]
+          }
+        ],
+        "title": "Finding the Master Ledger Page",
+        "properties": {
+          "title": "Finding the Master Ledger Page",
+          "location": "Basement Archive",
+          "charactersPresent": "",
+          "text": "Narrator: Behind a collapsed row of oak filing cabinets sits a pedestal holding a glowing glass case.\nNarrator: Inside lies a single yellowed sheet of parchment labeled: MASTER LEDGER - CASE PAIR 409.\nMr. D: Look at section 4... \"Anomalous marital bond exhibits 99.8% structural resistance to standard erasure protocols.\"\nMrs. O: They didn't summon us because we were a mistake... they summoned us because our love is stronger than their entire system!\nMr. D: Take the page out of the case. Without this original document, they can't execute the evening revision!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/basement-archive.png",
+          "backgroundName": "basement-archive.png",
+          "showCharacterImages": true,
+          "rewardItems": "master_ledger_page",
+          "rewardKnowledge": "reality_revision",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 25,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          1110
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 16,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 42
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              48
+            ]
+          }
+        ],
+        "title": "The Chamber of Floating Memories",
+        "properties": {
+          "title": "The Chamber of Floating Memories",
+          "location": "Basement Archive",
+          "charactersPresent": "",
+          "text": "Narrator: The cavernous room has no floor or ceiling, only floating wooden index drawers suspended in midair.\nNarrator: As Mrs. O touches a floating drawer, a warm beam of golden light projects a vivid memory of the rainy afternoon when Mr. D proposed.\nMrs. O: Look, Henry... they didn't just record our dates and addresses. They harvested the actual feelings.\nMr. D: They use human love as the fuel to power their administrative engine.\nMrs. O: Then we're going to shut down their fuel supply forever.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/basement-archive.png",
+          "backgroundName": "basement-archive.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "cosmic_protocol",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 26,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          1350
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 17,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 48
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              49
+            ]
+          }
+        ],
+        "title": "Audience with the Chief Archivist",
+        "properties": {
+          "title": "Audience with the Chief Archivist",
+          "location": "Basement Archive",
+          "charactersPresent": "",
+          "text": "Narrator: In a quiet, book-lined study lit by green shaded lamps, an ancient man in spectacles sits writing with a peacock feather quill.\nThe Archivist: Ah, Case Pair 409. I have watched your file for forty years.\nMr. D: Are you the one who ordered our revision?\nThe Archivist: I order nothing, young man. I merely archive what the High Auditor demands. But I have grown weary of watching beautiful lives shredded for bureaucratic symmetry.\nMrs. O: Then help us destroy their authority.\nThe Archivist: Take this crystal bottle of Unwritten Ink. Anything written with this ink becomes permanent, unalterable reality across all timelines.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/basement-archive.png",
+          "backgroundName": "basement-archive.png",
+          "showCharacterImages": true,
+          "rewardItems": "unwritten_ink",
+          "rewardKnowledge": "archivist_secret",
+          "startMission": "",
+          "completeMission": "Expose the False Summons",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 27,
+        "type": "vnovel/choice",
+        "pos": [
+          400,
+          1350
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 21,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 49
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Use the Unwritten Ink to rewrite the Master Ledger page directly",
+            "type": -1,
+            "links": [
+              50
+            ],
+            "label": "Use the Unwritten..."
+          },
+          {
+            "name": "Confront Sheriff Harry Persad and Sheriff Sig Cho in the Forgotten Courtroom",
+            "type": -1,
+            "links": [
+              51
+            ],
+            "label": "Confront Sheriff ..."
+          },
+          {
+            "name": "Lead the freed citizens up to the Rooftop for an immediate exit",
+            "type": -1,
+            "links": [
+              52
+            ],
+            "label": "Lead the freed ci..."
+          },
+          {
+            "name": "Infiltrate Sub-Level 4 Security to trigger a complete system override",
+            "type": -1,
+            "links": [
+              53
+            ],
+            "label": "Infiltrate Sub-Le..."
+          },
+          {
+            "name": "Enter the Index of Nullified Timelines to recover lost civilian records",
+            "type": -1,
+            "links": [
+              54
+            ],
+            "label": "Enter the Index o..."
+          }
+        ],
+        "title": "The Strategic Decision of the Ink",
+        "properties": {
+          "title": "The Strategic Decision of the Ink",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Use the Unwritten Ink to rewrite the Master Ledger page directly",
+              "condition": "has_item('master_ledger_page')",
+              "mission": "Reclaim Your Real Names"
+            },
+            {
+              "text": "Confront Sheriff Harry Persad and Sheriff Sig Cho in the Forgotten Courtroom",
+              "condition": "",
+              "mission": "Decipher the Celestial Protocol"
+            },
+            {
+              "text": "Lead the freed citizens up to the Rooftop for an immediate exit",
+              "condition": "",
+              "mission": "Reclaim Your Real Names"
+            },
+            {
+              "text": "Infiltrate Sub-Level 4 Security to trigger a complete system override",
+              "condition": "has_item('black_token')",
+              "mission": ""
+            },
+            {
+              "text": "Enter the Index of Nullified Timelines to recover lost civilian records",
+              "condition": "",
+              "mission": "Overthrow the Revision Bureau"
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 28,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          1350
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 23,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 69
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              55
+            ]
+          }
+        ],
+        "title": "Rewriting the Master Ledger",
+        "properties": {
+          "title": "Rewriting the Master Ledger",
+          "location": "Hall of Records",
+          "charactersPresent": "",
+          "text": "Narrator: Mrs. O uncorks the bottle of Unwritten Ink and dips the peacock feather quill into the shimmering liquid.\nNarrator: Across the Master Ledger page for Case Pair 409, she writes in bold, confident letters:\nMrs. O: \"Mr. D and Mrs. O are permanently, eternally immune to administrative revision. Their marriage is absolute, unwritten, and unerasable.\"\nNarrator: As the ink touches the parchment, brilliant golden light flares across the room.\nMr. D: Look at the stone walls... the grey courthouse architecture is dissolving back into warm sunlit air!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/hall-of-records.png",
+          "backgroundName": "hall-of-records.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "true_names",
+          "startMission": "",
+          "completeMission": "Reclaim Your Real Names",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 29,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          1350
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 24,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 51
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              56
+            ]
+          }
+        ],
+        "title": "Confrontation in the Courtroom",
+        "properties": {
+          "title": "Confrontation in the Courtroom",
+          "location": "Forgotten Courtroom",
+          "charactersPresent": "",
+          "text": "Narrator: Heavy oak doors slam shut behind Mrs. O and Mr. D as they step into the center aisle of the Forgotten Courtroom.\nNarrator: High on the judicial bench stand Sheriff Harry Persad and Sheriff Sig Cho, their stamping rods glowing with angry purple light.\nSheriff Harry Persad: You are in violation of the Celestial Protocol, Case Pair 409!\nSheriff Sig Cho: Surrender your files immediately or face total narrative dissolution!\nMr. D: We surrender nothing to unauthorized clerks!\nMrs. O: We hold the Unwritten Ink and the Black Token. Your jurisdiction is revoked!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/forgotten-courtroom.png",
+          "backgroundName": "forgotten-courtroom.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "cosmic_protocol",
+          "startMission": "Decipher the Celestial Protocol",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 30,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          1350
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 25,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 75
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              57
+            ]
+          }
+        ],
+        "title": "The Rooftop Ascent",
+        "properties": {
+          "title": "The Rooftop Ascent",
+          "location": "Rooftop",
+          "charactersPresent": "",
+          "text": "Narrator: The heavy iron door at the top of the stairwell bursts open, letting in cold wind and the bright golden light of sunset.\nNarrator: Below them, the sprawling city skyline looks clearer and more real than ever before.\nRenegade Janitor: Look! The courthouse building is shrinking! The citizens are pouring out into the street below!\nMrs. O: We did it, Henry. The whole building is breaking apart!\nMr. D: Let me hold your hand as we walk down to the street. We're going home.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/rooftop.png",
+          "backgroundName": "rooftop.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "exit_found",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 31,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          100,
+          1590
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 30,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 55
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              58
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              59
+            ]
+          }
+        ],
+        "title": "Master Ledger Verification",
+        "properties": {
+          "title": "Master Ledger Verification",
+          "condition": "has_item('unwritten_ink') has_knowledge('true_names')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 32,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          400,
+          1590
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 31,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 56
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              60
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              61
+            ]
+          }
+        ],
+        "title": "Celestial Protocol Audit",
+        "properties": {
+          "title": "Celestial Protocol Audit",
+          "condition": "has_item('black_token') has_knowledge('cosmic_protocol')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 33,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          700,
+          1590
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 32,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 57
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              62
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              63
+            ]
+          }
+        ],
+        "title": "Rooftop Escape Verification",
+        "properties": {
+          "title": "Rooftop Escape Verification",
+          "condition": "has_knowledge('exit_found') has_item('master_ledger_page')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 34,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          1590
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 36,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 58
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - Authors of Reality",
+        "properties": {
+          "title": "Ending - Authors of Reality",
+          "location": "Mr. D's House",
+          "charactersPresent": "",
+          "text": "Narrator: With the Unwritten Ink, Mrs. O and Mr. D rewrite the entire bureaucratic system out of existence.\nNarrator: They wake up in their own sunlit bedroom. The notice on the front door has vanished completely.\nMrs. O: Do you feel any different, Henry?\nMr. D: I feel like our past belongs to us now. Completely, permanently, and forever.\nNarrator: Together, they step outside onto their porch, ready to live a life written entirely by their own hands.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/mr-d-s-house.png",
+          "backgroundName": "mr-d-s-house.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "Reclaim Your Real Names",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 35,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          1590
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 37,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 59
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - The Permanent Resistance",
+        "properties": {
+          "title": "Ending - The Permanent Resistance",
+          "location": "Interview Room",
+          "charactersPresent": "",
+          "text": "Narrator: Without their true birth names, the Unwritten Ink only partially shields them from bureaucratic oversight.\nNarrator: Every year, Sheriff Harry Persad and Sheriff Sig Cho return to offer a new compromise.\nSheriff Harry Persad: Sign here to extend your memory permits for another decade.\nMrs. O: We will sign nothing that alters our love.\nMr. D: We remain together, fighting the bureau step by step, unyielding and untamed.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/interview-room.png",
+          "backgroundName": "interview-room.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 36,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          1830
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 38,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 60
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - Overthrow of the Sheriffs",
+        "properties": {
+          "title": "Ending - Overthrow of the Sheriffs",
+          "location": "Forgotten Courtroom",
+          "charactersPresent": "",
+          "text": "Narrator: Mr. D places the Black Token onto the judge's gavel stand.\nNarrator: A blinding pulse of white light shatters the gavels held by Sheriff Harry Persad and Sheriff Sig Cho.\nSheriff Sig Cho: Impossible... the Celestial Protocol has been overridden!\nSheriff Harry Persad: The office... is dissolved!\nNarrator: The courtroom crumbles into dust as Mrs. O and Mr. D walk out as victors over the cosmic bureaucracy.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/forgotten-courtroom.png",
+          "backgroundName": "forgotten-courtroom.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "Decipher the Celestial Protocol",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 37,
+        "type": "vnovel/passthrough",
+        "pos": [
+          400,
+          1830
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 39,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 61
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - Eternal Guardians of Memory",
+        "properties": {
+          "title": "Ending - Eternal Guardians of Memory",
+          "location": "Observation Hall",
+          "charactersPresent": "",
+          "text": "Narrator: Lacking full cosmic protocol knowledge, the Black Token creates a temporal lock.\nNarrator: The Sheriff's Office freezes in time around them.\nMrs. O: The sheriffs can't touch us, but we can't leave either.\nMr. D: Then we stand guard together forever, protecting humanity from revision.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/observation-hall.png",
+          "backgroundName": "observation-hall.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 38,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          1830
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 40,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 62
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - The Great Emancipation",
+        "properties": {
+          "title": "Ending - The Great Emancipation",
+          "location": "Exit",
+          "charactersPresent": "",
+          "text": "Narrator: Carrying the Master Ledger page, Mrs. O and Mr. D lead hundreds of freed citizens out into the city streets.\nNarrator: As the citizens step into the sunlight, their names and histories instantly restore.\nRenegade Janitor: You saved us all!\nMrs. O: We saved each other.\nNarrator: Hand in hand, Mr. D and Mrs. O lead the newly freed populace into a bright, unscripted future.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/exit.png",
+          "backgroundName": "exit.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "Reclaim Your Real Names",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 39,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1000,
+          1830
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 41,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 63
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - Quiet Freedom",
+        "properties": {
+          "title": "Ending - Quiet Freedom",
+          "location": "Exit",
+          "charactersPresent": "",
+          "text": "Narrator: Though they didn't retrieve the Master Ledger page, their escape disrupts the local office's jurisdiction.\nNarrator: They slip into the crowd of the city, anonymous and united.\nMr. D: The office may still be out there somewhere.\nMrs. O: Let them come. As long as we're together, they can never erase us.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/exit.png",
+          "backgroundName": "exit.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 40,
+        "type": "vnovel/choice",
+        "pos": [
+          1300,
+          1830
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 47,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 38
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Proceed directly into the Vault Security Chamber",
+            "type": -1,
+            "links": [
+              64
+            ],
+            "label": "Proceed directly ..."
+          },
+          {
+            "name": "Use the High Auditor's combination to unlock the Master Core",
+            "type": -1,
+            "links": [
+              65
+            ],
+            "label": "Use the High Audi..."
+          },
+          {
+            "name": "Return to the Master Administrative Suite to counter-audit the records",
+            "type": -1,
+            "links": [
+              66
+            ],
+            "label": "Return to the Mas..."
+          }
+        ],
+        "title": "Sub-Level 4 Security Crossroads",
+        "properties": {
+          "title": "Sub-Level 4 Security Crossroads",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Proceed directly into the Vault Security Chamber",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Use the High Auditor's combination to unlock the Master Core",
+              "condition": "has_knowledge('vault_combination')",
+              "mission": ""
+            },
+            {
+              "text": "Return to the Master Administrative Suite to counter-audit the records",
+              "condition": "",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 41,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          2070
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 26,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 91
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              67
+            ]
+          }
+        ],
+        "title": "The Vault Security Chamber",
+        "properties": {
+          "title": "The Vault Security Chamber",
+          "location": "Sub-Level 4 Security",
+          "charactersPresent": "",
+          "text": "Narrator: High-voltage copper conduits hum along the dark stone walls of Sub-Level 4.\nVoice Behind Door: Unauthorized entry detected. Case Pair 409 identity purge commencing in three minutes.\nMr. D: Look at the central control console... it has an obsidian slot for the Black Token!\nMrs. O: If we insert the Black Token, it will short-circuit their master memory core and restore everyone's original lives!\nVoice Behind Door: Warning. Core reset will permanently delete the Revision Bureau.\nMr. D: Good. That's exactly why we're here.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/sub-level-4-security.png",
+          "backgroundName": "sub-level-4-security.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "vault_combination",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 42,
+        "type": "vnovel/choice",
+        "pos": [
+          400,
+          2070
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 33,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 67
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Insert the Black Token into the Master Core console",
+            "type": -1,
+            "links": [
+              68
+            ],
+            "label": "Insert the Black ..."
+          },
+          {
+            "name": "Use the Unwritten Ink to reprogram the core matrix",
+            "type": -1,
+            "links": [
+              69
+            ],
+            "label": "Use the Unwritten..."
+          }
+        ],
+        "title": "Core Override Execution",
+        "properties": {
+          "title": "Core Override Execution",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Insert the Black Token into the Master Core console",
+              "condition": "has_item('black_token')",
+              "mission": ""
+            },
+            {
+              "text": "Use the Unwritten Ink to reprogram the core matrix",
+              "condition": "has_item('unwritten_ink')",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 43,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          2070
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 52,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 65
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              70
+            ]
+          }
+        ],
+        "title": "Deciphering the Vault Lock",
+        "properties": {
+          "title": "Deciphering the Vault Lock",
+          "location": "Sub-Level 4 Security",
+          "charactersPresent": "",
+          "text": "Narrator: Mr. D steps up to the brass combination dials and carefully enters the sequence 7-14-21 found in the Auditor's office.\nVoice Behind Door: Combination accepted. Executive Override Mode activated.\nNarrator: The massive blast doors slide into the floor, revealing the glowing crystal heart of the building's reality engine.\nMrs. O: Look at the crystal... it's pulsing with gold light!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/sub-level-4-security.png",
+          "backgroundName": "sub-level-4-security.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "cosmic_protocol",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 44,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          1000,
+          2070
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 42,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 70
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              71
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              72
+            ]
+          }
+        ],
+        "title": "Core Reset Authorization Check",
+        "properties": {
+          "title": "Core Reset Authorization Check",
+          "condition": "has_item('black_token') has_knowledge('vault_combination')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 45,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          2070
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 49,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 71
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              73
+            ]
+          }
+        ],
+        "title": "The High Auditor's Surrender",
+        "properties": {
+          "title": "The High Auditor's Surrender",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: The High Auditor drops his silver quill as alarms blare across every floor of the building.\nHigh Auditor: You... you have reversed the master clock! All pending revision orders have been voided!\nMr. D: Your bureau has no power over people who know who they are.\nMrs. O: Effective immediately, the Revision Bureau is permanently closed.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "true_names",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 46,
+        "type": "vnovel/choice",
+        "pos": [
+          100,
+          2310
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 54,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 73
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Issue a district-wide Counter-Audit Directive",
+            "type": -1,
+            "links": [
+              74
+            ],
+            "label": "Issue a district-..."
+          },
+          {
+            "name": "Escort the freed citizens to the rooftop exit",
+            "type": -1,
+            "links": [
+              75
+            ],
+            "label": "Escort the freed ..."
+          }
+        ],
+        "title": "Final Counter-Audit Protocol",
+        "properties": {
+          "title": "Final Counter-Audit Protocol",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Issue a district-wide Counter-Audit Directive",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Escort the freed citizens to the rooftop exit",
+              "condition": "",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 47,
+        "type": "vnovel/passthrough",
+        "pos": [
+          400,
+          2310
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 48,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 39
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              76
+            ]
+          }
+        ],
+        "title": "Exposing Secret Revision Bureau Memos",
+        "properties": {
+          "title": "Exposing Secret Revision Bureau Memos",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: Mrs. O uses the stolen clerk stamp to break the lead seal on a black leather folder marked TOP SECRET: DISTRICT AUDIT.\nMrs. O: Henry, look at this memo signed by Sheriff Harry Persad and Sheriff Sig Cho... \"The Revision Bureau is an unauthorized rogue department operating without municipal approval.\"\nMr. D: They aren't cosmic judges! They're just rogue archivists who stole an old reality engine!\nMrs. O: Now we have the proof we need to shut them down forever!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "reality_revision",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 48,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          2310
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 56,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 90
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              77
+            ]
+          }
+        ],
+        "title": "Executing the Counter-Audit Directive",
+        "properties": {
+          "title": "Executing the Counter-Audit Directive",
+          "location": "Master Administrative Suite",
+          "charactersPresent": "",
+          "text": "Narrator: Mr. D firmly presses the clerk stamp onto the Master Counter-Audit Directive.\nNarrator: A wave of golden light ripples out from the desk, washing down every corridor and dissolving every lead notice in the city.\nMrs. O: It's over, Henry. The whole system has been shut down!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/master-administrative-suite.png",
+          "backgroundName": "master-administrative-suite.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "archivist_secret",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 49,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          1000,
+          2310
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 53,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 76
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              78
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              79
+            ]
+          }
+        ],
+        "title": "Counter-Audit Proof Check",
+        "properties": {
+          "title": "Counter-Audit Proof Check",
+          "condition": "has_item('clerk_stamp') has_knowledge('reality_revision')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 50,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          2310
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 57,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 77
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - System Administrators of Freedom",
+        "properties": {
+          "title": "Ending - System Administrators of Freedom",
+          "location": "Exit",
+          "charactersPresent": "",
+          "text": "Narrator: The monolithic granite courthouse melts away like snow, turning into a bright public park filled with blooming trees.\nNarrator: Sheriff Harry Persad and Sheriff Sig Cho vanish like shadows under a midday sun.\nMr. D: We didn't just defeat their office... we gave everyone their lives back.\nMrs. O: And no clerk will ever try to write our story again.\nNarrator: Hand in hand, Mr. D and Mrs. O walk together out of the park and back to their home.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/exit.png",
+          "backgroundName": "exit.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "Expose the False Summons",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 51,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          2550
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 27,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 54
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              80
+            ]
+          }
+        ],
+        "title": "The Index of Nullified Timelines",
+        "properties": {
+          "title": "The Index of Nullified Timelines",
+          "location": "Index of Nullified Timelines",
+          "charactersPresent": "",
+          "text": "Narrator: Below the Basement Archive lies a cold cavern illuminated by floating blue lanterns.\nNarrator: Countless leather-bound volumes rest on iron shelves stretching into infinity.\nSenior Registrar: You shouldn't be down here, Case 409. This is where erased years go to rot.\nMr. D: Take this Archival Lantern, Mrs. O. Its light reveals text written in invisible lead ink.\nMrs. O: Look at this shelf... \"The Unseen Third Sheriff.\" It says there isn't just Persad and Cho... there is a third sheriff who operates in secret!\nMr. D: Then we uncover the Third Sheriff before we trigger the system reset!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/index-of-nullified-timelines.png",
+          "backgroundName": "index-of-nullified-timelines.png",
+          "showCharacterImages": true,
+          "rewardItems": "archival_lantern",
+          "rewardKnowledge": "fourth_sheriff_secret",
+          "startMission": "Overthrow the Revision Bureau",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 52,
+        "type": "vnovel/choice",
+        "pos": [
+          400,
+          2550
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 34,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 80
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Search for the Bureau of Lost Marriages ledger",
+            "type": -1,
+            "links": [
+              81
+            ],
+            "label": "Search for the Bu..."
+          },
+          {
+            "name": "Confront the Chief Protocol Officer guarding the lower core",
+            "type": -1,
+            "links": [
+              82
+            ],
+            "label": "Confront the Chie..."
+          },
+          {
+            "name": "Seek out the refuge of the Unseen Third Sheriff",
+            "type": -1,
+            "links": [
+              83
+            ],
+            "label": "Seek out the refu..."
+          }
+        ],
+        "title": "Navigating the Nullified Index",
+        "properties": {
+          "title": "Navigating the Nullified Index",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Search for the Bureau of Lost Marriages ledger",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Confront the Chief Protocol Officer guarding the lower core",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Seek out the refuge of the Unseen Third Sheriff",
+              "condition": "has_knowledge('fourth_sheriff_secret')",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 54,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          2550
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 43,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 81
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              84
+            ]
+          }
+        ],
+        "title": "The Bureau of Lost Marriages",
+        "properties": {
+          "title": "The Bureau of Lost Marriages",
+          "location": "Index of Nullified Timelines",
+          "charactersPresent": "",
+          "text": "Narrator: In a dusty circular chamber, thousands of wedding rings float in glass jars, each labeled with a erased citizen ID.\nChief Protocol Officer: Stand back! These records are property of the District Auditor!\nMrs. O: These aren't records; these are people's lives and memories!\nMr. D: We hold the Master Clearance Stamp. Stand down, Officer!\nChief Protocol Officer: Your stamp cannot override the Chief Protocol... unless you hold the Obsidian Pass!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/index-of-nullified-timelines.png",
+          "backgroundName": "index-of-nullified-timelines.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "ledger_location",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 55,
+        "type": "vnovel/choice",
+        "pos": [
+          1000,
+          2550
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 50,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 84
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Use the Unwritten Ink to overwrite the Chief Protocol",
+            "type": -1,
+            "links": [
+              85
+            ],
+            "label": "Use the Unwritten..."
+          },
+          {
+            "name": "Use the Archival Lantern to reveal the Officer's real birth name",
+            "type": -1,
+            "links": [
+              86
+            ],
+            "label": "Use the Archival ..."
+          },
+          {
+            "name": "Retreat to Sub-Level 4 Security to trigger the core reset",
+            "type": -1,
+            "links": [
+              87
+            ],
+            "label": "Retreat to Sub-Le..."
+          }
+        ],
+        "title": "Resolving the Protocol Officer Standoff",
+        "properties": {
+          "title": "Resolving the Protocol Officer Standoff",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Use the Unwritten Ink to overwrite the Chief Protocol",
+              "condition": "has_item('unwritten_ink')",
+              "mission": ""
+            },
+            {
+              "text": "Use the Archival Lantern to reveal the Officer's real birth name",
+              "condition": "has_item('archival_lantern')",
+              "mission": ""
+            },
+            {
+              "text": "Retreat to Sub-Level 4 Security to trigger the core reset",
+              "condition": "",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 57,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          2550
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 44,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 85
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              88
+            ]
+          }
+        ],
+        "title": "Unmasking the Protocol Officer",
+        "properties": {
+          "title": "Unmasking the Protocol Officer",
+          "location": "Index of Nullified Timelines",
+          "charactersPresent": "",
+          "text": "Narrator: As Mrs. O shines the Archival Lantern onto the Officer's silver badge, glowing letters appear across his chest.\nMrs. O: Your name isn't Chief Protocol Officer... your name is Arthur Vance! You were erased in 1988!\nChief Protocol Officer: I... I had a name? A real name?\nMr. D: The Bureau erased your life and forced you to guard their files. Join us, Arthur!\nChief Protocol Officer: Take this Obsidian Pass... it unlocks the chamber of the Unseen Third Sheriff!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/index-of-nullified-timelines.png",
+          "backgroundName": "index-of-nullified-timelines.png",
+          "showCharacterImages": true,
+          "rewardItems": "obsidian_pass",
+          "rewardKnowledge": "cosmic_protocol",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 59,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          2790
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 51,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 88
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              89
+            ]
+          }
+        ],
+        "title": "The Sanctuary of the Unseen Sheriff",
+        "properties": {
+          "title": "The Sanctuary of the Unseen Sheriff",
+          "location": "Observation Hall",
+          "charactersPresent": "",
+          "text": "Narrator: Behind a heavy bronze door sits a quiet room filled with brass telescopes pointing up at the night sky.\nNarrator: In a high leather chair sits the Unseen Third Sheriff, holding a silver pocket watch.\nUnseen Third Sheriff: Thank you for coming, Case Pair 409. I have been waiting fifty years for a couple strong enough to breach this floor.\nMrs. O: Are you here to revise us too?\nUnseen Third Sheriff: No. I am here to witness the moment human devotion destroys our artificial machinery. Take my watch... it unlocks the final counter-audit directive!",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/observation-hall.png",
+          "backgroundName": "observation-hall.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "fourth_sheriff_secret",
+          "startMission": "",
+          "completeMission": "Overthrow the Revision Bureau",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 60,
+        "type": "vnovel/logic_gate",
+        "pos": [
+          400,
+          2790
+        ],
+        "size": [
+          220,
+          80
+        ],
+        "flags": {},
+        "order": 55,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 89
+          }
+        ],
+        "outputs": [
+          {
+            "name": "True Path",
+            "type": -1,
+            "links": [
+              90
+            ]
+          },
+          {
+            "name": "False Path",
+            "type": -1,
+            "links": [
+              91
+            ]
+          }
+        ],
+        "title": "Unseen Sheriff Verification",
+        "properties": {
+          "title": "Unseen Sheriff Verification",
+          "condition": "has_item('obsidian_pass') has_knowledge('fourth_sheriff_secret')",
+          "location": "",
+          "text": ""
+        }
+      },
+      {
+        "id": 69,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          2790
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 45,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 83
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": []
+          }
+        ],
+        "title": "Ending - Sovereignty of Memory",
+        "properties": {
+          "title": "Ending - Sovereignty of Memory",
+          "location": "Observation Hall",
+          "charactersPresent": "",
+          "text": "Narrator: Guided by the Unseen Third Sheriff, Mrs. O and Mr. D use the pocket watch to reset the building's timeline core.\nNarrator: The courthouse silently folds into a single sheet of blank paper, leaving only the sky and stars above.\nMrs. O: We did it, Henry. They can never erase anyone again.\nMr. D: Our memories, our names, our marriage... belong to us forever.\nNarrator: Together, they walk out into a free and unwritten world under the starlight.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/observation-hall.png",
+          "backgroundName": "observation-hall.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "Overthrow the Revision Bureau",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 2,
+        "type": "vnovel/choice",
+        "pos": [
+          400,
+          150
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 1,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Search the home study for older records and family heirlooms",
+            "type": -1,
+            "links": [
+              2
+            ],
+            "label": "Search the home s..."
+          },
+          {
+            "name": "Attempt to dial the emergency dispatch number on the lead seal",
+            "type": -1,
+            "links": [
+              3
+            ],
+            "label": "Attempt to dial t..."
+          },
+          {
+            "name": "Gather your coats and head directly to the Sheriff's Office lobby",
+            "type": -1,
+            "links": [
+              4
+            ],
+            "label": "Gather your coats..."
+          }
+        ],
+        "title": "Preparations at Home",
+        "properties": {
+          "title": "Preparations at Home",
+          "location": "",
+          "background": "assets/backgrounds/mr-d-s-house.png",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Search the home study for older records and family heirlooms",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Attempt to dial the emergency dispatch number on the lead seal",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Gather your coats and head directly to the Sheriff's Office lobby",
+              "condition": "",
+              "mission": ""
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 6,
+        "type": "vnovel/choice",
+        "pos": [
+          100,
+          390
+        ],
+        "size": {
+          "0": 240,
+          "1": 110
+        },
+        "flags": {},
+        "order": 5,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 18
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Demand an immediate formal interview with Sheriff Harry Persad",
+            "type": -1,
+            "links": [
+              8
+            ],
+            "label": "Demand an immedia..."
+          },
+          {
+            "name": "Intercept Sheriff Sig Cho in the interview corridor",
+            "type": -1,
+            "links": [
+              9
+            ],
+            "label": "Intercept Sheriff..."
+          },
+          {
+            "name": "Discreetly mingle with the waiting citizens in the lobby",
+            "type": -1,
+            "links": [
+              10
+            ],
+            "label": "Discreetly mingle..."
+          },
+          {
+            "name": "Use the brass key to unlock the restricted sub-level archive door",
+            "type": -1,
+            "links": [
+              11
+            ],
+            "label": "Use the brass key..."
+          }
+        ],
+        "title": "Lobby Navigation Strategy",
+        "properties": {
+          "title": "Lobby Navigation Strategy",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Demand an immediate formal interview with Sheriff Harry Persad",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Intercept Sheriff Sig Cho in the interview corridor",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Discreetly mingle with the waiting citizens in the lobby",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Use the brass key to unlock the restricted sub-level archive door",
+              "condition": "has_item('brass_key')",
+              "mission": "Infiltrate the Lower Archive"
+            }
+          ],
+          "text": ""
+        }
+      },
+      {
+        "id": 5,
+        "type": "vnovel/passthrough",
+        "pos": [
+          1300,
+          150
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 4,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 44
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              7
+            ]
+          }
+        ],
+        "title": "Arrival at the Monolithic Courthouse",
+        "properties": {
+          "title": "Arrival at the Monolithic Courthouse",
+          "location": "Sheriff's Office Lobby",
+          "charactersPresent": "",
+          "text": "Narrator: The Sheriff's Office occupies an imposing granite courthouse that looms five stories higher than the surrounding city buildings.\nNarrator: Inside the lobby, the ceiling stretches into shadow, and massive brass wall clocks tick counter-clockwise at irregular intervals.\nNarrator: Behind a waist-high marble counter sits the Senior Receptionist, systematically stamping stack after stack of grey manila folders.\nSenior Receptionist: Welcome to Floor 1, Case Pair 409. Please attach these brass visitor badges to your lapels immediately.\nMr. D: We want to speak with whoever issued this notice.\nSenior Receptionist: Everyone wants to speak with the issuers, sir. But the sheriffs do not handle inquiries; they handle execution of revisions.\nMrs. O: We aren't leaving until we inspect our file.\nSenior Receptionist: Your file is currently descending toward the Basement Archive for evening processing. If you wish to catch it, I suggest you move quickly.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/sheriff-s-office-lobby.png",
+          "backgroundName": "sheriff-s-office-lobby.png",
+          "showCharacterImages": true,
+          "rewardItems": "visitor_badge",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 8,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          390
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 7,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 9
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              13
+            ]
+          }
+        ],
+        "title": "Interview with Sheriff Sig Cho",
+        "properties": {
+          "title": "Interview with Sheriff Sig Cho",
+          "location": "Interview Room",
+          "charactersPresent": "",
+          "text": "Narrator: Sheriff Sig Cho stands near a tall stained-glass window that looks out onto an empty gray void where the street should be.\nNarrator: He slowly polishes a heavy steel stamping rod engraved with the word NULLIFIED.\nSheriff Sig Cho: I admire couples like you. So determined, so attached to your personal continuity.\nMr. D: We aren't going to let you rewrite our past.\nSheriff Sig Cho: You misunderstand your position. Your past has already been rewritten four times. You simply haven't noticed the seam lines yet.\nMrs. O: What seam lines?\nSheriff Sig Cho: Have you ever looked at your wedding album and felt like the weather was slightly different than you remembered? That was our third draft.\nMr. D: This ends today, Sheriff. We're finding the master ledger.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/interview-room.png",
+          "backgroundName": "interview-room.png",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "reality_revision",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 3,
+        "type": "vnovel/passthrough",
+        "pos": [
+          700,
+          150
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 2,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 2
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              5
+            ]
+          }
+        ],
+        "title": "The Hourglass Key",
+        "properties": {
+          "title": "The Hourglass Key",
+          "location": "Mr. D's House",
+          "charactersPresent": "",
+          "text": "Narrator: Mrs. O uses a brass hairpin to unlock the bottom drawer of their Victorian desk while Mr. D double-checks their old passports.\nNarrator: Beneath a stack of old land deeds lies a heavy iron box wrapped in faded velvet.\nNarrator: Inside rests a hand-carved brass key with a handle shaped like an hourglass, accompanied by an index card written in glowing silver ink.\nMr. D: I've owned this desk for twenty years, and I swear this box was never here yesterday.\nMrs. O: Read the card, Henry... it lists our original birth names from before we met, alongside dates that haven't happened yet.\nMr. D: \"Property of the Archival Sub-Levels. Master Key for File Pair 409.\"\nMrs. O: Whoever issued that notice has been cataloging our lives since before we even knew each other.\nMr. D: Slip the key into your coat pocket. If they have a vault downstairs, this key will unlock answers.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/mr-d-s-house.png",
+          "backgroundName": "mr-d-s-house.png",
+          "showCharacterImages": true,
+          "rewardItems": "brass_key",
+          "rewardKnowledge": "true_names",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 1,
+        "type": "vnovel/passthrough",
+        "pos": [
+          100,
+          147
+        ],
+        "size": [
+          240,
+          117
+        ],
+        "flags": {},
+        "order": 0,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": null
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              1
+            ]
+          }
+        ],
+        "title": "The Notice on the Mahogany Door",
+        "properties": {
+          "title": "The Notice on the Mahogany Door",
+          "location": "Mr. D's House",
+          "charactersPresent": "",
+          "text": "Narrator: Evening shadows stretch long across the quiet suburban street as Mr. D and Mrs. O return from their daily walk.\nNarrator: Taped precisely to the center of their mahogany front door is a thick parchment document sealed with heavy blue lead.\nNarrator: The seal bears an emblem of a pair of brass scales balancing an hourglass against a stack of filing cabinets.\nNarrator: OFFICE OF THE SHERIFF. MANDATORY APPEARANCE AND REALITY REVISION NOTICE.\nMrs. O: Look at the names printed at the top of the header... it's not just one of us. Both of our names are printed side-by-side in dark iron ink.\nMr. D: \"Case Pair 409. You are hereby instructed to present yourselves jointly at the District Courthouse, Floor 1, Desk B, between 9:00 AM and 5:00 PM.\"\nMrs. O: \"Failure to report as a unified pair will result in immediate retroactive nullification of marital records and personal identity schedules.\"\nMr. D: Retroactive nullification? They make it sound like our entire life together is an overdue library book.\nMrs. O: Look at the serving officers listed at the bottom... Sheriff Harry Persad and Sheriff Sig Cho.\nMr. D: I don't care how many sheriffs or clerks they have. We built our life together, line by line. No office is going to erase that.\nMrs. O: We go in together, we ask the hard questions together, and we leave together. Whatever this system is hiding, we uncover it.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "assets/backgrounds/mr-d-s-house.png",
+          "backgroundName": "mr-d-s-house.png",
+          "showCharacterImages": true,
+          "rewardItems": "sheriff_notice",
+          "rewardKnowledge": "notice_pattern",
+          "startMission": "Expose the False Summons",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      }
+    ],
+    "links": [
+      [
+        1,
+        1,
+        0,
+        2,
+        0,
+        -1
+      ],
+      [
+        2,
+        2,
+        0,
+        3,
+        0,
+        -1
+      ],
+      [
+        3,
+        2,
+        1,
+        4,
+        0,
+        -1
+      ],
+      [
+        4,
+        2,
+        2,
+        5,
+        0,
+        -1
+      ],
+      [
+        5,
+        3,
+        0,
+        5,
+        0,
+        -1
+      ],
+      [
+        6,
+        4,
+        0,
+        5,
+        0,
+        -1
+      ],
+      [
+        7,
+        5,
+        0,
+        6,
+        0,
+        -1
+      ],
+      [
+        8,
+        6,
+        0,
+        7,
+        0,
+        -1
+      ],
+      [
+        9,
+        6,
+        1,
+        8,
+        0,
+        -1
+      ],
+      [
+        10,
+        6,
+        2,
+        9,
+        0,
+        -1
+      ],
+      [
+        11,
+        6,
+        3,
+        12,
+        0,
+        -1
+      ],
+      [
+        12,
+        7,
+        0,
+        10,
+        0,
+        -1
+      ],
+      [
+        13,
+        8,
+        0,
+        10,
+        0,
+        -1
+      ],
+      [
+        14,
+        9,
+        0,
+        10,
+        0,
+        -1
+      ],
+      [
+        15,
+        10,
+        0,
+        11,
+        0,
+        -1
+      ],
+      [
+        16,
+        10,
+        1,
+        12,
+        0,
+        -1
+      ],
+      [
+        17,
+        10,
+        2,
+        13,
+        0,
+        -1
+      ],
+      [
+        18,
+        11,
+        0,
+        6,
+        0,
+        -1
+      ],
+      [
+        19,
+        11,
+        1,
+        14,
+        0,
+        -1
+      ],
+      [
+        20,
+        11,
+        2,
+        15,
+        0,
+        -1
+      ],
+      [
+        21,
+        11,
+        3,
+        16,
+        0,
+        -1
+      ],
+      [
+        22,
+        11,
+        4,
+        5,
+        0,
+        -1
+      ],
+      [
+        23,
+        12,
+        0,
+        10,
+        0,
+        -1
+      ],
+      [
+        24,
+        12,
+        1,
+        21,
+        0,
+        -1
+      ],
+      [
+        25,
+        12,
+        3,
+        23,
+        0,
+        -1
+      ],
+      [
+        26,
+        12,
+        4,
+        5,
+        0,
+        -1
+      ],
+      [
+        27,
+        13,
+        0,
+        10,
+        0,
+        -1
+      ],
+      [
+        28,
+        14,
+        0,
+        15,
+        0,
+        -1
+      ],
+      [
+        29,
+        15,
+        0,
+        17,
+        0,
+        -1
+      ],
+      [
+        30,
+        16,
+        0,
+        17,
+        0,
+        -1
+      ],
+      [
+        31,
+        17,
+        0,
+        18,
+        0,
+        -1
+      ],
+      [
+        32,
+        17,
+        1,
+        19,
+        0,
+        -1
+      ],
+      [
+        33,
+        18,
+        0,
+        20,
+        0,
+        -1
+      ],
+      [
+        34,
+        19,
+        0,
+        20,
+        0,
+        -1
+      ],
+      [
+        35,
+        20,
+        0,
+        21,
+        0,
+        -1
+      ],
+      [
+        36,
+        20,
+        1,
+        22,
+        0,
+        -1
+      ],
+      [
+        37,
+        20,
+        2,
+        23,
+        0,
+        -1
+      ],
+      [
+        38,
+        20,
+        3,
+        40,
+        0,
+        -1
+      ],
+      [
+        39,
+        20,
+        4,
+        47,
+        0,
+        -1
+      ],
+      [
+        40,
+        21,
+        0,
+        10,
+        0,
+        -1
+      ],
+      [
+        41,
+        21,
+        1,
+        24,
+        0,
+        -1
+      ],
+      [
+        42,
+        21,
+        2,
+        25,
+        0,
+        -1
+      ],
+      [
+        43,
+        21,
+        3,
+        26,
+        0,
+        -1
+      ],
+      [
+        44,
+        21,
+        4,
+        5,
+        0,
+        -1
+      ],
+      [
+        45,
+        22,
+        0,
+        21,
+        0,
+        -1
+      ],
+      [
+        46,
+        23,
+        0,
+        26,
+        0,
+        -1
+      ],
+      [
+        47,
+        24,
+        0,
+        26,
+        0,
+        -1
+      ],
+      [
+        48,
+        25,
+        0,
+        26,
+        0,
+        -1
+      ],
+      [
+        49,
+        26,
+        0,
+        27,
+        0,
+        -1
+      ],
+      [
+        50,
+        27,
+        0,
+        28,
+        0,
+        -1
+      ],
+      [
+        51,
+        27,
+        1,
+        29,
+        0,
+        -1
+      ],
+      [
+        52,
+        27,
+        2,
+        30,
+        0,
+        -1
+      ],
+      [
+        53,
+        27,
+        3,
+        41,
+        0,
+        -1
+      ],
+      [
+        54,
+        27,
+        4,
+        51,
+        0,
+        -1
+      ],
+      [
+        55,
+        28,
+        0,
+        31,
+        0,
+        -1
+      ],
+      [
+        56,
+        29,
+        0,
+        32,
+        0,
+        -1
+      ],
+      [
+        57,
+        30,
+        0,
+        33,
+        0,
+        -1
+      ],
+      [
+        58,
+        31,
+        0,
+        34,
+        0,
+        -1
+      ],
+      [
+        59,
+        31,
+        1,
+        35,
+        0,
+        -1
+      ],
+      [
+        60,
+        32,
+        0,
+        36,
+        0,
+        -1
+      ],
+      [
+        61,
+        32,
+        1,
+        37,
+        0,
+        -1
+      ],
+      [
+        62,
+        33,
+        0,
+        38,
+        0,
+        -1
+      ],
+      [
+        63,
+        33,
+        1,
+        39,
+        0,
+        -1
+      ],
+      [
+        64,
+        40,
+        0,
+        41,
+        0,
+        -1
+      ],
+      [
+        65,
+        40,
+        1,
+        43,
+        0,
+        -1
+      ],
+      [
+        66,
+        40,
+        2,
+        15,
+        0,
+        -1
+      ],
+      [
+        67,
+        41,
+        0,
+        42,
+        0,
+        -1
+      ],
+      [
+        68,
+        42,
+        0,
+        44,
+        0,
+        -1
+      ],
+      [
+        69,
+        42,
+        1,
+        28,
+        0,
+        -1
+      ],
+      [
+        70,
+        43,
+        0,
+        44,
+        0,
+        -1
+      ],
+      [
+        71,
+        44,
+        0,
+        45,
+        0,
+        -1
+      ],
+      [
+        72,
+        44,
+        1,
+        41,
+        0,
+        -1
+      ],
+      [
+        73,
+        45,
+        0,
+        46,
+        0,
+        -1
+      ],
+      [
+        74,
+        46,
+        0,
+        48,
+        0,
+        -1
+      ],
+      [
+        75,
+        46,
+        1,
+        30,
+        0,
+        -1
+      ],
+      [
+        76,
+        47,
+        0,
+        49,
+        0,
+        -1
+      ],
+      [
+        77,
+        48,
+        0,
+        50,
+        0,
+        -1
+      ],
+      [
+        78,
+        49,
+        0,
+        48,
+        0,
+        -1
+      ],
+      [
+        79,
+        49,
+        1,
+        19,
+        0,
+        -1
+      ],
+      [
+        80,
+        51,
+        0,
+        52,
+        0,
+        -1
+      ],
+      [
+        81,
+        52,
+        0,
+        54,
+        0,
+        -1
+      ],
+      [
+        82,
+        52,
+        1,
+        57,
+        0,
+        -1
+      ],
+      [
+        83,
+        52,
+        2,
+        69,
+        0,
+        -1
+      ],
+      [
+        84,
+        54,
+        0,
+        55,
+        0,
+        -1
+      ],
+      [
+        85,
+        55,
+        0,
+        57,
+        0,
+        -1
+      ],
+      [
+        86,
+        55,
+        1,
+        59,
+        0,
+        -1
+      ],
+      [
+        87,
+        55,
+        2,
+        41,
+        0,
+        -1
+      ],
+      [
+        88,
+        57,
+        0,
+        59,
+        0,
+        -1
+      ],
+      [
+        89,
+        59,
+        0,
+        60,
+        0,
+        -1
+      ],
+      [
+        90,
+        60,
+        0,
+        48,
+        0,
+        -1
+      ],
+      [
+        91,
+        60,
+        1,
+        41,
+        0,
+        -1
+      ]
+    ],
+    "groups": [],
+    "config": {},
+    "version": 0.4
+  },
+  "globalVars": {
+    "characters": [
+      "Mrs. O",
+      "Mr. D",
+      "Sheriff Harry Persad",
+      "Sheriff Sig Cho",
+      "Senior Receptionist",
+      "Archival Clerk",
+      "Whispering Citizen",
+      "Renegade Janitor",
+      "High Auditor",
+      "The Archivist",
+      "Chief Protocol Officer",
+      "Senior Registrar",
+      "Voice Behind Door",
+      "Unseen Third Sheriff",
+      "Narrator"
+    ],
+    "locations": [
+      "Mr. D's House",
+      "Sheriff's Office Lobby",
+      "Waiting Room",
+      "Hall of Records",
+      "Endless Stairwell",
+      "Basement Archive",
+      "Forgotten Courtroom",
+      "Observation Hall",
+      "Sealed Corridor",
+      "Interview Room",
+      "Master Administrative Suite",
+      "The Reality Vault",
+      "Sub-Level 4 Security",
+      "Index of Nullified Timelines",
+      "Rooftop",
+      "Exit"
+    ],
+    "collectibles": [
+      "sheriff_notice",
+      "visitor_badge",
+      "brass_key",
+      "clerk_stamp",
+      "obsidian_pass",
+      "black_token",
+      "master_ledger_page",
+      "unwritten_ink",
+      "archival_lantern"
+    ],
+    "knowledge": [
+      "notice_pattern",
+      "stairwell_loop",
+      "reality_revision",
+      "true_names",
+      "archivist_secret",
+      "cosmic_protocol",
+      "vault_combination",
+      "ledger_location",
+      "fourth_sheriff_secret",
+      "exit_found"
+    ],
+    "missions": [
+      "Expose the False Summons",
+      "Infiltrate the Lower Archive",
+      "Rescue the Erased Citizens",
+      "Decipher the Celestial Protocol",
+      "Reclaim Your Real Names",
+      "Overthrow the Revision Bureau"
+    ]
+  },
+  "varMeta": {
+    "characters": {
+      "Mrs. O": {
+        "info": "an asian woman in her 50's, an accountant",
+        "image": "assets/characters/mrs-o-cutout.png",
+        "imageName": "mrs-o-cutout.png"
+      },
+      "Mr. D": {
+        "info": "a 48 year old wild artist with long gray hair and shabby t shirt ",
+        "image": "assets/characters/mr-d-cutout.png",
+        "imageName": "mr-d-cutout.png"
+      },
+      "Sheriff Harry Persad": {
+        "image": "assets/characters/sheriff-harry-persad-cutout.png",
+        "imageName": "sheriff-harry-persad-cutout.png"
+      },
+      "Sheriff Sig Cho": {
+        "image": "assets/characters/sheriff-sig-cho-cutout.png",
+        "imageName": "sheriff-sig-cho-cutout.png"
+      },
+      "Senior Receptionist": {
+        "image": "assets/characters/senior-receptionist-cutout.png",
+        "imageName": "senior-receptionist-cutout.png"
+      },
+      "Archival Clerk": {
+        "image": "assets/characters/archival-clerk-cutout.png",
+        "imageName": "archival-clerk-cutout.png"
+      },
+      "Whispering Citizen": {
+        "image": "assets/characters/whispering-citizen-cutout.png",
+        "imageName": "whispering-citizen-cutout.png"
+      },
+      "Renegade Janitor": {
+        "image": "assets/characters/renegade-janitor-cutout.png",
+        "imageName": "renegade-janitor-cutout.png"
+      },
+      "High Auditor": {
+        "image": "assets/characters/high-auditor-cutout.png",
+        "imageName": "high-auditor-cutout.png"
+      },
+      "The Archivist": {
+        "image": "assets/characters/the-archivist-cutout.png",
+        "imageName": "the-archivist-cutout.png"
+      },
+      "Chief Protocol Officer": {
+        "image": "assets/characters/chief-protocol-officer-cutout.png",
+        "imageName": "chief-protocol-officer-cutout.png"
+      },
+      "Senior Registrar": {
+        "image": "assets/characters/senior-registrar-cutout.png",
+        "imageName": "senior-registrar-cutout.png"
+      },
+      "Voice Behind Door": {
+        "image": "assets/characters/voice-behind-door-cutout.png",
+        "imageName": "voice-behind-door-cutout.png"
+      },
+      "Unseen Third Sheriff": {
+        "image": "assets/characters/unseen-third-sheriff-cutout.png",
+        "imageName": "unseen-third-sheriff-cutout.png"
+      },
+      "Narrator": {
+        "image": "assets/characters/narrator-cutout.png",
+        "imageName": "narrator-cutout.png"
+      }
+    },
+    "locations": {
+      "Mr. D's House": {
+        "background": "assets/backgrounds/mr-d-s-house.png",
+        "backgroundName": "mr-d-s-house.png"
+      },
+      "Sheriff's Office Lobby": {
+        "background": "assets/backgrounds/sheriff-s-office-lobby.png",
+        "backgroundName": "sheriff-s-office-lobby.png"
+      },
+      "Waiting Room": {
+        "background": "assets/backgrounds/waiting-room.png",
+        "backgroundName": "waiting-room.png"
+      },
+      "Hall of Records": {
+        "background": "assets/backgrounds/hall-of-records.png",
+        "backgroundName": "hall-of-records.png"
+      },
+      "Endless Stairwell": {
+        "background": "assets/backgrounds/endless-stairwell.png",
+        "backgroundName": "endless-stairwell.png",
+        "audioLoop": ""
+      },
+      "Basement Archive": {
+        "background": "assets/backgrounds/basement-archive.png",
+        "backgroundName": "basement-archive.png"
+      },
+      "Forgotten Courtroom": {
+        "background": "assets/backgrounds/forgotten-courtroom.png",
+        "backgroundName": "forgotten-courtroom.png"
+      },
+      "Observation Hall": {
+        "background": "assets/backgrounds/observation-hall.png",
+        "backgroundName": "observation-hall.png"
+      },
+      "Sealed Corridor": {
+        "background": "assets/backgrounds/sealed-corridor.png",
+        "backgroundName": "sealed-corridor.png"
+      },
+      "Interview Room": {
+        "background": "assets/backgrounds/interview-room.png",
+        "backgroundName": "interview-room.png"
+      },
+      "Master Administrative Suite": {
+        "background": "assets/backgrounds/master-administrative-suite.png",
+        "backgroundName": "master-administrative-suite.png"
+      },
+      "The Reality Vault": {
+        "background": "assets/backgrounds/the-reality-vault.png",
+        "backgroundName": "the-reality-vault.png"
+      },
+      "Sub-Level 4 Security": {
+        "background": "assets/backgrounds/sub-level-4-security.png",
+        "backgroundName": "sub-level-4-security.png"
+      },
+      "Index of Nullified Timelines": {
+        "background": "assets/backgrounds/index-of-nullified-timelines.png",
+        "backgroundName": "index-of-nullified-timelines.png"
+      },
+      "Rooftop": {
+        "background": "assets/backgrounds/rooftop.png",
+        "backgroundName": "rooftop.png"
+      },
+      "Exit": {
+        "background": "assets/backgrounds/exit.png",
+        "backgroundName": "exit.png"
+      }
+    }
+  },
+  "projectTitle": "The Office of the Sheriff: The Bureaucracy of Shadows",
+  "bookmarks": []
+}

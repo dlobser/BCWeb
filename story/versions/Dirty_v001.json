@@ -1,0 +1,394 @@
+{
+  "graphSchema": {
+    "last_node_id": 6,
+    "last_link_id": 5,
+    "nodes": [
+      {
+        "id": 3,
+        "type": "vnovel/passthrough",
+        "pos": [
+          640,
+          158
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 2,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 2
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              3
+            ]
+          }
+        ],
+        "properties": {
+          "title": "Dialogue",
+          "location": "Dark Forest",
+          "charactersPresent": "",
+          "text": "And so it was, getting down was better than getting dirty.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "",
+          "backgroundName": "",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 2,
+        "type": "vnovel/choice",
+        "pos": [
+          395,
+          296
+        ],
+        "size": {
+          "0": 194.8000030517578,
+          "1": 46
+        },
+        "flags": {},
+        "order": 1,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 1
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Fight the Goblin",
+            "type": -1,
+            "links": [
+              2
+            ],
+            "label": "Get Down"
+          },
+          {
+            "name": "Unlock the hidden...",
+            "type": -1,
+            "links": [
+              4
+            ],
+            "label": "Get Dirty"
+          }
+        ],
+        "properties": {
+          "title": "Path Selection",
+          "location": "",
+          "background": "",
+          "backgroundName": "",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "choices": [
+            {
+              "text": "Get Down",
+              "condition": "",
+              "mission": ""
+            },
+            {
+              "text": "Get Dirty",
+              "condition": "",
+              "mission": ""
+            }
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "type": "vnovel/passthrough",
+        "pos": [
+          905,
+          160
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 4,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 3
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": null
+          }
+        ],
+        "properties": {
+          "title": "Dialogue",
+          "location": "Dark Forest",
+          "charactersPresent": "",
+          "text": "{Old Joe}:Here's your knowledge",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "",
+          "backgroundName": "",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "Down",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 5,
+        "type": "vnovel/passthrough",
+        "pos": [
+          641,
+          349
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 3,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 4
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              5
+            ]
+          }
+        ],
+        "properties": {
+          "title": "Dialogue",
+          "location": "Dark Forest",
+          "charactersPresent": "",
+          "text": "{Lil Rabbit}: Did you hear that sound?\nThere was no sound to be heard\n{Old Joe}: Nope I heard nothing.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "",
+          "backgroundName": "",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 6,
+        "type": "vnovel/passthrough",
+        "pos": [
+          913,
+          355
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 5,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": 5
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": null
+          }
+        ],
+        "properties": {
+          "title": "Dialogue",
+          "location": "Dark Forest",
+          "charactersPresent": "",
+          "text": "{Old Joe}:Here's your knowledge",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "",
+          "backgroundName": "",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "Dirty",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      },
+      {
+        "id": 1,
+        "type": "vnovel/passthrough",
+        "pos": [
+          71,
+          296
+        ],
+        "size": [
+          240,
+          110
+        ],
+        "flags": {},
+        "order": 0,
+        "mode": 0,
+        "inputs": [
+          {
+            "name": "In",
+            "type": -1,
+            "link": null
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Out",
+            "type": -1,
+            "links": [
+              1
+            ]
+          }
+        ],
+        "properties": {
+          "title": "Dialogue",
+          "location": "Dark Forest",
+          "charactersPresent": "",
+          "text": "Old Joe: Hellooo there\n{Lil Rabbit}: What's the game?\n{Old Joe}: Game? I'm not here to play a game, I'm here to get dirty and down.",
+          "audioLoop": "",
+          "audioLoopName": "",
+          "audioOneShot": "",
+          "audioOneShotName": "",
+          "background": "",
+          "backgroundName": "",
+          "showCharacterImages": true,
+          "rewardItems": "",
+          "rewardKnowledge": "",
+          "startMission": "",
+          "completeMission": "",
+          "isChapterStart": false
+        }
+      }
+    ],
+    "links": [
+      [
+        1,
+        1,
+        0,
+        2,
+        0,
+        -1
+      ],
+      [
+        2,
+        2,
+        0,
+        3,
+        0,
+        -1
+      ],
+      [
+        3,
+        3,
+        0,
+        4,
+        0,
+        -1
+      ],
+      [
+        4,
+        2,
+        1,
+        5,
+        0,
+        -1
+      ],
+      [
+        5,
+        5,
+        0,
+        6,
+        0,
+        -1
+      ]
+    ],
+    "groups": [],
+    "config": {},
+    "version": 0.4
+  },
+  "globalVars": {
+    "characters": [
+      "Old Joe",
+      "Lil Rabbit"
+    ],
+    "locations": [
+      "Gas Station"
+    ],
+    "collectibles": [],
+    "knowledge": [
+      "Down",
+      "Dirty"
+    ],
+    "missions": []
+  },
+  "varMeta": {
+    "locations": {
+      "Gas Station": {
+        "info": "",
+        "background": "",
+        "audioLoop": ""
+      }
+    },
+    "characters": {
+      "Old Joe": {},
+      "Lil Rabbit": {}
+    },
+    "knowledge": {
+      "Down": {
+        "info": "Getting down is better than getting dirty"
+      },
+      "Dirty": {
+        "info": "The dirtiest thing is your pretty little mouth"
+      }
+    }
+  },
+  "projectTitle": "Untitled Story",
+  "bookmarks": []
+}
