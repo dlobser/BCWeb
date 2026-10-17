@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.production
+.claude/
 
 # Node.js
 node_modules/

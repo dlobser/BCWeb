@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Brain Candy VR — Altered States & Breathwork</title>
   <meta name="description" content="Official site for Brain Candy, a VR game and sensory experience. Contact braincandyapp@proton.me for app support only." />
 
@@ -43,137 +43,347 @@
   <meta name="twitter:description" content="VR sensory experience. Support: braincandyapp@proton.me" />
   <meta name="twitter:image" content="https://braincandyapp.com/src/images/splash.jpg" />
 
-  <meta name="theme-color" content="#0bbbf6" />
-  <link rel="canonical" href="https://braincandyapp.com/" />
-  <!-- ====== Required meta ====== -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brain Candy — Strobing Light Warning</title>
-  <meta name="description" content="Brain Candy — altered states in VR." />
-
-  <!-- ====== Rich link previews (Open Graph & Twitter) ====== -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Brain Candy" />
-  <meta property="og:site_name" content="Brain Candy" />
-  <meta property="og:description" content="Altered states in VR." />
-  <meta property="og:url" content="https://braincandyapp.com/" />
-  <meta property="og:image" content="https://braincandyapp.com/src/images/splash.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Brain Candy" />
-  <meta name="twitter:description" content="Altered states in VR." />
-  <meta name="twitter:image" content="https://braincandyapp.com/src/images/splash.jpg" />
-
-  <!-- Optional polish -->
-  <meta name="theme-color" content="#0bbbf6" />
+  <meta name="theme-color" content="#1a0612" />
   <link rel="canonical" href="https://braincandyapp.com/" />
 
   <!-- Icons -->
-  <link rel="icon" href="src/icons/favicon-32.png" sizes="32x32" />
-  <link rel="icon" href="src/icons/favicon-192.png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="src/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="src/images/BrainCandyIcon_64.png" />
+  <link rel="apple-touch-icon" href="src/images/BrainCandyIcon_64.png" />
 
-  <!-- Fonts & Bootstrap -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Fonts -->
+  <link rel="preload" href="src/fonts/Alba_modified.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="src/images/splash.jpg" as="image" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    :root{
-      --hotpink:#FF3366;
-      --sky:#33CCFF;
-      --overlay: rgba(0,0,0,.55);
-      --text-light:#e7f6ff;
+    :root {
+      --ink: #0d0309;
+      --pink: #ff6ec4;
+      --sky: #5fd3ff;
+      --lavender: #b08cff;
+      --sun: #ffd76e;
+      --alarm: #ff4d4d;
+      --text: #fff4fb;
+      --muted: rgba(255, 244, 251, .72);
     }
+
     @font-face {
       font-family: 'Carbon Block';
       src: url('src/fonts/Alba_modified.ttf') format('truetype');
       font-display: swap;
     }
 
-    /* Base */
-    html, body { height: 100%; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; }
     body {
-      font-family: 'Montserrat', sans-serif;
-      background:#000; color:#fff;
-      display:flex; flex-direction:column;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Montserrat', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--ink);
+      overflow-x: hidden;
     }
 
-    /* Hero */
-    .hero {
-      flex:1 0 auto;
-      display:flex; align-items:center; justify-content:center;
-      background-image:url('src/images/BC_BG.jpg');
-      background-size:512px; background-position:center; background-repeat:repeat;
-      position:relative; padding:48px 16px; text-align:center;
+    /* ===== Living background: WebGL tunnel ===== */
+    #tunnel {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
     }
-    .hero::before { content:""; position:absolute; inset:0; background:var(--overlay); }
-    .hero-content { position:relative; z-index:1; width:100%; max-width:960px; margin:0 auto; }
-
-    /* Rainbow title at the very top */
-    .rainbow-text {
-      font-family:'Carbon Block', sans-serif;
-      font-size: 8em; line-height: .92; margin: 0 0 12px 0; word-break: break-word;
+    .veil {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 62% 48% at 50% 50%, rgba(13,3,9,0) 0%, rgba(13,3,9,.18) 62%, rgba(13,3,9,.6) 100%),
+        linear-gradient(to bottom, rgba(13,3,9,.42), rgba(13,3,9,.08) 30%, rgba(13,3,9,.12) 70%, rgba(13,3,9,.6));
     }
-    .rainbow-text span:nth-child(1){ color:#f42335; } /* red */
-    .rainbow-text span:nth-child(2){ color:#2ef366; } /* green */
-    .rainbow-text span:nth-child(3){ color:#32a4f1; } /* blue */
-    .rainbow-text span:nth-child(4){ color:#f5f50d; } /* yellow */
-    .rainbow-text span:nth-child(5){ color:#f727f7; } /* pink */
-    .rainbow-text span:nth-child(6){ color:#1eeaea; } /* cyan */
-    .rainbow-text span:nth-child(7){ color:#f45e2b; } /* orange */
-    .rainbow-text span:nth-child(8){ color:#a529f8; } /* purple */
-    .rainbow-text span:nth-child(9){ color:#22e9e9; } /* light blue */
-    .rainbow-text span:nth-child(10){ color:#ee2ea1; } /* rose */
-    .rainbow-text .spacer { display:inline-block; width:.01em; } /* visual spacer for the space */
+    /* Fallback when WebGL isn't available: the old tiled background */
+    .no-gl #tunnel { display: none; }
+    .no-gl body { background: var(--ink) url('src/images/BC_BG.jpg') center / 512px repeat; }
+    .no-gl .veil { background: rgba(13,3,9,.55); }
 
-    /* Centerpiece image */
-    .brand-image {
-      display:block; margin:6px auto 18px auto;
-      width:min(500px, 90vw); height:auto; object-fit:contain;
-      filter: drop-shadow(0 12px 40px rgba(0,0,0,.45));
-    }
-
-    .subtitle {
-      color:#ff0000; opacity:.95; margin-bottom:20px;font-size:2rem;
+    /* ===== Stage ===== */
+    .stage {
+      position: relative;
+      z-index: 2;
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(14px, 2.6svh, 28px);
+      padding: max(52px, 5svh) 16px clamp(20px, 3svh, 44px);
+      text-align: center;
     }
 
-    /* Warning label */
-    .warning-text {
-      font-family:'Carbon Block', sans-serif;
-      font-size:3rem; line-height:1.0; margin:16px 0 18px 0;
-      color:#ff0000; letter-spacing:1px;
-      text-shadow:0 2px 18px rgba(255,0,0,.35);
+    /* Title: letters drift through the candy palette in a slow wave */
+    .title {
+      font-family: 'Carbon Block', sans-serif;
+      font-weight: normal;
+      font-size: clamp(3.2rem, min(12vw, 15svh), 9rem);
+      line-height: .95;
+      margin: 0;
+      text-shadow: 0 .05em 0 rgba(13,3,9,.55), 0 0 .35em rgba(13,3,9,.65);
+    }
+    .title .word { display: inline-block; white-space: nowrap; }
+    .title .word > span {
+      display: inline-block;
+      color: #f42335;
+      animation: candy 9s linear infinite, bob 3.6s ease-in-out infinite;
+      animation-delay: calc(var(--i) * -.55s), calc(var(--i) * -.22s);
+    }
+    @keyframes candy {
+      0%, 100% { color: #f42335; }
+      10% { color: #f45e2b; }
+      20% { color: #f5f50d; }
+      30% { color: #2ef366; }
+      40% { color: #1eeaea; }
+      50% { color: #32a4f1; }
+      60% { color: #a529f8; }
+      70% { color: #f727f7; }
+      80% { color: #ee2ea1; }
+      90% { color: #ff4f7a; }
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-.05em); }
     }
 
-    .button-group {
-      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+    /* Logo card: candy-ring border, breathes on a 10 s cycle, tilts toward the mouse */
+    .portal-wrap {
+      position: relative;
+      width: min(560px, 88vw, calc(40svh * 1.593));
+    }
+    .halo {
+      position: absolute;
+      inset: -14% -10%;
+      z-index: -1;
+      background: radial-gradient(closest-side, rgba(255,110,196,.55), rgba(95,211,255,.28) 55%, transparent 100%);
+      filter: blur(28px);
+      animation: halo 10s ease-in-out infinite;
+    }
+    .breathe { animation: breathe 10s ease-in-out infinite; }
+    .portal {
+      position: relative;
+      display: block;
+      aspect-ratio: 1440 / 904;
+      padding: 4px;
+      border-radius: 26px;
+      overflow: hidden;
+      isolation: isolate;
+      transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+      transition: transform .5s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 28px 70px rgba(0,0,0,.6);
+    }
+    .portal::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      z-index: -1;
+      background: conic-gradient(var(--pink), var(--sky), var(--lavender), var(--sun), var(--pink));
+      animation: spin 12s linear infinite;
+    }
+    .portal img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+    }
+    .portal::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 22px;
+      pointer-events: none;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 30%), rgba(255,255,255,.35), transparent 45%);
+      mix-blend-mode: soft-light;
+      opacity: var(--sheen, 0);
+      transition: opacity .4s;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.025); }
+    }
+    @keyframes halo {
+      0%, 100% { opacity: .7; }
+      50% { opacity: 1; }
+    }
+    @keyframes spin { to { transform: rotate(1turn); } }
+
+    /* Warning */
+    .warning {
+      display: inline-flex;
+      align-items: center;
+      gap: .6em;
+      margin: 0;
+      padding: .55em 1.15em .55em .9em;
+      border-radius: 999px;
+      background: rgba(30,2,6,.72);
+      border: 2px solid rgba(255,77,77,.85);
+      color: #ff5a5a;
+      font-weight: 800;
+      font-size: clamp(1rem, 2.6vw, 1.45rem);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      box-shadow: 0 0 24px rgba(255,40,40,.25);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .warning svg { width: 1.25em; height: 1.25em; flex: none; }
+
+    /* Buttons */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
     }
     .btn {
-      padding:12px 24px; border-radius:50px; border:none;
-      font-weight:700; min-width:200px;
-      transition:transform .2s, opacity .2s, box-shadow .2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5em;
+      min-width: 210px;
+      padding: 15px 30px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: .02em;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, background-position .4s ease;
     }
-    .btn:hover { transform:scale(1.05); opacity:.92; }
-    .btn-continue { background-color:var(--sky); box-shadow:0 8px 28px rgba(51,204,255,.28); }
-    .btn-warning  { background-color:var(--hotpink); box-shadow:0 8px 28px rgba(255,51,102,.28); }
+    .btn:hover { transform: translateY(-2px) scale(1.03); }
+    .btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .btn-enter {
+      color: #1a0612;
+      background: linear-gradient(110deg, var(--pink), var(--lavender) 35%, var(--sky) 65%, var(--pink));
+      background-size: 220% 100%;
+      box-shadow: 0 10px 34px rgba(255,110,196,.45), inset 0 1px 0 rgba(255,255,255,.5);
+    }
+    .btn-enter:hover {
+      color: #1a0612;
+      background-position: 100% 0;
+      box-shadow: 0 14px 42px rgba(95,211,255,.5), inset 0 1px 0 rgba(255,255,255,.5);
+    }
+    .btn-enter .arrow { transition: transform .2s ease; }
+    .btn-enter:hover .arrow { transform: translateX(4px); }
+    .btn-warning {
+      color: #ffe1e1;
+      background: rgba(20,2,6,.6);
+      border: 2px solid rgba(255,77,77,.8);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .btn-warning:hover {
+      color: #fff;
+      background: rgba(230,50,50,.9);
+      box-shadow: 0 10px 30px rgba(255,60,60,.4);
+    }
+
+    /* Pause / play motion */
+    .motion-toggle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      gap: .45em;
+      padding: .5em .9em;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(13,3,9,.55);
+      color: var(--muted);
+      font: 600 .78rem/1 'Montserrat', system-ui, sans-serif;
+      cursor: pointer;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+    .motion-toggle:hover { color: #fff; border-color: rgba(255,255,255,.5); }
+    .motion-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .motion-toggle svg { width: 1em; height: 1em; }
+    .motion-toggle .icon-play { display: none; }
+    .still .motion-toggle .icon-play { display: block; }
+    .still .motion-toggle .icon-pause { display: none; }
+
+    .still .title .word > span,
+    .still .breathe,
+    .still .halo,
+    .still .portal::before { animation-play-state: paused; }
 
     /* Footer */
-    .footer { background:#222; color:#fff; text-align:center; padding:20px; font-size:.95rem; }
+    .site-footer {
+      position: relative;
+      z-index: 2;
+      padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+      text-align: center;
+      font-size: .82rem;
+      color: var(--muted);
+      background: rgba(13,3,9,.55);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    .site-footer p { margin: 0 0 4px; }
+    .site-footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 18px;
+    }
+    .site-footer a { color: var(--text); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
 
-    /* Reduced motion */
+    /* Entrance */
+    .rise {
+      animation: rise .9s cubic-bezier(.2,.8,.2,1) both;
+      animation-delay: var(--d, 0s);
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+      to { opacity: 1; transform: none; filter: none; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .hero { background-image:none; background-color:#111; }
+      .rise { animation: none; }
+      .btn, .portal { transition: none; }
     }
 
-    /* Mobile tweaks */
-    @media (max-width: 768px){
-      .rainbow-text { font-size: 4em; }
-    }
-    @media (max-width: 480px){
-      .warning-text { font-size:2.2rem; }
+    @media (max-width: 520px) {
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 340px);
+      }
+      .btn { min-width: 0; width: 100%; }
+      .motion-toggle .label { display: none; }
+      .warning {
+        font-size: .9rem;
+        letter-spacing: .04em;
+        white-space: nowrap;
+        padding: .6em 1em .6em .8em;
+      }
     }
   </style>
+  <noscript>
+    <style>
+      #tunnel { display: none; }
+      body { background: #0d0309 url('src/images/BC_BG.jpg') center / 512px repeat; }
+      .veil { background: rgba(13,3,9,.55); }
+      .motion-toggle { display: none; }
+    </style>
+  </noscript>
+
   <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
@@ -193,67 +403,267 @@
     <!-- End Meta Pixel Code -->
 </head>
 <body>
-  <!-- ================= HERO (splash) ================= -->
-  <header class="hero" role="banner" aria-label="Brain Candy splash warning">
-    <div class="hero-content">
+  <canvas id="tunnel" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
 
-      <!-- COLORFUL TITLE AT TOP -->
-      <h1 class="rainbow-text" aria-label="Brain Candy">
-        <span>B</span><span>r</span><span>a</span><span>i</span><span>n</span>
-        <!-- <span class="spacer"></span> -->
-        <span>C</span><span>a</span><span>n</span><span>d</span><span>y</span>
-      </h1>
+  <button type="button" class="motion-toggle" id="motionToggle" aria-pressed="false">
+    <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" rx="1" fill="currentColor"/><rect x="9.5" y="2" width="3.5" height="12" rx="1" fill="currentColor"/></svg>
+    <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5z" fill="currentColor"/></svg>
+    <span class="label">Pause motion</span>
+  </button>
 
-      <!-- Centered brand image -->
-      <img
-        class="brand-image"
-        src="src/images/splash.jpg"
-        alt="Brain Candy"
-        width="880" height="auto"
-      />
+  <!-- ================= SPLASH ================= -->
+  <main class="stage">
 
-      <!-- <p class="subtitle">Altered states in VR.</p> -->
+    <h1 class="title rise" style="--d:.05s" aria-label="Brain Candy">
+      <span class="word" aria-hidden="true"><span style="--i:0">B</span><span style="--i:1">r</span><span style="--i:2">a</span><span style="--i:3">i</span><span style="--i:4">n</span></span>
+      <span class="word" aria-hidden="true"><span style="--i:5">C</span><span style="--i:6">a</span><span style="--i:7">n</span><span style="--i:8">d</span><span style="--i:9">y</span></span>
+    </h1>
 
-      <h2 class="subtitle" aria-label="Warning: Strobing Lights">WARNING: Strobing Lights</h2><br>
-
-      <nav class="button-group" aria-label="Primary actions">
-        <a href="main.html" class="btn btn-continue" aria-label="Enter Brain Candy main site">Continue</a>
-        <a href="warning.html" class="btn btn-warning" aria-label="Read the full safety warning">Read the Warning</a>
-      </nav>
+    <div class="portal-wrap rise" style="--d:.2s">
+      <div class="halo" aria-hidden="true"></div>
+      <div class="breathe">
+        <div class="portal">
+          <img src="src/images/splash.jpg" alt="Brain Candy logo: a candy-colored brain with a third eye" width="1440" height="904" />
+        </div>
+      </div>
     </div>
-  </header>
+
+    <p class="warning rise" style="--d:.4s">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20.5h20L12 3z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.4" r="1.3" fill="currentColor"/></svg>
+      <span>Warning: Strobing Lights</span>
+    </p>
+
+    <nav class="actions rise" style="--d:.55s" aria-label="Primary actions">
+      <a href="main.html" class="btn btn-enter" aria-label="Enter Brain Candy main site">Continue <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="warning.html" class="btn btn-warning" aria-label="Read the full safety warning">Read the Warning</a>
+    </nav>
+  </main>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="footer" role="contentinfo">
+  <footer class="site-footer">
     <p>&copy; 2024, Developed by: Brain Candy LLC. All rights reserved.</p>
-    <ul class="list-inline mb-0">
-      <li class="list-inline-item"><a href="privacy.html" style="color:white;">Privacy Policy</a></li>
-      <li class="list-inline-item"><a href="eula.html" style="color:white;">Terms of Service</a></li>
-      <li class="list-inline-item"><a href="mailto:braincandyapp@proton.me" style="color:white;">info@braincandyapp.com</a></li>
+    <ul>
+      <li><a href="privacy.html">Privacy Policy</a></li>
+      <li><a href="eula.html">Terms of Service</a></li>
+      <li><a href="mailto:braincandyapp@proton.me">info@braincandyapp.com</a></li>
     </ul>
   </footer>
 
-  <!-- JS (Bootstrap) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- Optional: subtle color shuffle like the reference page -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const letters = document.querySelectorAll(".rainbow-text span:not(.spacer)");
-      const palette = [
-        "#f42335","#2ef366","#32a4f1","#f5f50d",
-        "#f727f7","#1eeaea","#f45e2b","#a529f8",
-        "#22e9e9","#ee2ea1"
-      ];
-      setInterval(() => {
-        letters.forEach(span => {
-          const color = palette[Math.floor(Math.random() * palette.length)];
-          span.style.color = color;
-        });
-      }, 200);
+  (function () {
+    // Infinite candy-dot tunnel (Klüver "tunnel" + "lattice" form constants) drawn in
+    // log-polar space. Deliberately slow and soft: nothing here flickers or flashes.
+    var VERT = 'attribute vec2 aPos; void main() { gl_Position = vec4(aPos, 0.0, 1.0); }';
+    var FRAG = [
+      '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+      'precision highp float;',
+      '#else',
+      'precision mediump float;',
+      '#endif',
+      'uniform vec2 uRes;',
+      'uniform float uTime;',
+      'uniform vec2 uFocus;',
+      '#define TAU 6.28318530718',
+      '',
+      'vec3 candy(float x) {',
+      '  vec3 c0 = vec3(0.80, 0.09, 0.50);', // magenta
+      '  vec3 c1 = vec3(0.16, 0.60, 0.76);', // teal
+      '  vec3 c2 = vec3(0.60, 0.46, 0.92);', // lavender
+      '  vec3 c3 = vec3(0.96, 0.42, 0.56);', // coral pink
+      '  x = fract(x) * 4.0;',
+      '  float f = smoothstep(0.0, 1.0, fract(x));',
+      '  if (x < 1.0) return mix(c0, c1, f);',
+      '  if (x < 2.0) return mix(c1, c2, f);',
+      '  if (x < 3.0) return mix(c2, c3, f);',
+      '  return mix(c3, c0, f);',
+      '}',
+      '',
+      'float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }',
+      '',
+      'void main() {',
+      '  float unit = min(uRes.x, uRes.y);',
+      '  vec2 p = (gl_FragCoord.xy - 0.5 * uRes) / unit - uFocus;',
+      '  float r = length(p) + 1e-4;',
+      '  float a = atan(p.y, p.x);',
+      '  float lr = log(r);',
+      '  float t = uTime;',
+      '',
+      // slow spiral arms of colour
+      '  float w1 = sin(a * 5.0 - lr * 2.6 + t * 0.11);',
+      '  float w2 = sin(a * 3.0 + lr * 3.8 - t * 0.08);',
+      '  vec3 col = candy((0.5 + 0.28 * w1 + 0.22 * w2) * 0.9 - lr * 0.08 + t * 0.012);',
+      '',
+      // polka-dot lattice streaming out of the tunnel, twisting between tunnel and spiral
+      '  const float N = 18.0;',
+      '  float k = N / TAU;',
+      '  float twist = 0.6 * sin(t * 0.04);',
+      '  vec2 q = vec2(lr * k - t * 0.2, a * k + lr * k * twist + t * 0.04);',
+      '  float cx = floor(q.x);',
+      '  q.y += 0.5 * mod(cx, 2.0);',
+      '  vec2 id = vec2(cx, mod(floor(q.y), N));',
+      '  vec2 g = fract(q) - 0.5;',
+      '  float d = length(g);',
+      '  float px = k / (r * unit);',
+      '  float soft = max(px * 1.5, 0.035);',
+      '  float h = hash(id);',
+      '  float size = 0.09 + 0.07 * h;',
+      '  float core = 1.0 - smoothstep(size - soft, size + soft, d);',
+      '  float ring = 1.0 - smoothstep(0.025, 0.025 + soft, abs(d - size - 0.09));',
+      '  float vis = smoothstep(0.35, 0.12, px) * smoothstep(0.02, 0.16, r);',
+      '  vec3 ringCol = mix(col, vec3(1.0, 0.86, 0.72), 0.35);',
+      '  vec3 coreCol = mix(vec3(1.0, 0.45, 0.42), vec3(0.55, 0.95, 1.0), step(0.7, h));',
+      '  col = mix(col, ringCol, ring * vis * 0.5);',
+      '  col = mix(col, coreCol, core * vis * 0.75);',
+      '',
+      // the throat of the tunnel falls away into deep wine
+      '  col = mix(vec3(0.20, 0.02, 0.10), col, smoothstep(0.0, 0.6, r));',
+      '  gl_FragColor = vec4(col, 1.0);',
+      '}'
+    ].join('\n');
+
+    var root = document.documentElement;
+    var canvas = document.getElementById('tunnel');
+    var toggle = document.getElementById('motionToggle');
+    var toggleLabel = toggle.querySelector('.label');
+    var portal = document.querySelector('.portal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var saved = null;
+    try { saved = localStorage.getItem('bc-motion'); } catch (e) {}
+    var paused = saved ? saved === 'off' : reduceMotion;
+
+    var renderer = createRenderer();
+
+    function applyMotion() {
+      root.classList.toggle('still', paused);
+      toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+      toggleLabel.textContent = paused ? 'Play motion' : 'Pause motion';
+      toggle.setAttribute('aria-label', paused ? 'Play background motion' : 'Pause background motion');
+      if (paused) resetTilt();
+      if (renderer) renderer.setRunning(!paused);
+    }
+
+    toggle.addEventListener('click', function () {
+      paused = !paused;
+      try { localStorage.setItem('bc-motion', paused ? 'off' : 'on'); } catch (e) {}
+      applyMotion();
     });
+
+    // Logo card tilts and catches the light as the mouse moves
+    function resetTilt() {
+      portal.style.setProperty('--rx', '0deg');
+      portal.style.setProperty('--ry', '0deg');
+      portal.style.setProperty('--sheen', '0');
+    }
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      if (renderer) renderer.aim(e.clientX / window.innerWidth - 0.5, e.clientY / window.innerHeight - 0.5);
+      if (paused) return;
+      var r = portal.getBoundingClientRect();
+      var nx = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
+      var ny = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
+      portal.style.setProperty('--ry', (nx * 14).toFixed(2) + 'deg');
+      portal.style.setProperty('--rx', (-ny * 14).toFixed(2) + 'deg');
+      portal.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+      portal.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+      portal.style.setProperty('--sheen', '1');
+    });
+    root.addEventListener('mouseleave', resetTilt);
+
+    applyMotion();
+
+    function createRenderer() {
+      var gl = null;
+      try {
+        gl = canvas.getContext('webgl', { alpha: false, antialias: false, depth: false, powerPreference: 'low-power' });
+      } catch (e) {}
+      if (!gl) { root.classList.add('no-gl'); return null; }
+
+      function compile(type, src) {
+        var s = gl.createShader(type);
+        gl.shaderSource(s, src);
+        gl.compileShader(s);
+        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+        return s;
+      }
+      var prog = gl.createProgram();
+      try {
+        gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+        gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+        gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+      } catch (err) {
+        console.warn('Tunnel shader failed, using fallback background.', err);
+        root.classList.add('no-gl');
+        return null;
+      }
+      gl.useProgram(prog);
+
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+      var aPos = gl.getAttribLocation(prog, 'aPos');
+      gl.enableVertexAttribArray(aPos);
+      gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+      var uRes = gl.getUniformLocation(prog, 'uRes');
+      var uTime = gl.getUniformLocation(prog, 'uTime');
+      var uFocus = gl.getUniformLocation(prog, 'uFocus');
+
+      var time = 12, last = 0, raf = 0, running = false;
+      var focus = [0, 0], target = [0, 0];
+
+      function resize() {
+        // Rendered below screen resolution on purpose: cheaper, and the upscale gives the dreamy blur of the splash art
+        var scale = Math.min(window.devicePixelRatio || 1, 2) * 0.6;
+        canvas.width = Math.max(1, Math.round(window.innerWidth * scale));
+        canvas.height = Math.max(1, Math.round(window.innerHeight * scale));
+        gl.viewport(0, 0, canvas.width, canvas.height);
+        draw();
+      }
+      function draw() {
+        gl.uniform2f(uRes, canvas.width, canvas.height);
+        gl.uniform1f(uTime, time);
+        gl.uniform2f(uFocus, focus[0] + 0.03 * Math.sin(time * 0.07), focus[1] + 0.025 * Math.cos(time * 0.05));
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+      }
+      function frame(now) {
+        raf = 0;
+        var dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
+        last = now;
+        time += dt;
+        var ease = Math.min(1, dt * 1.5);
+        focus[0] += (target[0] - focus[0]) * ease;
+        focus[1] += (target[1] - focus[1]) * ease;
+        draw();
+        schedule();
+      }
+      function schedule() {
+        if (running && !document.hidden && !raf) raf = requestAnimationFrame(frame);
+      }
+
+      document.addEventListener('visibilitychange', function () { last = 0; schedule(); });
+      window.addEventListener('resize', resize);
+      canvas.addEventListener('webglcontextlost', function (e) {
+        e.preventDefault();
+        running = false;
+        root.classList.add('no-gl');
+      });
+      resize();
+
+      return {
+        setRunning: function (on) {
+          running = on;
+          last = 0;
+          if (on) schedule(); else draw();
+        },
+        aim: function (x, y) {
+          target[0] = x * 0.1 * (window.innerWidth / window.innerHeight);
+          target[1] = -y * 0.1;
+        }
+      };
+    }
+  })();
   </script>
 </body>
 </html>

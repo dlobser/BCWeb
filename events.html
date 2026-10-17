@@ -130,6 +130,36 @@
         .qri-01 { object-position: center center; }
         .qri-02 { object-position: center 20%; }
         .qri-03 { object-position: center 20%; }
+        .xrguild-01 { object-position: center 40%; }
+        .xrguild-02 { object-position: center center; }
+        .xrguild-03 { object-position: center 12%; }
+        .xrguild-04 { object-position: center 25%; }
+
+        /* Full invitation poster, shown uncropped */
+        .event-poster {
+            display: block;
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+        }
+
+        .xrguild .event-image {
+            height: 320px;
+        }
+
+        .event-lineup {
+            font-size: 0.95em;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .xrguild .event-image {
+                height: 260px;
+                margin-bottom: 15px;
+            }
+        }
 
         .event-title {
             font-family: 'Carbon Block', sans-serif;
@@ -288,6 +318,42 @@
                 </div>
             </div>
         </div>
+            <!-- XR & Friends, XR Guild, Brooklyn -->
+            <div class="event-card xrguild">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="src/images/Events/XRPartyEvent.png" alt="XR &amp; Friends invitation: Tuesday, September 29, 2026, 7 to 11 PM at Atolye NYC, Brooklyn" class="event-poster">
+                    </div>
+                    <div class="col-md-8">
+                        <h3 class="event-title">XR Guild</h3>
+                        <p class="event-location">Atolye NYC, Brooklyn, New York &middot; September 29, 2026</p>
+                        <p class="event-description">
+                            <strong>XR &amp; Friends</strong> was a fall party for NYC's immersive tech community, with DJs, VJs and live activations. It was presented by the XR Guild with AWE, NYVR, VRARA, Unity NYC, Unreal NYC, XR Motion, The Polys and Pico XR.
+                        </p>
+                        <p><em>Brain Candy had its own private lounge for the night: a little hideaway of iridescent curtains, a fuzzy pink rug, piles of pillows and a psychedelic tapestry. People kicked off their shoes, sank into the cushions and put on a headset while the party carried on just outside. It was a soft, glowing pocket of calm in the middle of a loud night.</em></p>
+                        <p class="event-lineup">
+                            Sharing the night with "Shadow Theater Play I" by Good People Factory, "Cookie Lab" by Una Zhang &amp; Lusine Kirakosyan, "you are here" LED sculptures by Jess Shen, DJ Smith's Tilt Brush Competition, magic by Daniel Taylor and "Wearable Art" by Dante Cameron. DJ sets came from Fizz Fizzonte, Marlon Fuentes + rgb_tears, and NAN + *.JS.
+                        </p>
+                        <div class="row mt-3">
+                            <div class="col-md-7">
+                                <img src="src/images/Events/XRGuild_01.jpg" alt="Two guests in VR headsets on the pink rug in the Brain Candy lounge" class="event-image xrguild-01">
+                            </div>
+                            <div class="col-md-5">
+                                <img src="src/images/Events/XRGuild_04.jpg" alt="A smiling guest wearing a headset in the Brain Candy lounge" class="event-image xrguild-04">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-5">
+                        <img src="src/images/Events/XRGuild_03.jpg" alt="A guest reaching up while trying Brain Candy in front of a psychedelic tapestry" class="event-image xrguild-03">
+                    </div>
+                    <div class="col-md-7">
+                        <img src="src/images/Events/XRGuild_02.jpg" alt="Overhead view of the XR &amp; Friends party floor at Atolye NYC" class="event-image xrguild-02">
+                    </div>
+                </div>
+            </div>
+
             <!-- Psychedelic Science, Denver -->
             <div class="event-card">
                 <div class="row">
